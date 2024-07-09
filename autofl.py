@@ -229,7 +229,7 @@ class AutoDebugger(llm_utils.OpenAIEngine):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model', default='gpt-3.5-turbo-0613')
+    parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
     parser.add_argument('-b', '--bug_name', default='Chart_1')
     parser.add_argument('-o', '--out', default='test.json')
     parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')

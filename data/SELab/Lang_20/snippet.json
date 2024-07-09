@@ -1,0 +1,66 @@
+[
+    {
+        "name": "org.apache.commons.lang3.StringUtils.join#3383",
+        "is_bug": true,
+        "src_path": "src/main/java/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.join(...)",
+        "snippet": "         int noOfItems = (endIndex - startIndex);\n         if (noOfItems <= 0) {\n             return EMPTY;\n         }\n \n-        StringBuilder buf = new StringBuilder((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + separator.length());\n+        StringBuilder buf = new StringBuilder(noOfItems * 16);\n \n         for (int i = startIndex; i < endIndex; i++) {\n             if (i > startIndex) {\n                 buf.append(separator);\n             }",
+        "begin_line": 3383,
+        "end_line": 3390,
+        "comment": "int noOfItems = (endIndex - startIndex);\nif (noOfItems <= 0) {\nreturn EMPTY;\n}\n\n\nfor (int i = startIndex; i < endIndex; i++) {\nif (i > startIndex) {\nbuf.append(separator);\n}",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.join#3338",
+        "is_bug": true,
+        "src_path": "src/main/java/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.join(...)",
+        "snippet": "",
+        "begin_line": 3338,
+        "end_line": 3339,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.join#3230",
+        "is_bug": true,
+        "src_path": "src/main/java/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.join(...)",
+        "snippet": "",
+        "begin_line": 3230,
+        "end_line": 3231,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.join#3298",
+        "is_bug": true,
+        "src_path": "src/main/java/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.join(...)",
+        "snippet": "         int noOfItems = (endIndex - startIndex);\n         if (noOfItems <= 0) {\n             return EMPTY;\n         }\n         \n-        StringBuilder buf = new StringBuilder((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + 1);\n+        StringBuilder buf = new StringBuilder(noOfItems * 16);\n \n         for (int i = startIndex; i < endIndex; i++) {\n             if (i > startIndex) {\n                 buf.append(separator);\n             }",
+        "begin_line": 3298,
+        "end_line": 3305,
+        "comment": "int noOfItems = (endIndex - startIndex);\nif (noOfItems <= 0) {\nreturn EMPTY;\n}\n\n\nfor (int i = startIndex; i < endIndex; i++) {\nif (i > startIndex) {\nbuf.append(separator);\n}",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

@@ -7,7 +7,7 @@ REPETITION=$2
 DATASET=$3 # defects4j or bugsinpy
 
 DATA_DIR=./data/${DATASET}/
-MODEL="gpt-3.5-turbo-0613"
+MODEL="gpt-3.5-turbo"
 PROMPT_FILE="prompts/system_msg_expbug.txt"
 BUDGET="10"
 NUM_TESTS="1"
