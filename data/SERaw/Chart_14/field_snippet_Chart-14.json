@@ -1,0 +1,920 @@
+[
+    {
+        "class_name": "org.jfree.chart.text.TextAnchor",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/text/TextAnchor.java",
+        "signature": "int PROBE_START_LINE_125",
+        "snippet": "int PROBE_START_LINE_125 = 125;\nString p_name_925_line_125 = name;",
+        "begin_line": 125,
+        "end_line": 126,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.SeriesRenderingOrder",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/SeriesRenderingOrder.java",
+        "signature": "int PROBE_START_LINE_79",
+        "snippet": "int PROBE_START_LINE_79 = 79;\nString p_name_567_line_79 = name;",
+        "begin_line": 79,
+        "end_line": 80,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.RectangleAnchor",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/RectangleAnchor.java",
+        "signature": "int PROBE_START_LINE_107",
+        "snippet": "int PROBE_START_LINE_107 = 107;\nString p_name_963_line_107 = name;",
+        "begin_line": 107,
+        "end_line": 108,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.ValueMarker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/ValueMarker.java",
+        "signature": "int PROBE_START_LINE_69",
+        "snippet": "int PROBE_START_LINE_69 = 69;\ndouble p_value_570_line_69 = value;",
+        "begin_line": 69,
+        "end_line": 70,
+        "comment": "    \n     * Creates a new marker.\n     * \n     * @param value  the value.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.PlotOrientation",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/PlotOrientation.java",
+        "signature": "int PROBE_START_LINE_73",
+        "snippet": "int PROBE_START_LINE_73 = 73;\nString p_name_562_line_73 = name;",
+        "begin_line": 73,
+        "end_line": 74,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.LengthAdjustmentType",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/LengthAdjustmentType.java",
+        "signature": "int PROBE_START_LINE_77",
+        "snippet": "int PROBE_START_LINE_77 = 77;\nString p_name_947_line_77 = name;",
+        "begin_line": 77,
+        "end_line": 78,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.SortOrder",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/SortOrder.java",
+        "signature": "int PROBE_START_LINE_75",
+        "snippet": "int PROBE_START_LINE_75 = 75;\nString p_name_1014_line_75 = name;",
+        "begin_line": 75,
+        "end_line": 76,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.Layer",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/Layer.java",
+        "signature": "int PROBE_START_LINE_70",
+        "snippet": "int PROBE_START_LINE_70 = 70;\nString p_name_943_line_70 = name;",
+        "begin_line": 70,
+        "end_line": 71,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "private String label",
+        "snippet": "private String label = null;\n\n/** The label font. */\nprivate Font labelFont;",
+        "begin_line": 115,
+        "end_line": 118,
+        "comment": "     The label. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "int PROBE_START_LINE_175",
+        "snippet": "int PROBE_START_LINE_175 = 177;\njava.awt.Paint p_paint_428_line_175 = paint;",
+        "begin_line": 175,
+        "end_line": 176,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "boolean marker1_expr8_line_175",
+        "snippet": "boolean marker1_expr8_line_175 = p_paint_428_line_175 == null;\nint PROBE_END_LINE_175 = 177;",
+        "begin_line": 177,
+        "end_line": 178,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "boolean marker1_expr9_line_178",
+        "snippet": "boolean marker1_expr9_line_178 = p_stroke_429_line_178 == null;\nint PROBE_END_LINE_178 = 180;",
+        "begin_line": 184,
+        "end_line": 185,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "int PROBE_START_LINE_181",
+        "snippet": "int PROBE_START_LINE_181 = 183;\nfloat p_alpha_432_line_181 = alpha;",
+        "begin_line": 189,
+        "end_line": 190,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "boolean marker1_expr11_line_181",
+        "snippet": "boolean marker1_expr11_line_181 = p_alpha_432_line_181 < 0.0f;\nboolean marker1_expr12_line_181 = false;",
+        "begin_line": 191,
+        "end_line": 192,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Marker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Marker.java",
+        "signature": "boolean marker1_expr10_line_181",
+        "snippet": "boolean marker1_expr10_line_181 = marker1_expr11_line_181 || marker1_expr12_line_181;\nint PROBE_END_LINE_181 = 183;",
+        "begin_line": 196,
+        "end_line": 197,
+        "comment": "    \n     * Constructs a new marker.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency (must be in the range 0.0f to \n     *     1.0f).\n     *     \n     * @throws IllegalArgumentException if <code>paint</code> or \n     *     <code>stroke</code> is <code>null</code>, or <code>alpha</code> is \n     *     not in the specified range.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.UnitType",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/UnitType.java",
+        "signature": "int PROBE_START_LINE_70",
+        "snippet": "int PROBE_START_LINE_70 = 70;\nString p_name_1018_line_70 = name;",
+        "begin_line": 70,
+        "end_line": 71,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.axis.AxisLocation",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/axis/AxisLocation.java",
+        "signature": "int PROBE_START_LINE_85",
+        "snippet": "int PROBE_START_LINE_85 = 85;\nString p_name_32_line_85 = name;",
+        "begin_line": 85,
+        "end_line": 86,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "private int size",
+        "snippet": "private int size = 0;\n\nint PROBE_START_LINE_70 = 71;",
+        "begin_line": 68,
+        "end_line": 70,
+        "comment": "     The current list size. "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "private int increment",
+        "snippet": "private int increment = f_default_initial_capacity_930_line_71;\n\n/**\n* Creates a new list with the default initial capacity.\n*/\nprotected AbstractObjectList() {\nthis(DEFAULT_INITIAL_CAPACITY);",
+        "begin_line": 77,
+        "end_line": 83,
+        "comment": "\t The default increment. "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "int PROBE_END_LINE_97",
+        "snippet": "int PROBE_END_LINE_97 = 97;\nthis.increment = p_increment_933_line_97;",
+        "begin_line": 108,
+        "end_line": 109,
+        "comment": "    \n     * Creates a new list.\n     * \n     * @param initialCapacity  the initial capacity.\n     * @param increment  the increment.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "int p_index_935_line_110",
+        "snippet": "int p_index_935_line_110 = index;\nboolean abstract_object_list1_expr8_line_110 = p_index_935_line_110 >= 0;",
+        "begin_line": 123,
+        "end_line": 124,
+        "comment": "    \n     * Returns the object at the specified index, if there is one, or \n     * <code>null</code>.\n     *\n     * @param index  the object index.\n     *\n     * @return The object or <code>null</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "boolean abstract_object_list1_expr9_line_110",
+        "snippet": "boolean abstract_object_list1_expr9_line_110 = true;\nif (abstract_object_list1_expr8_line_110) {\nint abstract_object_list1_expr10_line_110 = this.size;",
+        "begin_line": 125,
+        "end_line": 127,
+        "comment": "    \n     * Returns the object at the specified index, if there is one, or \n     * <code>null</code>.\n     *\n     * @param index  the object index.\n     *\n     * @return The object or <code>null</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.AbstractObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/AbstractObjectList.java",
+        "signature": "int PROBE_END_LINE_110",
+        "snippet": "int PROBE_END_LINE_110 = 112;\nif (abstract_object_list1_expr7_line_110) {\nint PROBE_START_LINE_111 = 111;",
+        "begin_line": 132,
+        "end_line": 134,
+        "comment": "    \n     * Returns the object at the specified index, if there is one, or \n     * <code>null</code>.\n     *\n     * @param index  the object index.\n     *\n     * @return The object or <code>null</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.ObjectList",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/ObjectList.java",
+        "signature": "int PROBE_START_LINE_85",
+        "snippet": "int PROBE_START_LINE_85 = 85;\nint p_index_951_line_85 = index;",
+        "begin_line": 85,
+        "end_line": 86,
+        "comment": "              \n     * Returns the object at the specified index, if there is one, or \n     * <code>null</code>.         \n     *   \n     * @param index  the object index.   \n     *   \n     * @return The object or <code>null</code>.          \n               "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryMarker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryMarker.java",
+        "signature": "private boolean drawAsLine",
+        "snippet": "private boolean drawAsLine = false;\n\n/**\n* Creates a new category marker for the specified category.\n*\n* @param key  the category key.\n*/\npublic CategoryMarker(Comparable key) {\nthis(key, Color.gray, new BasicStroke(1.0f));",
+        "begin_line": 72,
+        "end_line": 80,
+        "comment": "     \n     * A hint that the marker should be drawn as a line rather than a region. \n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryMarker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryMarker.java",
+        "signature": "int PROBE_START_LINE_108",
+        "snippet": "int PROBE_START_LINE_108 = 108;\nComparable p_key_68_line_108 = key;",
+        "begin_line": 108,
+        "end_line": 109,
+        "comment": "    \n     * Creates a new category marker.\n     * \n     * @param key  the key.\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryMarker",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryMarker.java",
+        "signature": "int PROBE_END_LINE_108",
+        "snippet": "int PROBE_END_LINE_108 = 108;\nthis.key = p_key_68_line_108;",
+        "begin_line": 110,
+        "end_line": 111,
+        "comment": "    \n     * Creates a new category marker.\n     * \n     * @param key  the key.\n     * @param paint  the paint (<code>null</code> not permitted).\n     * @param stroke  the stroke (<code>null</code> not permitted).\n     * @param outlinePaint  the outline paint (<code>null</code> permitted).\n     * @param outlineStroke  the outline stroke (<code>null</code> permitted).\n     * @param alpha  the alpha transparency.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_288",
+        "snippet": "int PROBE_START_LINE_288 = 289;\n\npublic static final java.awt.Color f_white_83_line_289 = Color.WHITE;",
+        "begin_line": 288,
+        "end_line": 290,
+        "comment": "     The default grid line stroke. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_END_LINE_288",
+        "snippet": "int PROBE_END_LINE_288 = 289;\n\n/** The default grid line paint. */\npublic static final Paint DEFAULT_GRIDLINE_PAINT = f_white_83_line_289;",
+        "begin_line": 292,
+        "end_line": 295,
+        "comment": "     The default grid line stroke. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_522",
+        "snippet": "int PROBE_START_LINE_522 = 522;\norg.jfree.chart.plot.PlotOrientation f_vertical_100_line_522 = PlotOrientation.VERTICAL;",
+        "begin_line": 534,
+        "end_line": 535,
+        "comment": "    \n     * Creates a new plot with the specified dataset, axes and renderer.  Any\n     * of the arguments can be <code>null</code>, but in that case you should\n     * take care to specify the value before using the plot (otherwise a\n     * <code>NullPointerException</code> may be thrown).\n     *\n     * @param dataset  the dataset (<code>null</code> permitted).\n     * @param domainAxis  the domain axis (<code>null</code> permitted).\n     * @param rangeAxis  the range axis (<code>null</code> permitted).\n     * @param renderer  the renderer (<code>null</code> permitted).\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_END_LINE_522",
+        "snippet": "int PROBE_END_LINE_522 = 522;\nthis.orientation = f_vertical_100_line_522;",
+        "begin_line": 536,
+        "end_line": 537,
+        "comment": "    \n     * Creates a new plot with the specified dataset, axes and renderer.  Any\n     * of the arguments can be <code>null</code>, but in that case you should\n     * take care to specify the value before using the plot (otherwise a\n     * <code>NullPointerException</code> may be thrown).\n     *\n     * @param dataset  the dataset (<code>null</code> permitted).\n     * @param domainAxis  the domain axis (<code>null</code> permitted).\n     * @param rangeAxis  the range axis (<code>null</code> permitted).\n     * @param renderer  the renderer (<code>null</code> permitted).\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_END_LINE_543",
+        "snippet": "int PROBE_END_LINE_543 = 543;\nxyplot1_expr50_line_543.set(0, p_dataset_594_line_543);",
+        "begin_line": 561,
+        "end_line": 562,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_544",
+        "snippet": "int PROBE_START_LINE_544 = 546;\norg.jfree.data.xy.XYDataset p_dataset_594_line_544 = dataset;",
+        "begin_line": 563,
+        "end_line": 564,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_548",
+        "snippet": "int PROBE_START_LINE_548 = 548;\norg.jfree.chart.util.ObjectList xyplot1_expr54_line_548 = this.renderers;",
+        "begin_line": 571,
+        "end_line": 572,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_END_LINE_548",
+        "snippet": "int PROBE_END_LINE_548 = 548;\nxyplot1_expr54_line_548.set(0, p_renderer_597_line_548);",
+        "begin_line": 574,
+        "end_line": 575,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_549",
+        "snippet": "int PROBE_START_LINE_549 = 552;\norg.jfree.chart.renderer.xy.XYItemRenderer p_renderer_597_line_549 = renderer;",
+        "begin_line": 576,
+        "end_line": 577,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "boolean xyplot1_expr55_line_549",
+        "snippet": "boolean xyplot1_expr55_line_549 = p_renderer_597_line_549 != null;\nint PROBE_END_LINE_549 = 552;",
+        "begin_line": 578,
+        "end_line": 579,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_554",
+        "snippet": "int PROBE_START_LINE_554 = 554;\norg.jfree.chart.util.ObjectList xyplot1_expr58_line_554 = this.domainAxes;",
+        "begin_line": 585,
+        "end_line": 586,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_END_LINE_554",
+        "snippet": "int PROBE_END_LINE_554 = 554;\nxyplot1_expr58_line_554.set(0, p_domain_axis_595_line_554);",
+        "begin_line": 588,
+        "end_line": 589,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_556",
+        "snippet": "int PROBE_START_LINE_556 = 559;\norg.jfree.chart.axis.ValueAxis p_domain_axis_595_line_556 = domainAxis;",
+        "begin_line": 591,
+        "end_line": 592,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "boolean xyplot1_expr63_line_556",
+        "snippet": "boolean xyplot1_expr63_line_556 = p_domain_axis_595_line_556 != null;\nint PROBE_END_LINE_556 = 559;",
+        "begin_line": 593,
+        "end_line": 594,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "int PROBE_START_LINE_560",
+        "snippet": "int PROBE_START_LINE_560 = 560;\norg.jfree.chart.util.ObjectList xyplot1_expr66_line_560 = this.domainAxisLocations;",
+        "begin_line": 599,
+        "end_line": 600,
+        "comment": "         allocate storage for datasets, axes and renderers (all optional)"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "Integer key",
+        "snippet": "Integer key = (Integer) iterator.next();\nclearDomainMarkers(key.intValue());",
+        "begin_line": 2232,
+        "end_line": 2233,
+        "comment": "    \n     * Clears all the (foreground and background) domain markers and sends a\n     * {@link PlotChangeEvent} to all registered listeners.\n     * \n     * @see #addDomainMarker(int, Marker, Layer)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "Iterator iterator",
+        "snippet": "Iterator iterator = markers.iterator();\nwhile (iterator.hasNext()) {\nMarker m = (Marker) iterator.next();",
+        "begin_line": 2263,
+        "end_line": 2265,
+        "comment": "    \n     * Clears the (foreground and background) domain markers for a particular\n     * renderer.\n     *\n     * @param index  the renderer index.\n     * \n     * @see #clearRangeMarkers(int)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/XYPlot.java",
+        "signature": "Rectangle2D dataArea",
+        "snippet": "Rectangle2D dataArea = info.getDataArea();\nif (dataArea.contains(x, y)) {\n// set the anchor value for the horizontal axis...\nValueAxis da = getDomainAxis();",
+        "begin_line": 4038,
+        "end_line": 4041,
+        "comment": "    \n     * Handles a 'click' on the plot by updating the anchor values.\n     *\n     * @param x  the x-coordinate, where the click occurred, in Java2D space.\n     * @param y  the y-coordinate, where the click occurred, in Java2D space.\n     * @param info  object containing information about the plot dimensions.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.event.ChartChangeEventType",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/event/ChartChangeEventType.java",
+        "signature": "int PROBE_START_LINE_75",
+        "snippet": "int PROBE_START_LINE_75 = 75;\nString p_name_55_line_75 = name;",
+        "begin_line": 75,
+        "end_line": 76,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_START_LINE_199",
+        "snippet": "int PROBE_START_LINE_199 = 199;\njava.awt.Paint[] p_paint_sequence_397_line_199 = paintSequence;",
+        "begin_line": 199,
+        "end_line": 200,
+        "comment": "    \n     * Creates a new supplier.\n     *\n     * @param paintSequence  the paint sequence.\n     * @param fillPaintSequence  the fill paint sequence.\n     * @param outlinePaintSequence  the outline paint sequence.\n     * @param strokeSequence  the stroke sequence.\n     * @param outlineStrokeSequence  the outline stroke sequence.\n     * @param shapeSequence  the shape sequence.\n     * \n     * @since 1.0.6\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_END_LINE_199",
+        "snippet": "int PROBE_END_LINE_199 = 199;\nthis.paintSequence = p_paint_sequence_397_line_199;",
+        "begin_line": 201,
+        "end_line": 202,
+        "comment": "    \n     * Creates a new supplier.\n     *\n     * @param paintSequence  the paint sequence.\n     * @param fillPaintSequence  the fill paint sequence.\n     * @param outlinePaintSequence  the outline paint sequence.\n     * @param strokeSequence  the stroke sequence.\n     * @param outlineStrokeSequence  the outline stroke sequence.\n     * @param shapeSequence  the shape sequence.\n     * \n     * @since 1.0.6\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_START_LINE_200",
+        "snippet": "int PROBE_START_LINE_200 = 200;\njava.awt.Paint[] p_fill_paint_sequence_398_line_200 = fillPaintSequence;",
+        "begin_line": 203,
+        "end_line": 204,
+        "comment": "    \n     * Creates a new supplier.\n     *\n     * @param paintSequence  the paint sequence.\n     * @param fillPaintSequence  the fill paint sequence.\n     * @param outlinePaintSequence  the outline paint sequence.\n     * @param strokeSequence  the stroke sequence.\n     * @param outlineStrokeSequence  the outline stroke sequence.\n     * @param shapeSequence  the shape sequence.\n     * \n     * @since 1.0.6\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_END_LINE_200",
+        "snippet": "int PROBE_END_LINE_200 = 200;\nthis.fillPaintSequence = p_fill_paint_sequence_398_line_200;",
+        "begin_line": 205,
+        "end_line": 206,
+        "comment": "    \n     * Creates a new supplier.\n     *\n     * @param paintSequence  the paint sequence.\n     * @param fillPaintSequence  the fill paint sequence.\n     * @param outlinePaintSequence  the outline paint sequence.\n     * @param strokeSequence  the stroke sequence.\n     * @param outlineStrokeSequence  the outline stroke sequence.\n     * @param shapeSequence  the shape sequence.\n     * \n     * @since 1.0.6\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "Shape[] result",
+        "snippet": "Shape[] result = new Shape[10];\n\ndouble size = 6.0;",
+        "begin_line": 307,
+        "end_line": 309,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "double default_drawing_supplier1_expr16_line_292",
+        "snippet": "double default_drawing_supplier1_expr16_line_292 = v_size_410_line_292 / 2.0;\nint PROBE_END_LINE_292 = 292;",
+        "begin_line": 312,
+        "end_line": 313,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "double delta",
+        "snippet": "double delta = default_drawing_supplier1_expr16_line_292;\nint[] xpoints = null;",
+        "begin_line": 314,
+        "end_line": 315,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int[] ypoints",
+        "snippet": "int[] ypoints = null;\n\nint PROBE_START_LINE_297 = 297;",
+        "begin_line": 316,
+        "end_line": 318,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "double v_delta_411_line_297",
+        "snippet": "double v_delta_411_line_297 = delta;\ndouble default_drawing_supplier1_expr19_line_297 = -v_delta_411_line_297;",
+        "begin_line": 320,
+        "end_line": 321,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "double default_drawing_supplier1_expr20_line_297",
+        "snippet": "double default_drawing_supplier1_expr20_line_297 = -delta;\ndouble v_size_410_line_297 = size;",
+        "begin_line": 322,
+        "end_line": 323,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_END_LINE_297",
+        "snippet": "int PROBE_END_LINE_297 = 297;\n// square\nv_result_409_line_297[0] = new Rectangle2D.Double(default_drawing_supplier1_expr19_line_297, default_drawing_supplier1_expr20_line_297, v_size_410_line_297, size);",
+        "begin_line": 324,
+        "end_line": 326,
+        "comment": "    \n     * Creates an array of standard shapes to display for the items in series \n     * on charts.\n     *\n     * @return The array of shapes.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_START_LINE_299",
+        "snippet": "int PROBE_START_LINE_299 = 299;\njava.awt.Shape[] v_result_409_line_299 = result;",
+        "begin_line": 327,
+        "end_line": 328,
+        "comment": "\t\t square"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "double default_drawing_supplier1_expr24_line_299",
+        "snippet": "double default_drawing_supplier1_expr24_line_299 = -delta;\ndouble v_size_410_line_299 = size;",
+        "begin_line": 331,
+        "end_line": 332,
+        "comment": "\t\t square"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "signature": "int PROBE_END_LINE_299",
+        "snippet": "int PROBE_END_LINE_299 = 299;\n// circle\nv_result_409_line_299[1] = new Ellipse2D.Double(default_drawing_supplier1_expr23_line_299, default_drawing_supplier1_expr24_line_299, v_size_410_line_299, size);",
+        "begin_line": 333,
+        "end_line": 335,
+        "comment": "\t\t square"
+    },
+    {
+        "class_name": "org.jfree.chart.event.ChartChangeEvent",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/event/ChartChangeEvent.java",
+        "signature": "int PROBE_START_LINE_94",
+        "snippet": "int PROBE_START_LINE_94 = 94;\norg.jfree.chart.JFreeChart p_chart_47_line_94 = chart;",
+        "begin_line": 94,
+        "end_line": 95,
+        "comment": "    \n     * Creates a new chart change event.\n     *\n     * @param source  the source of the event (could be the chart, a title, an\n                      axis etc.)\n     * @param chart  the chart that generated the event.\n     * @param type  the type of event.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.event.ChartChangeEvent",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/event/ChartChangeEvent.java",
+        "signature": "int PROBE_END_LINE_94",
+        "snippet": "int PROBE_END_LINE_94 = 94;\nthis.chart = p_chart_47_line_94;",
+        "begin_line": 96,
+        "end_line": 97,
+        "comment": "    \n     * Creates a new chart change event.\n     *\n     * @param source  the source of the event (could be the chart, a title, an\n                      axis etc.)\n     * @param chart  the chart that generated the event.\n     * @param type  the type of event.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.event.MarkerChangeEvent",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/event/MarkerChangeEvent.java",
+        "signature": "int PROBE_START_LINE_66",
+        "snippet": "int PROBE_START_LINE_66 = 66;\norg.jfree.chart.plot.Marker p_marker_58_line_66 = marker;",
+        "begin_line": 66,
+        "end_line": 67,
+        "comment": "    \n     * Creates a new <code>MarkerChangeEvent</code> instance.\n     *\n     * @param marker  the marker that triggered the event (<code>null</code> \n     *     not permitted).\n     * \n     * @since 1.0.3\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_255",
+        "snippet": "int PROBE_START_LINE_255 = 256;\n\npublic static final java.awt.Color f_white_83_line_256 = Color.WHITE;",
+        "begin_line": 255,
+        "end_line": 257,
+        "comment": "     The default grid line stroke. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_255",
+        "snippet": "int PROBE_END_LINE_255 = 256;\n\n/** The default grid line paint. */\npublic static final Paint DEFAULT_GRIDLINE_PAINT = f_white_83_line_256;",
+        "begin_line": 259,
+        "end_line": 262,
+        "comment": "     The default grid line stroke. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_277",
+        "snippet": "int PROBE_START_LINE_277 = 282;\n\npublic static final java.awt.Color f_blue_88_line_282 = Color.blue;",
+        "begin_line": 283,
+        "end_line": 285,
+        "comment": "     \n     * The default crosshair stroke. \n     * \n     * @since 1.0.5\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_449",
+        "snippet": "int PROBE_START_LINE_449 = 449;\norg.jfree.chart.plot.PlotOrientation f_vertical_100_line_449 = PlotOrientation.VERTICAL;",
+        "begin_line": 473,
+        "end_line": 474,
+        "comment": "    \n     * Creates a new plot.\n     *\n     * @param dataset  the dataset (<code>null</code> permitted).\n     * @param domainAxis  the domain axis (<code>null</code> permitted).\n     * @param rangeAxis  the range axis (<code>null</code> permitted).\n     * @param renderer  the item renderer (<code>null</code> permitted).\n     *\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_463",
+        "snippet": "int PROBE_END_LINE_463 = 463;\ncategory_plot1_expr32_line_463.set(0, p_dataset_96_line_463);",
+        "begin_line": 493,
+        "end_line": 494,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_464",
+        "snippet": "int PROBE_START_LINE_464 = 466;\norg.jfree.data.category.CategoryDataset p_dataset_96_line_464 = dataset;",
+        "begin_line": 495,
+        "end_line": 496,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean category_plot1_expr33_line_464",
+        "snippet": "boolean category_plot1_expr33_line_464 = p_dataset_96_line_464 != null;\nint PROBE_END_LINE_464 = 466;",
+        "begin_line": 497,
+        "end_line": 498,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_470",
+        "snippet": "int PROBE_START_LINE_470 = 470;\norg.jfree.chart.axis.AxisLocation f_bottom_or_left_30_line_470 = AxisLocation.BOTTOM_OR_LEFT;",
+        "begin_line": 505,
+        "end_line": 506,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_470",
+        "snippet": "int PROBE_END_LINE_470 = 470;\nsetDomainAxisLocation(f_bottom_or_left_30_line_470, false);",
+        "begin_line": 507,
+        "end_line": 508,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_471",
+        "snippet": "int PROBE_START_LINE_471 = 471;\norg.jfree.chart.axis.AxisLocation f_top_or_left_28_line_471 = AxisLocation.TOP_OR_LEFT;",
+        "begin_line": 509,
+        "end_line": 510,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_471",
+        "snippet": "int PROBE_END_LINE_471 = 471;\nsetRangeAxisLocation(f_top_or_left_28_line_471, false);",
+        "begin_line": 511,
+        "end_line": 512,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_473",
+        "snippet": "int PROBE_START_LINE_473 = 473;\norg.jfree.chart.util.ObjectList category_plot1_expr46_line_473 = this.renderers;",
+        "begin_line": 514,
+        "end_line": 515,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_473",
+        "snippet": "int PROBE_END_LINE_473 = 473;\ncategory_plot1_expr46_line_473.set(0, p_renderer_99_line_473);",
+        "begin_line": 517,
+        "end_line": 518,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_474",
+        "snippet": "int PROBE_START_LINE_474 = 477;\norg.jfree.chart.renderer.category.CategoryItemRenderer p_renderer_99_line_474 = renderer;",
+        "begin_line": 519,
+        "end_line": 520,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean category_plot1_expr47_line_474",
+        "snippet": "boolean category_plot1_expr47_line_474 = p_renderer_99_line_474 != null;\nint PROBE_END_LINE_474 = 477;",
+        "begin_line": 521,
+        "end_line": 522,
+        "comment": "         allocate storage for dataset, axes and renderers"
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean p_notify_148_line_767",
+        "snippet": "boolean p_notify_148_line_767 = notify;\nint PROBE_END_LINE_767 = 767;",
+        "begin_line": 867,
+        "end_line": 868,
+        "comment": "    \n     * Sets the location of the domain axis and, if requested, sends a \n     * {@link PlotChangeEvent} to all registered listeners.\n     *\n     * @param location  the axis location (<code>null</code> not permitted).\n     * @param notify  a flag that controls whether listeners are notified.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean category_plot1_expr107_line_800",
+        "snippet": "boolean category_plot1_expr107_line_800 = p_index_151_line_800 == 0;\nboolean category_plot1_expr108_line_800 = true;",
+        "begin_line": 905,
+        "end_line": 906,
+        "comment": "    \n     * Sets the location for a domain axis and sends a {@link PlotChangeEvent} \n     * to all registered listeners.\n     * \n     * @param index  the axis index.\n     * @param location  the location.\n     * @param notify  notify listeners?\n     * \n     * @since 1.0.5\n     * \n     * @see #getDomainAxisLocation(int)\n     * @see #setRangeAxisLocation(int, AxisLocation, boolean)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean category_plot1_expr126_line_900",
+        "snippet": "boolean category_plot1_expr126_line_900 = v_parent_159_line_900 instanceof CategoryPlot;\nint PROBE_END_LINE_900 = 903;",
+        "begin_line": 1051,
+        "end_line": 1052,
+        "comment": "    \n     * Returns a range axis.\n     *\n     * @param index  the axis index.\n     *\n     * @return The axis (<code>null</code> possible).\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int result",
+        "snippet": "int result = this.rangeAxes.indexOf(axis);\nif (result < 0) { // try the parent plot\nPlot parent = getParent();",
+        "begin_line": 1143,
+        "end_line": 1145,
+        "comment": "    \n     * Returns the index of the specified axis, or <code>-1</code> if the axis\n     * is not assigned to the plot.\n     *\n     * @param axis  the axis (<code>null</code> not permitted).\n     *\n     * @return The axis index.\n     * \n     * @see #getRangeAxis(int)\n     * @see #getDomainAxisIndex(CategoryAxis)\n     * \n     * @since 1.0.7\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "CategoryPlot p",
+        "snippet": "CategoryPlot p = (CategoryPlot) parent;\nresult = p.getRangeAxisIndex(axis);",
+        "begin_line": 1147,
+        "end_line": 1148,
+        "comment": "    \n     * Returns the index of the specified axis, or <code>-1</code> if the axis\n     * is not assigned to the plot.\n     *\n     * @param axis  the axis (<code>null</code> not permitted).\n     *\n     * @return The axis index.\n     * \n     * @see #getRangeAxis(int)\n     * @see #getDomainAxisIndex(CategoryAxis)\n     * \n     * @since 1.0.7\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "AxisLocation result",
+        "snippet": "AxisLocation result = null;\nif (index < this.rangeAxisLocations.size()) {\nresult = (AxisLocation) this.rangeAxisLocations.get(index);",
+        "begin_line": 1173,
+        "end_line": 1175,
+        "comment": "    \n     * Returns the location for a range axis.\n     *\n     * @param index  the axis index.\n     *\n     * @return The location.\n     * \n     * @see #setRangeAxisLocation(int, AxisLocation)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_1081",
+        "snippet": "int PROBE_START_LINE_1081 = 1084;\nint p_index_174_line_1081 = index;",
+        "begin_line": 1241,
+        "end_line": 1242,
+        "comment": "    \n     * Sets the location for a range axis and sends a {@link PlotChangeEvent} \n     * to all registered listeners.\n     *\n     * @param index  the axis index.\n     * @param location  the location.\n     * @param notify  notify listeners?\n     * \n     * @see #getRangeAxisLocation(int)\n     * @see #setDomainAxisLocation(int, AxisLocation, boolean)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean category_plot1_expr130_line_1081",
+        "snippet": "boolean category_plot1_expr130_line_1081 = p_index_174_line_1081 == 0;\nboolean category_plot1_expr131_line_1081 = true;",
+        "begin_line": 1243,
+        "end_line": 1244,
+        "comment": "    \n     * Sets the location for a range axis and sends a {@link PlotChangeEvent} \n     * to all registered listeners.\n     *\n     * @param index  the axis index.\n     * @param location  the location.\n     * @param notify  notify listeners?\n     * \n     * @see #getRangeAxisLocation(int)\n     * @see #setDomainAxisLocation(int, AxisLocation, boolean)\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_END_LINE_1867",
+        "snippet": "int PROBE_END_LINE_1867 = 1867;\nv_e_222_line_1867.setType(f_dataset_updated_54_line_1867);",
+        "begin_line": 2106,
+        "end_line": 2107,
+        "comment": "    \n     * Receives notification of a change to the plot's dataset.\n     * <P>\n     * The range axis bounds will be recalculated if necessary.\n     *\n     * @param event  information about the event (not used here).\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "Plot parent",
+        "snippet": "Plot parent = getParent();\nif (parent != null) {\nif (parent instanceof RendererChangeListener) {\nRendererChangeListener rcl = (RendererChangeListener) parent;",
+        "begin_line": 2122,
+        "end_line": 2125,
+        "comment": "    \n     * Receives notification of a renderer change event.\n     *\n     * @param event  the event.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "Integer key",
+        "snippet": "Integer key = (Integer) iterator.next();\nclearDomainMarkers(key.intValue());",
+        "begin_line": 2249,
+        "end_line": 2250,
+        "comment": "    \n     * Clears all the domain markers for the plot and sends a \n     * {@link PlotChangeEvent} to all registered listeners.\n     * \n     * @see #clearRangeMarkers()\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "Set keys",
+        "snippet": "Set keys = this.foregroundDomainMarkers.keySet();\nIterator iterator = keys.iterator();",
+        "begin_line": 2255,
+        "end_line": 2256,
+        "comment": "    \n     * Clears all the domain markers for the plot and sends a \n     * {@link PlotChangeEvent} to all registered listeners.\n     * \n     * @see #clearRangeMarkers()\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "Integer key",
+        "snippet": "Integer key = (Integer) iterator.next();\nclearDomainMarkers(key.intValue());",
+        "begin_line": 2258,
+        "end_line": 2259,
+        "comment": "    \n     * Clears all the domain markers for the plot and sends a \n     * {@link PlotChangeEvent} to all registered listeners.\n     * \n     * @see #clearRangeMarkers()\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "int PROBE_START_LINE_2166",
+        "snippet": "int PROBE_START_LINE_2166 = 2166;\njava.util.ArrayList v_markers_249_line_2166 = markers;",
+        "begin_line": 2435,
+        "end_line": 2436,
+        "comment": "    \n     * Removes a marker for a specific dataset/renderer and, if requested, \n     * sends a {@link PlotChangeEvent} to all registered listeners.\n     *\n     * @param index the dataset/renderer index.\n     * @param marker the marker.\n     * @param layer the layer (foreground or background).\n     *\n     * @return A boolean indicating whether or not the marker was actually \n     *         removed.\n     *\n     * @since 1.0.10\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.CategoryPlot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/CategoryPlot.java",
+        "signature": "boolean removed",
+        "snippet": "boolean removed = category_plot1_expr182_line_2166;\nif (removed && notify) {\nfireChangeEvent();",
+        "begin_line": 2440,
+        "end_line": 2442,
+        "comment": "    \n     * Removes a marker for a specific dataset/renderer and, if requested, \n     * sends a {@link PlotChangeEvent} to all registered listeners.\n     *\n     * @param index the dataset/renderer index.\n     * @param marker the marker.\n     * @param layer the layer (foreground or background).\n     *\n     * @return A boolean indicating whether or not the marker was actually \n     *         removed.\n     *\n     * @since 1.0.10\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.axis.CategoryAnchor",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/axis/CategoryAnchor.java",
+        "signature": "int PROBE_START_LINE_76",
+        "snippet": "int PROBE_START_LINE_76 = 76;\nString p_name_39_line_76 = name;",
+        "begin_line": 76,
+        "end_line": 77,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.DatasetRenderingOrder",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/DatasetRenderingOrder.java",
+        "signature": "int PROBE_START_LINE_81",
+        "snippet": "int PROBE_START_LINE_81 = 81;\nString p_name_383_line_81 = name;",
+        "begin_line": 81,
+        "end_line": 82,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Plot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Plot.java",
+        "signature": "int PROBE_START_LINE_200",
+        "snippet": "int PROBE_START_LINE_200 = 201;\n\npublic static final java.awt.Color f_gray_64_line_201 = Color.gray;",
+        "begin_line": 200,
+        "end_line": 202,
+        "comment": "     The default outline stroke. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Plot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Plot.java",
+        "signature": "int PROBE_END_LINE_209",
+        "snippet": "int PROBE_END_LINE_209 = 210;\n\n/** The default background color. */\npublic static final Paint DEFAULT_BACKGROUND_PAINT = f_light_gray_476_line_210;",
+        "begin_line": 219,
+        "end_line": 222,
+        "comment": "     The default background alpha transparency. "
+    },
+    {
+        "class_name": "org.jfree.chart.plot.Plot",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/plot/Plot.java",
+        "signature": "private float backgroundImageAlpha",
+        "snippet": "private float backgroundImageAlpha = 0.5f;\n\n/** The alpha-transparency for the plot. */\nprivate float foregroundAlpha;",
+        "begin_line": 285,
+        "end_line": 288,
+        "comment": "     The alpha value used to draw the background image. "
+    },
+    {
+        "class_name": "org.jfree.chart.event.PlotChangeEvent",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/event/PlotChangeEvent.java",
+        "signature": "int PROBE_START_LINE_65",
+        "snippet": "int PROBE_START_LINE_65 = 65;\norg.jfree.chart.plot.Plot p_plot_60_line_65 = plot;",
+        "begin_line": 65,
+        "end_line": 66,
+        "comment": "    \n     * Creates a new PlotChangeEvent.\n     *\n     * @param plot  the plot that generated the event.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.RectangleInsets",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/RectangleInsets.java",
+        "signature": "int PROBE_START_LINE_117",
+        "snippet": "int PROBE_START_LINE_117 = 119;\norg.jfree.chart.util.UnitType p_unit_type_978_line_117 = unitType;",
+        "begin_line": 117,
+        "end_line": 118,
+        "comment": "    \n     * Creates a new instance.\n     * \n     * @param unitType  absolute or relative units (<code>null</code> not \n     *                  permitted).\n     * @param top  the top insets.\n     * @param left  the left insets.\n     * @param bottom  the bottom insets.\n     * @param right  the right insets.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.RectangleInsets",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/RectangleInsets.java",
+        "signature": "boolean rectangle_insets1_expr7_line_117",
+        "snippet": "boolean rectangle_insets1_expr7_line_117 = p_unit_type_978_line_117 == null;\nint PROBE_END_LINE_117 = 119;",
+        "begin_line": 119,
+        "end_line": 120,
+        "comment": "    \n     * Creates a new instance.\n     * \n     * @param unitType  absolute or relative units (<code>null</code> not \n     *                  permitted).\n     * @param top  the top insets.\n     * @param left  the left insets.\n     * @param bottom  the bottom insets.\n     * @param right  the right insets.\n     "
+    },
+    {
+        "class_name": "org.jfree.chart.util.RectangleInsets",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-14/result/src/org/jfree/chart/util/RectangleInsets.java",
+        "signature": "int PROBE_START_LINE_120",
+        "snippet": "int PROBE_START_LINE_120 = 120;\norg.jfree.chart.util.UnitType p_unit_type_978_line_120 = unitType;",
+        "begin_line": 124,
+        "end_line": 125,
+        "comment": "    \n     * Creates a new instance.\n     * \n     * @param unitType  absolute or relative units (<code>null</code> not \n     *                  permitted).\n     * @param top  the top insets.\n     * @param left  the left insets.\n     * @param bottom  the bottom insets.\n     * @param right  the right insets.\n     "
+    }
+]

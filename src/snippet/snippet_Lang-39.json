@@ -1,0 +1,818 @@
+[
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3502",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3502 = 3502;",
+        "begin_line": 3502,
+        "end_line": 3502,
+        "comment": "    \n     * <p>\n     * Replaces all occurrences of Strings within another String.\n     * </p>\n     * \n     * <p>\n     * A <code>null</code> reference passed to this method is a no-op, or if\n     * any \"search string\" or \"string to replace\" is null, that replace will be\n     * ignored. This will not repeat. For repeating replaces, call the\n     * overloaded method.\n     * </p>\n     * \n     * <pre>\n     *  StringUtils.replaceEach(null, *, *)        = null\n     *  StringUtils.replaceEach(\"\", *, *)          = \"\"\n     *  StringUtils.replaceEach(\"aba\", null, null) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[0], null) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", null, new String[0]) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, null)  = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, new String[]{\"\"})  = \"b\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{null}, new String[]{\"a\"})  = \"aba\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"w\", \"t\"})  = \"wcte\"\n     *  (example of how it does not repeat)\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"})  = \"dcte\"\n     * </pre>\n     * \n     * @param text\n     *            text to search and replace in, no-op if null\n     * @param searchList\n     *            the Strings to search for, no-op if null\n     * @param replacementList\n     *            the Strings to replace them with, no-op if null\n     * @return the text with any replacements processed, <code>null</code> if\n     *         null String input\n     * @throws IndexOutOfBoundsException\n     *             if the lengths of the arrays are not the same (null is ok,\n     *             and/or size 0)\n     * @since 2.4\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3612",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static String replaceEach(String text, String[] searchList, String[] replacementList,",
+        "begin_line": 3612,
+        "end_line": 3612,
+        "comment": "    \n     * <p>\n     * Replaces all occurrences of Strings within another String.\n     * </p>\n     * \n     * <p>\n     * A <code>null</code> reference passed to this method is a no-op, or if\n     * any \"search string\" or \"string to replace\" is null, that replace will be\n     * ignored. \n     * </p>\n     * \n     * <pre>\n     *  StringUtils.replaceEach(null, *, *, *) = null\n     *  StringUtils.replaceEach(\"\", *, *, *) = \"\"\n     *  StringUtils.replaceEach(\"aba\", null, null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[0], null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", null, new String[0], *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, new String[]{\"\"}, *) = \"b\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{null}, new String[]{\"a\"}, *) = \"aba\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"w\", \"t\"}, *) = \"wcte\"\n     *  (example of how it repeats)\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"}, false) = \"dcte\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"}, true) = \"tcte\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"ab\"}, *) = IllegalArgumentException\n     * </pre>\n     * \n     * @param text\n     *            text to search and replace in, no-op if null\n     * @param searchList\n     *            the Strings to search for, no-op if null\n     * @param replacementList\n     *            the Strings to replace them with, no-op if null\n     * @param repeat if true, then replace repeatedly \n     *       until there are no more possible replacements or timeToLive < 0\n     * @param timeToLive\n     *            if less than 0 then there is a circular reference and endless\n     *            loop\n     * @return the text with any replacements processed, <code>null</code> if\n     *         null String input\n     * @throws IllegalArgumentException\n     *             if the search is repeating and there is an endless loop due\n     *             to outputs of one being inputs to another\n     * @throws IndexOutOfBoundsException\n     *             if the lengths of the arrays are not the same (null is ok,\n     *             and/or size 0)\n     * @since 2.4\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3615",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3615,
+        "end_line": 3615,
+        "comment": "    \n     * <p>\n     * Replaces all occurrences of Strings within another String.\n     * </p>\n     * \n     * <p>\n     * A <code>null</code> reference passed to this method is a no-op, or if\n     * any \"search string\" or \"string to replace\" is null, that replace will be\n     * ignored. \n     * </p>\n     * \n     * <pre>\n     *  StringUtils.replaceEach(null, *, *, *) = null\n     *  StringUtils.replaceEach(\"\", *, *, *) = \"\"\n     *  StringUtils.replaceEach(\"aba\", null, null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[0], null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", null, new String[0], *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, null, *) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, new String[]{\"\"}, *) = \"b\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{null}, new String[]{\"a\"}, *) = \"aba\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"w\", \"t\"}, *) = \"wcte\"\n     *  (example of how it repeats)\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"}, false) = \"dcte\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"}, true) = \"tcte\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"ab\"}, *) = IllegalArgumentException\n     * </pre>\n     * \n     * @param text\n     *            text to search and replace in, no-op if null\n     * @param searchList\n     *            the Strings to search for, no-op if null\n     * @param replacementList\n     *            the Strings to replace them with, no-op if null\n     * @param repeat if true, then replace repeatedly \n     *       until there are no more possible replacements or timeToLive < 0\n     * @param timeToLive\n     *            if less than 0 then there is a circular reference and endless\n     *            loop\n     * @return the text with any replacements processed, <code>null</code> if\n     *         null String input\n     * @throws IllegalArgumentException\n     *             if the search is repeating and there is an endless loop due\n     *             to outputs of one being inputs to another\n     * @throws IndexOutOfBoundsException\n     *             if the lengths of the arrays are not the same (null is ok,\n     *             and/or size 0)\n     * @since 2.4\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3619",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3612 = 3616;",
+        "begin_line": 3619,
+        "end_line": 3619,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3623",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "if (!string_utils1_expr9_line_3612) {",
+        "begin_line": 3623,
+        "end_line": 3623,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3624",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr11_line_3612 = text.length();",
+        "begin_line": 3624,
+        "end_line": 3624,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3627",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr8_line_3612 = string_utils1_expr9_line_3612 || string_utils1_expr10_line_3612;",
+        "begin_line": 3627,
+        "end_line": 3627,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3635",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr5_line_3612 = string_utils1_expr6_line_3612 || replacementList == null;",
+        "begin_line": 3635,
+        "end_line": 3635,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3638",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "if (string_utils1_expr4_line_3612)",
+        "begin_line": 3638,
+        "end_line": 3638,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3639",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "{",
+        "begin_line": 3639,
+        "end_line": 3639,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3640",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3615 = 3615;",
+        "begin_line": 3640,
+        "end_line": 3640,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3644",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "}",
+        "begin_line": 3644,
+        "end_line": 3644,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3645",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3645,
+        "end_line": 3645,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3648",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr13_line_3619 = p_time_to_live_201_line_3619 < 0;",
+        "begin_line": 3648,
+        "end_line": 3648,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3650",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "// if recursing, this shouldnt be less than 0",
+        "begin_line": 3650,
+        "end_line": 3650,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3653",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "}",
+        "begin_line": 3653,
+        "end_line": 3653,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3654",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3654,
+        "end_line": 3654,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3656",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String[] p_search_list_198_line_3623 = searchList;",
+        "begin_line": 3656,
+        "end_line": 3656,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3657",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int f_length_203_line_3623 = p_search_list_198_line_3623.length;",
+        "begin_line": 3657,
+        "end_line": 3657,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3658",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3623 = 3623;",
+        "begin_line": 3658,
+        "end_line": 3658,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3665",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3665,
+        "end_line": 3665,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3666",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3627 = 3632;",
+        "begin_line": 3666,
+        "end_line": 3666,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3669",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr14_line_3627 = v_search_length_202_line_3627 != v_replacement_length_204_line_3627;",
+        "begin_line": 3669,
+        "end_line": 3669,
+        "comment": "\t\t if recursing, this shouldnt be less than 0",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3672",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "if (string_utils1_expr14_line_3627) {",
+        "begin_line": 3672,
+        "end_line": 3672,
+        "comment": "\t\t make sure lengths are ok, these need to be equal",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3675",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "+ \" vs \"",
+        "begin_line": 3675,
+        "end_line": 3675,
+        "comment": "\t\t make sure lengths are ok, these need to be equal",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3676",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "+ replacementLength);",
+        "begin_line": 3676,
+        "end_line": 3676,
+        "comment": "\t\t make sure lengths are ok, these need to be equal",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3677",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "}",
+        "begin_line": 3677,
+        "end_line": 3677,
+        "comment": "\t\t make sure lengths are ok, these need to be equal",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3682",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "// keep track of which still have matches",
+        "begin_line": 3682,
+        "end_line": 3682,
+        "comment": "\t\t keep track of which still have matches",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3684",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3684,
+        "end_line": 3684,
+        "comment": "\t\t keep track of which still have matches",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3686",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr16_line_3638 = -1;",
+        "begin_line": 3686,
+        "end_line": 3686,
+        "comment": "\t\t keep track of which still have matches",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3688",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "// index on index that the match was found",
+        "begin_line": 3688,
+        "end_line": 3688,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3689",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int textIndex = string_utils1_expr16_line_3638;",
+        "begin_line": 3689,
+        "end_line": 3689,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3691",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr17_line_3639 = -1;",
+        "begin_line": 3691,
+        "end_line": 3691,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3693",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int replaceIndex = string_utils1_expr17_line_3639;",
+        "begin_line": 3693,
+        "end_line": 3693,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3695",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr18_line_3640 = -1;",
+        "begin_line": 3695,
+        "end_line": 3695,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3696",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3640 = 3640;",
+        "begin_line": 3696,
+        "end_line": 3696,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3697",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int tempIndex = string_utils1_expr18_line_3640;",
+        "begin_line": 3697,
+        "end_line": 3697,
+        "comment": "\t\t index on index that the match was found",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3700",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "// NOTE: logic duplicated below START",
+        "begin_line": 3700,
+        "end_line": 3700,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3701",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "for (int i = 0; i < searchLength; i++) {",
+        "begin_line": 3701,
+        "end_line": 3701,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3706",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr24_line_3645 = false;",
+        "begin_line": 3706,
+        "end_line": 3706,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3709",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String string_utils1_expr25_line_3645 = p_search_list_198_line_3645[i];",
+        "begin_line": 3709,
+        "end_line": 3709,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3710",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "string_utils1_expr24_line_3645 = string_utils1_expr25_line_3645 == null;",
+        "begin_line": 3710,
+        "end_line": 3710,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3712",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr22_line_3645 = string_utils1_expr23_line_3645 || string_utils1_expr24_line_3645;",
+        "begin_line": 3712,
+        "end_line": 3712,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3713",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr21_line_3645 = string_utils1_expr22_line_3645 || searchList[i].length() == 0;",
+        "begin_line": 3713,
+        "end_line": 3713,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3714",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "boolean string_utils1_expr20_line_3645 = string_utils1_expr21_line_3645 || replacementList[i] == null;",
+        "begin_line": 3714,
+        "end_line": 3714,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3721",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String p_text_197_line_3650 = text;",
+        "begin_line": 3721,
+        "end_line": 3721,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3722",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String[] p_search_list_198_line_3650 = searchList;",
+        "begin_line": 3722,
+        "end_line": 3722,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3723",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int v_i_209_line_3650 = i;",
+        "begin_line": 3723,
+        "end_line": 3723,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3725",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr26_line_3650 = p_text_197_line_3650.indexOf(string_utils1_expr27_line_3650);",
+        "begin_line": 3725,
+        "end_line": 3725,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3726",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3650 = 3650;",
+        "begin_line": 3726,
+        "end_line": 3726,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3727",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "tempIndex = string_utils1_expr26_line_3650;",
+        "begin_line": 3727,
+        "end_line": 3727,
+        "comment": "         NOTE: logic duplicated below START",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

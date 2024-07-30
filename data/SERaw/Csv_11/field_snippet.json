@@ -1,0 +1,434 @@
+[
+    {
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "signature": "int PROBE_END_LINE_162",
+        "snippet": "int PROBE_END_LINE_162 = 176;\n\n/**\n* Standard comma separated format, as for {@link #RFC4180} but allowing empty lines.\n* <h3>RFC 4180:</h3>\n* <ul>\n* <li>withDelimiter(',')</li>\n* <li>withQuoteChar('\"')</li>\n* <li>withRecordSeparator(CRLF)</li>\n* </ul>\n* <h3>Additional:</h3>\n* <ul>\n* <li>withIgnoreEmptyLines(true)</li>\n* </ul>\n*/\npublic static final CSVFormat DEFAULT = new CSVFormat(f_comma_4_line_175, f_double_quote_char_5_line_175, null, null, null,\nfalse, true, CRLF, null, null, false, false);",
+        "begin_line": 168,
+        "end_line": 184,
+        "comment": "\n * Specifies the format of a CSV file and parses input.\n *\n * <h2>Using predefined formats</h2>\n *\n * <p>\n * You can use one of the predefined formats:\n * </p>\n *\n * <ul>\n *      <li>{@link #DEFAULT}</li>\n *      <li>{@link #EXCEL}</li>\n *      <li>{@link #MYSQL}</li>\n *      <li>{@link #RFC4180}</li>\n *      <li>{@link #TDF}</li>\n * </ul>\n *\n * <p>\n * For example:\n * </p>\n *\n * <pre>\n * CSVParser parser = CSVFormat.EXCEL.parse(reader);\n * </pre>\n *\n * <p>\n * The {@link CSVRecord} provides static methods to parse other input types, for example:\n * </p>\n *\n * <pre>CSVParser parser = CSVFormat.parseFile(file, CSVFormat.EXCEL);</pre>\n *\n * <h2>Defining formats</h2>\n *\n * <p>\n * You can extend a format by calling the {@code with} methods. For example:\n * </p>\n *\n * <pre>\n * CSVFormat.EXCEL\n *   .withNullString(&quot;N/A&quot;)\n *   .withIgnoreSurroundingSpaces(true);\n * </pre>\n *\n * <h2>Defining column names</h2>\n *\n * <p>\n * To define the column names you want to use to access records, write:\n * </p>\n *\n * <pre>\n * CSVFormat.EXCEL.withHeader(&quot;Col1&quot;, &quot;Col2&quot;, &quot;Col3&quot;);\n * </pre>\n *\n * <p>\n * Calling {@link #withHeader(String...)} let's you use the given names to address values in a {@link CSVRecord}, and\n * assumes that your CSV source does not contain a first record that also defines column names.\n *\n * If it does, then you are overriding this metadata with your names and you should skip the first record by calling\n * {@link #withSkipHeaderRecord(boolean)} with {@code true}.\n * </p>\n *\n * <h2>Parsing</h2>\n *\n * <p>\n * You can use a format directly to parse a reader. For example, to parse an Excel file with columns header, write:\n * </p>\n *\n * <pre>\n * Reader in = ...;\n * CSVFormat.EXCEL.withHeader(&quot;Col1&quot;, &quot;Col2&quot;, &quot;Col3&quot;).parse(in);\n * </pre>\n *\n * <p>\n * For other input types, like resources, files, and URLs, use the static methods on {@link CSVParser}.\n * </p>\n *\n * <h2>Referencing columns safely</h2>\n *\n * <p>\n * If your source contains a header record, you can simplify your code and safely reference columns,\n * by using {@link #withHeader(String...)} with no arguments:\n * </p>\n *\n * <pre>\n * CSVFormat.EXCEL.withHeader();\n * </pre>\n *\n * <p>\n * This causes the parser to read the first record and use its values as column names.\n *\n * Then, call one of the {@link CSVRecord} get method that takes a String column name argument:\n * </p>\n *\n * <pre>\n * String value = record.get(&quot;Col1&quot;);\n * </pre>\n *\n * <p>\n * This makes your code impervious to changes in column order in the CSV file.\n * </p>\n *\n * <h2>Notes</h2>\n *\n * <p>\n * This class is immutable.\n * </p>\n *\n * @version $Id$\n "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "signature": "int PROBE_START_LINE_178",
+        "snippet": "int PROBE_START_LINE_178 = 187;\n\npublic static final org.apache.commons.csv.CSVFormat f_default_3_line_187 = DEFAULT;",
+        "begin_line": 186,
+        "end_line": 188,
+        "comment": "\t\n     * Standard comma separated format, as for {@link #RFC4180} but allowing empty lines.\n     * <h3>RFC 4180:</h3>\n     * <ul>\n     * <li>withDelimiter(',')</li>\n     * <li>withQuoteChar('\"')</li>\n     * <li>withRecordSeparator(CRLF)</li>\n     * </ul>\n     * <h3>Additional:</h3>\n     * <ul>\n     * <li>withIgnoreEmptyLines(true)</li>\n     * </ul>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "signature": "int PROBE_END_LINE_189",
+        "snippet": "int PROBE_END_LINE_189 = 211;\n\n/**\n* Excel file format (using a comma as the value delimiter). Note that the actual value delimiter used by Excel is\n* locale dependent, it might be necessary to customize this format to accommodate to your regional settings.\n*\n* <p>\n* For example for parsing or generating a CSV file on a French system the following format will be used:\n* </p>\n*\n* <pre>\n* CSVFormat fmt = CSVFormat.newBuilder(EXCEL).withDelimiter(';');",
+        "begin_line": 213,
+        "end_line": 224,
+        "comment": "\t\n     * Comma separated format as defined by <a href=\"http:tools.ietf.org/html/rfc4180\">RFC 4180</a>.\n     * <h3>RFC 4180:</h3>\n     * <ul>\n     * <li>withDelimiter(',')</li>\n     * <li>withQuoteChar('\"')</li>\n     * <li>withRecordSeparator(CRLF)</li>\n     * </ul>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "signature": "boolean csvformat1_expr46_line_680",
+        "snippet": "boolean csvformat1_expr46_line_680 = csvformat1_expr47_line_680 && csvformat1_expr48_line_680;\nint PROBE_END_LINE_680 = 683;",
+        "begin_line": 828,
+        "end_line": 829,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "signature": "Character f_comment_start_31_line_690",
+        "snippet": "Character f_comment_start_31_line_690 = commentStart;\ncsvformat1_expr56_line_690 = quoteChar.equals(f_comment_start_31_line_690);",
+        "begin_line": 856,
+        "end_line": 857,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Token",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "signature": "int PROBE_START_LINE_51",
+        "snippet": "int PROBE_START_LINE_51 = 52;\n\norg.apache.commons.csv.Token.Type f_invalid_133_line_52 = INVALID;",
+        "begin_line": 51,
+        "end_line": 53,
+        "comment": "         Token is a comment line. "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Token",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "signature": "int PROBE_END_LINE_51",
+        "snippet": "int PROBE_END_LINE_51 = 52;\n\n/** Token type */\nToken.Type type = f_invalid_133_line_52;",
+        "begin_line": 55,
+        "end_line": 58,
+        "comment": "         Token is a comment line. "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Token",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "signature": "int PROBE_START_LINE_54",
+        "snippet": "int PROBE_START_LINE_54 = 55;\n\nfinal int f_initial_token_length_151_line_55 = INITIAL_TOKEN_LENGTH;",
+        "begin_line": 60,
+        "end_line": 62,
+        "comment": "\t Token type "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Token",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "signature": "int PROBE_END_LINE_54",
+        "snippet": "int PROBE_END_LINE_54 = 55;\n\n/** The content buffer. */\nfinal StringBuilder content = new StringBuilder(f_initial_token_length_151_line_55);",
+        "begin_line": 64,
+        "end_line": 67,
+        "comment": "\t Token type "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_START_LINE_63",
+        "snippet": "int PROBE_START_LINE_63 = 63;\norg.apache.commons.csv.ExtendedBufferedReader p_reader_121_line_63 = reader;",
+        "begin_line": 63,
+        "end_line": 64,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_END_LINE_63",
+        "snippet": "int PROBE_END_LINE_63 = 63;\nthis.reader = p_reader_121_line_63;",
+        "begin_line": 65,
+        "end_line": 66,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_START_LINE_64",
+        "snippet": "int PROBE_START_LINE_64 = 64;\norg.apache.commons.csv.CSVFormat p_format_120_line_64 = format;",
+        "begin_line": 67,
+        "end_line": 68,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "char lexer1_expr3_line_64",
+        "snippet": "char lexer1_expr3_line_64 = p_format_120_line_64.getDelimiter();\nint PROBE_END_LINE_64 = 64;",
+        "begin_line": 69,
+        "end_line": 70,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "Character lexer1_expr12_line_67",
+        "snippet": "Character lexer1_expr12_line_67 = p_format_120_line_67.getCommentStart();\nchar lexer1_expr11_line_67 = mapNullToDisabled(lexer1_expr12_line_67);",
+        "begin_line": 86,
+        "end_line": 87,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_END_LINE_67",
+        "snippet": "int PROBE_END_LINE_67 = 67;\nthis.commentStart = lexer1_expr11_line_67;",
+        "begin_line": 88,
+        "end_line": 89,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "boolean lexer1_expr16_line_69",
+        "snippet": "boolean lexer1_expr16_line_69 = p_format_120_line_69.getIgnoreEmptyLines();\nint PROBE_END_LINE_69 = 69;",
+        "begin_line": 97,
+        "end_line": 98,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_END_LINE_94",
+        "snippet": "int PROBE_END_LINE_94 = 94;\n/*\n* Note: The following call will swallow LF if c == CR. But we don't need to know if the last char was CR or LF\n* - they are equivalent here.\n*/\nboolean eol = lexer1_expr19_line_94;",
+        "begin_line": 131,
+        "end_line": 136,
+        "comment": "\t\t read the next char and set eol"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_END_LINE_97",
+        "snippet": "int PROBE_END_LINE_97 = 110;\n// empty line detection: eol AND (last char was EOL or beginning)\nif (f_ignore_empty_lines_128_line_97) {\nint PROBE_START_LINE_98 = 109;",
+        "begin_line": 140,
+        "end_line": 143,
+        "comment": "\t\t/*\n         * Note: The following call will swallow LF if c == CR. But we don't need to know if the last char was CR or LF\n         * - they are equivalent here.\n         "
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "boolean v_eol_132_line_98",
+        "snippet": "boolean v_eol_132_line_98 = eol;\nboolean lexer1_expr21_line_98 = true;",
+        "begin_line": 144,
+        "end_line": 145,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "boolean lexer1_expr20_line_98",
+        "snippet": "boolean lexer1_expr20_line_98 = v_eol_132_line_98 && lexer1_expr21_line_98;\nint PROBE_END_LINE_98 = 109;",
+        "begin_line": 150,
+        "end_line": 151,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_START_LINE_109",
+        "snippet": "int PROBE_START_LINE_109 = 109;\nv_eol_132_line_98 = eol;",
+        "begin_line": 163,
+        "end_line": 164,
+        "comment": "                     don't set token.isReady here because no content"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "boolean lexer1_expr22_line_113",
+        "snippet": "boolean lexer1_expr22_line_113 = lexer1_expr23_line_113 || lexer1_expr24_line_113;\nint PROBE_END_LINE_113 = 117;",
+        "begin_line": 190,
+        "end_line": 191,
+        "comment": "                     don't set token.isReady here because no content"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "int PROBE_START_LINE_119",
+        "snippet": "int PROBE_START_LINE_119 = 130;\nint v_last_char_130_line_119 = lastChar;",
+        "begin_line": 199,
+        "end_line": 200,
+        "comment": "             don't set token.isReady here because no content"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "boolean lexer1_expr29_line_119",
+        "snippet": "boolean lexer1_expr29_line_119 = lexer1_expr30_line_119 && lexer1_expr31_line_119;\nint PROBE_END_LINE_119 = 130;",
+        "begin_line": 207,
+        "end_line": 208,
+        "comment": "             don't set token.isReady here because no content"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Lexer",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "signature": "final String comment",
+        "snippet": "final String comment = line.trim();\ntoken.content.append(comment);",
+        "begin_line": 216,
+        "end_line": 217,
+        "comment": "                 don't set token.isReady here because no content"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Constants",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Constants.java",
+        "signature": "int PROBE_START_LINE_36",
+        "snippet": "int PROBE_START_LINE_36 = 36;\n\nstatic final Character constants1_expr1_line_36 = Character.valueOf('\"');",
+        "begin_line": 36,
+        "end_line": 38,
+        "comment": "    \n     * Starts a comment, the remainder of the line is the comment.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "signature": "int PROBE_START_LINE_53",
+        "snippet": "int PROBE_START_LINE_53 = 53;\nlong p_record_number_101_line_53 = recordNumber;",
+        "begin_line": 53,
+        "end_line": 54,
+        "comment": "     The values of the record "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "signature": "int PROBE_END_LINE_53",
+        "snippet": "int PROBE_END_LINE_53 = 53;\nthis.recordNumber = p_record_number_101_line_53;",
+        "begin_line": 55,
+        "end_line": 56,
+        "comment": "     The values of the record "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "signature": "int PROBE_START_LINE_54",
+        "snippet": "int PROBE_START_LINE_54 = 54;\nString[] p_values_98_line_54 = values;",
+        "begin_line": 57,
+        "end_line": 58,
+        "comment": "     The values of the record "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "private final List<String> record",
+        "snippet": "private final List<String> record = new ArrayList<String>();\n\nprivate long recordNumber;",
+        "begin_line": 221,
+        "end_line": 223,
+        "comment": "     A record buffer for getRecord(). Grows as necessary and is reused. "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "private final Token reusableToken",
+        "snippet": "private final Token reusableToken = new Token();\n\n/**\n* Customized CSV parser using the given {@link CSVFormat}\n*\n* <p>\n* If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n* unless you close the {@code reader}.\n* </p>\n*\n* @param reader\n*            a Reader containing CSV-formatted input. Must not be null.\n* @param format\n*            the CSVFormat used for CSV parsing. Must not be null.\n* @throws IllegalArgumentException\n*             If the parameters of the format are inconsistent or if either reader or format are null.\n* @throws IOException\n*             If there is a problem reading the header or skipping the first record\n*/\npublic CSVParser(final Reader reader, final CSVFormat format) throws IOException {\nint PROBE_START_LINE_245 = 245;",
+        "begin_line": 225,
+        "end_line": 245,
+        "comment": "     A record buffer for getRecord(). Grows as necessary and is reused. "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_END_LINE_245",
+        "snippet": "int PROBE_END_LINE_245 = 245;\nAssertions.notNull(p_reader_73_line_245, \"reader\");",
+        "begin_line": 247,
+        "end_line": 248,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_START_LINE_246",
+        "snippet": "int PROBE_START_LINE_246 = 246;\norg.apache.commons.csv.CSVFormat p_format_74_line_246 = format;",
+        "begin_line": 249,
+        "end_line": 250,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_START_LINE_248",
+        "snippet": "int PROBE_START_LINE_248 = 248;\norg.apache.commons.csv.CSVFormat p_format_74_line_248 = format;",
+        "begin_line": 254,
+        "end_line": 255,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_END_LINE_248",
+        "snippet": "int PROBE_END_LINE_248 = 248;\nthis.format = p_format_74_line_248;",
+        "begin_line": 256,
+        "end_line": 257,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_START_LINE_249",
+        "snippet": "int PROBE_START_LINE_249 = 249;\norg.apache.commons.csv.CSVFormat p_format_74_line_249 = format;",
+        "begin_line": 258,
+        "end_line": 259,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_END_LINE_249",
+        "snippet": "int PROBE_END_LINE_249 = 249;\nthis.lexer = new Lexer(p_format_74_line_249, new ExtendedBufferedReader(p_reader_73_line_249));",
+        "begin_line": 261,
+        "end_line": 262,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     "
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "int PROBE_START_LINE_385",
+        "snippet": "int PROBE_START_LINE_385 = 388;\nboolean v_contains_header_89_line_385 = containsHeader;",
+        "begin_line": 464,
+        "end_line": 465,
+        "comment": "\t\t\t build the name to index mappings"
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "boolean csvparser1_expr40_line_385",
+        "snippet": "boolean csvparser1_expr40_line_385 = true;\nif (v_contains_header_89_line_385) {\nboolean v_empty_header_90_line_385 = emptyHeader;",
+        "begin_line": 466,
+        "end_line": 468,
+        "comment": "\t\t\t build the name to index mappings"
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "boolean csvparser1_expr42_line_385",
+        "snippet": "boolean csvparser1_expr42_line_385 = !v_empty_header_90_line_385;\nboolean csvparser1_expr43_line_385 = false;",
+        "begin_line": 469,
+        "end_line": 470,
+        "comment": "\t\t\t build the name to index mappings"
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "boolean csvparser1_expr46_line_385",
+        "snippet": "boolean csvparser1_expr46_line_385 = csvparser1_expr47_line_385.getIgnoreEmptyHeaders();\nboolean csvparser1_expr45_line_385 = !csvparser1_expr46_line_385;",
+        "begin_line": 473,
+        "end_line": 474,
+        "comment": "\t\t\t build the name to index mappings"
+    },
+    {
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "signature": "boolean csvparser1_expr44_line_385",
+        "snippet": "boolean csvparser1_expr44_line_385 = emptyHeader && csvparser1_expr45_line_385;\ncsvparser1_expr43_line_385 = (csvparser1_expr44_line_385);",
+        "begin_line": 475,
+        "end_line": 476,
+        "comment": "\t\t\t build the name to index mappings"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Assertions",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Assertions.java",
+        "signature": "int PROBE_START_LINE_32",
+        "snippet": "int PROBE_START_LINE_32 = 34;\nObject p_parameter_1_line_32 = parameter;",
+        "begin_line": 32,
+        "end_line": 33,
+        "comment": "         can not be instantiated"
+    },
+    {
+        "class_name": "org.apache.commons.csv.Assertions",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Assertions.java",
+        "signature": "boolean assertions1_expr1_line_32",
+        "snippet": "boolean assertions1_expr1_line_32 = p_parameter_1_line_32 == null;\nint PROBE_END_LINE_32 = 34;",
+        "begin_line": 34,
+        "end_line": 35,
+        "comment": "         can not be instantiated"
+    },
+    {
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "signature": "int PROBE_START_LINE_39",
+        "snippet": "int PROBE_START_LINE_39 = 40;\n\nprivate int f_undefined_113_line_40 = UNDEFINED;",
+        "begin_line": 39,
+        "end_line": 41,
+        "comment": "\n * A special buffered reader which supports sophisticated read access.\n * <p>\n * In particular the reader supports a look-ahead option, which allows you to see the next char returned by\n * {@link #read()}.\n *\n * @version $Id$\n "
+    },
+    {
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "signature": "int PROBE_END_LINE_39",
+        "snippet": "int PROBE_END_LINE_39 = 40;\n\n/** The last char returned */\nprivate int lastChar = f_undefined_113_line_40;",
+        "begin_line": 43,
+        "end_line": 46,
+        "comment": "\n * A special buffered reader which supports sophisticated read access.\n * <p>\n * In particular the reader supports a look-ahead option, which allows you to see the next char returned by\n * {@link #read()}.\n *\n * @version $Id$\n "
+    },
+    {
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "signature": "private long eolCounter",
+        "snippet": "private long eolCounter = 0;\n\nprivate boolean closed;",
+        "begin_line": 49,
+        "end_line": 51,
+        "comment": "     The count of EOLs (CR/LF/CRLF) seen so far "
+    },
+    {
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "signature": "boolean extended_buffered_reader1_expr8_line_57",
+        "snippet": "boolean extended_buffered_reader1_expr8_line_57 = current == f_lf_12_line_57;\nboolean extended_buffered_reader1_expr9_line_57 = true;",
+        "begin_line": 73,
+        "end_line": 74,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     "
+    }
+]

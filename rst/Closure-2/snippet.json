@@ -1,0 +1,754 @@
+[
+    {
+        "name": "com.google.javascript.rhino.jstype.PrototypeObjectType.setPrettyPrint(boolean prettyPrint)#306",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.PrototypeObjectType",
+        "signature": "com.google.javascript.rhino.jstype.PrototypeObjectType.setPrettyPrint(boolean prettyPrint)",
+        "snippet": "void setPrettyPrint(boolean prettyPrint) {\nint PROBE_START_LINE_273 = 273;\nboolean p_pretty_print_1329_line_273 = prettyPrint;\nint PROBE_END_LINE_273 = 273;\nthis.prettyPrint = p_pretty_print_1329_line_273;\n}",
+        "begin_line": 306,
+        "end_line": 311,
+        "comment": "       Use a tree set so that the properties are sorted.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.ScriptRuntime.getMessage1(String messageId, Object arg1)#386",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/ScriptRuntime.java",
+        "class_name": "com.google.javascript.rhino.ScriptRuntime",
+        "signature": "com.google.javascript.rhino.ScriptRuntime.getMessage1(String messageId, Object arg1)",
+        "snippet": "public static String getMessage1(String messageId, Object arg1) {\nObject[] arguments = {arg1};\nreturn getMessage(messageId, arguments);\n}",
+        "begin_line": 386,
+        "end_line": 389,
+        "comment": "     ------------------",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.InstanceObjectType.getReferenceName()#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/InstanceObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.InstanceObjectType",
+        "signature": "com.google.javascript.rhino.jstype.InstanceObjectType.getReferenceName()",
+        "snippet": "public String getReferenceName() {\nint PROBE_START_LINE_71 = 71;\ncom.google.javascript.rhino.jstype.FunctionType instance_object_type1_expr8_line_71 = getConstructor();\nString instance_object_type1_expr7_line_71 = instance_object_type1_expr8_line_71.getReferenceName();\nint PROBE_END_LINE_71 = 71;\nreturn instance_object_type1_expr7_line_71;\n}",
+        "begin_line": 76,
+        "end_line": 82,
+        "comment": "\n * An object type that is an instance of some function constructor.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.InstanceObjectType.getConstructor()#104",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/InstanceObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.InstanceObjectType",
+        "signature": "com.google.javascript.rhino.jstype.InstanceObjectType.getConstructor()",
+        "snippet": "public FunctionType getConstructor() {\nint PROBE_START_LINE_86 = 86;\ncom.google.javascript.rhino.jstype.FunctionType f_constructor_759_line_86 = constructor;\nint PROBE_END_LINE_86 = 86;\nreturn f_constructor_759_line_86;\n}",
+        "begin_line": 104,
+        "end_line": 109,
+        "comment": "\n * An object type that is an instance of some function constructor.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.setQuotedString()#270",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.setQuotedString()",
+        "snippet": "public void setQuotedString() {\nputBooleanProp(QUOTED_PROP, true);\n}",
+        "begin_line": 270,
+        "end_line": 272,
+        "comment": "    \n     * This should only be called for STRING nodes created in object lits.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.toString()#353",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.toString()",
+        "snippet": "public String toString() {\nreturn objectValue == null ? \"null\" : objectValue.toString();\n}",
+        "begin_line": 353,
+        "end_line": 355,
+        "comment": "   A base class for Object storing props",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.chain(PropListItem next)#358",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.chain(PropListItem next)",
+        "snippet": "public PropListItem chain(PropListItem next) {\nreturn new ObjectPropListItem(getType(), objectValue, next);\n}",
+        "begin_line": 358,
+        "end_line": 360,
+        "comment": "   A base class for Object storing props",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.getObjectValue()#383",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.getObjectValue()",
+        "snippet": "public Object getObjectValue() {\nthrow new UnsupportedOperationException();\n}",
+        "begin_line": 383,
+        "end_line": 385,
+        "comment": "   A base class for int storing props",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.toString()#388",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.toString()",
+        "snippet": "public String toString() {\nreturn String.valueOf(intValue);\n}",
+        "begin_line": 388,
+        "end_line": 390,
+        "comment": "   A base class for int storing props",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.addChildBefore(Node newChild, Node node)#801",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.addChildBefore(Node newChild, Node node)",
+        "snippet": "public void addChildBefore(Node newChild, Node node) {\nPreconditions.checkArgument(node != null && node.parent == this,\n\"The existing child node of the parent should not be null.\");\nPreconditions.checkArgument(newChild.next == null,\n\"The new child node has siblings.\");\nPreconditions.checkArgument(newChild.parent == null,\n\"The new child node already has a parent.\");\nif (first == node) {\nnewChild.parent = this;\nnewChild.next = first;\nfirst = newChild;\nreturn;\n}",
+        "begin_line": 801,
+        "end_line": 813,
+        "comment": "  \n   * Add 'child' before 'node'.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.putProp(int propType, Object value)#1091",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.putProp(int propType, Object value)",
+        "snippet": "public void putProp(int propType, Object value) {\nint PROBE_START_LINE_833 = 833;\nint p_prop_type_427_line_833 = propType;\nint PROBE_END_LINE_833 = 833;\nremoveProp(p_prop_type_427_line_833);\nint PROBE_START_LINE_834 = 836;\nObject p_value_428_line_834 = value;\nboolean node1_expr87_line_834 = p_value_428_line_834 != null;\nint PROBE_END_LINE_834 = 836;\nif (node1_expr87_line_834) {\nint PROBE_START_LINE_835 = 835;\nint p_prop_type_427_line_835 = propType;\nObject p_value_428_line_835 = value;\ncom.google.javascript.rhino.Node.PropListItem f_prop_list_head_414_line_835 = propListHead;\ncom.google.javascript.rhino.Node.PropListItem node1_expr88_line_835 = createProp(p_prop_type_427_line_835,\np_value_428_line_835, f_prop_list_head_414_line_835);\nint PROBE_END_LINE_835 = 835;\npropListHead = node1_expr88_line_835;\n}",
+        "begin_line": 1091,
+        "end_line": 1109,
+        "comment": "  \n   * Returns the integer value for the property, or 0 if the property\n   * is not defined.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.createProp(int propType, int value, PropListItem next)#1151",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.createProp(int propType, int value, PropListItem next)",
+        "snippet": "PropListItem createProp(int propType, int value, PropListItem next) {\nint PROBE_START_LINE_855 = 855;\nint p_prop_type_436_line_855 = propType;\nint p_value_437_line_855 = value;\ncom.google.javascript.rhino.Node.PropListItem p_next_438_line_855 = next;\nint PROBE_END_LINE_855 = 855;\nreturn new IntPropListItem(p_prop_type_436_line_855, p_value_437_line_855, p_next_438_line_855);\n}",
+        "begin_line": 1151,
+        "end_line": 1158,
+        "comment": "  \n   * Returns the integer value for the property, or 0 if the property\n   * is not defined.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.setSourceEncodedPosition(int sourcePosition)#1531",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.setSourceEncodedPosition(int sourcePosition)",
+        "snippet": "public void setSourceEncodedPosition(int sourcePosition) {\nthis.sourcePosition = sourcePosition;\n}",
+        "begin_line": 1531,
+        "end_line": 1533,
+        "comment": "  \n   * @return The Id of the CompilerInput associated with this Node.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.mergeLineCharNo(int lineno, int charno)#1550",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.mergeLineCharNo(int lineno, int charno)",
+        "snippet": "protected static int mergeLineCharNo(int lineno, int charno) {\nint PROBE_START_LINE_1177 = 1183;\nint p_lineno_466_line_1177 = lineno;\nboolean node1_expr130_line_1177 = p_lineno_466_line_1177 < 0;\nboolean node1_expr131_line_1177 = false;\nif (!node1_expr130_line_1177) {\nint p_charno_467_line_1177 = charno;\nnode1_expr131_line_1177 = p_charno_467_line_1177 < 0;\n}",
+        "begin_line": 1550,
+        "end_line": 1558,
+        "comment": "  \n   * Merges the line number and character number in one integer. The Character\n   * number takes the first 12 bits and the line number takes the rest. If\n   * the character number is greater than <code>2<sup>12</sup>-1</code> it is\n   * adjusted to <code>2<sup>12</sup>-1</code>.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.checkTreeEquals(Node node2)#1851",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.checkTreeEquals(Node node2)",
+        "snippet": "public String checkTreeEquals(Node node2) {\nNodeMismatch diff = checkTreeEqualsImpl(node2);\nif (diff != null) {\nreturn \"Node tree inequality:\" +\n\"\\nTree1:\\n\" + toStringTree() +\n\"\\n\\nTree2:\\n\" + node2.toStringTree() +\n\"\\n\\nSubtree1: \" + diff.nodeA.toStringTree() +\n\"\\n\\nSubtree2: \" + diff.nodeB.toStringTree();\n}",
+        "begin_line": 1851,
+        "end_line": 1859,
+        "comment": "  \n   * Checks if the subtree under this node is the same as another subtree.\n   * Returns null if it's equal, or a message describing the differences.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.checkTreeEqualsImpl(Node node2)#1868",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.checkTreeEqualsImpl(Node node2)",
+        "snippet": "NodeMismatch checkTreeEqualsImpl(Node node2) {\nif (!isEquivalentTo(node2, false, false)) {\nreturn new NodeMismatch(this, node2);\n}",
+        "begin_line": 1868,
+        "end_line": 1871,
+        "comment": "  \n   * Compare this node to node2 recursively and return the first pair of nodes\n   * that differs doing a preorder depth-first traversal. Package private for\n   * testing. Returns null if the nodes are equivalent.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.Node.copyInformationFromForTree(Node other)#2246",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/Node.java",
+        "class_name": "com.google.javascript.rhino.Node",
+        "signature": "com.google.javascript.rhino.Node.copyInformationFromForTree(Node other)",
+        "snippet": "public Node copyInformationFromForTree(Node other) {\ncopyInformationFrom(other);\nfor (Node child = getFirstChild();\nchild != null; child = child.getNext()) {\nchild.copyInformationFromForTree(other);\n}",
+        "begin_line": 2246,
+        "end_line": 2251,
+        "comment": "   TODO(nicksantos): The semantics of this method are ill-defined. Delete it.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSType.toMaybeEnumElementType()#463",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSType.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSType",
+        "signature": "com.google.javascript.rhino.jstype.JSType.toMaybeEnumElementType()",
+        "snippet": "public EnumElementType toMaybeEnumElementType() {\nreturn null;\n}",
+        "begin_line": 463,
+        "end_line": 465,
+        "comment": "  \n   * Downcasts this to an EnumElementType, or returns null if this is not an EnumElementType.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSType.toMaybeEnumType()#474",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSType.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSType",
+        "signature": "com.google.javascript.rhino.jstype.JSType.toMaybeEnumType()",
+        "snippet": "public EnumType toMaybeEnumType() {\nreturn null;\n}",
+        "begin_line": 474,
+        "end_line": 476,
+        "comment": "  \n   * Downcasts this to an EnumType, or returns null if this is not an EnumType.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSType.isObject()#661",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSType.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSType",
+        "signature": "com.google.javascript.rhino.jstype.JSType.isObject()",
+        "snippet": "public boolean isObject() {\nreturn false;\n}",
+        "begin_line": 661,
+        "end_line": 663,
+        "comment": "  \n   * Tests whether this type is an {@code Object}, or any subtype thereof.\n   * @return {@code this &lt;: Object}\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSType.isOrdinaryFunction()#725",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSType.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSType",
+        "signature": "com.google.javascript.rhino.jstype.JSType.isOrdinaryFunction()",
+        "snippet": "public boolean isOrdinaryFunction() {\nreturn false;\n}",
+        "begin_line": 725,
+        "end_line": 727,
+        "comment": "  \n   * Whether this type is a {@link FunctionType} that is an ordinary function or\n   * a named type that points to such a type.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSType.getRestrictedTypeGivenToBooleanOutcome(boolean outcome)#1375",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSType.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSType",
+        "signature": "com.google.javascript.rhino.jstype.JSType.getRestrictedTypeGivenToBooleanOutcome(boolean outcome)",
+        "snippet": "public JSType getRestrictedTypeGivenToBooleanOutcome(boolean outcome) {\nif (outcome && this == getNativeType(JSTypeNative.UNKNOWN_TYPE)) {\nreturn getNativeType(JSTypeNative.CHECKED_UNKNOWN_TYPE);\n}",
+        "begin_line": 1375,
+        "end_line": 1378,
+        "comment": "  \n   * Computes the restricted type of this type knowing that the\n   * {@code ToBoolean} predicate has a specific value. For more information\n   * about the {@code ToBoolean} predicate, see\n   * {@link #getPossibleToBooleanOutcomes}.\n   *\n   * @param outcome the value of the {@code ToBoolean} predicate\n   *\n   * @return the restricted type, or the Any Type if the underlying type could\n   *         not have yielded this ToBoolean value\n   *\n   * TODO(user): Move this method to the SemanticRAI and use the visit\n   * method of types to get the restricted type.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.ProxyObjectType.getReferencedObjTypeInternal()#83",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/ProxyObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.ProxyObjectType",
+        "signature": "com.google.javascript.rhino.jstype.ProxyObjectType.getReferencedObjTypeInternal()",
+        "snippet": "ObjectType getReferencedObjTypeInternal() {\nint PROBE_START_LINE_77 = 77;\ncom.google.javascript.rhino.jstype.ObjectType f_referenced_obj_type_1346_line_77 = referencedObjType;\nint PROBE_END_LINE_77 = 77;\nreturn f_referenced_obj_type_1346_line_77;\n}",
+        "begin_line": 83,
+        "end_line": 88,
+        "comment": "\n * An object type which uses composition to delegate all calls.\n *\n * @see NamedType\n * @see ParameterizedType\n *\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.ProxyObjectType.toMaybeUnionType()#240",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/ProxyObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.ProxyObjectType",
+        "signature": "com.google.javascript.rhino.jstype.ProxyObjectType.toMaybeUnionType()",
+        "snippet": "public UnionType toMaybeUnionType() {\nint PROBE_START_LINE_209 = 209;\ncom.google.javascript.rhino.jstype.JSType f_referenced_type_1345_line_209 = referencedType;\ncom.google.javascript.rhino.jstype.UnionType proxy_object_type1_expr10_line_209 = f_referenced_type_1345_line_209\n.toMaybeUnionType();\nint PROBE_END_LINE_209 = 209;\nreturn proxy_object_type1_expr10_line_209;\n}",
+        "begin_line": 240,
+        "end_line": 247,
+        "comment": "\n * An object type which uses composition to delegate all calls.\n *\n * @see NamedType\n * @see ParameterizedType\n *\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.ProxyObjectType.removeProperty(String name)#327",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/ProxyObjectType.java",
+        "class_name": "com.google.javascript.rhino.jstype.ProxyObjectType",
+        "signature": "com.google.javascript.rhino.jstype.ProxyObjectType.removeProperty(String name)",
+        "snippet": "public boolean removeProperty(String name) {\nreturn referencedObjType == null ? false :\nreferencedObjType.removeProperty(name);\n}",
+        "begin_line": 327,
+        "end_line": 330,
+        "comment": "\n * An object type which uses composition to delegate all calls.\n *\n * @see NamedType\n * @see ParameterizedType\n *\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSDocInfoBuilder.JSDocInfoBuilder(boolean parseDocumentation)#69",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSDocInfoBuilder.java",
+        "class_name": "com.google.javascript.rhino.JSDocInfoBuilder",
+        "signature": "com.google.javascript.rhino.JSDocInfoBuilder.JSDocInfoBuilder(boolean parseDocumentation)",
+        "snippet": "public JSDocInfoBuilder(boolean parseDocumentation) {\nint PROBE_START_LINE_70 = 70;\nboolean p_parse_documentation_221_line_70 = parseDocumentation;\nint PROBE_END_LINE_70 = 70;\nthis.currentInfo = new JSDocInfo(p_parse_documentation_221_line_70);\nint PROBE_START_LINE_71 = 71;\nboolean p_parse_documentation_221_line_71 = parseDocumentation;\nint PROBE_END_LINE_71 = 71;\nthis.parseDocumentation = p_parse_documentation_221_line_71;\n}",
+        "begin_line": 69,
+        "end_line": 78,
+        "comment": "   the current marker, if any.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSDocInfoBuilder.shouldParseDocumentation()#93",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSDocInfoBuilder.java",
+        "class_name": "com.google.javascript.rhino.JSDocInfoBuilder",
+        "signature": "com.google.javascript.rhino.JSDocInfoBuilder.shouldParseDocumentation()",
+        "snippet": "public boolean shouldParseDocumentation() {\nint PROBE_START_LINE_85 = 85;\nboolean f_parse_documentation_219_line_85 = parseDocumentation;\nint PROBE_END_LINE_85 = 85;\nreturn f_parse_documentation_219_line_85;\n}",
+        "begin_line": 93,
+        "end_line": 98,
+        "comment": "  \n   * Sets the original JSDoc comment string. This is a no-op if the builder\n   * isn't configured to record documentation.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSDocInfoBuilder.isDescriptionRecorded()#128",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSDocInfoBuilder.java",
+        "class_name": "com.google.javascript.rhino.JSDocInfoBuilder",
+        "signature": "com.google.javascript.rhino.JSDocInfoBuilder.isDescriptionRecorded()",
+        "snippet": "public boolean isDescriptionRecorded() {\nreturn currentInfo.getDescription() != null;\n}",
+        "begin_line": 128,
+        "end_line": 130,
+        "comment": "  \n   * Returns whether this builder recorded a description.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSDocInfoBuilder.build(Node associatedNode)#142",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSDocInfoBuilder.java",
+        "class_name": "com.google.javascript.rhino.JSDocInfoBuilder",
+        "signature": "com.google.javascript.rhino.JSDocInfoBuilder.build(Node associatedNode)",
+        "snippet": "public JSDocInfo build(Node associatedNode) {\nint PROBE_START_LINE_125 = 134;\nboolean f_populated_218_line_125 = populated;\nint PROBE_END_LINE_125 = 134;\nif (f_populated_218_line_125) {\nint PROBE_START_LINE_126 = 126;\nJSDocInfo f_current_info_222_line_126 = currentInfo;\nint PROBE_END_LINE_126 = 126;\nJSDocInfo built = f_current_info_222_line_126;\nint PROBE_START_LINE_127 = 127;\ncom.google.javascript.rhino.JSDocInfo v_built_225_line_127 = built;\ncom.google.javascript.rhino.Node p_associated_node_224_line_127 = associatedNode;\nint PROBE_END_LINE_127 = 127;\nv_built_225_line_127.setAssociatedNode(p_associated_node_224_line_127);\nint PROBE_START_LINE_128 = 128;\ncom.google.javascript.rhino.JSDocInfo v_built_225_line_128 = built;\nint PROBE_END_LINE_128 = 128;\npopulateDefaults(v_built_225_line_128);\npopulated = false;\nint PROBE_START_LINE_130 = 130;\nboolean jsdoc_info_builder1_expr12_line_130 = this.parseDocumentation;\nint PROBE_END_LINE_130 = 130;\ncurrentInfo = new JSDocInfo(jsdoc_info_builder1_expr12_line_130);\nint PROBE_START_LINE_131 = 131;\ncom.google.javascript.rhino.JSDocInfo v_built_225_line_131 = built;\nint PROBE_END_LINE_131 = 131;\nreturn v_built_225_line_131;\n} else {",
+        "begin_line": 142,
+        "end_line": 169,
+        "comment": "  \n   * Builds a {@link JSDocInfo} object based on the populated information and\n   * returns it. Once this method is called, the builder can be reused to build\n   * another {@link JSDocInfo} object.\n   *\n   * @param associatedNode The source node containing the JSDoc.\n   * @return a {@link JSDocInfo} object populated with the values given to this\n   *     builder. If no value was populated, this method simply returns\n   *     {@code null}\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.NamedType.isNominalType()#202",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/NamedType.java",
+        "class_name": "com.google.javascript.rhino.jstype.NamedType",
+        "signature": "com.google.javascript.rhino.jstype.NamedType.isNominalType()",
+        "snippet": "public boolean isNominalType() {\nreturn true;\n}",
+        "begin_line": 202,
+        "end_line": 204,
+        "comment": "   Returns the type to which this refers (which is unknown if unresolved). ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.NamedType.hashCode()#207",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/NamedType.java",
+        "class_name": "com.google.javascript.rhino.jstype.NamedType",
+        "signature": "com.google.javascript.rhino.jstype.NamedType.hashCode()",
+        "snippet": "public int hashCode() {\nint PROBE_START_LINE_177 = 177;\nString f_reference_1146_line_177 = reference;\nint named_type1_expr14_line_177 = f_reference_1146_line_177.hashCode();\nint PROBE_END_LINE_177 = 177;\nreturn named_type1_expr14_line_177;\n}",
+        "begin_line": 207,
+        "end_line": 213,
+        "comment": "   Returns the type to which this refers (which is unknown if unresolved). ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.InputId.InputId(String id)#51",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/InputId.java",
+        "class_name": "com.google.javascript.rhino.InputId",
+        "signature": "com.google.javascript.rhino.InputId.InputId(String id)",
+        "snippet": "public InputId(String id) {\nint PROBE_START_LINE_52 = 52;\nString p_id_106_line_52 = id;\nint PROBE_END_LINE_52 = 52;\nthis.id = p_id_106_line_52;\n}",
+        "begin_line": 51,
+        "end_line": 56,
+        "comment": "\n * An id used uniquely identify a CompilerInput\n * @author johnlenz@google.com (John Lenz)\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSTypeRegistry.JSTypeRegistry(ErrorReporter reporter)#209",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSTypeRegistry",
+        "signature": "com.google.javascript.rhino.jstype.JSTypeRegistry.JSTypeRegistry(ErrorReporter reporter)",
+        "snippet": "public JSTypeRegistry(ErrorReporter reporter) {\nthis(reporter, false);\n}",
+        "begin_line": 209,
+        "end_line": 211,
+        "comment": "  \n   * Constructs a new type registry populated with the built-in types.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSTypeRegistry.setResolveMode(ResolveMode mode)#239",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSTypeRegistry",
+        "signature": "com.google.javascript.rhino.jstype.JSTypeRegistry.setResolveMode(ResolveMode mode)",
+        "snippet": "public void setResolveMode(ResolveMode mode) {\nthis.resolveMode = mode;\n}",
+        "begin_line": 239,
+        "end_line": 241,
+        "comment": "  \n   * Set the current resolving mode of the type registry.\n   * @see ResolveMode\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSTypeRegistry.getErrorReporter()#247",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSTypeRegistry",
+        "signature": "com.google.javascript.rhino.jstype.JSTypeRegistry.getErrorReporter()",
+        "snippet": "public ErrorReporter getErrorReporter() {\nint PROBE_START_LINE_225 = 225;\ncom.google.javascript.rhino.ErrorReporter f_reporter_864_line_225 = reporter;\nint PROBE_END_LINE_225 = 225;\nreturn f_reporter_864_line_225;\n}",
+        "begin_line": 247,
+        "end_line": 252,
+        "comment": "  \n   * Set the current resolving mode of the type registry.\n   * @see ResolveMode\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSTypeRegistry.resetForTypeCheck()#264",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSTypeRegistry",
+        "signature": "com.google.javascript.rhino.jstype.JSTypeRegistry.resetForTypeCheck()",
+        "snippet": "public void resetForTypeCheck() {\nint PROBE_START_LINE_236 = 236;\nMap<String, com.google.javascript.rhino.jstype.UnionTypeBuilder> f_types_indexed_by_property_852_line_236 = typesIndexedByProperty;\nint PROBE_END_LINE_236 = 236;\nf_types_indexed_by_property_852_line_236.clear();\nint PROBE_START_LINE_237 = 237;\nMap<String, Map<String, com.google.javascript.rhino.jstype.ObjectType>> f_each_ref_type_indexed_by_property_870_line_237 = eachRefTypeIndexedByProperty;\nint PROBE_END_LINE_237 = 237;\nf_each_ref_type_indexed_by_property_870_line_237.clear();\ninitializeBuiltInTypes();\nint PROBE_START_LINE_239 = 239;\nMap<String, com.google.javascript.rhino.jstype.JSType> f_names_to_types_867_line_239 = namesToTypes;\nint PROBE_END_LINE_239 = 239;\nf_names_to_types_867_line_239.clear();\nint PROBE_START_LINE_240 = 240;\nSet<String> f_namespaces_849_line_240 = namespaces;\nint PROBE_END_LINE_240 = 240;\nf_namespaces_849_line_240.clear();\ninitializeRegistry();\n}",
+        "begin_line": 264,
+        "end_line": 283,
+        "comment": "  \n   * Reset to run the TypeCheck pass.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.JSTypeRegistry.initializeBuiltInTypes()#285",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/JSTypeRegistry.java",
+        "class_name": "com.google.javascript.rhino.jstype.JSTypeRegistry",
+        "signature": "com.google.javascript.rhino.jstype.JSTypeRegistry.initializeBuiltInTypes()",
+        "snippet": "private void initializeBuiltInTypes() {\n// These locals shouldn't be all caps.\nBooleanType BOOLEAN_TYPE = new BooleanType(this);\nint PROBE_START_LINE_247 = 247;\ncom.google.javascript.rhino.jstype.JSTypeNative f_boolean_type_872_line_247 = JSTypeNative.BOOLEAN_TYPE;\ncom.google.javascript.rhino.jstype.BooleanType v_boolean_type_871_line_247 = BOOLEAN_TYPE;\nint PROBE_END_LINE_247 = 247;\nregisterNativeType(f_boolean_type_872_line_247, v_boolean_type_871_line_247);\n\nNullType NULL_TYPE = new NullType(this);\nint PROBE_START_LINE_250 = 250;\ncom.google.javascript.rhino.jstype.JSTypeNative f_null_type_874_line_250 = JSTypeNative.NULL_TYPE;\ncom.google.javascript.rhino.jstype.NullType v_null_type_873_line_250 = NULL_TYPE;\nint PROBE_END_LINE_250 = 250;\nregisterNativeType(f_null_type_874_line_250, v_null_type_873_line_250);\n\nNumberType NUMBER_TYPE = new NumberType(this);\nint PROBE_START_LINE_253 = 253;\ncom.google.javascript.rhino.jstype.JSTypeNative f_number_type_876_line_253 = JSTypeNative.NUMBER_TYPE;\ncom.google.javascript.rhino.jstype.NumberType v_number_type_875_line_253 = NUMBER_TYPE;\nint PROBE_END_LINE_253 = 253;\nregisterNativeType(f_number_type_876_line_253, v_number_type_875_line_253);\n\nStringType STRING_TYPE = new StringType(this);\nint PROBE_START_LINE_256 = 256;\ncom.google.javascript.rhino.jstype.JSTypeNative f_string_type_878_line_256 = JSTypeNative.STRING_TYPE;\ncom.google.javascript.rhino.jstype.StringType v_string_type_877_line_256 = STRING_TYPE;\nint PROBE_END_LINE_256 = 256;\nregisterNativeType(f_string_type_878_line_256, v_string_type_877_line_256);\n\nUnknownType UNKNOWN_TYPE = new UnknownType(this, false);\nint PROBE_START_LINE_259 = 259;\ncom.google.javascript.rhino.jstype.JSTypeNative f_unknown_type_880_line_259 = JSTypeNative.UNKNOWN_TYPE;\ncom.google.javascript.rhino.jstype.UnknownType v_unknown_type_879_line_259 = UNKNOWN_TYPE;\nint PROBE_END_LINE_259 = 259;\nregisterNativeType(f_unknown_type_880_line_259, v_unknown_type_879_line_259);\nUnknownType checkedUnknownType = new UnknownType(this, true);\nregisterNativeType(\nJSTypeNative.CHECKED_UNKNOWN_TYPE, checkedUnknownType);\n\nVoidType VOID_TYPE = new VoidType(this);\nint PROBE_START_LINE_265 = 265;\ncom.google.javascript.rhino.jstype.JSTypeNative f_void_type_884_line_265 = JSTypeNative.VOID_TYPE;\ncom.google.javascript.rhino.jstype.VoidType v_void_type_883_line_265 = VOID_TYPE;\nint PROBE_END_LINE_265 = 265;\nregisterNativeType(f_void_type_884_line_265, v_void_type_883_line_265);\n\nAllType ALL_TYPE = new AllType(this);\nint PROBE_START_LINE_268 = 268;\ncom.google.javascript.rhino.jstype.JSTypeNative f_all_type_886_line_268 = JSTypeNative.ALL_TYPE;\ncom.google.javascript.rhino.jstype.AllType v_all_type_885_line_268 = ALL_TYPE;\nint PROBE_END_LINE_268 = 268;\nregisterNativeType(f_all_type_886_line_268, v_all_type_885_line_268);\n\n// Top Level Prototype (the One)\n// The initializations of TOP_LEVEL_PROTOTYPE and OBJECT_FUNCTION_TYPE\n// use each other's results, so at least one of them will get null\n// instead of an actual type; however, this seems to be benign.\nPrototypeObjectType TOP_LEVEL_PROTOTYPE =\nnew PrototypeObjectType(this, null, null, true, null, null);\nint PROBE_START_LINE_276 = 276;\ncom.google.javascript.rhino.jstype.JSTypeNative f_top_level_prototype_888_line_276 = JSTypeNative.TOP_LEVEL_PROTOTYPE;\ncom.google.javascript.rhino.jstype.PrototypeObjectType v_top_level_prototype_887_line_276 = TOP_LEVEL_PROTOTYPE;\nint PROBE_END_LINE_276 = 276;\nregisterNativeType(f_top_level_prototype_888_line_276, v_top_level_prototype_887_line_276);\n\n// Object\nFunctionType OBJECT_FUNCTION_TYPE =\nnew FunctionType(this, \"Object\", null,\ncreateArrowType(createOptionalParameters(ALL_TYPE), UNKNOWN_TYPE),\nnull, null, true, true);\n\nint PROBE_START_LINE_284 = 284;\ncom.google.javascript.rhino.jstype.FunctionType v_object_function_type_889_line_284 = OBJECT_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.PrototypeObjectType v_top_level_prototype_887_line_284 = TOP_LEVEL_PROTOTYPE;\nint PROBE_END_LINE_284 = 284;\nv_object_function_type_889_line_284.setPrototype(v_top_level_prototype_887_line_284, null);\nint PROBE_START_LINE_285 = 285;\ncom.google.javascript.rhino.jstype.JSTypeNative f_object_function_type_890_line_285 = JSTypeNative.OBJECT_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_object_function_type_889_line_285 = OBJECT_FUNCTION_TYPE;\nint PROBE_END_LINE_285 = 285;\nregisterNativeType(f_object_function_type_890_line_285, v_object_function_type_889_line_285);\n\nint PROBE_START_LINE_287 = 287;\ncom.google.javascript.rhino.jstype.FunctionType v_object_function_type_889_line_287 = OBJECT_FUNCTION_TYPE;\nObjectType jstype_registry1_expr55_line_287 = v_object_function_type_889_line_287.getInstanceType();\nint PROBE_END_LINE_287 = 287;\nObjectType OBJECT_TYPE = jstype_registry1_expr55_line_287;\nint PROBE_START_LINE_288 = 288;\ncom.google.javascript.rhino.jstype.JSTypeNative f_object_type_892_line_288 = JSTypeNative.OBJECT_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_object_type_891_line_288 = OBJECT_TYPE;\nint PROBE_END_LINE_288 = 288;\nregisterNativeType(f_object_type_892_line_288, v_object_type_891_line_288);\n\nint PROBE_START_LINE_290 = 290;\ncom.google.javascript.rhino.jstype.FunctionType v_object_function_type_889_line_290 = OBJECT_FUNCTION_TYPE;\nObjectType jstype_registry1_expr57_line_290 = v_object_function_type_889_line_290.getPrototype();\nint PROBE_END_LINE_290 = 290;\nObjectType OBJECT_PROTOTYPE = jstype_registry1_expr57_line_290;\nint PROBE_START_LINE_291 = 291;\ncom.google.javascript.rhino.jstype.JSTypeNative f_object_prototype_894_line_291 = JSTypeNative.OBJECT_PROTOTYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_object_prototype_893_line_291 = OBJECT_PROTOTYPE;\nint PROBE_END_LINE_291 = 291;\nregisterNativeType(f_object_prototype_894_line_291, v_object_prototype_893_line_291);\n\n// Function\nFunctionType FUNCTION_FUNCTION_TYPE =\nnew FunctionType(this, \"Function\", null,\ncreateArrowType(\ncreateParametersWithVarArgs(ALL_TYPE), UNKNOWN_TYPE),\nnull, null, true, true);\nint PROBE_START_LINE_299 = 299;\ncom.google.javascript.rhino.jstype.FunctionType v_function_function_type_895_line_299 = FUNCTION_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_object_type_891_line_299 = OBJECT_TYPE;\nint PROBE_END_LINE_299 = 299;\nv_function_function_type_895_line_299.setPrototypeBasedOn(v_object_type_891_line_299);\nregisterNativeType(\nJSTypeNative.FUNCTION_FUNCTION_TYPE, FUNCTION_FUNCTION_TYPE);\n\nint PROBE_START_LINE_303 = 303;\ncom.google.javascript.rhino.jstype.FunctionType v_function_function_type_895_line_303 = FUNCTION_FUNCTION_TYPE;\nObjectType jstype_registry1_expr62_line_303 = v_function_function_type_895_line_303.getPrototype();\nint PROBE_END_LINE_303 = 303;\nObjectType FUNCTION_PROTOTYPE = jstype_registry1_expr62_line_303;\nint PROBE_START_LINE_304 = 304;\ncom.google.javascript.rhino.jstype.JSTypeNative f_function_prototype_898_line_304 = JSTypeNative.FUNCTION_PROTOTYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_function_prototype_897_line_304 = FUNCTION_PROTOTYPE;\nint PROBE_END_LINE_304 = 304;\nregisterNativeType(f_function_prototype_898_line_304, v_function_prototype_897_line_304);\n\nNoType NO_TYPE = new NoType(this);\nint PROBE_START_LINE_307 = 307;\ncom.google.javascript.rhino.jstype.JSTypeNative f_no_type_900_line_307 = JSTypeNative.NO_TYPE;\ncom.google.javascript.rhino.jstype.NoType v_no_type_899_line_307 = NO_TYPE;\nint PROBE_END_LINE_307 = 307;\nregisterNativeType(f_no_type_900_line_307, v_no_type_899_line_307);\n\nNoObjectType NO_OBJECT_TYPE = new NoObjectType(this);\nint PROBE_START_LINE_310 = 310;\ncom.google.javascript.rhino.jstype.JSTypeNative f_no_object_type_902_line_310 = JSTypeNative.NO_OBJECT_TYPE;\ncom.google.javascript.rhino.jstype.NoObjectType v_no_object_type_901_line_310 = NO_OBJECT_TYPE;\nint PROBE_END_LINE_310 = 310;\nregisterNativeType(f_no_object_type_902_line_310, v_no_object_type_901_line_310);\n\nNoObjectType NO_RESOLVED_TYPE = new NoResolvedType(this);\nint PROBE_START_LINE_313 = 313;\ncom.google.javascript.rhino.jstype.JSTypeNative f_no_resolved_type_904_line_313 = JSTypeNative.NO_RESOLVED_TYPE;\ncom.google.javascript.rhino.jstype.NoObjectType v_no_resolved_type_903_line_313 = NO_RESOLVED_TYPE;\nint PROBE_END_LINE_313 = 313;\nregisterNativeType(f_no_resolved_type_904_line_313, v_no_resolved_type_903_line_313);\n\n// Array\nFunctionType ARRAY_FUNCTION_TYPE =\nnew FunctionType(this, \"Array\", null,\ncreateArrowType(createParametersWithVarArgs(ALL_TYPE), null),\nnull, null, true, true);\nint PROBE_START_LINE_320 = 321;\ncom.google.javascript.rhino.jstype.FunctionType v_array_function_type_905_line_320 = ARRAY_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ArrowType jstype_registry1_expr76_line_320 = v_array_function_type_905_line_320\n.getInternalArrowType();\nint PROBE_END_LINE_320 = 321;\njstype_registry1_expr76_line_320.returnType =\nARRAY_FUNCTION_TYPE.getInstanceType();\n\nint PROBE_START_LINE_323 = 323;\ncom.google.javascript.rhino.jstype.FunctionType v_array_function_type_905_line_323 = ARRAY_FUNCTION_TYPE;\nObjectType jstype_registry1_expr77_line_323 = v_array_function_type_905_line_323.getPrototype();\nint PROBE_END_LINE_323 = 323;\nObjectType arrayPrototype = jstype_registry1_expr77_line_323;\nint PROBE_START_LINE_324 = 324;\ncom.google.javascript.rhino.jstype.JSTypeNative f_array_function_type_907_line_324 = JSTypeNative.ARRAY_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_array_function_type_905_line_324 = ARRAY_FUNCTION_TYPE;\nint PROBE_END_LINE_324 = 324;\nregisterNativeType(f_array_function_type_907_line_324, v_array_function_type_905_line_324);\n\nint PROBE_START_LINE_326 = 326;\ncom.google.javascript.rhino.jstype.FunctionType v_array_function_type_905_line_326 = ARRAY_FUNCTION_TYPE;\nObjectType jstype_registry1_expr79_line_326 = v_array_function_type_905_line_326.getInstanceType();\nint PROBE_END_LINE_326 = 326;\nObjectType ARRAY_TYPE = jstype_registry1_expr79_line_326;\nint PROBE_START_LINE_327 = 327;\ncom.google.javascript.rhino.jstype.JSTypeNative f_array_type_909_line_327 = JSTypeNative.ARRAY_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_array_type_908_line_327 = ARRAY_TYPE;\nint PROBE_END_LINE_327 = 327;\nregisterNativeType(f_array_type_909_line_327, v_array_type_908_line_327);\n\n// Boolean\nFunctionType BOOLEAN_OBJECT_FUNCTION_TYPE =\nnew FunctionType(this, \"Boolean\", null,\ncreateArrowType(createOptionalParameters(ALL_TYPE), BOOLEAN_TYPE),\nnull, null, true, true);\nint PROBE_START_LINE_334 = 334;\ncom.google.javascript.rhino.jstype.FunctionType v_boolean_object_function_type_910_line_334 = BOOLEAN_OBJECT_FUNCTION_TYPE;\nObjectType jstype_registry1_expr82_line_334 = v_boolean_object_function_type_910_line_334.getPrototype();\nint PROBE_END_LINE_334 = 334;\nObjectType booleanPrototype = jstype_registry1_expr82_line_334;\nregisterNativeType(\nJSTypeNative.BOOLEAN_OBJECT_FUNCTION_TYPE,\nBOOLEAN_OBJECT_FUNCTION_TYPE);\n\nObjectType BOOLEAN_OBJECT_TYPE =\nBOOLEAN_OBJECT_FUNCTION_TYPE.getInstanceType();\nint PROBE_START_LINE_341 = 341;\ncom.google.javascript.rhino.jstype.JSTypeNative f_boolean_object_type_914_line_341 = JSTypeNative.BOOLEAN_OBJECT_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_boolean_object_type_913_line_341 = BOOLEAN_OBJECT_TYPE;\nint PROBE_END_LINE_341 = 341;\nregisterNativeType(f_boolean_object_type_914_line_341, v_boolean_object_type_913_line_341);\n\n// Date\nFunctionType DATE_FUNCTION_TYPE =\nnew FunctionType(this, \"Date\", null,\ncreateArrowType(\ncreateOptionalParameters(UNKNOWN_TYPE, UNKNOWN_TYPE, UNKNOWN_TYPE,\nUNKNOWN_TYPE, UNKNOWN_TYPE, UNKNOWN_TYPE, UNKNOWN_TYPE),\nSTRING_TYPE),\nnull, null, true, true);\nint PROBE_START_LINE_351 = 351;\ncom.google.javascript.rhino.jstype.FunctionType v_date_function_type_915_line_351 = DATE_FUNCTION_TYPE;\nObjectType jstype_registry1_expr87_line_351 = v_date_function_type_915_line_351.getPrototype();\nint PROBE_END_LINE_351 = 351;\nObjectType datePrototype = jstype_registry1_expr87_line_351;\nint PROBE_START_LINE_352 = 352;\ncom.google.javascript.rhino.jstype.JSTypeNative f_date_function_type_917_line_352 = JSTypeNative.DATE_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_date_function_type_915_line_352 = DATE_FUNCTION_TYPE;\nint PROBE_END_LINE_352 = 352;\nregisterNativeType(f_date_function_type_917_line_352, v_date_function_type_915_line_352);\n\nint PROBE_START_LINE_354 = 354;\ncom.google.javascript.rhino.jstype.FunctionType v_date_function_type_915_line_354 = DATE_FUNCTION_TYPE;\nObjectType jstype_registry1_expr89_line_354 = v_date_function_type_915_line_354.getInstanceType();\nint PROBE_END_LINE_354 = 354;\nObjectType DATE_TYPE = jstype_registry1_expr89_line_354;\nint PROBE_START_LINE_355 = 355;\ncom.google.javascript.rhino.jstype.JSTypeNative f_date_type_919_line_355 = JSTypeNative.DATE_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_date_type_918_line_355 = DATE_TYPE;\nint PROBE_END_LINE_355 = 355;\nregisterNativeType(f_date_type_919_line_355, v_date_type_918_line_355);\n\n// Error\nFunctionType ERROR_FUNCTION_TYPE = new ErrorFunctionType(this, \"Error\");\nint PROBE_START_LINE_359 = 359;\ncom.google.javascript.rhino.jstype.JSTypeNative f_error_function_type_921_line_359 = JSTypeNative.ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_error_function_type_920_line_359 = ERROR_FUNCTION_TYPE;\nint PROBE_END_LINE_359 = 359;\nregisterNativeType(f_error_function_type_921_line_359, v_error_function_type_920_line_359);\n\nint PROBE_START_LINE_361 = 361;\ncom.google.javascript.rhino.jstype.FunctionType v_error_function_type_920_line_361 = ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr95_line_361 = v_error_function_type_920_line_361.getInstanceType();\nint PROBE_END_LINE_361 = 361;\nObjectType ERROR_TYPE = jstype_registry1_expr95_line_361;\nint PROBE_START_LINE_362 = 362;\ncom.google.javascript.rhino.jstype.JSTypeNative f_error_type_923_line_362 = JSTypeNative.ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_362 = ERROR_TYPE;\nint PROBE_END_LINE_362 = 362;\nregisterNativeType(f_error_type_923_line_362, v_error_type_922_line_362);\n\n// EvalError\nFunctionType EVAL_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"EvalError\");\nint PROBE_START_LINE_367 = 367;\ncom.google.javascript.rhino.jstype.FunctionType v_eval_error_function_type_924_line_367 = EVAL_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_367 = ERROR_TYPE;\nint PROBE_END_LINE_367 = 367;\nv_eval_error_function_type_924_line_367.setPrototypeBasedOn(v_error_type_922_line_367);\nregisterNativeType(\nJSTypeNative.EVAL_ERROR_FUNCTION_TYPE, EVAL_ERROR_FUNCTION_TYPE);\n\nint PROBE_START_LINE_371 = 371;\ncom.google.javascript.rhino.jstype.FunctionType v_eval_error_function_type_924_line_371 = EVAL_ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr100_line_371 = v_eval_error_function_type_924_line_371.getInstanceType();\nint PROBE_END_LINE_371 = 371;\nObjectType EVAL_ERROR_TYPE = jstype_registry1_expr100_line_371;\nint PROBE_START_LINE_372 = 372;\ncom.google.javascript.rhino.jstype.JSTypeNative f_eval_error_type_927_line_372 = JSTypeNative.EVAL_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_eval_error_type_926_line_372 = EVAL_ERROR_TYPE;\nint PROBE_END_LINE_372 = 372;\nregisterNativeType(f_eval_error_type_927_line_372, v_eval_error_type_926_line_372);\n\n// RangeError\nFunctionType RANGE_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"RangeError\");\nint PROBE_START_LINE_377 = 377;\ncom.google.javascript.rhino.jstype.FunctionType v_range_error_function_type_928_line_377 = RANGE_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_377 = ERROR_TYPE;\nint PROBE_END_LINE_377 = 377;\nv_range_error_function_type_928_line_377.setPrototypeBasedOn(v_error_type_922_line_377);\nregisterNativeType(\nJSTypeNative.RANGE_ERROR_FUNCTION_TYPE, RANGE_ERROR_FUNCTION_TYPE);\n\nint PROBE_START_LINE_381 = 381;\ncom.google.javascript.rhino.jstype.FunctionType v_range_error_function_type_928_line_381 = RANGE_ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr105_line_381 = v_range_error_function_type_928_line_381.getInstanceType();\nint PROBE_END_LINE_381 = 381;\nObjectType RANGE_ERROR_TYPE = jstype_registry1_expr105_line_381;\nint PROBE_START_LINE_382 = 382;\ncom.google.javascript.rhino.jstype.JSTypeNative f_range_error_type_931_line_382 = JSTypeNative.RANGE_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_range_error_type_930_line_382 = RANGE_ERROR_TYPE;\nint PROBE_END_LINE_382 = 382;\nregisterNativeType(f_range_error_type_931_line_382, v_range_error_type_930_line_382);\n\n// ReferenceError\nFunctionType REFERENCE_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"ReferenceError\");\nint PROBE_START_LINE_387 = 387;\ncom.google.javascript.rhino.jstype.FunctionType v_reference_error_function_type_932_line_387 = REFERENCE_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_387 = ERROR_TYPE;\nint PROBE_END_LINE_387 = 387;\nv_reference_error_function_type_932_line_387.setPrototypeBasedOn(v_error_type_922_line_387);\nregisterNativeType(\nJSTypeNative.REFERENCE_ERROR_FUNCTION_TYPE,\nREFERENCE_ERROR_FUNCTION_TYPE);\n\nObjectType REFERENCE_ERROR_TYPE =\nREFERENCE_ERROR_FUNCTION_TYPE.getInstanceType();\nint PROBE_START_LINE_394 = 394;\ncom.google.javascript.rhino.jstype.JSTypeNative f_reference_error_type_935_line_394 = JSTypeNative.REFERENCE_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_reference_error_type_934_line_394 = REFERENCE_ERROR_TYPE;\nint PROBE_END_LINE_394 = 394;\nregisterNativeType(f_reference_error_type_935_line_394, v_reference_error_type_934_line_394);\n\n// SyntaxError\nFunctionType SYNTAX_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"SyntaxError\");\nint PROBE_START_LINE_399 = 399;\ncom.google.javascript.rhino.jstype.FunctionType v_syntax_error_function_type_936_line_399 = SYNTAX_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_399 = ERROR_TYPE;\nint PROBE_END_LINE_399 = 399;\nv_syntax_error_function_type_936_line_399.setPrototypeBasedOn(v_error_type_922_line_399);\nregisterNativeType(\nJSTypeNative.SYNTAX_ERROR_FUNCTION_TYPE, SYNTAX_ERROR_FUNCTION_TYPE);\n\nint PROBE_START_LINE_403 = 403;\ncom.google.javascript.rhino.jstype.FunctionType v_syntax_error_function_type_936_line_403 = SYNTAX_ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr115_line_403 = v_syntax_error_function_type_936_line_403.getInstanceType();\nint PROBE_END_LINE_403 = 403;\nObjectType SYNTAX_ERROR_TYPE = jstype_registry1_expr115_line_403;\nint PROBE_START_LINE_404 = 404;\ncom.google.javascript.rhino.jstype.JSTypeNative f_syntax_error_type_939_line_404 = JSTypeNative.SYNTAX_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_syntax_error_type_938_line_404 = SYNTAX_ERROR_TYPE;\nint PROBE_END_LINE_404 = 404;\nregisterNativeType(f_syntax_error_type_939_line_404, v_syntax_error_type_938_line_404);\n\n// TypeError\nFunctionType TYPE_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"TypeError\");\nint PROBE_START_LINE_409 = 409;\ncom.google.javascript.rhino.jstype.FunctionType v_type_error_function_type_940_line_409 = TYPE_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_409 = ERROR_TYPE;\nint PROBE_END_LINE_409 = 409;\nv_type_error_function_type_940_line_409.setPrototypeBasedOn(v_error_type_922_line_409);\nregisterNativeType(\nJSTypeNative.TYPE_ERROR_FUNCTION_TYPE, TYPE_ERROR_FUNCTION_TYPE);\n\nint PROBE_START_LINE_413 = 413;\ncom.google.javascript.rhino.jstype.FunctionType v_type_error_function_type_940_line_413 = TYPE_ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr120_line_413 = v_type_error_function_type_940_line_413.getInstanceType();\nint PROBE_END_LINE_413 = 413;\nObjectType TYPE_ERROR_TYPE = jstype_registry1_expr120_line_413;\nint PROBE_START_LINE_414 = 414;\ncom.google.javascript.rhino.jstype.JSTypeNative f_type_error_type_943_line_414 = JSTypeNative.TYPE_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_type_error_type_942_line_414 = TYPE_ERROR_TYPE;\nint PROBE_END_LINE_414 = 414;\nregisterNativeType(f_type_error_type_943_line_414, v_type_error_type_942_line_414);\n\n// URIError\nFunctionType URI_ERROR_FUNCTION_TYPE =\nnew ErrorFunctionType(this, \"URIError\");\nint PROBE_START_LINE_419 = 419;\ncom.google.javascript.rhino.jstype.FunctionType v_uri_error_function_type_944_line_419 = URI_ERROR_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_error_type_922_line_419 = ERROR_TYPE;\nint PROBE_END_LINE_419 = 419;\nv_uri_error_function_type_944_line_419.setPrototypeBasedOn(v_error_type_922_line_419);\nregisterNativeType(\nJSTypeNative.URI_ERROR_FUNCTION_TYPE, URI_ERROR_FUNCTION_TYPE);\n\nint PROBE_START_LINE_423 = 423;\ncom.google.javascript.rhino.jstype.FunctionType v_uri_error_function_type_944_line_423 = URI_ERROR_FUNCTION_TYPE;\nObjectType jstype_registry1_expr125_line_423 = v_uri_error_function_type_944_line_423.getInstanceType();\nint PROBE_END_LINE_423 = 423;\nObjectType URI_ERROR_TYPE = jstype_registry1_expr125_line_423;\nint PROBE_START_LINE_424 = 424;\ncom.google.javascript.rhino.jstype.JSTypeNative f_uri_error_type_947_line_424 = JSTypeNative.URI_ERROR_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_uri_error_type_946_line_424 = URI_ERROR_TYPE;\nint PROBE_END_LINE_424 = 424;\nregisterNativeType(f_uri_error_type_947_line_424, v_uri_error_type_946_line_424);\n\n// Number\nFunctionType NUMBER_OBJECT_FUNCTION_TYPE =\nnew FunctionType(this, \"Number\", null,\ncreateArrowType(createOptionalParameters(ALL_TYPE), NUMBER_TYPE),\nnull, null, true, true);\nint PROBE_START_LINE_431 = 431;\ncom.google.javascript.rhino.jstype.FunctionType v_number_object_function_type_948_line_431 = NUMBER_OBJECT_FUNCTION_TYPE;\nObjectType jstype_registry1_expr128_line_431 = v_number_object_function_type_948_line_431.getPrototype();\nint PROBE_END_LINE_431 = 431;\nObjectType numberPrototype = jstype_registry1_expr128_line_431;\nregisterNativeType(\nJSTypeNative.NUMBER_OBJECT_FUNCTION_TYPE, NUMBER_OBJECT_FUNCTION_TYPE);\n\nObjectType NUMBER_OBJECT_TYPE =\nNUMBER_OBJECT_FUNCTION_TYPE.getInstanceType();\nint PROBE_START_LINE_437 = 437;\ncom.google.javascript.rhino.jstype.JSTypeNative f_number_object_type_952_line_437 = JSTypeNative.NUMBER_OBJECT_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_number_object_type_951_line_437 = NUMBER_OBJECT_TYPE;\nint PROBE_END_LINE_437 = 437;\nregisterNativeType(f_number_object_type_952_line_437, v_number_object_type_951_line_437);\n\n// RegExp\nFunctionType REGEXP_FUNCTION_TYPE =\nnew FunctionType(this, \"RegExp\", null,\ncreateArrowType(createOptionalParameters(ALL_TYPE, ALL_TYPE)),\nnull, null, true, true);\nint PROBE_START_LINE_444 = 445;\ncom.google.javascript.rhino.jstype.FunctionType v_regexp_function_type_953_line_444 = REGEXP_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.ArrowType jstype_registry1_expr135_line_444 = v_regexp_function_type_953_line_444\n.getInternalArrowType();\nint PROBE_END_LINE_444 = 445;\njstype_registry1_expr135_line_444.returnType =\nREGEXP_FUNCTION_TYPE.getInstanceType();\n\nint PROBE_START_LINE_447 = 447;\ncom.google.javascript.rhino.jstype.FunctionType v_regexp_function_type_953_line_447 = REGEXP_FUNCTION_TYPE;\nObjectType jstype_registry1_expr136_line_447 = v_regexp_function_type_953_line_447.getPrototype();\nint PROBE_END_LINE_447 = 447;\nObjectType regexpPrototype = jstype_registry1_expr136_line_447;\nint PROBE_START_LINE_448 = 448;\ncom.google.javascript.rhino.jstype.JSTypeNative f_regexp_function_type_955_line_448 = JSTypeNative.REGEXP_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_regexp_function_type_953_line_448 = REGEXP_FUNCTION_TYPE;\nint PROBE_END_LINE_448 = 448;\nregisterNativeType(f_regexp_function_type_955_line_448, v_regexp_function_type_953_line_448);\n\nint PROBE_START_LINE_450 = 450;\ncom.google.javascript.rhino.jstype.FunctionType v_regexp_function_type_953_line_450 = REGEXP_FUNCTION_TYPE;\nObjectType jstype_registry1_expr138_line_450 = v_regexp_function_type_953_line_450.getInstanceType();\nint PROBE_END_LINE_450 = 450;\nObjectType REGEXP_TYPE = jstype_registry1_expr138_line_450;\nint PROBE_START_LINE_451 = 451;\ncom.google.javascript.rhino.jstype.JSTypeNative f_regexp_type_957_line_451 = JSTypeNative.REGEXP_TYPE;\ncom.google.javascript.rhino.jstype.ObjectType v_regexp_type_956_line_451 = REGEXP_TYPE;\nint PROBE_END_LINE_451 = 451;\nregisterNativeType(f_regexp_type_957_line_451, v_regexp_type_956_line_451);\n\n// String\nFunctionType STRING_OBJECT_FUNCTION_TYPE =\nnew FunctionType(this, \"String\", null,\ncreateArrowType(createOptionalParameters(ALL_TYPE), STRING_TYPE),\nnull, null, true, true);\nint PROBE_START_LINE_458 = 458;\ncom.google.javascript.rhino.jstype.FunctionType v_string_object_function_type_958_line_458 = STRING_OBJECT_FUNCTION_TYPE;\nObjectType jstype_registry1_expr141_line_458 = v_string_object_function_type_958_line_458.getPrototype();\nint PROBE_END_LINE_458 = 458;\nObjectType stringPrototype = jstype_registry1_expr141_line_458;\nregisterNativeType(\nJSTypeNative.STRING_OBJECT_FUNCTION_TYPE, STRING_OBJECT_FUNCTION_TYPE);\n\nObjectType STRING_OBJECT_TYPE =\nSTRING_OBJECT_FUNCTION_TYPE.getInstanceType();\nregisterNativeType(\nJSTypeNative.STRING_OBJECT_TYPE, STRING_OBJECT_TYPE);\n\n// (null,void)\nJSType NULL_VOID =\ncreateUnionType(NULL_TYPE, VOID_TYPE);\nint PROBE_START_LINE_470 = 470;\ncom.google.javascript.rhino.jstype.JSTypeNative f_null_void_964_line_470 = JSTypeNative.NULL_VOID;\ncom.google.javascript.rhino.jstype.JSType v_null_void_963_line_470 = NULL_VOID;\nint PROBE_END_LINE_470 = 470;\nregisterNativeType(f_null_void_964_line_470, v_null_void_963_line_470);\n\n// (Object,string,number)\nJSType OBJECT_NUMBER_STRING =\ncreateUnionType(OBJECT_TYPE, NUMBER_TYPE, STRING_TYPE);\nint PROBE_START_LINE_475 = 475;\ncom.google.javascript.rhino.jstype.JSTypeNative f_object_number_string_966_line_475 = JSTypeNative.OBJECT_NUMBER_STRING;\ncom.google.javascript.rhino.jstype.JSType v_object_number_string_965_line_475 = OBJECT_NUMBER_STRING;\nint PROBE_END_LINE_475 = 475;\nregisterNativeType(f_object_number_string_966_line_475, v_object_number_string_965_line_475);\n\n// (Object,string,number,boolean)\nJSType OBJECT_NUMBER_STRING_BOOLEAN =\ncreateUnionType(OBJECT_TYPE, NUMBER_TYPE, STRING_TYPE, BOOLEAN_TYPE);\nint PROBE_START_LINE_480 = 481;\ncom.google.javascript.rhino.jstype.JSTypeNative f_object_number_string_boolean_968_line_480 = JSTypeNative.OBJECT_NUMBER_STRING_BOOLEAN;\nint PROBE_END_LINE_480 = 481;\nregisterNativeType(f_object_number_string_boolean_968_line_480,\nOBJECT_NUMBER_STRING_BOOLEAN);\n\n// (string,number,boolean)\nJSType NUMBER_STRING_BOOLEAN =\ncreateUnionType(NUMBER_TYPE, STRING_TYPE, BOOLEAN_TYPE);\nint PROBE_START_LINE_486 = 487;\ncom.google.javascript.rhino.jstype.JSTypeNative f_number_string_boolean_970_line_486 = JSTypeNative.NUMBER_STRING_BOOLEAN;\nint PROBE_END_LINE_486 = 487;\nregisterNativeType(f_number_string_boolean_970_line_486,\nNUMBER_STRING_BOOLEAN);\n\nint PROBE_START_LINE_490 = 490;\ncom.google.javascript.rhino.jstype.NumberType v_number_type_875_line_490 = NUMBER_TYPE;\ncom.google.javascript.rhino.jstype.StringType v_string_type_877_line_490 = STRING_TYPE;\nJSType jstype_registry1_expr153_line_490 = createUnionType(v_number_type_875_line_490, v_string_type_877_line_490);\nint PROBE_END_LINE_490 = 490;\n// (string,number)\nJSType NUMBER_STRING = jstype_registry1_expr153_line_490;\nint PROBE_START_LINE_491 = 491;\ncom.google.javascript.rhino.jstype.JSTypeNative f_number_string_972_line_491 = JSTypeNative.NUMBER_STRING;\ncom.google.javascript.rhino.jstype.JSType v_number_string_971_line_491 = NUMBER_STRING;\nint PROBE_END_LINE_491 = 491;\nregisterNativeType(f_number_string_972_line_491, v_number_string_971_line_491);\n\n// Native object properties are filled in by externs...\n\n// (String, string)\nJSType STRING_VALUE_OR_OBJECT_TYPE =\ncreateUnionType(STRING_OBJECT_TYPE, STRING_TYPE);\nregisterNativeType(\nJSTypeNative.STRING_VALUE_OR_OBJECT_TYPE, STRING_VALUE_OR_OBJECT_TYPE);\n\n// (Number, number)\nJSType NUMBER_VALUE_OR_OBJECT_TYPE =\ncreateUnionType(NUMBER_OBJECT_TYPE, NUMBER_TYPE);\nregisterNativeType(\nJSTypeNative.NUMBER_VALUE_OR_OBJECT_TYPE, NUMBER_VALUE_OR_OBJECT_TYPE);\n\n// unknown function type, i.e. (?...) -> ?\nFunctionType U2U_FUNCTION_TYPE =\ncreateFunctionType(UNKNOWN_TYPE, true, UNKNOWN_TYPE);\nint PROBE_START_LINE_510 = 510;\ncom.google.javascript.rhino.jstype.JSTypeNative f_u2u_function_type_978_line_510 = JSTypeNative.U2U_FUNCTION_TYPE;\ncom.google.javascript.rhino.jstype.FunctionType v_u2u_function_type_977_line_510 = U2U_FUNCTION_TYPE;\nint PROBE_END_LINE_510 = 510;\nregisterNativeType(f_u2u_function_type_978_line_510, v_u2u_function_type_977_line_510);\n\nint PROBE_START_LINE_514 = 530;\ncom.google.javascript.rhino.jstype.UnknownType v_unknown_type_879_line_523 = UNKNOWN_TYPE;\nint PROBE_END_LINE_514 = 530;\n// unknown constructor type, i.e. (?...) -> ? with the Unknown type\n// as instance type\nFunctionType U2U_CONSTRUCTOR_TYPE =\n// This is equivalent to\n// createConstructorType(UNKNOWN_TYPE, true, UNKNOWN_TYPE), but,\n// in addition, overrides getInstanceType() to return the NoObject type\n// instead of a new anonymous object.\nnew FunctionType(this, \"Function\", null,\ncreateArrowType(\ncreateParametersWithVarArgs(UNKNOWN_TYPE),\nUNKNOWN_TYPE),\nv_unknown_type_879_line_523, null, true, true) {\nprivate static final long serialVersionUID = 1L;\n\n@Override public FunctionType getConstructor() {\nreturn registry.getNativeFunctionType(\nJSTypeNative.FUNCTION_FUNCTION_TYPE);\n}",
+        "begin_line": 285,
+        "end_line": 838,
+        "comment": "  \n   * Reset to run the TypeCheck pass.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.NullType.toStringHelper(boolean forAnnotations)#109",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/NullType.java",
+        "class_name": "com.google.javascript.rhino.jstype.NullType",
+        "signature": "com.google.javascript.rhino.jstype.NullType.toStringHelper(boolean forAnnotations)",
+        "snippet": "String toStringHelper(boolean forAnnotations) {\nint PROBE_START_LINE_104 = 104;\nString null_type1_expr3_line_104 = getDisplayName();\nint PROBE_END_LINE_104 = 104;\nreturn null_type1_expr3_line_104;\n}",
+        "begin_line": 109,
+        "end_line": 114,
+        "comment": "\n * Null type.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.PropertyMap.PropertyMap(Map<String, Property> underlyingMap)#84",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/PropertyMap.java",
+        "class_name": "com.google.javascript.rhino.jstype.PropertyMap",
+        "signature": "com.google.javascript.rhino.jstype.PropertyMap.PropertyMap(Map<String, Property> underlyingMap)",
+        "snippet": "private PropertyMap(Map<String, Property> underlyingMap) {\nint PROBE_START_LINE_84 = 84;\nMap<String, com.google.javascript.rhino.jstype.Property> p_underlying_map_1286_line_84 = underlyingMap;\nint PROBE_END_LINE_84 = 84;\nthis.properties = p_underlying_map_1286_line_84;\n}",
+        "begin_line": 84,
+        "end_line": 89,
+        "comment": "   The map of our own properties.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.PropertyMap.setParentSource(ObjectType ownerType)#95",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/PropertyMap.java",
+        "class_name": "com.google.javascript.rhino.jstype.PropertyMap",
+        "signature": "com.google.javascript.rhino.jstype.PropertyMap.setParentSource(ObjectType ownerType)",
+        "snippet": "void setParentSource(ObjectType ownerType) {\nint PROBE_START_LINE_92 = 94;\ncom.google.javascript.rhino.jstype.PropertyMap f_empty_map_1282_line_92 = EMPTY_MAP;\nboolean property_map1_expr7_line_92 = this != f_empty_map_1282_line_92;\nint PROBE_END_LINE_92 = 94;\nif (property_map1_expr7_line_92) {\nint PROBE_START_LINE_93 = 93;\ncom.google.javascript.rhino.jstype.ObjectType p_owner_type_1288_line_93 = ownerType;\nint PROBE_END_LINE_93 = 93;\nthis.parentSource = p_owner_type_1288_line_93;\n}",
+        "begin_line": 95,
+        "end_line": 105,
+        "comment": "   The map of our own properties.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.PropertyMap.getPropertiesCount()#199",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/PropertyMap.java",
+        "class_name": "com.google.javascript.rhino.jstype.PropertyMap",
+        "signature": "com.google.javascript.rhino.jstype.PropertyMap.getPropertiesCount()",
+        "snippet": "int getPropertiesCount() {\nint PROBE_START_LINE_152 = 152;\nPropertyMap property_map1_expr19_line_152 = getPrimaryParent();\nint PROBE_END_LINE_152 = 152;\nPropertyMap primaryParent = property_map1_expr19_line_152;\nint PROBE_START_LINE_153 = 155;\ncom.google.javascript.rhino.jstype.PropertyMap v_primary_parent_1293_line_153 = primaryParent;\nboolean property_map1_expr20_line_153 = v_primary_parent_1293_line_153 == null;\nint PROBE_END_LINE_153 = 155;\nif (property_map1_expr20_line_153) {\nreturn this.properties.size();\n}",
+        "begin_line": 199,
+        "end_line": 210,
+        "comment": "\t Most of the time, this will be empty.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.FunctionBuilder.withParams(FunctionParamBuilder params)#91",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/FunctionBuilder.java",
+        "class_name": "com.google.javascript.rhino.jstype.FunctionBuilder",
+        "signature": "com.google.javascript.rhino.jstype.FunctionBuilder.withParams(FunctionParamBuilder params)",
+        "snippet": "public FunctionBuilder withParams(FunctionParamBuilder params) {\nthis.parametersNode = params.build();\nreturn this;\n}",
+        "begin_line": 91,
+        "end_line": 94,
+        "comment": "   Set the parameters of the function type from a FunctionParamBuilder. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSTypeExpression.JSTypeExpression(Node root, String sourceName)#64",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSTypeExpression.java",
+        "class_name": "com.google.javascript.rhino.JSTypeExpression",
+        "signature": "com.google.javascript.rhino.JSTypeExpression.JSTypeExpression(Node root, String sourceName)",
+        "snippet": "public JSTypeExpression(Node root, String sourceName) {\nint PROBE_START_LINE_65 = 65;\ncom.google.javascript.rhino.Node p_root_281_line_65 = root;\nint PROBE_END_LINE_65 = 65;\nthis.root = p_root_281_line_65;\nint PROBE_START_LINE_66 = 66;\nString p_source_name_282_line_66 = sourceName;\nint PROBE_END_LINE_66 = 66;\nthis.sourceName = p_source_name_282_line_66;\n}",
+        "begin_line": 64,
+        "end_line": 73,
+        "comment": "   The source name where the type expression appears. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.FunctionType.isOrdinaryFunction()#285",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/FunctionType.java",
+        "class_name": "com.google.javascript.rhino.jstype.FunctionType",
+        "signature": "com.google.javascript.rhino.jstype.FunctionType.isOrdinaryFunction()",
+        "snippet": "public boolean isOrdinaryFunction() {\nreturn kind == Kind.ORDINARY;\n}",
+        "begin_line": 285,
+        "end_line": 287,
+        "comment": "     getConstructor() appropriately when it's declared.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.FunctionType.toMaybeFunctionType()#338",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/FunctionType.java",
+        "class_name": "com.google.javascript.rhino.jstype.FunctionType",
+        "signature": "com.google.javascript.rhino.jstype.FunctionType.toMaybeFunctionType()",
+        "snippet": "public FunctionType toMaybeFunctionType() {\nreturn this;\n}",
+        "begin_line": 338,
+        "end_line": 340,
+        "comment": "  \n   * When a class B inherits from A and A is annotated as a dict, then B\n   * automatically gets the annotation, even if B's constructor is not\n   * explicitly annotated.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.jstype.FunctionType.getPrototype()#462",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/jstype/FunctionType.java",
+        "class_name": "com.google.javascript.rhino.jstype.FunctionType",
+        "signature": "com.google.javascript.rhino.jstype.FunctionType.getPrototype()",
+        "snippet": "public ObjectType getPrototype() {\nint PROBE_START_LINE_365 = 383;\ncom.google.javascript.rhino.jstype.Property f_prototype_slot_689_line_365 = prototypeSlot;\nboolean function_type1_expr48_line_365 = f_prototype_slot_689_line_365 == null;\nint PROBE_END_LINE_365 = 383;\n// lazy initialization of the prototype field\nif (function_type1_expr48_line_365) {\nint PROBE_START_LINE_366 = 366;\nString function_type1_expr49_line_366 = getReferenceName();\nint PROBE_END_LINE_366 = 366;\nString refName = function_type1_expr49_line_366;\nint PROBE_START_LINE_367 = 382;\nString v_ref_name_690_line_367 = refName;\nboolean function_type1_expr50_line_367 = v_ref_name_690_line_367 == null;\nint PROBE_END_LINE_367 = 382;\nif (function_type1_expr50_line_367) {\n// Someone is trying to access the prototype of a structural function.\n// We don't want to give real properties to this prototype, because\n// then it would propagate to all structural functions.\nsetPrototypeNoCheck(\nregistry.getNativeObjectType(JSTypeNative.UNKNOWN_TYPE),\nnull);\n} else {",
+        "begin_line": 462,
+        "end_line": 484,
+        "comment": "  \n   * Gets the {@code prototype} property of this function type. This is\n   * equivalent to {@code (ObjectType) getPropertyType(\"prototype\")}.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.javascript.rhino.JSDocInfo.setDescription(String desc)#1306",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Closure-2/result/src/com/google/javascript/rhino/JSDocInfo.java",
+        "class_name": "com.google.javascript.rhino.JSDocInfo",
+        "signature": "com.google.javascript.rhino.JSDocInfo.setDescription(String desc)",
+        "snippet": "void setDescription(String desc) {\nlazyInitInfo();\ninfo.description = desc;\n}",
+        "begin_line": 1306,
+        "end_line": 1309,
+        "comment": "  \n   * Gets the description specified by the {@code @desc} annotation.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

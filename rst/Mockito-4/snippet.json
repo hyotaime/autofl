@@ -1,0 +1,242 @@
+[
+    {
+        "name": "org.mockito.internal.creation.MockSettingsImpl.spiedInstance(Object spiedInstance)#81",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/creation/MockSettingsImpl.java",
+        "class_name": "org.mockito.internal.creation.MockSettingsImpl",
+        "signature": "org.mockito.internal.creation.MockSettingsImpl.spiedInstance(Object spiedInstance)",
+        "snippet": "public MockSettings spiedInstance(Object spiedInstance) {\nthis.spiedInstance = spiedInstance;\nreturn this;\n}",
+        "begin_line": 81,
+        "end_line": 84,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.creation.MockSettingsImpl.getInvocationListeners()#167",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/creation/MockSettingsImpl.java",
+        "class_name": "org.mockito.internal.creation.MockSettingsImpl",
+        "signature": "org.mockito.internal.creation.MockSettingsImpl.getInvocationListeners()",
+        "snippet": "public List<InvocationListener> getInvocationListeners() {\nreturn this.invocationListeners;\n}",
+        "begin_line": 167,
+        "end_line": 169,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.creation.MockSettingsImpl.getTypeToMock()#175",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/creation/MockSettingsImpl.java",
+        "class_name": "org.mockito.internal.creation.MockSettingsImpl",
+        "signature": "org.mockito.internal.creation.MockSettingsImpl.getTypeToMock()",
+        "snippet": "public Class<T> getTypeToMock() {\nreturn typeToMock;\n}",
+        "begin_line": 175,
+        "end_line": 177,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.creation.MockSettingsImpl.confirm(Class<T> typeToMock)#179",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/creation/MockSettingsImpl.java",
+        "class_name": "org.mockito.internal.creation.MockSettingsImpl",
+        "signature": "org.mockito.internal.creation.MockSettingsImpl.confirm(Class<T> typeToMock)",
+        "snippet": "public MockCreationSettings<T> confirm(Class<T> typeToMock) {\nint PROBE_START_LINE_161 = 161;\nClass<T> p_type_to_mock_398_line_161 = typeToMock;\nCreationSettings<T> mock_settings_impl1_expr4_line_161 = validatedSettings(p_type_to_mock_398_line_161, this);\nint PROBE_END_LINE_161 = 161;\nreturn mock_settings_impl1_expr4_line_161;\n}",
+        "begin_line": 179,
+        "end_line": 185,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.plugins.PluginLoader.PluginLoader(PluginSwitch pluginSwitch)#16",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/plugins/PluginLoader.java",
+        "class_name": "org.mockito.internal.configuration.plugins.PluginLoader",
+        "signature": "org.mockito.internal.configuration.plugins.PluginLoader.PluginLoader(PluginSwitch pluginSwitch)",
+        "snippet": "public PluginLoader(PluginSwitch pluginSwitch) {\nint PROBE_START_LINE_17 = 17;\norg.mockito.plugins.PluginSwitch p_plugin_switch_372_line_17 = pluginSwitch;\nint PROBE_END_LINE_17 = 17;\nthis.pluginSwitch = p_plugin_switch_372_line_17;\n}",
+        "begin_line": 16,
+        "end_line": 21,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.injection.filter.TypeBasedCandidateFilter.TypeBasedCandidateFilter(MockCandidateFilter next)#16",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/injection/filter/TypeBasedCandidateFilter.java",
+        "class_name": "org.mockito.internal.configuration.injection.filter.TypeBasedCandidateFilter",
+        "signature": "org.mockito.internal.configuration.injection.filter.TypeBasedCandidateFilter.TypeBasedCandidateFilter(MockCandidateFilter next)",
+        "snippet": "public TypeBasedCandidateFilter(MockCandidateFilter next) {\nint PROBE_START_LINE_17 = 17;\norg.mockito.internal.configuration.injection.filter.MockCandidateFilter p_next_340_line_17 = next;\nint PROBE_END_LINE_17 = 17;\nthis.next = p_next_340_line_17;\n}",
+        "begin_line": 16,
+        "end_line": 21,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(final Class<?> clazz, final Object testInstance)#91",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/InjectingAnnotationEngine.java",
+        "class_name": "org.mockito.internal.configuration.InjectingAnnotationEngine",
+        "signature": "org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(final Class<?> clazz, final Object testInstance)",
+        "snippet": "private void processIndependentAnnotations(final Class<?> clazz, final Object testInstance) {\nint PROBE_START_LINE_68 = 68;\nClass<?> p_clazz_252_line_68 = clazz;\nint PROBE_END_LINE_68 = 68;\nClass<?> classContext = p_clazz_252_line_68;\nint PROBE_START_LINE_69 = 76;\nClass<?> v_class_context_254_line_69 = classContext;\nboolean injecting_annotation_engine1_expr10_line_69 = v_class_context_254_line_69 != Object.class;\nint PROBE_END_LINE_69 = 76;\nwhile (injecting_annotation_engine1_expr10_line_69) {\nint PROBE_START_LINE_71 = 71;\norg.mockito.configuration.AnnotationEngine f_delegate_243_line_71 = delegate;\nClass<?> v_class_context_254_line_71 = classContext;\nObject p_test_instance_253_line_71 = testInstance;\nint PROBE_END_LINE_71 = 71;\n//this will create @Mocks, @Captors, etc:\nf_delegate_243_line_71.process(v_class_context_254_line_71, p_test_instance_253_line_71);\nint PROBE_START_LINE_73 = 73;\norg.mockito.configuration.AnnotationEngine f_spy_annotation_engine_244_line_73 = spyAnnotationEngine;\nClass<?> v_class_context_254_line_73 = classContext;\nObject p_test_instance_253_line_73 = testInstance;\nint PROBE_END_LINE_73 = 73;\n//this will create @Spies:\nf_spy_annotation_engine_244_line_73.process(v_class_context_254_line_73, p_test_instance_253_line_73);\n\nint PROBE_START_LINE_75 = 75;\nClass<?> v_class_context_254_line_75 = classContext;\nClass<?> injecting_annotation_engine1_expr13_line_75 = v_class_context_254_line_75.getSuperclass();\nclassContext = injecting_annotation_engine1_expr13_line_75;\nv_class_context_254_line_69 = classContext;\ninjecting_annotation_engine1_expr10_line_69 = v_class_context_254_line_69 != Object.class;\nint PROBE_END_LINE_75 = 75;\n}",
+        "begin_line": 91,
+        "end_line": 123,
+        "comment": "    \n     * Process the fields of the test instance and create Mocks, Spies, Captors and inject them on fields\n     * annotated &#64;InjectMocks.\n     *\n     * <p>\n     * This code process the test class and the super classes.\n     * <ol>\n     * <li>First create Mocks, Spies, Captors.</li>\n     * <li>Then try to inject them.</li>\n     * </ol>\n     *\n     * @param clazz Not used\n     * @param testInstance The instance of the test, should not be null.\n     *\n     * @see org.mockito.configuration.AnnotationEngine#process(Class, Object)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.GlobalConfiguration.GlobalConfiguration()#34",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/GlobalConfiguration.java",
+        "class_name": "org.mockito.internal.configuration.GlobalConfiguration",
+        "signature": "org.mockito.internal.configuration.GlobalConfiguration.GlobalConfiguration()",
+        "snippet": "public GlobalConfiguration() {\nint PROBE_START_LINE_31 = 33;\nThreadLocal<org.mockito.configuration.IMockitoConfiguration> f_global_configuration_240_line_31 = GLOBAL_CONFIGURATION;\norg.mockito.configuration.IMockitoConfiguration global_configuration1_expr4_line_31 = f_global_configuration_240_line_31\n.get();\nboolean global_configuration1_expr3_line_31 = global_configuration1_expr4_line_31 == null;\nint PROBE_END_LINE_31 = 33;\n//Configuration should be loaded only once but I cannot really test it\nif (global_configuration1_expr3_line_31) {\nint PROBE_START_LINE_32 = 32;\nThreadLocal<org.mockito.configuration.IMockitoConfiguration> f_global_configuration_240_line_32 = GLOBAL_CONFIGURATION;\norg.mockito.configuration.IMockitoConfiguration global_configuration1_expr6_line_32 = createConfig();\nint PROBE_END_LINE_32 = 32;\nf_global_configuration_240_line_32.set(global_configuration1_expr6_line_32);\n}",
+        "begin_line": 34,
+        "end_line": 48,
+        "comment": "    back door for testing",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.injection.ConstructorInjection.ConstructorInjection()#42",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/injection/ConstructorInjection.java",
+        "class_name": "org.mockito.internal.configuration.injection.ConstructorInjection",
+        "signature": "org.mockito.internal.configuration.injection.ConstructorInjection.ConstructorInjection()",
+        "snippet": "public ConstructorInjection() { }\n\n// visible for testing\nConstructorInjection(ConstructorArgumentResolver argResolver) {\nthis.argResolver = argResolver;\n}",
+        "begin_line": 42,
+        "end_line": 47,
+        "comment": "\n * Injection strategy based on constructor.\n *\n * <p>\n * The strategy will search for the constructor with most parameters\n * and try to resolve mocks by type.\n * </p>\n *\n * <blockquote>\n * TODO on missing mock type, shall it abandon or create \"noname\" mocks.\n * TODO and what if the arg type is not mockable.\n * </blockquote>\n *\n * <p>\n * For now the algorithm tries to create anonymous mocks if an argument type is missing.\n * If not possible the algorithm abandon resolution.\n * </p>\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.injection.scanner.MockScanner.MockScanner(Object instance, Class<?> clazz)#32",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/injection/scanner/MockScanner.java",
+        "class_name": "org.mockito.internal.configuration.injection.scanner.MockScanner",
+        "signature": "org.mockito.internal.configuration.injection.scanner.MockScanner.MockScanner(Object instance, Class<?> clazz)",
+        "snippet": "public MockScanner(Object instance, Class<?> clazz) {\nint PROBE_START_LINE_33 = 33;\nObject p_instance_354_line_33 = instance;\nint PROBE_END_LINE_33 = 33;\nthis.instance = p_instance_354_line_33;\nint PROBE_START_LINE_34 = 34;\nClass<?> p_clazz_355_line_34 = clazz;\nint PROBE_END_LINE_34 = 34;\nthis.clazz = p_clazz_355_line_34;\n}",
+        "begin_line": 32,
+        "end_line": 41,
+        "comment": "    \n     * Creates a MockScanner.\n     *\n     * @param instance The test instance\n     * @param clazz    The class in the type hierarchy of this instance.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.Answers.Answers(Answer<Object> implementation)#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/Answers.java",
+        "class_name": "org.mockito.Answers",
+        "signature": "org.mockito.Answers.Answers(Answer<Object> implementation)",
+        "snippet": "private Answers(Answer<Object> implementation) {\nint PROBE_START_LINE_77 = 77;\nAnswer<Object> p_implementation_1_line_77 = implementation;\nint PROBE_END_LINE_77 = 77;\nthis.implementation = p_implementation_1_line_77;\n}",
+        "begin_line": 76,
+        "end_line": 81,
+        "comment": "    \n     * An answer that calls the real methods (used for partial mocks).\n     *\n     * <p>Please see the {@link org.mockito.Mockito#CALLS_REAL_METHODS} documentation for more details.</p>\n     *\n     * @see org.mockito.Mockito#CALLS_REAL_METHODS\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter.NameBasedCandidateFilter(MockCandidateFilter next)#18",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/injection/filter/NameBasedCandidateFilter.java",
+        "class_name": "org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter",
+        "signature": "org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter.NameBasedCandidateFilter(MockCandidateFilter next)",
+        "snippet": "public NameBasedCandidateFilter(MockCandidateFilter next) {\nint PROBE_START_LINE_19 = 19;\norg.mockito.internal.configuration.injection.filter.MockCandidateFilter p_next_335_line_19 = next;\nint PROBE_END_LINE_19 = 19;\nthis.next = p_next_335_line_19;\n}",
+        "begin_line": 18,
+        "end_line": 23,
+        "comment": "/*\n * Copyright (c) 2007 Mockito contributors\n * This program is made available under the terms of the MIT License.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.DefaultAnnotationEngine.DefaultAnnotationEngine()#32",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/DefaultAnnotationEngine.java",
+        "class_name": "org.mockito.internal.configuration.DefaultAnnotationEngine",
+        "signature": "org.mockito.internal.configuration.DefaultAnnotationEngine.DefaultAnnotationEngine()",
+        "snippet": "public DefaultAnnotationEngine() {\nregisterAnnotationProcessor(Mock.class, new MockAnnotationProcessor());\nregisterAnnotationProcessor(MockitoAnnotations.Mock.class, new MockitoAnnotationsMockAnnotationProcessor());\nregisterAnnotationProcessor(Captor.class, new CaptorAnnotationProcessor());\n}",
+        "begin_line": 32,
+        "end_line": 36,
+        "comment": "\n * Initializes fields annotated with &#64;{@link org.mockito.Mock} or &#64;{@link org.mockito.Captor}.\n *\n * <p>\n * The {@link #process(Class, Object)} method implementation <strong>does not</strong> process super classes!\n *\n * @see MockitoAnnotations\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.InjectMocksScanner(Class<?> clazz)#29",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/injection/scanner/InjectMocksScanner.java",
+        "class_name": "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner",
+        "signature": "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.InjectMocksScanner(Class<?> clazz)",
+        "snippet": "public InjectMocksScanner(Class<?> clazz) {\nint PROBE_START_LINE_30 = 30;\nClass<?> p_clazz_345_line_30 = clazz;\nint PROBE_END_LINE_30 = 30;\nthis.clazz = p_clazz_345_line_30;\n}",
+        "begin_line": 29,
+        "end_line": 34,
+        "comment": "    \n     * Create a new InjectMocksScanner for the given clazz on the given instance\n     *\n     * @param clazz    Current class in the hierarchy of the test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.mockito.internal.configuration.plugins.PluginFinder.PluginFinder(PluginSwitch pluginSwitch)#14",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Mockito-4/result/src/org/mockito/internal/configuration/plugins/PluginFinder.java",
+        "class_name": "org.mockito.internal.configuration.plugins.PluginFinder",
+        "signature": "org.mockito.internal.configuration.plugins.PluginFinder.PluginFinder(PluginSwitch pluginSwitch)",
+        "snippet": "public PluginFinder(PluginSwitch pluginSwitch) {\nint PROBE_START_LINE_15 = 15;\norg.mockito.plugins.PluginSwitch p_plugin_switch_368_line_15 = pluginSwitch;\nint PROBE_END_LINE_15 = 15;\nthis.pluginSwitch = p_plugin_switch_368_line_15;\n}",
+        "begin_line": 14,
+        "end_line": 19,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

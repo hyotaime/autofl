@@ -1,0 +1,1186 @@
+[
+    {
+        "name": "org.jsoup.nodes.Attributes.unknown#17",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Attributes.java",
+        "class_name": "org.jsoup.nodes.Attributes",
+        "signature": "org.jsoup.nodes.Attributes.unknown(...)",
+        "snippet": "public class Attributes implements Iterable<Attribute>, Cloneable {",
+        "begin_line": 17,
+        "end_line": 17,
+        "comment": "\n * The attributes of an Element.\n * <p/>\n * Attributes are treated as a map: there can be only one value associated with an attribute key.\n * <p/>\n * Attribute key and value comparisons are done case insensitively, and keys are normalised to\n * lower-case.\n * \n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attributes.unknown#20",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Attributes.java",
+        "class_name": "org.jsoup.nodes.Attributes",
+        "signature": "org.jsoup.nodes.Attributes.unknown(...)",
+        "snippet": "private LinkedHashMap<String, Attribute> attributes = null;",
+        "begin_line": 20,
+        "end_line": 20,
+        "comment": "\n * The attributes of an Element.\n * <p/>\n * Attributes are treated as a map: there can be only one value associated with an attribute key.\n * <p/>\n * Attribute key and value comparisons are done case insensitively, and keys are normalised to\n * lower-case.\n * \n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attributes.unknown#191",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Attributes.java",
+        "class_name": "org.jsoup.nodes.Attributes",
+        "signature": "org.jsoup.nodes.Attributes.unknown(...)",
+        "snippet": "private class Dataset extends AbstractMap<String, String> {",
+        "begin_line": 191,
+        "end_line": 191,
+        "comment": "    \n     Get the HTML representation of these attributes.\n     @return HTML\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#31",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "protected Node(String baseUri, Attributes attributes) {",
+        "begin_line": 31,
+        "end_line": 31,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#32",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "int PROBE_START_LINE_32 = 32;",
+        "begin_line": 32,
+        "end_line": 32,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#33",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "String p_base_uri_110_line_32 = baseUri;",
+        "begin_line": 33,
+        "end_line": 33,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#35",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "Validate.notNull(p_base_uri_110_line_32);",
+        "begin_line": 35,
+        "end_line": 35,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#36",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "int PROBE_START_LINE_33 = 33;",
+        "begin_line": 36,
+        "end_line": 36,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#37",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "org.jsoup.nodes.Attributes p_attributes_111_line_33 = attributes;",
+        "begin_line": 37,
+        "end_line": 37,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#38",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "int PROBE_END_LINE_33 = 33;",
+        "begin_line": 38,
+        "end_line": 38,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#445",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "private void reindexChildren() {",
+        "begin_line": 445,
+        "end_line": 445,
+        "comment": "        most used. short circuit addChildren(int), which hits reindex children and array copy",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.unknown#487",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.unknown(...)",
+        "snippet": "",
+        "begin_line": 487,
+        "end_line": 487,
+        "comment": "    \n     Get this node's previous sibling.\n     @return the previous sibling, or null if this is the first sibling\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#15",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "int PROBE_START_LINE_15 = 16;",
+        "begin_line": 15,
+        "end_line": 15,
+        "comment": "    \n     * Validates that the obect is not null\n     * @param obj object to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#17",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "boolean validate1_expr1_line_15 = p_obj_1_line_15 == null;",
+        "begin_line": 17,
+        "end_line": 17,
+        "comment": "    \n     * Validates that the obect is not null\n     * @param obj object to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#91",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "* Validates that the string is not empty",
+        "begin_line": 91,
+        "end_line": 91,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#93",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 93,
+        "end_line": 93,
+        "comment": "    \n     * Validates that the string is not empty\n     * @param string the string to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#38",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "super(baseUri, attributes);",
+        "begin_line": 38,
+        "end_line": 38,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#40",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "int PROBE_START_LINE_40 = 40;",
+        "begin_line": 40,
+        "end_line": 40,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#41",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "org.jsoup.parser.Tag p_tag_31_line_40 = tag;",
+        "begin_line": 41,
+        "end_line": 41,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#42",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "int PROBE_END_LINE_40 = 40;",
+        "begin_line": 42,
+        "end_line": 42,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#53",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "* @param tag element tag",
+        "begin_line": 53,
+        "end_line": 53,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#54",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "* @param baseUri the base URI of this element. It is acceptable for the base URI to be an empty",
+        "begin_line": 54,
+        "end_line": 54,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.unknown#142",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.unknown(...)",
+        "snippet": "public Map<String, String> dataset() {",
+        "begin_line": 142,
+        "end_line": 142,
+        "comment": "    \n     * Get this element's HTML5 custom data attributes. Each attribute in the element that has a key\n     * starting with \"data-\" is included the dataset.\n     * <p>\n     * E.g., the element {@code <div data-package=\"jsoup\" data-language=\"Java\" class=\"group\">...} has the dataset\n     * {@code package=jsoup, language=java}.\n     * <p>\n     * This map is a filtered view of the element's attribute map. Changes to one map (add, remove, update) are reflected\n     * in the other map.\n     * <p>\n     * You can find elements that have data attributes using the {@code [^data-]} attribute key prefix selector.\n     * @return a map of {@code key=value} custom data attributes.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#14",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private static final Map<String, Tag> tags = new HashMap<String, Tag>(); // map of known tags",
+        "begin_line": 14,
+        "end_line": 14,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#17",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean isBlock = true; // block or inline",
+        "begin_line": 17,
+        "end_line": 17,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#18",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean formatAsBlock = true; // should be formatted as a block",
+        "begin_line": 18,
+        "end_line": 18,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#19",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean canContainBlock = true; // Can this tag hold block level tags?",
+        "begin_line": 19,
+        "end_line": 19,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#20",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean canContainInline = true; // only pcdata if not",
+        "begin_line": 20,
+        "end_line": 20,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#21",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean empty = false; // can hold nothing; e.g. img",
+        "begin_line": 21,
+        "end_line": 21,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#22",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean selfClosing = false; // can self close (<foo />). used for unknown tags that self close, without forcing them as empty.",
+        "begin_line": 22,
+        "end_line": 22,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#23",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private boolean preserveWhitespace = false; // for pre, textarea, script etc",
+        "begin_line": 23,
+        "end_line": 23,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#25",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private Tag(String tagName) {",
+        "begin_line": 25,
+        "end_line": 25,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#26",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_START_LINE_26 = 26;",
+        "begin_line": 26,
+        "end_line": 26,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#27",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "String p_tag_name_174_line_26 = tagName;",
+        "begin_line": 27,
+        "end_line": 27,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#47",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "* @param tagName Name of tag, e.g. \"p\". Case insensitive.",
+        "begin_line": 47,
+        "end_line": 47,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#48",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "* @return The tag, either defined or new generic.",
+        "begin_line": 48,
+        "end_line": 48,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#49",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 49,
+        "end_line": 49,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#51",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_START_LINE_47 = 47;",
+        "begin_line": 51,
+        "end_line": 51,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "String p_tag_name_176_line_47 = tagName;",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#53",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_END_LINE_47 = 47;",
+        "begin_line": 53,
+        "end_line": 53,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#59",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_END_LINE_48 = 48;",
+        "begin_line": 59,
+        "end_line": 59,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#197",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "if (canContainInline != tag.canContainInline) return false;",
+        "begin_line": 197,
+        "end_line": 197,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#204",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "",
+        "begin_line": 204,
+        "end_line": 204,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#211",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "result = 31 * result + (isBlock ? 1 : 0);",
+        "begin_line": 211,
+        "end_line": 211,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#215",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "result = 31 * result + (empty ? 1 : 0);",
+        "begin_line": 215,
+        "end_line": 215,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#218",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "return result;",
+        "begin_line": 218,
+        "end_line": 218,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#222",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "return tagName;",
+        "begin_line": 222,
+        "end_line": 222,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#223",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "}",
+        "begin_line": 223,
+        "end_line": 223,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#224",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "",
+        "begin_line": 224,
+        "end_line": 224,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#226",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "// prepped from http://www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "begin_line": 226,
+        "end_line": 226,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#227",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private static final String[] blockTags = {",
+        "begin_line": 227,
+        "end_line": 227,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#228",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"html\", \"head\", \"body\", \"frameset\", \"script\", \"noscript\", \"style\", \"meta\", \"link\", \"title\", \"frame\",",
+        "begin_line": 228,
+        "end_line": 228,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#229",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"noframes\", \"section\", \"nav\", \"aside\", \"hgroup\", \"header\", \"footer\", \"p\", \"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\",",
+        "begin_line": 229,
+        "end_line": 229,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#230",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"ul\", \"ol\", \"pre\", \"div\", \"blockquote\", \"hr\", \"address\", \"figure\", \"figcaption\", \"form\", \"fieldset\", \"ins\",",
+        "begin_line": 230,
+        "end_line": 230,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#231",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"del\", \"dl\", \"dt\", \"dd\", \"li\", \"table\", \"caption\", \"thead\", \"tfoot\", \"tbody\", \"colgroup\", \"col\", \"tr\", \"th\",",
+        "begin_line": 231,
+        "end_line": 231,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#235",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"object\", \"base\", \"font\", \"tt\", \"i\", \"b\", \"u\", \"big\", \"small\", \"em\", \"strong\", \"dfn\", \"code\", \"samp\", \"kbd\",",
+        "begin_line": 235,
+        "end_line": 235,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#236",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"var\", \"cite\", \"abbr\", \"time\", \"acronym\", \"mark\", \"ruby\", \"rt\", \"rp\", \"a\", \"img\", \"br\", \"wbr\", \"map\", \"q\",",
+        "begin_line": 236,
+        "end_line": 236,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#237",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"sub\", \"sup\", \"bdo\", \"iframe\", \"embed\", \"span\", \"input\", \"select\", \"textarea\", \"label\", \"button\", \"optgroup\",",
+        "begin_line": 237,
+        "end_line": 237,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#238",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"option\", \"legend\", \"datalist\", \"keygen\", \"output\", \"progress\", \"meter\", \"area\", \"param\", \"source\", \"track\",",
+        "begin_line": 238,
+        "end_line": 238,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#239",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"summary\", \"command\", \"device\"",
+        "begin_line": 239,
+        "end_line": 239,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#240",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "};",
+        "begin_line": 240,
+        "end_line": 240,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#243",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"device\"",
+        "begin_line": 243,
+        "end_line": 243,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#244",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "};",
+        "begin_line": 244,
+        "end_line": 244,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#245",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "private static final String[] formatAsInlineTags = {",
+        "begin_line": 245,
+        "end_line": 245,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#246",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "\"title\", \"a\", \"p\", \"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\", \"pre\", \"address\", \"li\", \"th\", \"td\", \"script\", \"style\"",
+        "begin_line": 246,
+        "end_line": 246,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#249",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "",
+        "begin_line": 249,
+        "end_line": 249,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#250",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "static {",
+        "begin_line": 250,
+        "end_line": 250,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#251",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_START_LINE_222 = 225;",
+        "begin_line": 251,
+        "end_line": 251,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#252",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "String[] f_block_tags_180_line_222 = blockTags;",
+        "begin_line": 252,
+        "end_line": 252,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#254",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "// creates",
+        "begin_line": 254,
+        "end_line": 254,
+        "comment": "\t\t creates",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#257",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "String v_tag_name_185_line_223 = tagName;",
+        "begin_line": 257,
+        "end_line": 257,
+        "comment": "\t\t creates",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#258",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_END_LINE_223 = 223;",
+        "begin_line": 258,
+        "end_line": 258,
+        "comment": "\t\t creates",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#259",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "Tag tag = new Tag(v_tag_name_185_line_223);",
+        "begin_line": 259,
+        "end_line": 259,
+        "comment": "\t\t creates",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.unknown#260",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.unknown(...)",
+        "snippet": "int PROBE_START_LINE_224 = 224;",
+        "begin_line": 260,
+        "end_line": 260,
+        "comment": "\t\t creates",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

@@ -1,0 +1,610 @@
+[
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.unknown#45",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.unknown(...)",
+        "snippet": "public Cluster(final T center) {",
+        "begin_line": 45,
+        "end_line": 45,
+        "comment": "    \n     * Build a cluster centered at a specified point.\n     * @param center the point which is to be the center of this cluster\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.unknown#46",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.unknown(...)",
+        "snippet": "int PROBE_START_LINE_46 = 46;",
+        "begin_line": 46,
+        "end_line": 46,
+        "comment": "    \n     * Build a cluster centered at a specified point.\n     * @param center the point which is to be the center of this cluster\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.unknown#47",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.unknown(...)",
+        "snippet": "T p_center_1_line_46 = center;",
+        "begin_line": 47,
+        "end_line": 47,
+        "comment": "    \n     * Build a cluster centered at a specified point.\n     * @param center the point which is to be the center of this cluster\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.unknown#48",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.unknown(...)",
+        "snippet": "int PROBE_END_LINE_46 = 46;",
+        "begin_line": 48,
+        "end_line": 48,
+        "comment": "    \n     * Build a cluster centered at a specified point.\n     * @param center the point which is to be the center of this cluster\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.unknown#71",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.unknown(...)",
+        "snippet": "* @return chosen cluster center",
+        "begin_line": 71,
+        "end_line": 71,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#69",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "private static final long[] FACTORIALS = new long[] {",
+        "begin_line": 69,
+        "end_line": 69,
+        "comment": "     All long-representable factorials ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#1624",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "int sum = 0;",
+        "begin_line": 1624,
+        "end_line": 1624,
+        "comment": "    \n     * Calculates the L<sub>2</sub> (Euclidean) distance between two points.\n     *\n     * @param p1 the first point\n     * @param p2 the second point\n     * @return the L<sub>2</sub> distance between the two points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#1625",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "for (int i = 0; i < p1.length; i++) {",
+        "begin_line": 1625,
+        "end_line": 1625,
+        "comment": "    \n     * Calculates the L<sub>2</sub> (Euclidean) distance between two points.\n     *\n     * @param p1 the first point\n     * @param p2 the second point\n     * @return the L<sub>2</sub> distance between the two points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#1626",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_1626 = 1626;",
+        "begin_line": 1626,
+        "end_line": 1626,
+        "comment": "    \n     * Calculates the L<sub>2</sub> (Euclidean) distance between two points.\n     *\n     * @param p1 the first point\n     * @param p2 the second point\n     * @return the L<sub>2</sub> distance between the two points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#1627",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "int[] p_p_1_137_line_1626 = p1;",
+        "begin_line": 1627,
+        "end_line": 1627,
+        "comment": "    \n     * Calculates the L<sub>2</sub> (Euclidean) distance between two points.\n     *\n     * @param p1 the first point\n     * @param p2 the second point\n     * @return the L<sub>2</sub> distance between the two points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.util.MathUtils.unknown#1629",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/util/MathUtils.java",
+        "class_name": "org.apache.commons.math.util.MathUtils",
+        "signature": "org.apache.commons.math.util.MathUtils.unknown(...)",
+        "snippet": "int math_utils1_expr5_line_1626 = p_p_1_137_line_1626[v_i_140_line_1626];",
+        "begin_line": 1629,
+        "end_line": 1629,
+        "comment": "    \n     * Calculates the L<sub>2</sub> (Euclidean) distance between two points.\n     *\n     * @param p1 the first point\n     * @param p2 the second point\n     * @return the L<sub>2</sub> distance between the two points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#40",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "public KMeansPlusPlusClusterer(final Random random) {",
+        "begin_line": 40,
+        "end_line": 40,
+        "comment": "     Build a clusterer.\n     * @param random random generator to use for choosing initial centers\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#41",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_41 = 41;",
+        "begin_line": 41,
+        "end_line": 41,
+        "comment": "     Build a clusterer.\n     * @param random random generator to use for choosing initial centers\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#42",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "java.util.Random p_random_10_line_41 = random;",
+        "begin_line": 42,
+        "end_line": 42,
+        "comment": "     Build a clusterer.\n     * @param random random generator to use for choosing initial centers\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#56",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "public List<Cluster<T>> cluster(final Collection<T> points,",
+        "begin_line": 56,
+        "end_line": 56,
+        "comment": "    \n     * Runs the K-means++ clustering algorithm.\n     *\n     * @param points the points to cluster\n     * @param k the number of clusters to split the data into\n     * @param maxIterations the maximum number of iterations to run the algorithm\n     *     for.  If negative, no maximum will be used\n     * @return a list of clusters containing the points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#57",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "final int k, final int maxIterations) {",
+        "begin_line": 57,
+        "end_line": 57,
+        "comment": "    \n     * Runs the K-means++ clustering algorithm.\n     *\n     * @param points the points to cluster\n     * @param k the number of clusters to split the data into\n     * @param maxIterations the maximum number of iterations to run the algorithm\n     *     for.  If negative, no maximum will be used\n     * @return a list of clusters containing the points\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#89",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "clusters = newClusters;",
+        "begin_line": 89,
+        "end_line": 89,
+        "comment": "         iterate through updating the centers until we're done",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#90",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "}",
+        "begin_line": 90,
+        "end_line": 90,
+        "comment": "         iterate through updating the centers until we're done",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#91",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "return clusters;",
+        "begin_line": 91,
+        "end_line": 91,
+        "comment": "         iterate through updating the centers until we're done",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#107",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_90 = 90;",
+        "begin_line": 107,
+        "end_line": 107,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#108",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "Collection<Cluster<T>> p_clusters_16_line_90 = clusters;",
+        "begin_line": 108,
+        "end_line": 108,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#111",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "v_p_18_line_90);",
+        "begin_line": 111,
+        "end_line": 111,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#112",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_90 = 90;",
+        "begin_line": 112,
+        "end_line": 112,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#114",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_91 = 91;",
+        "begin_line": 114,
+        "end_line": 114,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#115",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "Cluster<T> v_cluster_19_line_91 = cluster;",
+        "begin_line": 115,
+        "end_line": 115,
+        "comment": "    \n     * Adds the given points to the closest {@link Cluster}.\n     *\n     * @param <T> type of the points to cluster\n     * @param clusters the {@link Cluster}s to add the points to\n     * @param points the points to add to the given {@link Cluster}s\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#139",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "",
+        "begin_line": 139,
+        "end_line": 139,
+        "comment": "    \n     * Use K-means++ to choose the initial centers.\n     *\n     * @param <T> type of the points to cluster\n     * @param points the points to choose the initial centers from\n     * @param k the number of centers to choose\n     * @param random random generator to use\n     * @return the initial centers\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#153",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "T v_first_point_25_line_112 = firstPoint;",
+        "begin_line": 153,
+        "end_line": 153,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#154",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_112 = 112;",
+        "begin_line": 154,
+        "end_line": 154,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#155",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "v_result_set_24_line_112.add(new Cluster<T>(v_first_point_25_line_112));",
+        "begin_line": 155,
+        "end_line": 155,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#156",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "",
+        "begin_line": 156,
+        "end_line": 156,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#157",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_114 = 114;",
+        "begin_line": 157,
+        "end_line": 157,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#161",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "final double[] dx2 = new double[kmeans_plus_plus_clusterer1_expr14_line_114];",
+        "begin_line": 161,
+        "end_line": 161,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown#162",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_115 = 137;",
+        "begin_line": 162,
+        "end_line": 162,
+        "comment": "\t\t Choose one center uniformly at random from among the data points.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown#43",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown(...)",
+        "snippet": "public EuclideanIntegerPoint(final int[] point) {",
+        "begin_line": 43,
+        "end_line": 43,
+        "comment": "    \n     * Build an instance wrapping an integer array.\n     * <p>The wrapped array is referenced, it is <em>not</em> copied.</p>\n     * @param point the n-dimensional point in integer space\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown#44",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown(...)",
+        "snippet": "int PROBE_START_LINE_44 = 44;",
+        "begin_line": 44,
+        "end_line": 44,
+        "comment": "    \n     * Build an instance wrapping an integer array.\n     * <p>The wrapped array is referenced, it is <em>not</em> copied.</p>\n     * @param point the n-dimensional point in integer space\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown#45",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown(...)",
+        "snippet": "int[] p_point_5_line_44 = point;",
+        "begin_line": 45,
+        "end_line": 45,
+        "comment": "    \n     * Build an instance wrapping an integer array.\n     * <p>The wrapped array is referenced, it is <em>not</em> copied.</p>\n     * @param point the n-dimensional point in integer space\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown(...)",
+        "snippet": "* @return a reference (not a copy!) to the wrapped array",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown#57",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.unknown(...)",
+        "snippet": "int PROBE_END_LINE_52 = 52;",
+        "begin_line": 57,
+        "end_line": 57,
+        "comment": "    \n     * Get the n-dimensional point in integer space.\n     * @return a reference (not a copy!) to the wrapped array\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

@@ -1,0 +1,155 @@
+[
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_144",
+        "snippet": "int PROBE_START_LINE_144 = 147;\n\nprivate static final java.util.regex.Pattern string_utils1_expr1_line_147 = Pattern.compile(\"\\\\s+\");",
+        "begin_line": 145,
+        "end_line": 147,
+        "comment": "    \n     * <p>The maximum size to which the padding constant(s) can expand.</p>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "private static boolean sunAvailable",
+        "snippet": "private static boolean sunAvailable = false;\nprivate static Method  sunDecomposeMethod = null;",
+        "begin_line": 711,
+        "end_line": 712,
+        "comment": "     SUN internal, Java 1.3 -> Java 5"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_706",
+        "snippet": "int PROBE_END_LINE_706 = 706;\n\nprivate static final Pattern sunPattern = string_utils1_expr4_line_706;//$NON-NLS-1$\n// Java 6+\nprivate static boolean java6Available = false;",
+        "begin_line": 718,
+        "end_line": 722,
+        "comment": "     SUN internal, Java 1.3 -> Java 5"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "private static Method  java6NormalizeMethod",
+        "snippet": "private static Method  java6NormalizeMethod = null;\nprivate static Object  java6NormalizerFormNFD = null;",
+        "begin_line": 723,
+        "end_line": 724,
+        "comment": "     Java 6+"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "ClassLoader string_utils1_expr9_line_717",
+        "snippet": "ClassLoader string_utils1_expr9_line_717 = string_utils1_expr10_line_717.getContextClassLoader();\nClass<?> string_utils1_expr7_line_717 = string_utils1_expr9_line_717.loadClass(\"java.text.Normalizer$Form\");",
+        "begin_line": 737,
+        "end_line": 738,
+        "comment": "     Java 6+"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_719",
+        "snippet": "int PROBE_START_LINE_719 = 719;\nClass<?> v_normalizer_form_class_31_line_719 = normalizerFormClass;",
+        "begin_line": 743,
+        "end_line": 744,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "Field string_utils1_expr12_line_719",
+        "snippet": "Field string_utils1_expr12_line_719 = v_normalizer_form_class_31_line_719.getField(\"NFD\");\nObject string_utils1_expr11_line_719 = string_utils1_expr12_line_719.get(null);",
+        "begin_line": 745,
+        "end_line": 746,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_719",
+        "snippet": "int PROBE_END_LINE_719 = 719;\njava6NormalizerFormNFD = string_utils1_expr11_line_719;//$NON-NLS-1$\nint PROBE_START_LINE_720 = 721;",
+        "begin_line": 747,
+        "end_line": 749,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3256",
+        "snippet": "int PROBE_START_LINE_3256 = 3258;\nObject[] p_array_180_line_3256 = array;",
+        "begin_line": 3301,
+        "end_line": 3302,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr28_line_3256",
+        "snippet": "boolean string_utils1_expr28_line_3256 = p_array_180_line_3256 == null;\nint PROBE_END_LINE_3256 = 3258;",
+        "begin_line": 3303,
+        "end_line": 3304,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3298",
+        "snippet": "int PROBE_START_LINE_3298 = 3298;\nObject[] p_array_183_line_3298 = array;",
+        "begin_line": 3371,
+        "end_line": 3372,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int p_start_index_185_line_3298",
+        "snippet": "int p_start_index_185_line_3298 = startIndex;\nObject string_utils1_expr42_line_3298 = p_array_183_line_3298[p_start_index_185_line_3298];",
+        "begin_line": 3373,
+        "end_line": 3374,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "Object string_utils1_expr44_line_3298",
+        "snippet": "Object string_utils1_expr44_line_3298 = array[startIndex];\nString string_utils1_expr43_line_3298 = string_utils1_expr44_line_3298.toString();",
+        "begin_line": 3378,
+        "end_line": 3379,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int string_utils1_expr38_line_3298",
+        "snippet": "int string_utils1_expr38_line_3298 = string_utils1_expr39_line_3298 ? 16 : string_utils1_expr41_line_3298;\nint string_utils1_expr37_line_3298 = (string_utils1_expr38_line_3298);",
+        "begin_line": 3382,
+        "end_line": 3383,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int string_utils1_expr36_line_3298",
+        "snippet": "int string_utils1_expr36_line_3298 = string_utils1_expr37_line_3298 + 1;\nint PROBE_END_LINE_3298 = 3298;",
+        "begin_line": 3384,
+        "end_line": 3385,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "StringBuilder buf",
+        "snippet": "StringBuilder buf = new StringBuilder(string_utils1_expr36_line_3298);\n\nfor (int i = startIndex; i < endIndex; i++) {\nint PROBE_START_LINE_3301 = 3303;",
+        "begin_line": 3386,
+        "end_line": 3389,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr45_line_3301",
+        "snippet": "boolean string_utils1_expr45_line_3301 = v_i_190_line_3301 > p_start_index_185_line_3301;\nint PROBE_END_LINE_3301 = 3303;",
+        "begin_line": 3392,
+        "end_line": 3393,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     "
+    }
+]

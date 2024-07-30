@@ -1,0 +1,50 @@
+[
+    {
+        "name": "org.apache.commons.math.stat.clustering.Cluster.Cluster(final T center)#45",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/Cluster.java",
+        "class_name": "org.apache.commons.math.stat.clustering.Cluster",
+        "signature": "org.apache.commons.math.stat.clustering.Cluster.Cluster(final T center)",
+        "snippet": "public Cluster(final T center) {\nint PROBE_START_LINE_46 = 46;\nT p_center_1_line_46 = center;\nint PROBE_END_LINE_46 = 46;\nthis.center = p_center_1_line_46;\npoints = new ArrayList<T>();\n}",
+        "begin_line": 45,
+        "end_line": 51,
+        "comment": "    \n     * Build a cluster centered at a specified point.\n     * @param center the point which is to be the center of this cluster\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.KMeansPlusPlusClusterer(final Random random)#40",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java",
+        "class_name": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer",
+        "signature": "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.KMeansPlusPlusClusterer(final Random random)",
+        "snippet": "public KMeansPlusPlusClusterer(final Random random) {\nint PROBE_START_LINE_41 = 41;\njava.util.Random p_random_10_line_41 = random;\nint PROBE_END_LINE_41 = 41;\nthis.random = p_random_10_line_41;\n}",
+        "begin_line": 40,
+        "end_line": 45,
+        "comment": "     Build a clusterer.\n     * @param random random generator to use for choosing initial centers\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.EuclideanIntegerPoint(final int[] point)#43",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-79/result/src/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java",
+        "class_name": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint",
+        "signature": "org.apache.commons.math.stat.clustering.EuclideanIntegerPoint.EuclideanIntegerPoint(final int[] point)",
+        "snippet": "public EuclideanIntegerPoint(final int[] point) {\nint PROBE_START_LINE_44 = 44;\nint[] p_point_5_line_44 = point;\nint PROBE_END_LINE_44 = 44;\nthis.point = p_point_5_line_44;\n}",
+        "begin_line": 43,
+        "end_line": 48,
+        "comment": "    \n     * Build an instance wrapping an integer array.\n     * <p>The wrapped array is referenced, it is <em>not</em> copied.</p>\n     * @param point the n-dimensional point in integer space\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

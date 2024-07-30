@@ -1,0 +1,1234 @@
+[
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.ClassIntrospector.ClassIntrospector()#48",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/ClassIntrospector.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.ClassIntrospector",
+        "signature": "com.fasterxml.jackson.databind.introspect.ClassIntrospector.ClassIntrospector()",
+        "snippet": "protected ClassIntrospector() { }\n\n/*\n/**********************************************************\n/* Public API: factory methods\n/**********************************************************\n*/\n\n/**\n* Factory method that constructs an introspector that has all\n* information needed for serialization purposes.\n*/\npublic abstract BeanDescription forSerialization(SerializationConfig cfg,\nJavaType type, MixInResolver r);\n\n/**\n* Factory method that constructs an introspector that has all\n* information needed for deserialization purposes.\n*/\npublic abstract BeanDescription forDeserialization(DeserializationConfig cfg,\nJavaType type, MixInResolver r);\n\n/**\n* Factory method that constructs an introspector that has all\n* information needed for constructing deserializers that use\n* intermediate Builder objects.\n*/\npublic abstract BeanDescription forDeserializationWithBuilder(DeserializationConfig cfg,\nJavaType type, MixInResolver r);\n\n/**\n* Factory method that constructs an introspector that has\n* information necessary for creating instances of given\n* class (\"creator\"), as well as class annotations, but\n* no information on member methods\n*/\npublic abstract BeanDescription forCreation(DeserializationConfig cfg, JavaType type,\nMixInResolver r);\n\n/**\n* Factory method that constructs an introspector that only has\n* information regarding annotations class itself (or its supertypes) has,\n* but nothing on methods or constructors.\n*/\npublic abstract BeanDescription forClassAnnotations(MapperConfig<?> cfg, JavaType type,\nMixInResolver r);\n\n/**\n* Factory method that constructs an introspector that only has\n* information regarding annotations class itself has (but NOT including\n* its supertypes), but nothing on methods or constructors.\n*/\npublic abstract BeanDescription forDirectClassAnnotations(MapperConfig<?> cfg, JavaType type,\nMixInResolver r);\n}",
+        "begin_line": 48,
+        "end_line": 102,
+        "comment": "        \n         * Method called to create a new, non-shared copy, to be used by different\n         * <code>ObjectMapper</code> instance, and one that should not be connected\n         * to this instance, if resolver has mutable state.\n         * If resolver is immutable may simply return `this`.\n         * \n         * @since 2.6\n         ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.util.ArrayIterator.ArrayIterator(T[] a)#16",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/util/ArrayIterator.java",
+        "class_name": "com.fasterxml.jackson.databind.util.ArrayIterator",
+        "signature": "com.fasterxml.jackson.databind.util.ArrayIterator.ArrayIterator(T[] a)",
+        "snippet": "public ArrayIterator(T[] a) {\nint PROBE_START_LINE_17 = 17;\nT[] p_a_4672_line_17 = a;\nint PROBE_END_LINE_17 = 17;\n_a = p_a_4672_line_17;\n_index = 0;\n}",
+        "begin_line": 16,
+        "end_line": 22,
+        "comment": "\n * Iterator implementation used to efficiently expose contents of an\n * Array as read-only iterator.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.hasIgnoreMarker(AnnotatedMember m)#480",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector",
+        "signature": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.hasIgnoreMarker(AnnotatedMember m)",
+        "snippet": "public boolean hasIgnoreMarker(AnnotatedMember m) {\nint PROBE_START_LINE_367 = 367;\ncom.fasterxml.jackson.databind.introspect.AnnotatedMember p_m_3073_line_367 = m;\nboolean jackson_annotation_introspector1_expr36_line_367 = _isIgnorable(p_m_3073_line_367);\nint PROBE_END_LINE_367 = 367;\nreturn jackson_annotation_introspector1_expr36_line_367;\n}",
+        "begin_line": 480,
+        "end_line": 486,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.findSerializationPropertyOrder(AnnotatedClass ac)#1079",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/JacksonAnnotationIntrospector.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector",
+        "signature": "com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.findSerializationPropertyOrder(AnnotatedClass ac)",
+        "snippet": "public String[] findSerializationPropertyOrder(AnnotatedClass ac) {\nint PROBE_START_LINE_807 = 807;\ncom.fasterxml.jackson.databind.introspect.AnnotatedClass p_ac_3130_line_807 = ac;\nJsonPropertyOrder jackson_annotation_introspector1_expr89_line_807 = _findAnnotation(p_ac_3130_line_807,\nJsonPropertyOrder.class);\nint PROBE_END_LINE_807 = 807;\nJsonPropertyOrder order = jackson_annotation_introspector1_expr89_line_807;\nint PROBE_START_LINE_808 = 808;\ncom.fasterxml.jackson.annotation.JsonPropertyOrder v_order_3131_line_808 = order;\nboolean jackson_annotation_introspector1_expr94_line_808 = v_order_3131_line_808 == null;\nboolean jackson_annotation_introspector1_expr92_line_808 = (jackson_annotation_introspector1_expr94_line_808);\nString[] jackson_annotation_introspector1_expr93_line_808 = null;\nif (!jackson_annotation_introspector1_expr92_line_808) {\njackson_annotation_introspector1_expr93_line_808 = order.value();\n}",
+        "begin_line": 1079,
+        "end_line": 1093,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.jsontype.impl.StdSubtypeResolver.StdSubtypeResolver()#23",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/jsontype/impl/StdSubtypeResolver.java",
+        "class_name": "com.fasterxml.jackson.databind.jsontype.impl.StdSubtypeResolver",
+        "signature": "com.fasterxml.jackson.databind.jsontype.impl.StdSubtypeResolver.StdSubtypeResolver()",
+        "snippet": "public StdSubtypeResolver() { }\n\n/*\n/**********************************************************\n/* Subtype registration\n/**********************************************************\n*/\n\n@Override\npublic void registerSubtypes(NamedType... types) {\nif (_registeredSubtypes == null) {\n_registeredSubtypes = new LinkedHashSet<NamedType>();\n}",
+        "begin_line": 23,
+        "end_line": 35,
+        "comment": "\n * Standard {@link SubtypeResolver} implementation.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.impl.FieldProperty.withName(PropertyName newName)#86",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/impl/FieldProperty.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.impl.FieldProperty",
+        "signature": "com.fasterxml.jackson.databind.deser.impl.FieldProperty.withName(PropertyName newName)",
+        "snippet": "public FieldProperty withName(PropertyName newName) {\nreturn new FieldProperty(this, newName);\n}",
+        "begin_line": 86,
+        "end_line": 88,
+        "comment": "    \n     * Constructor used for JDK Serialization when reading persisted object\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.DefaultSerializerProvider()#65",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider",
+        "signature": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.DefaultSerializerProvider()",
+        "snippet": "protected DefaultSerializerProvider() { super(); }\n\nprotected DefaultSerializerProvider(SerializerProvider src,\nSerializationConfig config,SerializerFactory f) {\nsuper(src, config, f);\n}",
+        "begin_line": 65,
+        "end_line": 70,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.Impl()#626",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/DefaultSerializerProvider.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider",
+        "signature": "com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.Impl()",
+        "snippet": "public Impl() { super(); }\npublic Impl(Impl src) { super(src); }\n\nprotected Impl(SerializerProvider src, SerializationConfig config,\nSerializerFactory f) {\nsuper(src, config, f);\n}",
+        "begin_line": 626,
+        "end_line": 632,
+        "comment": "    \n     * Concrete implementation that defines factory method(s),\n     * defined as final.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeFactory._findWellKnownSimple(Class<?> clz)#1307",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeFactory.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeFactory",
+        "signature": "com.fasterxml.jackson.databind.type.TypeFactory._findWellKnownSimple(Class<?> clz)",
+        "snippet": "protected JavaType _findWellKnownSimple(Class<?> clz) {\nint PROBE_START_LINE_1132 = 1139;\nClass<?> p_clz_4601_line_1132 = clz;\nboolean type_factory1_expr50_line_1132 = p_clz_4601_line_1132.isPrimitive();\nint PROBE_END_LINE_1132 = 1139;\nif (type_factory1_expr50_line_1132) {\nint PROBE_START_LINE_1133 = 1133;\nClass<?> p_clz_4601_line_1133 = clz;\nClass<?> f_cls_bool_4474_line_1133 = CLS_BOOL;\nboolean type_factory1_expr51_line_1133 = p_clz_4601_line_1133 == f_cls_bool_4474_line_1133;\nif (type_factory1_expr51_line_1133) {\ncom.fasterxml.jackson.databind.type.SimpleType f_core_type_bool_4477_line_1133 = CORE_TYPE_BOOL;\nint PROBE_END_LINE_1133 = 1133;\nreturn f_core_type_bool_4477_line_1133;\n}",
+        "begin_line": 1307,
+        "end_line": 1321,
+        "comment": "    \n     * Helper method called to see if requested, non-generic-parameterized\n     * type is one of common, \"well-known\" types, instances of which are\n     * pre-constructed and do not need dynamic caching.\n     *\n     * @since 2.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.MapperConfigBase.withAttributes(Map<?,?> attributes)#531",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/MapperConfigBase.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.MapperConfigBase",
+        "signature": "com.fasterxml.jackson.databind.cfg.MapperConfigBase.withAttributes(Map<?,?> attributes)",
+        "snippet": "public T withAttributes(Map<?,?> attributes) {\nreturn with(getAttributes().withSharedAttributes(attributes));\n}",
+        "begin_line": 531,
+        "end_line": 533,
+        "comment": "    \n     * Method for constructing an instance that has only specified\n     * attributes, removing any attributes that exist before the call.\n     * \n     * @since 2.3\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.ConfigOverrides.ConfigOverrides()#18",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/ConfigOverrides.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.ConfigOverrides",
+        "signature": "com.fasterxml.jackson.databind.cfg.ConfigOverrides.ConfigOverrides()",
+        "snippet": "public ConfigOverrides() {\n_overrides = null;\n}",
+        "begin_line": 18,
+        "end_line": 20,
+        "comment": "\n * Container for individual {@link ConfigOverride} values.\n * \n * @since 2.8\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.ConfigOverrides.findOverride(Class<?> type)#38",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/ConfigOverrides.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.ConfigOverrides",
+        "signature": "com.fasterxml.jackson.databind.cfg.ConfigOverrides.findOverride(Class<?> type)",
+        "snippet": "public ConfigOverride findOverride(Class<?> type) {\nint PROBE_START_LINE_38 = 40;\nMap<Class<?>, com.fasterxml.jackson.databind.cfg.MutableConfigOverride> f__overrides_1129_line_38 = (Map<Class<?>, com.fasterxml.jackson.databind.cfg.MutableConfigOverride>) (_overrides);\nboolean config_overrides1_expr1_line_38 = f__overrides_1129_line_38 == null;\nint PROBE_END_LINE_38 = 40;\nif (config_overrides1_expr1_line_38) {\nreturn null;\n}",
+        "begin_line": 38,
+        "end_line": 45,
+        "comment": "\n * Container for individual {@link ConfigOverride} values.\n * \n * @since 2.8\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeBase.getBindings()#111",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeBase.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeBase",
+        "signature": "com.fasterxml.jackson.databind.type.TypeBase.getBindings()",
+        "snippet": "public TypeBindings getBindings() {\nint PROBE_START_LINE_85 = 85;\ncom.fasterxml.jackson.databind.type.TypeBindings f__bindings_4324_line_85 = _bindings;\nint PROBE_END_LINE_85 = 85;\nreturn f__bindings_4324_line_85;\n}",
+        "begin_line": 111,
+        "end_line": 116,
+        "comment": "    \n     * Copy-constructor used when refining/upgrading type instances.\n     *\n     * @since 2.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.CollectionType._narrow(Class<?> subclass)#73",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/CollectionType.java",
+        "class_name": "com.fasterxml.jackson.databind.type.CollectionType",
+        "signature": "com.fasterxml.jackson.databind.type.CollectionType._narrow(Class<?> subclass)",
+        "snippet": "protected JavaType _narrow(Class<?> subclass) {\nreturn new CollectionType(subclass, _bindings,\n_superClass, _superInterfaces, _elementType, null, null, _asStatic);\n}",
+        "begin_line": 73,
+        "end_line": 76,
+        "comment": "                 !!! TODO: Wrong, does have supertypes, but:",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.CollectionType.withStaticTyping()#134",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/CollectionType.java",
+        "class_name": "com.fasterxml.jackson.databind.type.CollectionType",
+        "signature": "com.fasterxml.jackson.databind.type.CollectionType.withStaticTyping()",
+        "snippet": "public CollectionType withStaticTyping() {\nif (_asStatic) {\nreturn this;\n}",
+        "begin_line": 134,
+        "end_line": 137,
+        "comment": "                 !!! TODO: Wrong, does have supertypes, but:",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder.getValueInstantiator()#338",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/BeanDeserializerBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder",
+        "signature": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder.getValueInstantiator()",
+        "snippet": "public ValueInstantiator getValueInstantiator() {\nint PROBE_START_LINE_302 = 302;\ncom.fasterxml.jackson.databind.deser.ValueInstantiator f__value_instantiator_1810_line_302 = _valueInstantiator;\nint PROBE_END_LINE_302 = 302;\nreturn f__value_instantiator_1810_line_302;\n}",
+        "begin_line": 338,
+        "end_line": 343,
+        "comment": "    \n     * Method that allows accessing all properties that this\n     * builder currently contains.\n     *<p>\n     * Note that properties are returned in order that properties\n     * are ordered (explictly, or by rule), which is the serialization\n     * order.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder.getInjectables()#345",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/BeanDeserializerBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder",
+        "signature": "com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder.getInjectables()",
+        "snippet": "public List<ValueInjector> getInjectables() {\nint PROBE_START_LINE_306 = 306;\nList<com.fasterxml.jackson.databind.deser.impl.ValueInjector> f__injectables_1818_line_306 = _injectables;\nint PROBE_END_LINE_306 = 306;\nreturn f__injectables_1818_line_306;\n}",
+        "begin_line": 345,
+        "end_line": 350,
+        "comment": "    \n     * Method that allows accessing all properties that this\n     * builder currently contains.\n     *<p>\n     * Note that properties are returned in order that properties\n     * are ordered (explictly, or by rule), which is the serialization\n     * order.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Basic(TypeFactory tf, TypeBindings b)#24",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/TypeResolutionContext.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.TypeResolutionContext",
+        "signature": "com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Basic(TypeFactory tf, TypeBindings b)",
+        "snippet": "public Basic(TypeFactory tf, TypeBindings b) {\nint PROBE_START_LINE_25 = 25;\ncom.fasterxml.jackson.databind.type.TypeFactory p_tf_3441_line_25 = tf;\nint PROBE_END_LINE_25 = 25;\n_typeFactory = p_tf_3441_line_25;\nint PROBE_START_LINE_26 = 26;\ncom.fasterxml.jackson.databind.type.TypeBindings p_b_3442_line_26 = b;\nint PROBE_END_LINE_26 = 26;\n_bindings = p_b_3442_line_26;\n}",
+        "begin_line": 24,
+        "end_line": 33,
+        "comment": "\n * Interface that defines API used by members (like {@link AnnotatedMethod})\n * to dynamically resolve types they have.\n *\n * @since 2.7\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.MapperConfig.compileString(String src)#278",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/MapperConfig.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.MapperConfig",
+        "signature": "com.fasterxml.jackson.databind.cfg.MapperConfig.compileString(String src)",
+        "snippet": "public SerializableString compileString(String src) {\n/* 20-Jan-2014, tatu: For now we will just construct it directly, but\n*    for 2.4 need to allow overriding to support non-standard extensions\n*    to be used by extensions like Afterburner.\n*/\nreturn new SerializedString(src);\n}",
+        "begin_line": 278,
+        "end_line": 284,
+        "comment": "    \n     * Method for constructing a specialized textual object that can typically\n     * be serialized faster than basic {@link java.lang.String} (depending\n     * on escaping needed if any, char-to-byte encoding if needed).\n     * \n     * @param src Text to represent\n     * \n     * @return Optimized text object constructed\n     * \n     * @since 2.4\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.ToStringSerializer.ToStringSerializer()#38",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/ToStringSerializer.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.ToStringSerializer",
+        "signature": "com.fasterxml.jackson.databind.ser.std.ToStringSerializer.ToStringSerializer()",
+        "snippet": "public ToStringSerializer() { super(Object.class); }\n\n/**\n* Sometimes it may actually make sense to retain actual handled type, so...\n*\n* @since 2.5\n*/\npublic ToStringSerializer(Class<?> handledType) {\nsuper(handledType, false);\n}",
+        "begin_line": 38,
+        "end_line": 47,
+        "comment": "    \n     *<p>\n     * Note: usually you should NOT create new instances, but instead use\n     * {@link #instance} which is stateless and fully thread-safe. However,\n     * there are cases where constructor is needed; for example,\n     * when using explicit serializer annotations like\n     * {@link com.fasterxml.jackson.databind.annotation.JsonSerialize#using}.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeParser.TypeParser(TypeFactory f)#18",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeParser.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeParser",
+        "signature": "com.fasterxml.jackson.databind.type.TypeParser.TypeParser(TypeFactory f)",
+        "snippet": "public TypeParser(TypeFactory f) {\nint PROBE_START_LINE_19 = 19;\ncom.fasterxml.jackson.databind.type.TypeFactory p_f_4660_line_19 = f;\nint PROBE_END_LINE_19 = 19;\n_factory = p_f_4660_line_19;\n}",
+        "begin_line": 18,
+        "end_line": 23,
+        "comment": "\n * Simple recursive-descent parser for parsing canonical {@link JavaType}\n * representations and constructing type instances.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.DefaultDeserializationContext(DeserializerFactory df, DeserializerCache cache)#45",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext",
+        "signature": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.DefaultDeserializationContext(DeserializerFactory df, DeserializerCache cache)",
+        "snippet": "protected DefaultDeserializationContext(DeserializerFactory df, DeserializerCache cache) {\nsuper(df, cache);\n}",
+        "begin_line": 45,
+        "end_line": 47,
+        "comment": "    \n     * Constructor that will pass specified deserializer factory and\n     * cache: cache may be null (in which case default implementation\n     * will be used), factory can not be null\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.Impl(DeserializerFactory df)#323",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/DefaultDeserializationContext.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext",
+        "signature": "com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.Impl(DeserializerFactory df)",
+        "snippet": "public Impl(DeserializerFactory df) {\nsuper(df, null);\n}",
+        "begin_line": 323,
+        "end_line": 325,
+        "comment": "        \n         * Default constructor for a blueprint object, which will use the standard\n         * {@link DeserializerCache}, given factory.\n         ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.ClassStack.ClassStack(ClassStack parent, Class<?> curr)#24",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/ClassStack.java",
+        "class_name": "com.fasterxml.jackson.databind.type.ClassStack",
+        "signature": "com.fasterxml.jackson.databind.type.ClassStack.ClassStack(ClassStack parent, Class<?> curr)",
+        "snippet": "private ClassStack(ClassStack parent, Class<?> curr) {\nint PROBE_START_LINE_25 = 25;\ncom.fasterxml.jackson.databind.type.ClassStack p_parent_4257_line_25 = parent;\nint PROBE_END_LINE_25 = 25;\n_parent = p_parent_4257_line_25;\nint PROBE_START_LINE_26 = 26;\nClass<?> p_curr_4258_line_26 = curr;\nint PROBE_END_LINE_26 = 26;\n_current = p_curr_4258_line_26;\n}",
+        "begin_line": 24,
+        "end_line": 33,
+        "comment": "\n * Simple helper class used to keep track of 'call stack' for classes being referenced\n * (as well as unbound variables)\n *\n * @since 2.7\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.StringSerializer.StringSerializer()#29",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/StringSerializer.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.StringSerializer",
+        "signature": "com.fasterxml.jackson.databind.ser.std.StringSerializer.StringSerializer()",
+        "snippet": "public StringSerializer() { super(String.class, false); }\n\n/**\n* For Strings, both null and Empty String qualify for emptiness.\n*/\n@Override\n@Deprecated\npublic boolean isEmpty(Object value) {\nString str = (String) value;\nreturn (str == null) || (str.length() == 0);\n}",
+        "begin_line": 29,
+        "end_line": 39,
+        "comment": "   use of bridge methods",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.CollectionLikeType.withHandlersFrom(JavaType src)#140",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/CollectionLikeType.java",
+        "class_name": "com.fasterxml.jackson.databind.type.CollectionLikeType",
+        "signature": "com.fasterxml.jackson.databind.type.CollectionLikeType.withHandlersFrom(JavaType src)",
+        "snippet": "public JavaType withHandlersFrom(JavaType src) {\nint PROBE_START_LINE_138 = 138;\ncom.fasterxml.jackson.databind.JavaType p_src_4293_line_138 = src;\nJavaType collection_like_type1_expr3_line_138 = super.withHandlersFrom(p_src_4293_line_138);\nint PROBE_END_LINE_138 = 138;\nJavaType type = collection_like_type1_expr3_line_138;\nint PROBE_START_LINE_139 = 139;\ncom.fasterxml.jackson.databind.JavaType p_src_4293_line_139 = src;\nJavaType collection_like_type1_expr4_line_139 = p_src_4293_line_139.getContentType();\nint PROBE_END_LINE_139 = 139;\nJavaType srcCt = collection_like_type1_expr4_line_139;\nint PROBE_START_LINE_140 = 145;\ncom.fasterxml.jackson.databind.JavaType v_src_ct_4295_line_140 = srcCt;\nboolean collection_like_type1_expr5_line_140 = v_src_ct_4295_line_140 != null;\nint PROBE_END_LINE_140 = 145;\nif (collection_like_type1_expr5_line_140) {\nint PROBE_START_LINE_141 = 141;\ncom.fasterxml.jackson.databind.JavaType f__element_type_4275_line_141 = _elementType;\ncom.fasterxml.jackson.databind.JavaType v_src_ct_4295_line_141 = srcCt;\nJavaType collection_like_type1_expr6_line_141 = f__element_type_4275_line_141\n.withHandlersFrom(v_src_ct_4295_line_141);\nint PROBE_END_LINE_141 = 141;\nJavaType ct = collection_like_type1_expr6_line_141;\nint PROBE_START_LINE_142 = 144;\ncom.fasterxml.jackson.databind.JavaType v_ct_4296_line_142 = ct;\ncom.fasterxml.jackson.databind.JavaType f__element_type_4275_line_142 = _elementType;\nboolean collection_like_type1_expr7_line_142 = v_ct_4296_line_142 != f__element_type_4275_line_142;\nint PROBE_END_LINE_142 = 144;\nif (collection_like_type1_expr7_line_142) {\nint PROBE_START_LINE_143 = 143;\ncom.fasterxml.jackson.databind.JavaType v_type_4294_line_143 = type;\ncom.fasterxml.jackson.databind.JavaType v_ct_4296_line_143 = ct;\ncom.fasterxml.jackson.databind.JavaType collection_like_type1_expr8_line_143 = v_type_4294_line_143\n.withContentType(v_ct_4296_line_143);\nint PROBE_END_LINE_143 = 143;\ntype = collection_like_type1_expr8_line_143;\n}",
+        "begin_line": 140,
+        "end_line": 176,
+        "comment": "            will cross that bridge if and when need be",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase.TypeIdResolverBase(JavaType baseType, TypeFactory typeFactory)#37",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/jsontype/impl/TypeIdResolverBase.java",
+        "class_name": "com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase",
+        "signature": "com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase.TypeIdResolverBase(JavaType baseType, TypeFactory typeFactory)",
+        "snippet": "protected TypeIdResolverBase(JavaType baseType, TypeFactory typeFactory) {\nint PROBE_START_LINE_38 = 38;\ncom.fasterxml.jackson.databind.JavaType p_base_type_3679_line_38 = baseType;\nint PROBE_END_LINE_38 = 38;\n_baseType = p_base_type_3679_line_38;\nint PROBE_START_LINE_39 = 39;\ncom.fasterxml.jackson.databind.type.TypeFactory p_type_factory_3680_line_39 = typeFactory;\nint PROBE_END_LINE_39 = 39;\n_typeFactory = p_type_factory_3680_line_39;\n}",
+        "begin_line": 37,
+        "end_line": 46,
+        "comment": "    \n     * Common base type for all polymorphic instances handled.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.Annotated.Annotated()#17",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/Annotated.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.Annotated",
+        "signature": "com.fasterxml.jackson.databind.introspect.Annotated.Annotated()",
+        "snippet": "protected Annotated() { }\n\npublic abstract <A extends Annotation> A getAnnotation(Class<A> acls);\n\npublic abstract boolean hasAnnotation(Class<?> acls);\n\n/**\n* @since 2.7\n*/\npublic abstract boolean hasOneOf(Class<? extends Annotation>[] annoClasses);\n\n/**\n* Fluent factory method that will construct a new instance that uses specified\n* instance annotations instead of currently configured ones.\n*/\npublic abstract Annotated withAnnotations(AnnotationMap fallback);\n\n/**\n* Fluent factory method that will construct a new instance that uses\n* annotations from specified {@link Annotated} as fallback annotations\n*/\npublic final Annotated withFallBackAnnotationsFrom(Annotated annotated) {\nreturn withAnnotations(AnnotationMap.merge(getAllAnnotations(), annotated.getAllAnnotations()));\n}",
+        "begin_line": 17,
+        "end_line": 40,
+        "comment": "\n * Shared base class used for anything on which annotations (included\n * within a {@link AnnotationMap}).\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.StdValueInstantiator(DeserializationConfig config, JavaType valueType)#88",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator",
+        "signature": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.StdValueInstantiator(DeserializationConfig config, JavaType valueType)",
+        "snippet": "public StdValueInstantiator(DeserializationConfig config, JavaType valueType) {\nint PROBE_START_LINE_87 = 87;\ncom.fasterxml.jackson.databind.JavaType p_value_type_2536_line_87 = valueType;\nboolean std_value_instantiator1_expr5_line_87 = p_value_type_2536_line_87 == null;\nboolean std_value_instantiator1_expr2_line_87 = (std_value_instantiator1_expr5_line_87);\nString std_value_instantiator1_expr4_line_87 = null;\nif (!std_value_instantiator1_expr2_line_87) {\nstd_value_instantiator1_expr4_line_87 = valueType.toString();\n}",
+        "begin_line": 88,
+        "end_line": 96,
+        "comment": "    \n     * @deprecated Since 2.7 use constructor that takes {@link JavaType} instead\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.configureFromLongCreator(AnnotatedWithParams creator)#214",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/std/StdValueInstantiator.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator",
+        "signature": "com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.configureFromLongCreator(AnnotatedWithParams creator)",
+        "snippet": "public void configureFromLongCreator(AnnotatedWithParams creator) {\nint PROBE_START_LINE_156 = 156;\ncom.fasterxml.jackson.databind.introspect.AnnotatedWithParams p_creator_2562_line_156 = creator;\nint PROBE_END_LINE_156 = 156;\n_fromLongCreator = p_creator_2562_line_156;\n}",
+        "begin_line": 214,
+        "end_line": 219,
+        "comment": "    \n     * Method for setting properties related to instantiating values\n     * from JSON Object. We will choose basically only one approach (out of possible\n     * three), and clear other properties\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap.withCaseInsensitivity(boolean state)#101",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/impl/BeanPropertyMap.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap",
+        "signature": "com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap.withCaseInsensitivity(boolean state)",
+        "snippet": "public BeanPropertyMap withCaseInsensitivity(boolean state) {\nif (_caseInsensitive == state) {\nreturn this;\n}",
+        "begin_line": 101,
+        "end_line": 104,
+        "comment": "    \n     * Mutant factory method that constructs a new instance if desired case-insensitivity\n     * state differs from the state of this instance; if states are the same, returns\n     * <code>this</code>.\n     *\n     * @since 2.8\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.AnnotationIntrospector.findWrapperName(Annotated ann)#538",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/AnnotationIntrospector.java",
+        "class_name": "com.fasterxml.jackson.databind.AnnotationIntrospector",
+        "signature": "com.fasterxml.jackson.databind.AnnotationIntrospector.findWrapperName(Annotated ann)",
+        "snippet": "public PropertyName findWrapperName(Annotated ann) { return null; }\n\n/**\n* Method for finding suggested default value (as simple textual serialization)\n* for the property. While core databind does not make any use of it, it is exposed\n* for extension modules to use: an expected use is generation of schema representations\n* and documentation.\n*\n* @since 2.5\n*/\npublic String findPropertyDefaultValue(Annotated ann) { return null; }\n\n/**\n* Method used to check whether specified property member (accessor\n* or mutator) defines human-readable description to use for documentation.\n* There are no further definitions for contents; for example, whether\n* these may be marked up using HTML is not defined.\n*\n* @return Human-readable description, if any.\n*\n* @since 2.3\n*/\npublic String findPropertyDescription(Annotated ann) { return null; }\n\n/**\n* Method used to check whether specified property member (accessor\n* or mutator) defines numeric index, and if so, what is the index value.\n* Possible use cases for index values included use by underlying data format\n* (some binary formats mandate use of index instead of name) and ordering\n* of properties (for documentation, or during serialization).\n*\n* @since 2.4\n*\n* @return Explicitly specified index for the property, if any\n*/\npublic Integer findPropertyIndex(Annotated ann) { return null; }\n\n/**\n* Method for finding implicit name for a property that given annotated\n* member (field, method, creator parameter) may represent.\n* This is different from explicit, annotation-based property name, in that\n* it is \"weak\" and does not either proof that a property exists (for example,\n* if visibility is not high enough), or override explicit names.\n* In practice this method is used to introspect optional names for creator\n* parameters (which may or may not be available and can not be detected\n* by standard databind); or to provide alternate name mangling for\n* fields, getters and/or setters.\n*\n* @since 2.4\n*/\npublic String findImplicitPropertyName(AnnotatedMember member) { return null; }\n\n/**\n* Method for finding optional access definition for a property, annotated\n* on one of its accessors. If a definition for read-only, write-only\n* or read-write cases, visibility rules may be modified. Note, however,\n* that even more specific annotations (like one for ignoring specific accessor)\n* may further override behavior of the access definition.\n*\n* @since 2.6\n*/\npublic JsonProperty.Access findPropertyAccess(Annotated ann) { return null; }\n\n/**\n* Method called in cases where a class has two methods eligible to be used\n* for the same logical property, and default logic is not enough to figure\n* out clear precedence. Introspector may try to choose one to use; or, if\n* unable, return `null` to indicate it can not resolve the problem.\n*\n* @since 2.7\n*/\npublic AnnotatedMethod resolveSetterConflict(MapperConfig<?> config,\nAnnotatedMethod setter1, AnnotatedMethod setter2) {\nreturn null;\n}",
+        "begin_line": 538,
+        "end_line": 612,
+        "comment": "    \n     * Method used to check if specified property has annotation that indicates\n     * that it should be wrapped in an element; and if so, name to use.\n     * Note that not all serializers and deserializers support use this method:\n     * currently (2.1) it is only used by XML-backed handlers.\n     * \n     * @return Wrapper name to use, if any, or {@link PropertyName#USE_DEFAULT}\n     *   to indicate that no wrapper element should be used.\n     * \n     * @since 2.1\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.NullSerializer.NullSerializer()#26",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/NullSerializer.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.NullSerializer",
+        "signature": "com.fasterxml.jackson.databind.ser.std.NullSerializer.NullSerializer()",
+        "snippet": "private NullSerializer() { super(Object.class); }\n\n@Override\npublic void serialize(Object value, JsonGenerator gen, SerializerProvider provider) throws IOException {\ngen.writeNull();\n}",
+        "begin_line": 26,
+        "end_line": 31,
+        "comment": "\n * This is a simple dummy serializer that will just output literal\n * JSON null value whenever serialization is requested.\n * Used as the default \"null serializer\" (which is used for serializing\n * null object references unless overridden), as well as for some\n * more exotic types (java.lang.Void).\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.SerializationConfig.with(SubtypeResolver str)#486",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/SerializationConfig.java",
+        "class_name": "com.fasterxml.jackson.databind.SerializationConfig",
+        "signature": "com.fasterxml.jackson.databind.SerializationConfig.with(SubtypeResolver str)",
+        "snippet": "public SerializationConfig with(SubtypeResolver str) {\nreturn (str == _subtypeResolver)? this : new SerializationConfig(this, str);\n}",
+        "begin_line": 486,
+        "end_line": 488,
+        "comment": "         Also need to toggle this feature based on existence of date format:",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.DeserializationFeature.DeserializationFeature(boolean defaultState)#458",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/DeserializationFeature.java",
+        "class_name": "com.fasterxml.jackson.databind.DeserializationFeature",
+        "signature": "com.fasterxml.jackson.databind.DeserializationFeature.DeserializationFeature(boolean defaultState)",
+        "snippet": "private DeserializationFeature(boolean defaultState) {\nint PROBE_START_LINE_459 = 459;\nboolean p_default_state_405_line_459 = defaultState;\nint PROBE_END_LINE_459 = 459;\n_defaultState = p_default_state_405_line_459;\nint PROBE_START_LINE_460 = 460;\nint deserialization_feature1_expr3_line_460 = ordinal();\nint deserialization_feature1_expr2_line_460 = 1 << deserialization_feature1_expr3_line_460;\nint deserialization_feature1_expr1_line_460 = (deserialization_feature1_expr2_line_460);\nint PROBE_END_LINE_460 = 460;\n_mask = deserialization_feature1_expr1_line_460;\n}",
+        "begin_line": 458,
+        "end_line": 469,
+        "comment": "    \n     * Feature that determines whether {@link ObjectReader} should\n     * try to eagerly fetch necessary {@link JsonDeserializer} when\n     * possible. This improves performance in cases where similarly\n     * configured {@link ObjectReader} instance is used multiple\n     * times; and should not significantly affect single-use cases.\n     *<p>\n     * Note that there should not be any need to normally disable this\n     * feature: only consider that if there are actual perceived problems.\n     *<p>\n     * Feature is enabled by default.\n     * \n     * @since 2.1\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.bindingsForBeanType()#348",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription",
+        "signature": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.bindingsForBeanType()",
+        "snippet": "public TypeBindings bindingsForBeanType() {\nreturn _type.getBindings();\n}",
+        "begin_line": 348,
+        "end_line": 350,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.getConstructors()#425",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription",
+        "signature": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.getConstructors()",
+        "snippet": "public List<AnnotatedConstructor> getConstructors() {\nint PROBE_START_LINE_300 = 300;\ncom.fasterxml.jackson.databind.introspect.AnnotatedClass f__class_info_2904_line_300 = _classInfo;\nList<com.fasterxml.jackson.databind.introspect.AnnotatedConstructor> basic_bean_description1_expr33_line_300 = f__class_info_2904_line_300\n.getConstructors();\nint PROBE_END_LINE_300 = 300;\nreturn basic_bean_description1_expr33_line_300;\n}",
+        "begin_line": 425,
+        "end_line": 432,
+        "comment": "            /* !!! 18-May-2009, tatu: how about enums? Can add support if\n             *  requested; easy enough for devs to add support within\n             *  method.\n             ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.findMethod(String name, Class<?>[] paramTypes)#463",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription",
+        "signature": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.findMethod(String name, Class<?>[] paramTypes)",
+        "snippet": "public AnnotatedMethod findMethod(String name, Class<?>[] paramTypes) {\nreturn _classInfo.findMethod(name, paramTypes);\n}",
+        "begin_line": 463,
+        "end_line": 465,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.couldDeserialize()#272",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder",
+        "signature": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.couldDeserialize()",
+        "snippet": "public boolean couldDeserialize() {\nreturn (_ctorParameters != null) || (_setters != null) || (_fields != null);\n}",
+        "begin_line": 272,
+        "end_line": 274,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.getConstructorParameters()#477",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder",
+        "signature": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.getConstructorParameters()",
+        "snippet": "public Iterator<AnnotatedParameter> getConstructorParameters() {\nint PROBE_START_LINE_386 = 388;\ncom.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.Linked<com.fasterxml.jackson.databind.introspect.AnnotatedParameter> f__ctor_parameters_3320_line_386 = _ctorParameters;\nboolean pojoproperty_builder1_expr19_line_386 = f__ctor_parameters_3320_line_386 == null;\nint PROBE_END_LINE_386 = 388;\nif (pojoproperty_builder1_expr19_line_386) {\nint PROBE_START_LINE_387 = 387;\nIterator<com.fasterxml.jackson.databind.introspect.AnnotatedParameter> pojoproperty_builder1_expr20_line_387 = ClassUtil\n.emptyIterator();\nint PROBE_END_LINE_387 = 387;\nreturn pojoproperty_builder1_expr20_line_387;\n}",
+        "begin_line": 477,
+        "end_line": 488,
+        "comment": "        /* Hmmh. Checking for constructor parameters is trickier; for one,\n         * we must allow creator and factory method annotations.\n         * If this is the case, constructor parameter has the precedence.\n         * \n         * So, for now, just try finding the first constructor parameter;\n         * if none, first factory method. And don't check for dups, if we must,\n         * can start checking for them later on.\n         ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.withMember(AnnotatedMember member)#705",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder",
+        "signature": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.withMember(AnnotatedMember member)",
+        "snippet": "public Boolean withMember(AnnotatedMember member) {\ncom.fasterxml.jackson.databind.AnnotationIntrospector f__annotation_introspector_3307_line_510 = _annotationIntrospector;\ncom.fasterxml.jackson.databind.introspect.AnnotatedMember p_member_3337_line_510 = member;\nBoolean pojoproperty_builder1_expr51_line_510 = f__annotation_introspector_3307_line_510\n.hasRequiredMarker(p_member_3337_line_510);\nreturn pojoproperty_builder1_expr51_line_510;\n}",
+        "begin_line": 705,
+        "end_line": 711,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.withMember(AnnotatedMember member)#737",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder",
+        "signature": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.withMember(AnnotatedMember member)",
+        "snippet": "public Integer withMember(AnnotatedMember member) {\ncom.fasterxml.jackson.databind.AnnotationIntrospector f__annotation_introspector_3307_line_528 = _annotationIntrospector;\ncom.fasterxml.jackson.databind.introspect.AnnotatedMember p_member_3339_line_528 = member;\nInteger pojoproperty_builder1_expr57_line_528 = f__annotation_introspector_3307_line_528\n.findPropertyIndex(p_member_3339_line_528);\nreturn pojoproperty_builder1_expr57_line_528;\n}",
+        "begin_line": 737,
+        "end_line": 743,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.addGetter(AnnotatedMethod a, PropertyName name, boolean explName, boolean visible, boolean ignored)#841",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/POJOPropertyBuilder.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder",
+        "signature": "com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder.addGetter(AnnotatedMethod a, PropertyName name, boolean explName, boolean visible, boolean ignored)",
+        "snippet": "public void addGetter(AnnotatedMethod a, PropertyName name, boolean explName, boolean visible, boolean ignored) {\n_getters = new Linked<AnnotatedMethod>(a, _getters, name, explName, visible, ignored);\n}",
+        "begin_line": 841,
+        "end_line": 843,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedMember.getTypeContext()#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedMember.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedMember",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedMember.getTypeContext()",
+        "snippet": "public TypeResolutionContext getTypeContext() {\nint PROBE_START_LINE_65 = 65;\ncom.fasterxml.jackson.databind.introspect.TypeResolutionContext f__type_context_2796_line_65 = _typeContext;\nint PROBE_END_LINE_65 = 65;\nreturn f__type_context_2796_line_65;\n}",
+        "begin_line": 78,
+        "end_line": 83,
+        "comment": "    \n     * Accessor for {@link TypeResolutionContext} that is used for resolving\n     * full generic type of this member.\n     * \n     * @since 2.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.BeanDescription.BeanDescription(JavaType type)#36",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/BeanDescription.java",
+        "class_name": "com.fasterxml.jackson.databind.BeanDescription",
+        "signature": "com.fasterxml.jackson.databind.BeanDescription.BeanDescription(JavaType type)",
+        "snippet": "protected BeanDescription(JavaType type) {\nint PROBE_START_LINE_37 = 37;\ncom.fasterxml.jackson.databind.JavaType p_type_117_line_37 = type;\nint PROBE_END_LINE_37 = 37;\n_type = p_type_117_line_37;\n}",
+        "begin_line": 36,
+        "end_line": 41,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.ConcreteBeanPropertyBase.ConcreteBeanPropertyBase(PropertyMetadata md)#36",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/ConcreteBeanPropertyBase.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.ConcreteBeanPropertyBase",
+        "signature": "com.fasterxml.jackson.databind.introspect.ConcreteBeanPropertyBase.ConcreteBeanPropertyBase(PropertyMetadata md)",
+        "snippet": "protected ConcreteBeanPropertyBase(PropertyMetadata md) {\nint PROBE_START_LINE_36 = 36;\ncom.fasterxml.jackson.databind.PropertyMetadata p_md_3028_line_36 = md;\nboolean concrete_bean_property_base1_expr3_line_36 = p_md_3028_line_36 == null;\nboolean concrete_bean_property_base1_expr2_line_36 = (concrete_bean_property_base1_expr3_line_36);\ncom.fasterxml.jackson.databind.PropertyMetadata f_std_required_or_optional_833_line_36 = null;\nif (concrete_bean_property_base1_expr2_line_36) {\nf_std_required_or_optional_833_line_36 = PropertyMetadata.STD_REQUIRED_OR_OPTIONAL;\n}",
+        "begin_line": 36,
+        "end_line": 44,
+        "comment": "    \n     * Lazily accessed value for per-property format override definition.\n     * \n     * @since 2.8\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.SimpleMixInResolver.SimpleMixInResolver(ClassIntrospector.MixInResolver overrides)#35",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/SimpleMixInResolver.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.SimpleMixInResolver",
+        "signature": "com.fasterxml.jackson.databind.introspect.SimpleMixInResolver.SimpleMixInResolver(ClassIntrospector.MixInResolver overrides)",
+        "snippet": "public SimpleMixInResolver(ClassIntrospector.MixInResolver overrides) {\nint PROBE_START_LINE_36 = 36;\ncom.fasterxml.jackson.databind.introspect.ClassIntrospector.MixInResolver p_overrides_3429_line_36 = overrides;\nint PROBE_END_LINE_36 = 36;\n_overrides = p_overrides_3429_line_36;\n}",
+        "begin_line": 35,
+        "end_line": 40,
+        "comment": "    \n     * Simple mix-in targets defined locally.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.SerializerFactoryConfig.SerializerFactoryConfig()#43",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/SerializerFactoryConfig.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.SerializerFactoryConfig",
+        "signature": "com.fasterxml.jackson.databind.cfg.SerializerFactoryConfig.SerializerFactoryConfig()",
+        "snippet": "public SerializerFactoryConfig() {\nthis(null, null, null);\n}",
+        "begin_line": 43,
+        "end_line": 45,
+        "comment": "    \n     * List of modifiers that can change the way {@link BeanSerializer} instances\n     * are configured and constructed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedWithParams.AnnotatedWithParams(AnnotatedWithParams base, AnnotationMap[] paramAnnotations)#41",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedWithParams.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedWithParams",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedWithParams.AnnotatedWithParams(AnnotatedWithParams base, AnnotationMap[] paramAnnotations)",
+        "snippet": "protected AnnotatedWithParams(AnnotatedWithParams base, AnnotationMap[] paramAnnotations) {\nsuper(base);\nint PROBE_START_LINE_40 = 40;\ncom.fasterxml.jackson.databind.introspect.AnnotationMap[] p_param_annotations_2876_line_40 = paramAnnotations;\nint PROBE_END_LINE_40 = 40;\n_paramAnnotations = p_param_annotations_2876_line_40;\n}",
+        "begin_line": 41,
+        "end_line": 47,
+        "comment": "    \n     * @since 2.8.1\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.util.RootNameLookup.RootNameLookup()#21",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/util/RootNameLookup.java",
+        "class_name": "com.fasterxml.jackson.databind.util.RootNameLookup",
+        "signature": "com.fasterxml.jackson.databind.util.RootNameLookup.RootNameLookup()",
+        "snippet": "public RootNameLookup() {\n_rootNames = new LRUMap<ClassKey,PropertyName>(20, 200);\n}",
+        "begin_line": 21,
+        "end_line": 23,
+        "comment": "    \n     * For efficient operation, let's try to minimize number of times we\n     * need to introspect root element name to use.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.AnnotatedClass(AnnotatedClass base, AnnotationMap clsAnn)#200",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.AnnotatedClass(AnnotatedClass base, AnnotationMap clsAnn)",
+        "snippet": "private AnnotatedClass(AnnotatedClass base, AnnotationMap clsAnn) {\n_type = base._type;\n_class = base._class;\n_bindings = base._bindings;\n_superTypes = base._superTypes;\n_annotationIntrospector = base._annotationIntrospector;\n_typeFactory = base._typeFactory;\n_mixInResolver = base._mixInResolver;\n_primaryMixIn = base._primaryMixIn;\n_classAnnotations = clsAnn;\n}",
+        "begin_line": 200,
+        "end_line": 210,
+        "comment": "    \n     * Constructor will not do any initializations, to allow for\n     * configuring instances differently depending on use cases\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.resolveType(Type type)#323",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.resolveType(Type type)",
+        "snippet": "public JavaType resolveType(Type type) {\nint PROBE_START_LINE_246 = 246;\ncom.fasterxml.jackson.databind.type.TypeFactory f__type_factory_2660_line_246 = _typeFactory;\njava.lang.reflect.Type p_type_2681_line_246 = type;\ncom.fasterxml.jackson.databind.type.TypeBindings f__bindings_2657_line_246 = _bindings;\ncom.fasterxml.jackson.databind.JavaType annotated_class1_expr29_line_246 = f__type_factory_2660_line_246\n.constructType(p_type_2681_line_246, f__bindings_2657_line_246);\nint PROBE_END_LINE_246 = 246;\nreturn annotated_class1_expr29_line_246;\n}",
+        "begin_line": 323,
+        "end_line": 332,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.getAllAnnotations()#383",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.getAllAnnotations()",
+        "snippet": "protected AnnotationMap getAllAnnotations() {\nreturn _classAnnotations;\n}",
+        "begin_line": 383,
+        "end_line": 385,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.hasAnnotations()#405",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.hasAnnotations()",
+        "snippet": "public boolean hasAnnotations() {\nreturn _classAnnotations.size() > 0;\n}",
+        "begin_line": 405,
+        "end_line": 407,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.getFieldCount()#485",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedClass",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.getFieldCount()",
+        "snippet": "public int getFieldCount() {\nif (_fields == null) {\nresolveFields();\n}",
+        "begin_line": 485,
+        "end_line": 488,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.CreatorCollector(BeanDescription beanDesc, MapperConfig<?> config)#84",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector",
+        "signature": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.CreatorCollector(BeanDescription beanDesc, MapperConfig<?> config)",
+        "snippet": "public CreatorCollector(BeanDescription beanDesc, MapperConfig<?> config) {\nint PROBE_START_LINE_80 = 80;\ncom.fasterxml.jackson.databind.BeanDescription p_bean_desc_2247_line_80 = beanDesc;\nint PROBE_END_LINE_80 = 80;\n_beanDesc = p_bean_desc_2247_line_80;\nint PROBE_START_LINE_81 = 81;\nMapperConfig<?> p_config_2248_line_81 = config;\nboolean creator_collector1_expr5_line_81 = p_config_2248_line_81.canOverrideAccessModifiers();\nint PROBE_END_LINE_81 = 81;\n_canFixAccess = creator_collector1_expr5_line_81;\nint PROBE_START_LINE_82 = 83;\nMapperConfig<?> p_config_2248_line_82 = config;\nboolean creator_collector1_expr6_line_82 = p_config_2248_line_82\n.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS);\nint PROBE_END_LINE_82 = 83;\n_forceAccess = creator_collector1_expr6_line_82;\n}",
+        "begin_line": 84,
+        "end_line": 100,
+        "comment": "    /*\n     * ******************************************************** /* Life-cycle\n     * ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.addIntCreator(AnnotatedWithParams creator)#303",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector",
+        "signature": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.addIntCreator(AnnotatedWithParams creator)",
+        "snippet": "public void addIntCreator(AnnotatedWithParams creator) {\naddBooleanCreator(creator, false);\n}",
+        "begin_line": 303,
+        "end_line": 305,
+        "comment": "     Bunch of methods deprecated in 2.5, to be removed from 2.6 or later",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.hasDelegatingCreator()#355",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/deser/impl/CreatorCollector.java",
+        "class_name": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector",
+        "signature": "com.fasterxml.jackson.databind.deser.impl.CreatorCollector.hasDelegatingCreator()",
+        "snippet": "public boolean hasDelegatingCreator() {\nreturn _creators[C_DELEGATE] != null;\n}",
+        "begin_line": 355,
+        "end_line": 357,
+        "comment": "    \n     * @since 2.6\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.NumberSerializers.addAll(Map<String, JsonSerializer<?>> allDeserializers)#27",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/NumberSerializers.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.NumberSerializers",
+        "signature": "com.fasterxml.jackson.databind.ser.std.NumberSerializers.addAll(Map<String, JsonSerializer<?>> allDeserializers)",
+        "snippet": "public static void addAll(Map<String, JsonSerializer<?>> allDeserializers) {\nint PROBE_START_LINE_26 = 26;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_26 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr2_line_26 = Integer.class.getName();\nint PROBE_END_LINE_26 = 26;\np_all_deserializers_4059_line_26.put(number_serializers1_expr2_line_26, new IntegerSerializer(Integer.class));\nint PROBE_START_LINE_27 = 27;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_27 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Integer> f_type_2953_line_27 = Integer.TYPE;\nString number_serializers1_expr7_line_27 = f_type_2953_line_27.getName();\nint PROBE_END_LINE_27 = 27;\np_all_deserializers_4059_line_27.put(number_serializers1_expr7_line_27, new IntegerSerializer(Integer.TYPE));\nint PROBE_START_LINE_28 = 28;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_28 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr10_line_28 = Long.class.getName();\nint PROBE_END_LINE_28 = 28;\np_all_deserializers_4059_line_28.put(number_serializers1_expr10_line_28, new LongSerializer(Long.class));\nint PROBE_START_LINE_29 = 29;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_29 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Long> f_type_2956_line_29 = Long.TYPE;\nString number_serializers1_expr15_line_29 = f_type_2956_line_29.getName();\nint PROBE_END_LINE_29 = 29;\np_all_deserializers_4059_line_29.put(number_serializers1_expr15_line_29, new LongSerializer(Long.TYPE));\n\nint PROBE_START_LINE_31 = 31;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_31 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr18_line_31 = Byte.class.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.IntLikeSerializer f_instance_4060_line_31 = IntLikeSerializer.instance;\nint PROBE_END_LINE_31 = 31;\np_all_deserializers_4059_line_31.put(number_serializers1_expr18_line_31, f_instance_4060_line_31);\nint PROBE_START_LINE_32 = 32;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_32 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Byte> f_type_4061_line_32 = Byte.TYPE;\nString number_serializers1_expr21_line_32 = f_type_4061_line_32.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.IntLikeSerializer f_instance_4060_line_32 = IntLikeSerializer.instance;\nint PROBE_END_LINE_32 = 32;\np_all_deserializers_4059_line_32.put(number_serializers1_expr21_line_32, f_instance_4060_line_32);\nint PROBE_START_LINE_33 = 33;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_33 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr23_line_33 = Short.class.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.ShortSerializer f_instance_4062_line_33 = ShortSerializer.instance;\nint PROBE_END_LINE_33 = 33;\np_all_deserializers_4059_line_33.put(number_serializers1_expr23_line_33, f_instance_4062_line_33);\nint PROBE_START_LINE_34 = 34;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_34 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Short> f_type_4063_line_34 = Short.TYPE;\nString number_serializers1_expr26_line_34 = f_type_4063_line_34.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.ShortSerializer f_instance_4062_line_34 = ShortSerializer.instance;\nint PROBE_END_LINE_34 = 34;\np_all_deserializers_4059_line_34.put(number_serializers1_expr26_line_34, f_instance_4062_line_34);\n\nint PROBE_START_LINE_37 = 37;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_37 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr28_line_37 = Double.class.getName();\nint PROBE_END_LINE_37 = 37;\n// Numbers, limited length floating point\np_all_deserializers_4059_line_37.put(number_serializers1_expr28_line_37, new DoubleSerializer(Double.class));\nint PROBE_START_LINE_38 = 38;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_38 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Double> f_type_4064_line_38 = Double.TYPE;\nString number_serializers1_expr33_line_38 = f_type_4064_line_38.getName();\nint PROBE_END_LINE_38 = 38;\np_all_deserializers_4059_line_38.put(number_serializers1_expr33_line_38, new DoubleSerializer(Double.TYPE));\nint PROBE_START_LINE_39 = 39;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_39 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nString number_serializers1_expr36_line_39 = Float.class.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.FloatSerializer f_instance_4065_line_39 = FloatSerializer.instance;\nint PROBE_END_LINE_39 = 39;\np_all_deserializers_4059_line_39.put(number_serializers1_expr36_line_39, f_instance_4065_line_39);\nint PROBE_START_LINE_40 = 40;\nMap<String, JsonSerializer<?>> p_all_deserializers_4059_line_40 = (Map<String, JsonSerializer<?>>) (allDeserializers);\nClass<Float> f_type_4066_line_40 = Float.TYPE;\nString number_serializers1_expr39_line_40 = f_type_4066_line_40.getName();\ncom.fasterxml.jackson.databind.ser.std.NumberSerializers.FloatSerializer f_instance_4065_line_40 = FloatSerializer.instance;\nint PROBE_END_LINE_40 = 40;\np_all_deserializers_4059_line_40.put(number_serializers1_expr39_line_40, f_instance_4065_line_40);\n}",
+        "begin_line": 27,
+        "end_line": 103,
+        "comment": "\n * Container class for serializers used for handling standard JDK-provided\n * types.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.MapperFeature.MapperFeature(boolean defaultState)#397",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/MapperFeature.java",
+        "class_name": "com.fasterxml.jackson.databind.MapperFeature",
+        "signature": "com.fasterxml.jackson.databind.MapperFeature.MapperFeature(boolean defaultState)",
+        "snippet": "private MapperFeature(boolean defaultState) {\nint PROBE_START_LINE_398 = 398;\nboolean p_default_state_475_line_398 = defaultState;\nint PROBE_END_LINE_398 = 398;\n_defaultState = p_default_state_475_line_398;\nint PROBE_START_LINE_399 = 399;\nint mapper_feature1_expr3_line_399 = ordinal();\nint mapper_feature1_expr2_line_399 = 1 << mapper_feature1_expr3_line_399;\nint mapper_feature1_expr1_line_399 = (mapper_feature1_expr2_line_399);\nint PROBE_END_LINE_399 = 399;\n_mask = mapper_feature1_expr1_line_399;\n}",
+        "begin_line": 397,
+        "end_line": 408,
+        "comment": "    \n     * Feature that determines whether multiple registrations of same module\n     * should be ignored or not; if enabled, only the first registration call\n     * results in module being called, and possible duplicate calls are silently\n     * ignored; if disabled, no checking is done and all registration calls are\n     * dispatched to module.\n     *<p>\n     * Definition of \"same module\" is based on using {@link Module#getTypeId()};\n     * modules with same non-null <code>type id</code> are considered same for\n     * purposes of duplicate registration. This also avoids having to keep track\n     * of actual module instances; only ids will be kept track of (and only if\n     * this feature is enabled).\n     *<p>\n     * Feature is enabled by default.\n     *\n     * @since 2.5\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.SerializerCache.SerializerCache()#42",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/SerializerCache.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.SerializerCache",
+        "signature": "com.fasterxml.jackson.databind.ser.SerializerCache.SerializerCache()",
+        "snippet": "public SerializerCache() { }\n\n/**\n* Method that can be called to get a read-only instance populated from the\n* most recent version of the shared lookup Map.\n*/\npublic ReadOnlyClassToSerializerMap getReadOnlyLookupMap()\n{\nReadOnlyClassToSerializerMap m = _readOnlyMap.get();\nif (m != null) {\nreturn m;\n}",
+        "begin_line": 42,
+        "end_line": 53,
+        "comment": "    \n     * Most recent read-only instance, created from _sharedMap, if any.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeBindings.emptyBindings()#122",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeBindings.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeBindings",
+        "signature": "com.fasterxml.jackson.databind.type.TypeBindings.emptyBindings()",
+        "snippet": "public static TypeBindings emptyBindings() {\nint PROBE_START_LINE_67 = 67;\ncom.fasterxml.jackson.databind.type.TypeBindings f_empty_4407_line_67 = EMPTY;\nint PROBE_END_LINE_67 = 67;\nreturn f_empty_4407_line_67;\n}",
+        "begin_line": 122,
+        "end_line": 127,
+        "comment": "    ********************************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeBindings.isEmpty()#382",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeBindings.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeBindings",
+        "signature": "com.fasterxml.jackson.databind.type.TypeBindings.isEmpty()",
+        "snippet": "public boolean isEmpty() {\nint PROBE_START_LINE_245 = 245;\ncom.fasterxml.jackson.databind.JavaType[] f__types_4412_line_245 = _types;\nint f_length_1177_line_245 = f__types_4412_line_245.length;\nboolean type_bindings1_expr46_line_245 = f_length_1177_line_245 == 0;\nboolean type_bindings1_expr45_line_245 = (type_bindings1_expr46_line_245);\nint PROBE_END_LINE_245 = 245;\nreturn type_bindings1_expr45_line_245;\n}",
+        "begin_line": 382,
+        "end_line": 390,
+        "comment": "/*\n                        throw new IllegalStateException(String.format\n(\"Unresolved ResolvedRecursiveType for parameter '%s' (index #%d; erased type %s)\",\nname, i, t.getRawClass()));\n",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.type.TypeBindings.hasUnbound(String name)#443",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/type/TypeBindings.java",
+        "class_name": "com.fasterxml.jackson.databind.type.TypeBindings",
+        "signature": "com.fasterxml.jackson.databind.type.TypeBindings.hasUnbound(String name)",
+        "snippet": "public boolean hasUnbound(String name) {\nint PROBE_START_LINE_286 = 292;\nString[] f__unbound_variables_4416_line_286 = _unboundVariables;\nboolean type_bindings1_expr49_line_286 = f__unbound_variables_4416_line_286 != null;\nint PROBE_END_LINE_286 = 292;\nif (type_bindings1_expr49_line_286) {\nfor (int i = _unboundVariables.length; --i >= 0; ) {\nif (name.equals(_unboundVariables[i])) {\nreturn true;\n}",
+        "begin_line": 443,
+        "end_line": 452,
+        "comment": "    \n     * @since 2.3\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ext.Java7SupportImpl.Java7SupportImpl()#22",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ext/Java7SupportImpl.java",
+        "class_name": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+        "signature": "com.fasterxml.jackson.databind.ext.Java7SupportImpl.Java7SupportImpl()",
+        "snippet": "public Java7SupportImpl() {\n// Trigger loading of annotations that only JDK 7 has...\nClass<?> cls = Transient.class;\ncls = ConstructorProperties.class;\nint PROBE_START_LINE_26 = 26;\nClass<?> v_cls_2609_line_26 = cls;\nint PROBE_END_LINE_26 = 26;\n_bogus = v_cls_2609_line_26;\n}",
+        "begin_line": 22,
+        "end_line": 30,
+        "comment": "\n * @since 2.8\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.util.ClassUtil.findClassAnnotations(Class<?> cls)#1124",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/util/ClassUtil.java",
+        "class_name": "com.fasterxml.jackson.databind.util.ClassUtil",
+        "signature": "com.fasterxml.jackson.databind.util.ClassUtil.findClassAnnotations(Class<?> cls)",
+        "snippet": "public static Annotation[] findClassAnnotations(Class<?> cls) {\nint PROBE_START_LINE_951 = 953;\nClass<?> p_cls_4758_line_951 = cls;\nboolean class_util1_expr65_line_951 = isObjectOrPrimitive(p_cls_4758_line_951);\nint PROBE_END_LINE_951 = 953;\nif (class_util1_expr65_line_951) {\nreturn NO_ANNOTATIONS;\n}",
+        "begin_line": 1124,
+        "end_line": 1131,
+        "comment": "    \n     * @since 2.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.util.ClassUtil.getConstructors(Class<?> cls)#1142",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/util/ClassUtil.java",
+        "class_name": "com.fasterxml.jackson.databind.util.ClassUtil",
+        "signature": "com.fasterxml.jackson.databind.util.ClassUtil.getConstructors(Class<?> cls)",
+        "snippet": "public static Ctor[] getConstructors(Class<?> cls) {\nint PROBE_START_LINE_963 = 965;\nClass<?> p_cls_4759_line_963 = cls;\nboolean class_util1_expr68_line_963 = p_cls_4759_line_963.isInterface();\nboolean class_util1_expr69_line_963 = false;\nif (!class_util1_expr68_line_963) {\nclass_util1_expr69_line_963 = isObjectOrPrimitive(cls);\n}",
+        "begin_line": 1142,
+        "end_line": 1149,
+        "comment": "    \n     * @since 2.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.AnnotatedField.getAnnotated()#75",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/AnnotatedField.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.AnnotatedField",
+        "signature": "com.fasterxml.jackson.databind.introspect.AnnotatedField.getAnnotated()",
+        "snippet": "public Field getAnnotated() { int PROBE_START_LINE_65 = 65;\njava.lang.reflect.Field f__field_2808_line_65 = _field;\nint PROBE_END_LINE_65 = 65;\nreturn f__field_2808_line_65; }\n\n@Override\npublic int getModifiers() { int PROBE_START_LINE_68 = 68;\njava.lang.reflect.Field f__field_2808_line_68 = _field;\nint annotated_field1_expr3_line_68 = f__field_2808_line_68.getModifiers();\nint PROBE_END_LINE_68 = 68;\nreturn annotated_field1_expr3_line_68; }\n\n@Override\npublic String getName() { int PROBE_START_LINE_71 = 71;\njava.lang.reflect.Field f__field_2808_line_71 = _field;\nString annotated_field1_expr4_line_71 = f__field_2808_line_71.getName();\nint PROBE_END_LINE_71 = 71;\nreturn annotated_field1_expr4_line_71; }\n\n@Override\npublic Class<?> getRawType() {\nint PROBE_START_LINE_75 = 75;\njava.lang.reflect.Field f__field_2808_line_75 = _field;\nClass<?> annotated_field1_expr5_line_75 = f__field_2808_line_75.getType();\nint PROBE_END_LINE_75 = 75;\nreturn annotated_field1_expr5_line_75;\n}",
+        "begin_line": 75,
+        "end_line": 101,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.ContextAttributes.getEmpty()#24",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/ContextAttributes.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.ContextAttributes",
+        "signature": "com.fasterxml.jackson.databind.cfg.ContextAttributes.getEmpty()",
+        "snippet": "public static ContextAttributes getEmpty() {\nint PROBE_START_LINE_24 = 24;\ncom.fasterxml.jackson.databind.cfg.ContextAttributes context_attributes1_expr1_line_24 = Impl.getEmpty();\nint PROBE_END_LINE_24 = 24;\nreturn context_attributes1_expr1_line_24;\n}",
+        "begin_line": 24,
+        "end_line": 29,
+        "comment": "\n * Helper class used for storing and accessing per-call attributes.\n * Storage is two-layered: at higher precedence, we have actual per-call\n * attributes; and at lower precedence, default attributes that may be\n * defined for Object readers and writers.\n *<p>\n * Note that the way mutability is implemented differs between kinds\n * of attributes, to account for thread-safety: per-call attributes\n * are handled assuming that instances are never shared, whereas\n * changes to per-reader/per-writer attributes are made assuming\n * sharing, by creating new copies instead of modifying state.\n * This allows sharing of default values without per-call copying, but\n * requires two-level lookup on access.\n * \n * @since 2.3\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.StdSerializer.StdSerializer(Class<T> t)#59",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/StdSerializer.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.StdSerializer",
+        "signature": "com.fasterxml.jackson.databind.ser.std.StdSerializer.StdSerializer(Class<T> t)",
+        "snippet": "protected StdSerializer(Class<T> t) {\nint PROBE_START_LINE_60 = 60;\nClass<T> p_t_4148_line_60 = (Class<T>) (t);\nint PROBE_END_LINE_60 = 60;\n_handledType = p_t_4148_line_60;\n}",
+        "begin_line": 59,
+        "end_line": 64,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.introspect.VisibilityChecker.withIsGetterVisibility(Visibility v)#328",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/introspect/VisibilityChecker.java",
+        "class_name": "com.fasterxml.jackson.databind.introspect.VisibilityChecker",
+        "signature": "com.fasterxml.jackson.databind.introspect.VisibilityChecker.withIsGetterVisibility(Visibility v)",
+        "snippet": "public Std withIsGetterVisibility(Visibility v) {\nif (v == Visibility.DEFAULT)  v = DEFAULT._isGetterMinLevel;\nif (_isGetterMinLevel == v) return this;\nreturn new Std(_getterMinLevel, v, _setterMinLevel, _creatorMinLevel, _fieldMinLevel);\n}",
+        "begin_line": 328,
+        "end_line": 332,
+        "comment": "                 break;",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.BaseSettings.withInsertedAnnotationIntrospector(AnnotationIntrospector ai)#236",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/BaseSettings.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.BaseSettings",
+        "signature": "com.fasterxml.jackson.databind.cfg.BaseSettings.withInsertedAnnotationIntrospector(AnnotationIntrospector ai)",
+        "snippet": "public BaseSettings withInsertedAnnotationIntrospector(AnnotationIntrospector ai) {\nreturn withAnnotationIntrospector(AnnotationIntrospectorPair.create(ai, _annotationIntrospector));\n}",
+        "begin_line": 236,
+        "end_line": 238,
+        "comment": "    ********************************************************\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.cfg.BaseSettings.withHandlerInstantiator(HandlerInstantiator hi)#314",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/cfg/BaseSettings.java",
+        "class_name": "com.fasterxml.jackson.databind.cfg.BaseSettings",
+        "signature": "com.fasterxml.jackson.databind.cfg.BaseSettings.withHandlerInstantiator(HandlerInstantiator hi)",
+        "snippet": "public BaseSettings withHandlerInstantiator(HandlerInstantiator hi) {\nif (_handlerInstantiator == hi) {\nreturn this;\n}",
+        "begin_line": 314,
+        "end_line": 317,
+        "comment": "           (but only if!) it has been set explicitly.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ObjectMapper.setSerializationInclusion(JsonInclude.Include incl)#1472",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ObjectMapper.java",
+        "class_name": "com.fasterxml.jackson.databind.ObjectMapper",
+        "signature": "com.fasterxml.jackson.databind.ObjectMapper.setSerializationInclusion(JsonInclude.Include incl)",
+        "snippet": "public ObjectMapper setSerializationInclusion(JsonInclude.Include incl) {\nsetPropertyInclusion(JsonInclude.Value.construct(incl, JsonInclude.Include.USE_DEFAULTS));\nreturn this;\n}",
+        "begin_line": 1472,
+        "end_line": 1475,
+        "comment": "    \n     * Convenience method, equivalent to calling:\n     *<pre>\n     *  setPropertyInclusion(JsonInclude.Value.construct(incl, Include.ALWAYS));\n     *</pre>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ObjectMapper._serializerProvider(SerializationConfig config)#3850",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ObjectMapper.java",
+        "class_name": "com.fasterxml.jackson.databind.ObjectMapper",
+        "signature": "com.fasterxml.jackson.databind.ObjectMapper._serializerProvider(SerializationConfig config)",
+        "snippet": "protected DefaultSerializerProvider _serializerProvider(SerializationConfig config) {\nreturn _serializerProvider.createInstance(config, _serializerFactory);\n}",
+        "begin_line": 3850,
+        "end_line": 3852,
+        "comment": "    \n     * Overridable helper method used for constructing\n     * {@link SerializerProvider} to use for serialization.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.ser.std.CalendarSerializer.CalendarSerializer()#23",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/ser/std/CalendarSerializer.java",
+        "class_name": "com.fasterxml.jackson.databind.ser.std.CalendarSerializer",
+        "signature": "com.fasterxml.jackson.databind.ser.std.CalendarSerializer.CalendarSerializer()",
+        "snippet": "public CalendarSerializer() { this(null, null); }\n\npublic CalendarSerializer(Boolean useTimestamp, DateFormat customFormat) {\nsuper(Calendar.class, useTimestamp, customFormat);\n}",
+        "begin_line": 23,
+        "end_line": 27,
+        "comment": "\n * Standard serializer for {@link java.util.Calendar}.\n * As with other time/date types, is configurable to produce timestamps\n * (standard Java 64-bit timestamp) or textual formats (usually ISO-8601).\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.fasterxml.jackson.databind.SerializationFeature.SerializationFeature(boolean defaultState)#419",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonDatabind-93/result/src/com/fasterxml/jackson/databind/SerializationFeature.java",
+        "class_name": "com.fasterxml.jackson.databind.SerializationFeature",
+        "signature": "com.fasterxml.jackson.databind.SerializationFeature.SerializationFeature(boolean defaultState)",
+        "snippet": "private SerializationFeature(boolean defaultState) {\nint PROBE_START_LINE_420 = 420;\nboolean p_default_state_981_line_420 = defaultState;\nint PROBE_END_LINE_420 = 420;\n_defaultState = p_default_state_981_line_420;\nint PROBE_START_LINE_421 = 421;\nint serialization_feature1_expr3_line_421 = ordinal();\nint serialization_feature1_expr2_line_421 = 1 << serialization_feature1_expr3_line_421;\nint serialization_feature1_expr1_line_421 = (serialization_feature1_expr2_line_421);\nint PROBE_END_LINE_421 = 421;\n_mask = serialization_feature1_expr1_line_421;\n}",
+        "begin_line": 419,
+        "end_line": 430,
+        "comment": "    \n     * Feature that determines whether Object Identity is compared using\n     * true JVM-level identity of Object (false); or, <code>equals()</code> method.\n     * Latter is sometimes useful when dealing with Database-bound objects with\n     * ORM libraries (like Hibernate). Note that Object itself is actually compared,\n     * and NOT Object Id; naming of this feature is somewhat confusing, so it is important\n     * that Object <b>for which identity is to be preserved</b> are considered equal,\n     * above and beyond ids (which are always compared using equality anyway).\n     *<p>\n     * NOTE: due to the way functionality is implemented, it is very important that\n     * in addition to overriding {@link Object#equals} for Objects to match (to be considered\n     * \"same\") it is also necessary to ensure that {@link Object#hashCode()} is overridden\n     * to produce the exact same value for equal instances.\n     *<p>\n     * Feature is disabled by default; meaning that strict identity is used, not\n     * <code>equals()</code>\n     *\n     * @since 2.3\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

@@ -1,0 +1,114 @@
+[
+    {
+        "name": "org.apache.commons.math3.geometry.euclidean.threed.SubLine.SubLine(final Line line, final IntervalsSet remainingRegion)#44",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+        "class_name": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+        "signature": "org.apache.commons.math3.geometry.euclidean.threed.SubLine.SubLine(final Line line, final IntervalsSet remainingRegion)",
+        "snippet": "public SubLine(final Line line, final IntervalsSet remainingRegion) {\nint PROBE_START_LINE_45 = 45;\norg.apache.commons.math3.geometry.euclidean.threed.Line p_line_102_line_45 = line;\nint PROBE_END_LINE_45 = 45;\nthis.line            = p_line_102_line_45;\nint PROBE_START_LINE_46 = 46;\norg.apache.commons.math3.geometry.euclidean.oned.IntervalsSet p_remaining_region_103_line_46 = remainingRegion;\nint PROBE_END_LINE_46 = 46;\nthis.remainingRegion = p_remaining_region_103_line_46;\n}",
+        "begin_line": 44,
+        "end_line": 53,
+        "comment": "     Simple constructor.\n     * @param line underlying line\n     * @param remainingRegion remaining region of the line\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.euclidean.threed.SubLine.intersection(final SubLine subLine, final boolean includeEndPoints)#116",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java",
+        "class_name": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+        "signature": "org.apache.commons.math3.geometry.euclidean.threed.SubLine.intersection(final SubLine subLine, final boolean includeEndPoints)",
+        "snippet": "public Vector3D intersection(final SubLine subLine, final boolean includeEndPoints) {\n\nint PROBE_START_LINE_113 = 113;\norg.apache.commons.math3.geometry.euclidean.threed.Line f_line_104_line_113 = line;\norg.apache.commons.math3.geometry.euclidean.threed.SubLine p_sub_line_109_line_113 = subLine;\nVector3D sub_line1_expr6_line_113 = f_line_104_line_113.intersection(p_sub_line_109_line_113.line);\nint PROBE_END_LINE_113 = 113;\n// compute the intersection on infinite line\nVector3D v1D = sub_line1_expr6_line_113;\n\nint PROBE_START_LINE_116 = 116;\norg.apache.commons.math3.geometry.euclidean.oned.IntervalsSet f_remaining_region_105_line_116 = remainingRegion;\norg.apache.commons.math3.geometry.euclidean.threed.Line f_line_104_line_116 = line;\norg.apache.commons.math3.geometry.euclidean.threed.Vector3D v_v_1d_111_line_116 = v1D;\norg.apache.commons.math3.geometry.euclidean.oned.Vector1D sub_line1_expr8_line_116 = f_line_104_line_116\n.toSubSpace(v_v_1d_111_line_116);\nLocation sub_line1_expr7_line_116 = f_remaining_region_105_line_116.checkPoint(sub_line1_expr8_line_116);\nint PROBE_END_LINE_116 = 116;\n// check location of point with respect to first sub-line\nLocation loc1 = sub_line1_expr7_line_116;\n\n// check location of point with respect to second sub-line\nLocation loc2 = subLine.remainingRegion.checkPoint(subLine.line.toSubSpace(v1D));\n\nif (includeEndPoints) {\nreturn ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v1D : null;\n} else {",
+        "begin_line": 116,
+        "end_line": 142,
+        "comment": "     Get the intersection of the instance and another sub-line.\n     * <p>\n     * This method is related to the {@link Line#intersection(Line)\n     * intersection} method in the {@link Line Line} class, but in addition\n     * to compute the point along infinite lines, it also checks the point\n     * lies on both sub-line ranges.\n     * </p>\n     * @param subLine other sub-line which may intersect instance\n     * @param includeEndPoints if true, endpoints are considered to belong to\n     * instance (i.e. they are closed sets) and may be returned, otherwise endpoints\n     * are considered to not belong to instance (i.e. they are open sets) and intersection\n     * occurring on endpoints lead to null being returned\n     * @return the intersection point if there is one, null if the sub-lines don't intersect\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion(final BSPTree<S> tree)#67",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/partitioning/AbstractRegion.java",
+        "class_name": "org.apache.commons.math3.geometry.partitioning.AbstractRegion",
+        "signature": "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion(final BSPTree<S> tree)",
+        "snippet": "protected AbstractRegion(final BSPTree<S> tree) {\nint PROBE_START_LINE_68 = 68;\nBSPTree<S> p_tree_297_line_68 = tree;\nint PROBE_END_LINE_68 = 68;\nthis.tree = p_tree_297_line_68;\n}",
+        "begin_line": 67,
+        "end_line": 72,
+        "comment": "     Build a region from an inside/outside BSP tree.\n     * <p>The leaf nodes of the BSP tree <em>must</em> have a\n     * {@code Boolean} attribute representing the inside status of\n     * the corresponding cell (true for inside cells, false for outside\n     * cells). In order to avoid building too many small objects, it is\n     * recommended to use the predefined constants\n     * {@code Boolean.TRUE} and {@code Boolean.FALSE}. The\n     * tree also <em>must</em> have either null internal nodes or\n     * internal nodes representing the boundary as specified in the\n     * {@link #getTree getTree} method).</p>\n     * @param tree inside/outside BSP tree representing the region\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.OrientedPoint(final Vector1D location, final boolean direct)#42",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/euclidean/oned/OrientedPoint.java",
+        "class_name": "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint",
+        "signature": "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.OrientedPoint(final Vector1D location, final boolean direct)",
+        "snippet": "public OrientedPoint(final Vector1D location, final boolean direct) {\nint PROBE_START_LINE_43 = 43;\norg.apache.commons.math3.geometry.euclidean.oned.Vector1D p_location_14_line_43 = location;\nint PROBE_END_LINE_43 = 43;\nthis.location = p_location_14_line_43;\nint PROBE_START_LINE_44 = 44;\nboolean p_direct_15_line_44 = direct;\nint PROBE_END_LINE_44 = 44;\nthis.direct   = p_direct_15_line_44;\n}",
+        "begin_line": 42,
+        "end_line": 51,
+        "comment": "     Simple constructor.\n     * @param location location of the hyperplane\n     * @param direct if true, the plus side of the hyperplane is towards\n     * abscissas greater than {@code location}\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.partitioning.BSPTree.BSPTree(final Object attribute)#93",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/partitioning/BSPTree.java",
+        "class_name": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+        "signature": "org.apache.commons.math3.geometry.partitioning.BSPTree.BSPTree(final Object attribute)",
+        "snippet": "public BSPTree(final Object attribute) {\ncut    = null;\nplus   = null;\nminus  = null;\nparent = null;\nint PROBE_START_LINE_98 = 98;\nObject p_attribute_346_line_98 = attribute;\nint PROBE_END_LINE_98 = 98;\nthis.attribute = p_attribute_346_line_98;\n}",
+        "begin_line": 93,
+        "end_line": 102,
+        "comment": "     Build a tree having only one root cell representing the whole space.\n     * @param attribute attribute of the tree (may be null)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(final Vector2D p1, final Vector2D p2)#81",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/euclidean/twod/Line.java",
+        "class_name": "org.apache.commons.math3.geometry.euclidean.twod.Line",
+        "signature": "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(final Vector2D p1, final Vector2D p2)",
+        "snippet": "public Line(final Vector2D p1, final Vector2D p2) {\nint PROBE_START_LINE_82 = 82;\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_1_186_line_82 = p1;\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_2_187_line_82 = p2;\nint PROBE_END_LINE_82 = 82;\nreset(p_p_1_186_line_82, p_p_2_187_line_82);\n}",
+        "begin_line": 81,
+        "end_line": 87,
+        "comment": "     Build a line from two points.\n     * <p>The line is oriented from p1 to p2</p>\n     * @param p1 first point\n     * @param p2 second point\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.math3.geometry.euclidean.twod.Line.reset(final Vector2D p1, final Vector2D p2)#132",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Math-4/result/src/org/apache/commons/math3/geometry/euclidean/twod/Line.java",
+        "class_name": "org.apache.commons.math3.geometry.euclidean.twod.Line",
+        "signature": "org.apache.commons.math3.geometry.euclidean.twod.Line.reset(final Vector2D p1, final Vector2D p2)",
+        "snippet": "public void reset(final Vector2D p1, final Vector2D p2) {\nint PROBE_START_LINE_129 = 129;\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_2_196_line_129 = p2;\ndouble line2_expr3_line_129 = p_p_2_196_line_129.getX();\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_1_195_line_129 = p1;\ndouble line2_expr4_line_129 = p_p_1_195_line_129.getX();\ndouble line2_expr2_line_129 = line2_expr3_line_129 - line2_expr4_line_129;\nint PROBE_END_LINE_129 = 129;\nfinal double dx = line2_expr2_line_129;\nint PROBE_START_LINE_130 = 130;\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_2_196_line_130 = p2;\ndouble line2_expr6_line_130 = p_p_2_196_line_130.getY();\norg.apache.commons.math3.geometry.euclidean.twod.Vector2D p_p_1_195_line_130 = p1;\ndouble line2_expr7_line_130 = p_p_1_195_line_130.getY();\ndouble line2_expr5_line_130 = line2_expr6_line_130 - line2_expr7_line_130;\nint PROBE_END_LINE_130 = 130;\nfinal double dy = line2_expr5_line_130;\nint PROBE_START_LINE_131 = 131;\ndouble v_dx_197_line_131 = dx;\ndouble v_dy_198_line_131 = dy;\ndouble line2_expr8_line_131 = FastMath.hypot(v_dx_197_line_131, v_dy_198_line_131);\nint PROBE_END_LINE_131 = 131;\nfinal double d = line2_expr8_line_131;\nint PROBE_START_LINE_132 = 142;\ndouble v_d_199_line_132 = d;\nboolean line2_expr9_line_132 = v_d_199_line_132 == 0.0;\nint PROBE_END_LINE_132 = 142;\nif (line2_expr9_line_132) {\nangle        = 0.0;\ncos          = 1.0;\nsin          = 0.0;\noriginOffset = p1.getY();\n} else {",
+        "begin_line": 132,
+        "end_line": 164,
+        "comment": "     Reset the instance as if built from two points.\n     * <p>The line is oriented from p1 to p2</p>\n     * @param p1 first point\n     * @param p2 second point\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

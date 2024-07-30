@@ -1,0 +1,34 @@
+[
+    {
+        "name": "org.apache.commons.lang.text.StrMatcher.stringMatcher(String str)#216",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-47/result/src/org/apache/commons/lang/text/StrMatcher.java",
+        "class_name": "org.apache.commons.lang.text.StrMatcher",
+        "signature": "org.apache.commons.lang.text.StrMatcher.stringMatcher(String str)",
+        "snippet": "public static StrMatcher stringMatcher(String str) {\nif (str == null || str.length() == 0) {\nreturn NONE_MATCHER;\n}",
+        "begin_line": 216,
+        "end_line": 219,
+        "comment": "    \n     * Constructor that creates a matcher from a string.\n     *\n     * @param str  the string to match, null or empty matches nothing\n     * @return a new Matcher for the given String\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.text.StrMatcher.isMatch(char[] buffer, int pos, int bufferStart, int bufferEnd)#317",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-47/result/src/org/apache/commons/lang/text/StrMatcher.java",
+        "class_name": "org.apache.commons.lang.text.StrMatcher",
+        "signature": "org.apache.commons.lang.text.StrMatcher.isMatch(char[] buffer, int pos, int bufferStart, int bufferEnd)",
+        "snippet": "public int isMatch(char[] buffer, int pos, int bufferStart, int bufferEnd) {\nreturn Arrays.binarySearch(chars, buffer[pos]) >= 0 ? 1 : 0;\n}",
+        "begin_line": 317,
+        "end_line": 319,
+        "comment": "        \n         * Returns whether or not the given charatcer matches.\n         *\n         * @param buffer  the text content to match against, do not change\n         * @param pos  the starting position for the match, valid for buffer\n         * @param bufferStart  the first active index in the buffer, valid for buffer\n         * @param bufferEnd  the end index of the active buffer, valid for buffer\n         * @return the number of matching characters, zero for no match\n         ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

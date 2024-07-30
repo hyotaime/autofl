@@ -1,0 +1,610 @@
+[
+    {
+        "name": "org.jsoup.nodes.Attributes.put(Attribute attribute)#53",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Attributes.java",
+        "class_name": "org.jsoup.nodes.Attributes",
+        "signature": "org.jsoup.nodes.Attributes.put(Attribute attribute)",
+        "snippet": "public void put(Attribute attribute) {\nint PROBE_START_LINE_51 = 51;\norg.jsoup.nodes.Attribute p_attribute_64_line_51 = attribute;\nint PROBE_END_LINE_51 = 51;\nValidate.notNull(p_attribute_64_line_51);\nint PROBE_START_LINE_52 = 52;\nLinkedHashMap<String, org.jsoup.nodes.Attribute> f_attributes_60_line_52 = attributes;\norg.jsoup.nodes.Attribute p_attribute_64_line_52 = attribute;\nString attributes1_expr5_line_52 = p_attribute_64_line_52.getKey();\nint PROBE_END_LINE_52 = 52;\nf_attributes_60_line_52.put(attributes1_expr5_line_52, attribute);\n}",
+        "begin_line": 53,
+        "end_line": 64,
+        "comment": "    \n     Set a new attribute, or replace an existing one by key.\n     @param attribute attribute\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attributes.html()#130",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Attributes.java",
+        "class_name": "org.jsoup.nodes.Attributes",
+        "signature": "org.jsoup.nodes.Attributes.html()",
+        "snippet": "public String html() {\nStringBuilder accum = new StringBuilder();\nhtml(accum, (new Document(\"\")).outputSettings()); // output settings a bit funky, but this html() seldom used\nreturn accum.toString();\n}",
+        "begin_line": 130,
+        "end_line": 134,
+        "comment": "    \n     Get the HTML representation of these attributes.\n     @return HTML\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.TokenQueue.TokenQueue(String data)#20",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/TokenQueue.java",
+        "class_name": "org.jsoup.parser.TokenQueue",
+        "signature": "org.jsoup.parser.TokenQueue.TokenQueue(String data)",
+        "snippet": "public TokenQueue(String data) {\nint PROBE_START_LINE_21 = 21;\nString p_data_393_line_21 = data;\nint PROBE_END_LINE_21 = 21;\nValidate.notNull(p_data_393_line_21);\nint PROBE_START_LINE_22 = 22;\nString p_data_393_line_22 = data;\nint PROBE_END_LINE_22 = 22;\nqueue = p_data_393_line_22;\n}",
+        "begin_line": 20,
+        "end_line": 29,
+        "comment": "    \n     Create a new TokenQueue.\n     @param data string of data to back queue.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.TokenQueue.addFirst(String seq)#73",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/TokenQueue.java",
+        "class_name": "org.jsoup.parser.TokenQueue",
+        "signature": "org.jsoup.parser.TokenQueue.addFirst(String seq)",
+        "snippet": "public void addFirst(String seq) {\n// not very performant, but an edge case\nqueue = seq + queue.substring(pos);\npos = 0;\n}",
+        "begin_line": 73,
+        "end_line": 77,
+        "comment": "    \n     Add a string to the start of the queue.\n     @param seq string to add.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.TokenQueue.matchesCS(String seq)#128",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/TokenQueue.java",
+        "class_name": "org.jsoup.parser.TokenQueue",
+        "signature": "org.jsoup.parser.TokenQueue.matchesCS(String seq)",
+        "snippet": "public boolean matchesCS(String seq) {\nreturn queue.startsWith(seq, pos);\n}",
+        "begin_line": 128,
+        "end_line": 130,
+        "comment": "    \n     * Case sensitive match test.\n     * @param seq\n     * @return\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.TokenQueue.matchesStartTag()#177",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/TokenQueue.java",
+        "class_name": "org.jsoup.parser.TokenQueue",
+        "signature": "org.jsoup.parser.TokenQueue.matchesStartTag()",
+        "snippet": "public boolean matchesStartTag() {\nint PROBE_START_LINE_116 = 116;\nint token_queue1_expr32_line_116 = remainingLength();\nboolean token_queue1_expr31_line_116 = token_queue1_expr32_line_116 >= 2;\nboolean token_queue1_expr33_line_116 = true;\nif (token_queue1_expr31_line_116) {\nString f_queue_394_line_116 = queue;\nint f_pos_391_line_116 = pos;\nchar token_queue1_expr34_line_116 = f_queue_394_line_116.charAt(f_pos_391_line_116);\ntoken_queue1_expr33_line_116 = token_queue1_expr34_line_116 == '<';\n}",
+        "begin_line": 177,
+        "end_line": 187,
+        "comment": "    \n     Tests if the next characters match any of the sequences. Case insensitive.\n     @param seq\n     @return\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.TokenQueue.matchesWord()#249",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/TokenQueue.java",
+        "class_name": "org.jsoup.parser.TokenQueue",
+        "signature": "org.jsoup.parser.TokenQueue.matchesWord()",
+        "snippet": "public boolean matchesWord() {\nint PROBE_START_LINE_147 = 147;\nboolean token_queue1_expr49_line_147 = isEmpty();\nboolean token_queue1_expr48_line_147 = !token_queue1_expr49_line_147;\nboolean token_queue1_expr50_line_147 = true;\nif (token_queue1_expr48_line_147) {\nString f_queue_394_line_147 = queue;\nint f_pos_391_line_147 = pos;\nchar token_queue1_expr51_line_147 = f_queue_394_line_147.charAt(f_pos_391_line_147);\ntoken_queue1_expr50_line_147 = Character.isLetterOrDigit(token_queue1_expr51_line_147);\n}",
+        "begin_line": 249,
+        "end_line": 259,
+        "comment": "    \n     Test if the queue matches a word character (letter or digit).\n     @return if matches a word character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.getName()#62",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.getName()",
+        "snippet": "public String getName() {\nint PROBE_START_LINE_40 = 40;\nString f_tag_name_355_line_40 = tagName;\nint PROBE_END_LINE_40 = 40;\nreturn f_tag_name_355_line_40;\n}",
+        "begin_line": 62,
+        "end_line": 67,
+        "comment": "\n HTML Tag specifications. This is a very simplistic model without the full expressiveness as the DTD,\n but it should capture most of what we need to know to intelligently parse a doc.\n\n @author Jonathan Hedley, jonathan@hedley.net ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.canContainBlock()#250",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.canContainBlock()",
+        "snippet": "public boolean canContainBlock() {\nint PROBE_START_LINE_126 = 126;\nboolean f_can_contain_block_358_line_126 = canContainBlock;\nint PROBE_END_LINE_126 = 126;\nreturn f_can_contain_block_358_line_126;\n}",
+        "begin_line": 250,
+        "end_line": 255,
+        "comment": "    \n     Gets if this tag can contain block tags.\n     @return if tag can contain block tags\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.isEmpty()#287",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.isEmpty()",
+        "snippet": "public boolean isEmpty() {\nint PROBE_START_LINE_150 = 150;\nboolean f_empty_361_line_150 = empty;\nint PROBE_END_LINE_150 = 150;\nreturn f_empty_361_line_150;\n}",
+        "begin_line": 287,
+        "end_line": 292,
+        "comment": "    \n     Get if this is an empty tag\n     @return if this is an emtpy tag\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.isSelfClosing()#298",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.isSelfClosing()",
+        "snippet": "public boolean isSelfClosing() {\nint PROBE_START_LINE_158 = 158;\nboolean f_empty_361_line_158 = empty;\nboolean f_self_closing_362_line_158 = false;\nif (!f_empty_361_line_158) {\nf_self_closing_362_line_158 = selfClosing;\n}",
+        "begin_line": 298,
+        "end_line": 304,
+        "comment": "    \n     * Get if this tag is self closing.\n     * @return if this tag should be output as self closing.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.preserveWhitespace()#322",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.preserveWhitespace()",
+        "snippet": "public boolean preserveWhitespace() {\nreturn preserveWhitespace;\n}",
+        "begin_line": 322,
+        "end_line": 324,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.getImplicitParent()#326",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.getImplicitParent()",
+        "snippet": "Tag getImplicitParent() {\nint PROBE_START_LINE_178 = 178;\nList<org.jsoup.parser.Tag> f_ancestors_371_line_178 = ancestors;\nboolean tag1_expr62_line_178 = f_ancestors_371_line_178.isEmpty();\nboolean tag1_expr61_line_178 = !tag1_expr62_line_178;\nboolean tag1_expr59_line_178 = (tag1_expr61_line_178);\norg.jsoup.parser.Tag tag1_expr60_line_178 = null;\nif (tag1_expr59_line_178) {\ntag1_expr60_line_178 = ancestors.get(0);\n}",
+        "begin_line": 326,
+        "end_line": 335,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.requiresSpecificParent()#341",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.requiresSpecificParent()",
+        "snippet": "boolean requiresSpecificParent() {\nint PROBE_START_LINE_182 = 182;\nboolean f_direct_descendant_372_line_182 = directDescendant;\nint PROBE_END_LINE_182 = 182;\nreturn f_direct_descendant_372_line_182;\n}",
+        "begin_line": 341,
+        "end_line": 346,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.isValidParent(Tag child)#348",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.isValidParent(Tag child)",
+        "snippet": "boolean isValidParent(Tag child) {\nreturn isValidAncestor(child);\n}",
+        "begin_line": 348,
+        "end_line": 350,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.isIgnorableEndTag(Tag child)#376",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.isIgnorableEndTag(Tag child)",
+        "snippet": "boolean isIgnorableEndTag(Tag child) {\nfor (Tag endTag : ignoreEndTags) {\nif (child.equals(endTag))\nreturn true;\n}",
+        "begin_line": 376,
+        "end_line": 380,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.toString()#491",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.toString()",
+        "snippet": "public String toString() {\nreturn tagName;\n}",
+        "begin_line": 491,
+        "end_line": 493,
+        "comment": "    \n     Get if this tag should preserve whitespace within child text nodes.\n     @return if preserve whitepace\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Parser.parseBodyFragmentRelaxed(String bodyHtml, String baseUri)#139",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Parser.java",
+        "class_name": "org.jsoup.parser.Parser",
+        "signature": "org.jsoup.parser.Parser.parseBodyFragmentRelaxed(String bodyHtml, String baseUri)",
+        "snippet": "public static Document parseBodyFragmentRelaxed(String bodyHtml, String baseUri) {\nParser parser = new Parser(bodyHtml, baseUri, true);\nparser.relaxed = true;\nreturn parser.parse();\n}",
+        "begin_line": 139,
+        "end_line": 143,
+        "comment": "    \n     Parse a fragment of HTML into the {@code body} of a Document, with relaxed parsing enabled. Relaxed, in this\n     context, means that implicit tags are not automatically created when missing.\n     @param bodyHtml fragment of HTML\n     @param baseUri base URI of document (i.e. original fetch location), for resolving relative URLs.\n     @return Document, with empty head, and HTML parsed into body\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Parser.parse()#145",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Parser.java",
+        "class_name": "org.jsoup.parser.Parser",
+        "signature": "org.jsoup.parser.Parser.parse()",
+        "snippet": "private Document parse() {\nint PROBE_START_LINE_82 = 96;\norg.jsoup.parser.TokenQueue f_tq_319_line_82 = tq;\nboolean parser1_expr23_line_82 = f_tq_319_line_82.isEmpty();\nboolean parser1_expr22_line_82 = !parser1_expr23_line_82;\nint PROBE_END_LINE_82 = 96;\nwhile (parser1_expr22_line_82) {\nint PROBE_START_LINE_83 = 95;\norg.jsoup.parser.TokenQueue f_tq_319_line_83 = tq;\nboolean parser1_expr24_line_83 = f_tq_319_line_83.matchesStartTag();\nint PROBE_END_LINE_83 = 95;\nif (parser1_expr24_line_83) {\nparseStartTag();\n} else if (tq.matchesCS(\"</\")) {",
+        "begin_line": 145,
+        "end_line": 158,
+        "comment": "    \n     Parse a fragment of HTML into the {@code body} of a Document, with relaxed parsing enabled. Relaxed, in this\n     context, means that implicit tags are not automatically created when missing.\n     @param bodyHtml fragment of HTML\n     @param baseUri base URI of document (i.e. original fetch location), for resolving relative URLs.\n     @return Document, with empty head, and HTML parsed into body\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Parser.parseEndTag()#202",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/parser/Parser.java",
+        "class_name": "org.jsoup.parser.Parser",
+        "signature": "org.jsoup.parser.Parser.parseEndTag()",
+        "snippet": "private void parseEndTag() {\ntq.consume(\"</\");\nString tagName = tq.consumeTagName();\ntq.chompTo(\">\");\n\nif (tagName.length() != 0) {\nTag tag = Tag.valueOf(tagName);\nif (!last().tag().isIgnorableEndTag(tag)) // skips </tr> if in <table>\npopStackToClose(tag);\n}",
+        "begin_line": 202,
+        "end_line": 211,
+        "comment": "    \n     Parse a fragment of HTML into the {@code body} of a Document, with relaxed parsing enabled. Relaxed, in this\n     context, means that implicit tags are not automatically created when missing.\n     @param bodyHtml fragment of HTML\n     @param baseUri base URI of document (i.e. original fetch location), for resolving relative URLs.\n     @return Document, with empty head, and HTML parsed into body\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.Node(String baseUri, Attributes attributes)#30",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.Node(String baseUri, Attributes attributes)",
+        "snippet": "protected Node(String baseUri, Attributes attributes) {\nint PROBE_START_LINE_31 = 31;\nString p_base_uri_260_line_31 = baseUri;\nint PROBE_END_LINE_31 = 31;\nValidate.notNull(p_base_uri_260_line_31);\nint PROBE_START_LINE_32 = 32;\norg.jsoup.nodes.Attributes p_attributes_261_line_32 = attributes;\nint PROBE_END_LINE_32 = 32;\nValidate.notNull(p_attributes_261_line_32);\n\nchildNodes = new ArrayList<Node>(4);\nint PROBE_START_LINE_35 = 35;\nString p_base_uri_260_line_35 = baseUri;\nString node1_expr6_line_35 = p_base_uri_260_line_35.trim();\nint PROBE_END_LINE_35 = 35;\nthis.baseUri = node1_expr6_line_35;\nint PROBE_START_LINE_36 = 36;\norg.jsoup.nodes.Attributes p_attributes_261_line_36 = attributes;\nint PROBE_END_LINE_36 = 36;\nthis.attributes = p_attributes_261_line_36;\n}",
+        "begin_line": 30,
+        "end_line": 50,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.childNodesAsArray()#220",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.childNodesAsArray()",
+        "snippet": "protected Node[] childNodesAsArray() {\nreturn childNodes.toArray(new Node[childNodes().size()]);\n}",
+        "begin_line": 220,
+        "end_line": 222,
+        "comment": "    \n     Get this node's children. Presented as an unmodifiable list: new children can not be added, but the child nodes\n     themselves can be manipulated.\n     @return list of children. If no children, returns an empty list.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.parent()#228",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.parent()",
+        "snippet": "public Node parent() {\nreturn parentNode;\n}",
+        "begin_line": 228,
+        "end_line": 230,
+        "comment": "    \n     Gets this node's parent node.\n     @return parent node; or null if no parent.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.replaceWith(Node in)#272",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.replaceWith(Node in)",
+        "snippet": "public void replaceWith(Node in) {\nValidate.notNull(in);\nValidate.notNull(parentNode);\nparentNode.replaceChild(this, in);\n}",
+        "begin_line": 272,
+        "end_line": 276,
+        "comment": "    \n     * Replace this node in the DOM with the supplied node.\n     * @param in the node that will will replace the existing node.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.replaceChild(Node out, Node in)#291",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.replaceChild(Node out, Node in)",
+        "snippet": "protected void replaceChild(Node out, Node in) {\nValidate.isTrue(out.parentNode == this);\nValidate.notNull(in);\nif (in.parentNode != null)\nin.parentNode.removeChild(in);\n\nInteger index = out.siblingIndex();\nchildNodes.set(index, in);\nin.parentNode = this;\nin.setSiblingIndex(index);\nout.parentNode = null;\n}",
+        "begin_line": 291,
+        "end_line": 302,
+        "comment": "    \n     * Replace this node in the DOM with the supplied node.\n     * @param in the node that will will replace the existing node.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.addChildren(int index, Node... children)#350",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.addChildren(int index, Node... children)",
+        "snippet": "protected void addChildren(int index, Node... children) {\nValidate.noNullElements(children);\nfor (int i = children.length - 1; i >= 0; i--) {\nNode in = children[i];\nreparentChild(in);\nchildNodes.add(index, in);\n}",
+        "begin_line": 350,
+        "end_line": 356,
+        "comment": "\t\tmost used. short circuit addChildren(int), which hits reindex children and array copy",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.Attribute(String key, String value)#21",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.Attribute(String key, String value)",
+        "snippet": "public Attribute(String key, String value) {\nint PROBE_START_LINE_22 = 22;\nString p_key_47_line_22 = key;\nint PROBE_END_LINE_22 = 22;\nValidate.notEmpty(p_key_47_line_22);\nint PROBE_START_LINE_23 = 23;\nString p_value_48_line_23 = value;\nint PROBE_END_LINE_23 = 23;\nValidate.notNull(p_value_48_line_23);\nint PROBE_START_LINE_24 = 24;\nString p_key_47_line_24 = key;\nString attribute1_expr5_line_24 = p_key_47_line_24.trim();\nString attribute1_expr4_line_24 = attribute1_expr5_line_24.toLowerCase();\nint PROBE_END_LINE_24 = 24;\nthis.key = attribute1_expr4_line_24;\nint PROBE_START_LINE_25 = 25;\nString p_value_48_line_25 = value;\nint PROBE_END_LINE_25 = 25;\nthis.value = p_value_48_line_25;\n}",
+        "begin_line": 21,
+        "end_line": 40,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key\n     * @param value attribute value\n     * @see #createFromEncoded\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.Selector.Selector(String query, Element root)#64",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/Selector.java",
+        "class_name": "org.jsoup.select.Selector",
+        "signature": "org.jsoup.select.Selector.Selector(String query, Element root)",
+        "snippet": "private Selector(String query, Element root) {\nint PROBE_START_LINE_65 = 65;\nString p_query_485_line_65 = query;\nint PROBE_END_LINE_65 = 65;\nValidate.notNull(p_query_485_line_65);\nint PROBE_START_LINE_66 = 66;\nString p_query_485_line_66 = query;\nString selector1_expr3_line_66 = p_query_485_line_66.trim();\nint PROBE_END_LINE_66 = 66;\nquery = selector1_expr3_line_66;\nint PROBE_START_LINE_67 = 67;\nString p_query_485_line_67 = query;\nint PROBE_END_LINE_67 = 67;\nValidate.notEmpty(p_query_485_line_67);\nint PROBE_START_LINE_68 = 68;\norg.jsoup.nodes.Element p_root_486_line_68 = root;\nint PROBE_END_LINE_68 = 68;\nValidate.notNull(p_root_486_line_68);\n\nthis.elements = new LinkedHashSet<Element>();\nint PROBE_START_LINE_71 = 71;\nString p_query_485_line_71 = query;\nint PROBE_END_LINE_71 = 71;\nthis.query = p_query_485_line_71;\nint PROBE_START_LINE_72 = 72;\norg.jsoup.nodes.Element p_root_486_line_72 = root;\nint PROBE_END_LINE_72 = 72;\nthis.root = p_root_486_line_72;\nint PROBE_START_LINE_73 = 73;\nString p_query_485_line_73 = query;\nint PROBE_END_LINE_73 = 73;\nthis.tq = new TokenQueue(p_query_485_line_73);\n}",
+        "begin_line": 64,
+        "end_line": 96,
+        "comment": "\n CSS-like element selector, that finds elements matching a query.\n\n <h2>Selector syntax</h2>\n A selector is a chain of simple selectors, seperated by combinators. Selectors are case insensitive (including against\n elements, attributes, and attribute values).\n <p/>\n The universal selector (*) is implicit when no element selector is supplied (i.e. {@code *.header} and {@code .header}\n is equivalent).\n\n <table>\n  <tr><th>Pattern</th><th>Matches</th><th>Example</th></tr>\n  <tr><td><code>*</code></td><td>any element</td><td><code>*</code></td></tr>\n  <tr><td><code>tag</code></td><td>elements with the given tag name</td><td><code>div</code></td></tr>\n  <tr><td><code>ns|E</code></td><td>elements of type E in the namespace <i>ns</i></td><td><code>fb|name</code> finds <code>&lt;fb:name></code> elements</td></tr>\n  <tr><td><code>#id</code></td><td>elements with attribute ID of \"id\"</td><td><code>div#wrap</code>, <code>#logo</code></td></tr>\n  <tr><td><code>.class</code></td><td>elements with a class name of \"class\"</td><td><code>div.left</code>, <code>.result</code></td></tr>\n  <tr><td><code>[attr]</code></td><td>elements with an attribute named \"attr\" (with any value)</td><td><code>a[href]</code>, <code>[title]</code></td></tr>\n  <tr><td><code>[^attrPrefix]</code></td><td>elements with an attribute name starting with \"attrPrefix\". Use to find elements with HTML5 datasets</td><td><code>[^data-]</code>, <code>div[^data-]</code></td></tr>\n  <tr><td><code>[attr=val]</code></td><td>elements with an attribute named \"attr\", and value equal to \"val\"</td><td><code>img[width=500]</code>, <code>a[rel=nofollow]</code></td></tr>\n  <tr><td><code>[attr^=valPrefix]</code></td><td>elements with an attribute named \"attr\", and value starting with \"valPrefix\"</td><td><code>a[href^=http:]</code></code></td></tr>\n  <tr><td><code>[attr$=valSuffix]</code></td><td>elements with an attribute named \"attr\", and value ending with \"valSuffix\"</td><td><code>img[src$=.png]</code></td></tr>\n  <tr><td><code>[attr*=valContaining]</code></td><td>elements with an attribute named \"attr\", and value containing \"valContaining\"</td><td><code>a[href*=/search/]</code></td></tr>\n  <tr><td><code>[attr~=<em>regex</em>]</code></td><td>elements with an attribute named \"attr\", and value matching the regular expression</td><td><code>img[src~=(?i)\\\\.(png|jpe?g)]</code></td></tr>\n  <tr><td></td><td>The above may be combined in any order</td><td><code>div.header[title]</code></td></tr>\n  <tr><td><td colspan=\"3\"><h3>Combinators</h3></td></tr>\n  <tr><td><code>E F</code></td><td>an F element descended from an E element</td><td><code>div a</code>, <code>.logo h1</code></td></tr>\n  <tr><td><code>E > F</code></td><td>an F direct child of E</td><td><code>ol > li</code></td></tr>\n  <tr><td><code>E + F</code></td><td>an F element immediately preceded by sibling E</td><td><code>li + li</code>, <code>div.head + div</code></td></tr>\n  <tr><td><code>E ~ F</code></td><td>an F element preceded by sibling E</td><td><code>h1 ~ p</code></td></tr>\n  <tr><td><code>E, F, G</code></td><td>all matching elements E, F, or G</td><td><code>a[href], div, h3</code></td></tr>\n  <tr><td><td colspan=\"3\"><h3>Pseudo selectors</h3></td></tr>\n  <tr><td><code>:lt(<em>n</em>)</code></td><td>elements whose sibling index is less than <em>n</em></td><td><code>td:lt(3)</code> finds the first 2 cells of each row</td></tr>\n  <tr><td><code>:gt(<em>n</em>)</code></td><td>elements whose sibling index is greater than <em>n</em></td><td><code>td:gt(1)</code> finds cells after skipping the first two</td></tr>\n  <tr><td><code>:eq(<em>n</em>)</code></td><td>elements whose sibling index is equal to <em>n</em></td><td><code>td:eq(0)</code> finds the first cell of each row</td></tr>\n  <tr><td><code>:has(<em>selector</em>)</code></td><td>elements that contains at least one element matching the <em>selector</em></td><td><code>div:has(p)</code> finds divs that contain p elements </td></tr>\n  <tr><td><code>:contains(<em>text</em>)</code></td><td>elements that contains the specified text. The search is case insensitive. The text may appear in the found element, or any of its descendants.</td><td><code>p:contains(jsoup)</code> finds p elements containing the text \"jsoup\".</td></tr>\n  <tr><td><code>:matches(<em>regex</em>)</code></td><td>elements whose text matches the specified regular expression. The text may appear in the found element, or any of its descendants.</td><td><code>td:matches(\\\\d+)</code> finds table cells containing digits. <code>div:matches((?i)login)</code> finds divs containing the text, case insensitively.</td></tr>\n  <tr><td><code>:containsOwn(<em>text</em>)</code></td><td>elements that directly contains the specified text. The search is case insensitive. The text must appear in the found element, not any of its descendants.</td><td><code>p:containsOwn(jsoup)</code> finds p elements with own text \"jsoup\".</td></tr>\n  <tr><td><code>:matchesOwn(<em>regex</em>)</code></td><td>elements whose own text matches the specified regular expression. The text must appear in the found element, not any of its descendants.</td><td><code>td:matchesOwn(\\\\d+)</code> finds table cells directly containing digits. <code>div:matchesOwn((?i)login)</code> finds divs containing the text, case insensitively.</td></tr>\n  <tr><td></td><td>The above may be combined in any order and with other selectors</td><td><code>.light:contains(name):eq(0)</code></td></tr>\n  </table>\n\n @see Element#select(String)\n @author Jonathan Hedley, jonathan@hedley.net ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.Selector.select(String query, Element root)#104",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/Selector.java",
+        "class_name": "org.jsoup.select.Selector",
+        "signature": "org.jsoup.select.Selector.select(String query, Element root)",
+        "snippet": "public static Elements select(String query, Element root) {\nint PROBE_START_LINE_83 = 83;\nString p_query_491_line_83 = query;\norg.jsoup.nodes.Element p_root_492_line_83 = root;\norg.jsoup.select.Elements selector1_expr12_line_83 = new Selector(p_query_491_line_83, p_root_492_line_83)\n.select();\nint PROBE_END_LINE_83 = 83;\nreturn selector1_expr12_line_83;\n}",
+        "begin_line": 104,
+        "end_line": 112,
+        "comment": "    \n     Find elements matching selector.\n     @param query CSS selector\n     @param root root element to descend into\n     @return matching elements, empty if not\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.Selector.select()#131",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/Selector.java",
+        "class_name": "org.jsoup.select.Selector",
+        "signature": "org.jsoup.select.Selector.select()",
+        "snippet": "private Elements select() {\nint PROBE_START_LINE_104 = 104;\norg.jsoup.parser.TokenQueue f_tq_490_line_104 = tq;\nint PROBE_END_LINE_104 = 104;\nf_tq_490_line_104.consumeWhitespace();\n\nint PROBE_START_LINE_106 = 111;\norg.jsoup.parser.TokenQueue f_tq_490_line_106 = tq;\nString[] f_combinators_484_line_106 = combinators;\nboolean selector1_expr15_line_106 = f_tq_490_line_106.matchesAny(f_combinators_484_line_106);\nint PROBE_END_LINE_106 = 111;\nif (selector1_expr15_line_106) { // if starts with a combinator, use root as elements\nelements.add(root);\ncombinator(tq.consume().toString());\n} else {",
+        "begin_line": 131,
+        "end_line": 145,
+        "comment": "    \n     Find elements matching selector.\n     @param query CSS selector\n     @param roots root elements to descend into\n     @return matching elements, empty if not\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.Selector.combinator(String combinator)#186",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/Selector.java",
+        "class_name": "org.jsoup.select.Selector",
+        "signature": "org.jsoup.select.Selector.combinator(String combinator)",
+        "snippet": "private void combinator(String combinator) {\ntq.consumeWhitespace();\nString subQuery = tq.consumeToAny(combinators); // support multi > childs\n\nElements output;\nif (combinator.equals(\">\"))\noutput = filterForChildren(elements, select(subQuery, elements));\nelse if (combinator.equals(\" \"))\noutput = filterForDescendants(elements, select(subQuery, elements));\nelse if (combinator.equals(\"+\"))\noutput = filterForAdjacentSiblings(elements, select(subQuery, root));\nelse if (combinator.equals(\"~\"))\noutput = filterForGeneralSiblings(elements, select(subQuery, root));\nelse\nthrow new IllegalStateException(\"Unknown combinator: \" + combinator);\n\nelements.clear(); elements.addAll(output);\n}",
+        "begin_line": 186,
+        "end_line": 203,
+        "comment": "             hierarchy and extras",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Document.normalise()#105",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Document.java",
+        "class_name": "org.jsoup.nodes.Document",
+        "signature": "org.jsoup.nodes.Document.normalise()",
+        "snippet": "public Document normalise() {\nint PROBE_START_LINE_100 = 100;\nElement document1_expr11_line_100 = findFirstElementByTagName(\"html\", this);\nint PROBE_END_LINE_100 = 100;\nElement htmlEl = document1_expr11_line_100;\nint PROBE_START_LINE_101 = 102;\norg.jsoup.nodes.Element v_html_el_81_line_101 = htmlEl;\nboolean document1_expr14_line_101 = v_html_el_81_line_101 == null;\nint PROBE_END_LINE_101 = 102;\nif (document1_expr14_line_101)\nhtmlEl = appendElement(\"html\");\nint PROBE_START_LINE_103 = 104;\norg.jsoup.nodes.Element document1_expr16_line_103 = head();\nboolean document1_expr15_line_103 = document1_expr16_line_103 == null;\nint PROBE_END_LINE_103 = 104;\nif (document1_expr15_line_103)\nhtmlEl.prependElement(\"head\");\nint PROBE_START_LINE_105 = 106;\norg.jsoup.nodes.Element document1_expr18_line_105 = body();\nboolean document1_expr17_line_105 = document1_expr18_line_105 == null;\nint PROBE_END_LINE_105 = 106;\nif (document1_expr17_line_105)\nhtmlEl.appendElement(\"body\");\n\nint PROBE_START_LINE_110 = 110;\norg.jsoup.nodes.Element document1_expr20_line_110 = head();\nint PROBE_END_LINE_110 = 110;\n// pull text nodes out of root, html, and head els, and push into body. non-text nodes are already taken care\n// of. do in inverse order to maintain text order.\nnormaliseTextNodes(document1_expr20_line_110);\nint PROBE_START_LINE_111 = 111;\norg.jsoup.nodes.Element v_html_el_81_line_111 = htmlEl;\nint PROBE_END_LINE_111 = 111;\nnormaliseTextNodes(v_html_el_81_line_111);\nnormaliseTextNodes(this);\n\nint PROBE_START_LINE_114 = 114;\norg.jsoup.nodes.Element v_html_el_81_line_114 = htmlEl;\nint PROBE_END_LINE_114 = 114;\nnormaliseStructure(\"head\", v_html_el_81_line_114);\nint PROBE_START_LINE_115 = 115;\norg.jsoup.nodes.Element v_html_el_81_line_115 = htmlEl;\nint PROBE_END_LINE_115 = 115;\nnormaliseStructure(\"body\", v_html_el_81_line_115);\n\nreturn this;\n}",
+        "begin_line": 105,
+        "end_line": 151,
+        "comment": "    \n     Normalise the document. This happens after the parse phase so generally does not need to be called.\n     Moves any text content that is not in the body element into the body.\n     @return this document after normalisation\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Document.OutputSettings()#312",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Document.java",
+        "class_name": "org.jsoup.nodes.Document",
+        "signature": "org.jsoup.nodes.Document.OutputSettings()",
+        "snippet": "public OutputSettings() {}\n\n/**\n* Get the document's current HTML escape mode: <code>base</code>, which provides a limited set of named HTML\n* entities and escapes other characters as numbered entities for maximum compatibility; or <code>extended</code>,\n* which uses the complete set of HTML named entities.\n* <p>\n* The default escape mode is <code>base</code>.\n* @return the document's current escape mode\n*/\npublic Entities.EscapeMode escapeMode() {\nint PROBE_START_LINE_217 = 217;\norg.jsoup.nodes.Entities.EscapeMode f_escape_mode_96_line_217 = escapeMode;\nint PROBE_END_LINE_217 = 217;\nreturn f_escape_mode_96_line_217;\n}",
+        "begin_line": 312,
+        "end_line": 327,
+        "comment": "    \n     * A Document's output settings control the form of the text() and html() methods.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.Element(Tag tag, String baseUri, Attributes attributes)#37",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.Element(Tag tag, String baseUri, Attributes attributes)",
+        "snippet": "public Element(Tag tag, String baseUri, Attributes attributes) {\nsuper(baseUri, attributes);\n\nint PROBE_START_LINE_39 = 39;\norg.jsoup.parser.Tag p_tag_107_line_39 = tag;\nint PROBE_END_LINE_39 = 39;\nValidate.notNull(p_tag_107_line_39);\nint PROBE_START_LINE_40 = 40;\norg.jsoup.parser.Tag p_tag_107_line_40 = tag;\nint PROBE_END_LINE_40 = 40;\nthis.tag = p_tag_107_line_40;\n}",
+        "begin_line": 37,
+        "end_line": 48,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Element.elementSiblingIndex()#473",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Element.java",
+        "class_name": "org.jsoup.nodes.Element",
+        "signature": "org.jsoup.nodes.Element.elementSiblingIndex()",
+        "snippet": "public Integer elementSiblingIndex() {\nif (parent() == null) return 0;\nreturn indexInList(this, parent().children());\n}",
+        "begin_line": 473,
+        "end_line": 476,
+        "comment": "    \n     * Get the list index of this element in its element sibling list. I.e. if this is the first element\n     * sibling, returns 0.\n     * @return position in element sibling list\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Entities.escape(String string, Document.OutputSettings out)#53",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/nodes/Entities.java",
+        "class_name": "org.jsoup.nodes.Entities",
+        "signature": "org.jsoup.nodes.Entities.escape(String string, Document.OutputSettings out)",
+        "snippet": "static String escape(String string, Document.OutputSettings out) {\nint PROBE_START_LINE_41 = 41;\nString p_string_189_line_41 = string;\norg.jsoup.nodes.Document.OutputSettings p_out_190_line_41 = out;\njava.nio.charset.CharsetEncoder entities1_expr5_line_41 = p_out_190_line_41.encoder();\norg.jsoup.nodes.Entities.EscapeMode entities1_expr6_line_41 = out.escapeMode();\nString entities1_expr4_line_41 = escape(p_string_189_line_41, entities1_expr5_line_41, entities1_expr6_line_41);\nint PROBE_END_LINE_41 = 41;\nreturn entities1_expr4_line_41;\n}",
+        "begin_line": 53,
+        "end_line": 62,
+        "comment": "         Complete HTML entities. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.NodeTraversor.NodeTraversor(NodeVisitor visitor)#12",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/NodeTraversor.java",
+        "class_name": "org.jsoup.select.NodeTraversor",
+        "signature": "org.jsoup.select.NodeTraversor.NodeTraversor(NodeVisitor visitor)",
+        "snippet": "public NodeTraversor(NodeVisitor visitor) {\nint PROBE_START_LINE_12 = 12;\norg.jsoup.select.NodeVisitor p_visitor_479_line_12 = visitor;\nint PROBE_END_LINE_12 = 12;\nthis.visitor = p_visitor_479_line_12;\n}",
+        "begin_line": 12,
+        "end_line": 17,
+        "comment": "\n * Breadth first node traversor.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.select.NodeTraversor.traverse(Node root)#19",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-8/result/src/org/jsoup/select/NodeTraversor.java",
+        "class_name": "org.jsoup.select.NodeTraversor",
+        "signature": "org.jsoup.select.NodeTraversor.traverse(Node root)",
+        "snippet": "public void traverse(Node root) {\nint PROBE_START_LINE_16 = 16;\nNode p_root_481_line_16 = root;\nint PROBE_END_LINE_16 = 16;\nNode node = p_root_481_line_16;\nint depth = 0;\n\nint PROBE_START_LINE_19 = 35;\norg.jsoup.nodes.Node v_node_482_line_19 = node;\nboolean node_traversor1_expr3_line_19 = v_node_482_line_19 != null;\nint PROBE_END_LINE_19 = 35;\nwhile (node_traversor1_expr3_line_19) {\nint PROBE_START_LINE_20 = 20;\norg.jsoup.select.NodeVisitor f_visitor_480_line_20 = visitor;\norg.jsoup.nodes.Node v_node_482_line_20 = node;\nint v_depth_483_line_20 = depth;\nint PROBE_END_LINE_20 = 20;\nf_visitor_480_line_20.head(v_node_482_line_20, v_depth_483_line_20);\nint PROBE_START_LINE_21 = 34;\norg.jsoup.nodes.Node v_node_482_line_21 = node;\nList<org.jsoup.nodes.Node> node_traversor1_expr7_line_21 = v_node_482_line_21.childNodes();\nint node_traversor1_expr6_line_21 = node_traversor1_expr7_line_21.size();\nboolean node_traversor1_expr5_line_21 = node_traversor1_expr6_line_21 > 0;\nint PROBE_END_LINE_21 = 34;\nif (node_traversor1_expr5_line_21) {\nint PROBE_START_LINE_22 = 22;\norg.jsoup.nodes.Node v_node_482_line_22 = node;\norg.jsoup.nodes.Node node_traversor1_expr8_line_22 = v_node_482_line_22.childNode(0);\nint PROBE_END_LINE_22 = 22;\nnode = node_traversor1_expr8_line_22;\ndepth++;\n} else {",
+        "begin_line": 19,
+        "end_line": 50,
+        "comment": "\n * Breadth first node traversor.\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

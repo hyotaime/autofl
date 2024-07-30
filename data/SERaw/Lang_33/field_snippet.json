@@ -1,0 +1,110 @@
+[
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_55",
+        "snippet": "int PROBE_START_LINE_55 = 58;\n\npublic static final char f_package_separator_char_394_line_58 = PACKAGE_SEPARATOR_CHAR;",
+        "begin_line": 56,
+        "end_line": 58,
+        "comment": "    \n     * <p>The package separator character: <code>'&#x2e;' == {@value}</code>.</p>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_65",
+        "snippet": "int PROBE_START_LINE_65 = 68;\n\npublic static final char f_inner_class_separator_char_396_line_68 = INNER_CLASS_SEPARATOR_CHAR;",
+        "begin_line": 74,
+        "end_line": 76,
+        "comment": "    \n     * <p>The inner class separator character: <code>'$' == {@value}</code>.</p>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_END_LINE_65",
+        "snippet": "int PROBE_END_LINE_65 = 68;\n\n/**\n* <p>The inner class separator String: <code>\"$\"</code>.</p>\n*/\npublic static final String INNER_CLASS_SEPARATOR = class_utils1_expr2_line_68;",
+        "begin_line": 80,
+        "end_line": 85,
+        "comment": "    \n     * <p>The inner class separator character: <code>'$' == {@value}</code>.</p>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_75",
+        "snippet": "int PROBE_START_LINE_75 = 75;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_75 = primitiveWrapperMap;",
+        "begin_line": 92,
+        "end_line": 93,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "Class<Boolean> f_type_398_line_75",
+        "snippet": "Class<Boolean> f_type_398_line_75 = Boolean.TYPE;\nint PROBE_END_LINE_75 = 75;",
+        "begin_line": 94,
+        "end_line": 95,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_77",
+        "snippet": "int PROBE_START_LINE_77 = 77;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_77 = primitiveWrapperMap;",
+        "begin_line": 102,
+        "end_line": 103,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_78",
+        "snippet": "int PROBE_START_LINE_78 = 78;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_78 = primitiveWrapperMap;",
+        "begin_line": 107,
+        "end_line": 108,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_80",
+        "snippet": "int PROBE_START_LINE_80 = 80;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_80 = primitiveWrapperMap;",
+        "begin_line": 117,
+        "end_line": 118,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "Class<Double> f_type_404_line_81",
+        "snippet": "Class<Double> f_type_404_line_81 = Double.TYPE;\nint PROBE_END_LINE_81 = 81;",
+        "begin_line": 124,
+        "end_line": 125,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_82",
+        "snippet": "int PROBE_START_LINE_82 = 82;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_82 = primitiveWrapperMap;",
+        "begin_line": 127,
+        "end_line": 128,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "Class<Float> f_type_405_line_82",
+        "snippet": "Class<Float> f_type_405_line_82 = Float.TYPE;\nint PROBE_END_LINE_82 = 82;",
+        "begin_line": 129,
+        "end_line": 130,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.ClassUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-33/result/src/org/apache/commons/lang3/ClassUtils.java",
+        "signature": "int PROBE_START_LINE_83",
+        "snippet": "int PROBE_START_LINE_83 = 83;\nMap<Class<?>, Class<?>> f_primitive_wrapper_map_397_line_83 = primitiveWrapperMap;",
+        "begin_line": 132,
+        "end_line": 133,
+        "comment": "    \n     * Maps primitive <code>Class</code>es to their corresponding wrapper <code>Class</code>.\n     "
+    }
+]

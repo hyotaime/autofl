@@ -1,0 +1,754 @@
+[
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#147",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static final java.util.regex.Pattern string_utils1_expr1_line_147 = Pattern.compile(\"\\\\s+\");",
+        "begin_line": 147,
+        "end_line": 147,
+        "comment": "    \n     * <p>The maximum size to which the padding constant(s) can expand.</p>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#704",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String result;",
+        "begin_line": 704,
+        "end_line": 704,
+        "comment": "        /*\n        String decomposed = sun.text.Normalizer.decompose(text, false, 0);\n        return sunPattern.matcher(decomposed).replaceAll(\"\");$NON-NLS-1$\n        ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#705",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "result = (String) sunDecomposeMethod.invoke(null, new Object[] {text, Boolean.FALSE, Integer.valueOf(0)});",
+        "begin_line": 705,
+        "end_line": 705,
+        "comment": "        /*\n        String decomposed = sun.text.Normalizer.decompose(text, false, 0);\n        return sunPattern.matcher(decomposed).replaceAll(\"\");$NON-NLS-1$\n        ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#706",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "result = sunPattern.matcher(result).replaceAll(\"\");//$NON-NLS-1$",
+        "begin_line": 706,
+        "end_line": 706,
+        "comment": "        /*\n        String decomposed = sun.text.Normalizer.decompose(text, false, 0);\n        return sunPattern.matcher(decomposed).replaceAll(\"\");$NON-NLS-1$\n        ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#708",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "}",
+        "begin_line": 708,
+        "end_line": 708,
+        "comment": "        /*\n        String decomposed = sun.text.Normalizer.decompose(text, false, 0);\n        return sunPattern.matcher(decomposed).replaceAll(\"\");$NON-NLS-1$\n        ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#709",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 709,
+        "end_line": 709,
+        "comment": "        /*\n        String decomposed = sun.text.Normalizer.decompose(text, false, 0);\n        return sunPattern.matcher(decomposed).replaceAll(\"\");$NON-NLS-1$\n        ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#710",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "// SUN internal, Java 1.3 -> Java 5",
+        "begin_line": 710,
+        "end_line": 710,
+        "comment": "     SUN internal, Java 1.3 -> Java 5",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#711",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static boolean sunAvailable = false;",
+        "begin_line": 711,
+        "end_line": 711,
+        "comment": "     SUN internal, Java 1.3 -> Java 5",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#717",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 717,
+        "end_line": 717,
+        "comment": "     SUN internal, Java 1.3 -> Java 5",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#719",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 719,
+        "end_line": 719,
+        "comment": "     SUN internal, Java 1.3 -> Java 5",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#720",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static final Pattern sunPattern = string_utils1_expr4_line_706;//$NON-NLS-1$",
+        "begin_line": 720,
+        "end_line": 720,
+        "comment": "     SUN internal, Java 1.3 -> Java 5",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#722",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static boolean java6Available = false;",
+        "begin_line": 722,
+        "end_line": 722,
+        "comment": "     Java 6+",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#724",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "private static Object  java6NormalizerFormNFD = null;",
+        "begin_line": 724,
+        "end_line": 724,
+        "comment": "     Java 6+",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#733",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "static {",
+        "begin_line": 733,
+        "end_line": 733,
+        "comment": "     Java 6+",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#737",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "ClassLoader string_utils1_expr9_line_717 = string_utils1_expr10_line_717.getContextClassLoader();",
+        "begin_line": 737,
+        "end_line": 737,
+        "comment": "     Java 6+",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#744",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "Class<?> v_normalizer_form_class_31_line_719 = normalizerFormClass;",
+        "begin_line": 744,
+        "end_line": 744,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#745",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "Field string_utils1_expr12_line_719 = v_normalizer_form_class_31_line_719.getField(\"NFD\");",
+        "begin_line": 745,
+        "end_line": 745,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#747",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_719 = 719;",
+        "begin_line": 747,
+        "end_line": 747,
+        "comment": "             Be careful not to get Java 1.3 java.text.Normalizer!",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3230",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "if (camelCase && type == Character.LOWERCASE_LETTER && currentType == Character.UPPERCASE_LETTER) {",
+        "begin_line": 3230,
+        "end_line": 3230,
+        "comment": "    \n     * <p>Splits a String by Character type as returned by\n     * {@code java.lang.Character.getType(char)}. Groups of contiguous\n     * characters of the same type are returned as complete tokens, with the\n     * following exception: if {@code camelCase} is {@code true},\n     * the character of type {@code Character.UPPERCASE_LETTER}, if any,\n     * immediately preceding a token of type {@code Character.LOWERCASE_LETTER}\n     * will belong to the following token rather than to the preceding, if any,\n     * {@code Character.UPPERCASE_LETTER} token.\n     * @param str the String to split, may be {@code null}\n     * @param camelCase whether to use so-called \"camel-case\" for letter types\n     * @return an array of parsed Strings, {@code null} if null String input\n     * @since 2.4\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3256",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* <pre>",
+        "begin_line": 3256,
+        "end_line": 3256,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3257",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* StringUtils.join(null)            = null",
+        "begin_line": 3257,
+        "end_line": 3257,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3260",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* StringUtils.join([\"a\", \"b\", \"c\"]) = \"abc\"",
+        "begin_line": 3260,
+        "end_line": 3260,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3290",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"",
+        "begin_line": 3290,
+        "end_line": 3290,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3293",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* </pre>",
+        "begin_line": 3293,
+        "end_line": 3293,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3294",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "*",
+        "begin_line": 3294,
+        "end_line": 3294,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3295",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* @param array  the array of values to join together, may be null",
+        "begin_line": 3295,
+        "end_line": 3295,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3298",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* @since 2.0",
+        "begin_line": 3298,
+        "end_line": 3298,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3300",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "public static String join(Object[] array, char separator) {",
+        "begin_line": 3300,
+        "end_line": 3300,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3301",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3256 = 3258;",
+        "begin_line": 3301,
+        "end_line": 3301,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3302",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "Object[] p_array_180_line_3256 = array;",
+        "begin_line": 3302,
+        "end_line": 3302,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3304",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3256 = 3258;",
+        "begin_line": 3304,
+        "end_line": 3304,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3305",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "if (string_utils1_expr28_line_3256) {",
+        "begin_line": 3305,
+        "end_line": 3305,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3308",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 3308,
+        "end_line": 3308,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3335",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "*",
+        "begin_line": 3335,
+        "end_line": 3335,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3336",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* @param array  the array of values to join together, may be null",
+        "begin_line": 3336,
+        "end_line": 3336,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3338",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "* @param startIndex the first index to start joining from.  It is",
+        "begin_line": 3338,
+        "end_line": 3338,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3369",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "}",
+        "begin_line": 3369,
+        "end_line": 3369,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3372",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "Object[] p_array_183_line_3298 = array;",
+        "begin_line": 3372,
+        "end_line": 3372,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3373",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int p_start_index_185_line_3298 = startIndex;",
+        "begin_line": 3373,
+        "end_line": 3373,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3378",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "Object string_utils1_expr44_line_3298 = array[startIndex];",
+        "begin_line": 3378,
+        "end_line": 3378,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3379",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "String string_utils1_expr43_line_3298 = string_utils1_expr44_line_3298.toString();",
+        "begin_line": 3379,
+        "end_line": 3379,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3380",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "string_utils1_expr41_line_3298 = string_utils1_expr43_line_3298.length();",
+        "begin_line": 3380,
+        "end_line": 3380,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3383",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int string_utils1_expr37_line_3298 = (string_utils1_expr38_line_3298);",
+        "begin_line": 3383,
+        "end_line": 3383,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3385",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3298 = 3298;",
+        "begin_line": 3385,
+        "end_line": 3385,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3386",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "StringBuilder buf = new StringBuilder(string_utils1_expr36_line_3298);",
+        "begin_line": 3386,
+        "end_line": 3386,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3389",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_START_LINE_3301 = 3303;",
+        "begin_line": 3389,
+        "end_line": 3389,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang3.StringUtils.unknown#3393",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.unknown(...)",
+        "snippet": "int PROBE_END_LINE_3301 = 3303;",
+        "begin_line": 3393,
+        "end_line": 3393,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @param startIndex the first index to start joining from.  It is\n     * an error to pass in an end index past the end of the array\n     * @param endIndex the index to stop joining from (exclusive). It is\n     * an error to pass in an end index past the end of the array\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

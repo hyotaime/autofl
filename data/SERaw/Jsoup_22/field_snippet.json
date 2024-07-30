@@ -1,0 +1,164 @@
+[
+    {
+        "class_name": "org.jsoup.nodes.Node",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "signature": "int PROBE_START_LINE_32",
+        "snippet": "int PROBE_START_LINE_32 = 32;\nString p_base_uri_110_line_32 = baseUri;",
+        "begin_line": 32,
+        "end_line": 33,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     "
+    },
+    {
+        "class_name": "org.jsoup.nodes.Node",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "signature": "int PROBE_END_LINE_32",
+        "snippet": "int PROBE_END_LINE_32 = 32;\nValidate.notNull(p_base_uri_110_line_32);",
+        "begin_line": 34,
+        "end_line": 35,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     "
+    },
+    {
+        "class_name": "org.jsoup.nodes.Node",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "signature": "int PROBE_START_LINE_33",
+        "snippet": "int PROBE_START_LINE_33 = 33;\norg.jsoup.nodes.Attributes p_attributes_111_line_33 = attributes;",
+        "begin_line": 36,
+        "end_line": 37,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     "
+    },
+    {
+        "class_name": "org.jsoup.nodes.Node",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "signature": "int PROBE_END_LINE_33",
+        "snippet": "int PROBE_END_LINE_33 = 33;\nValidate.notNull(p_attributes_111_line_33);",
+        "begin_line": 38,
+        "end_line": 39,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     "
+    },
+    {
+        "class_name": "org.jsoup.helper.Validate",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "signature": "int PROBE_START_LINE_15",
+        "snippet": "int PROBE_START_LINE_15 = 16;\nObject p_obj_1_line_15 = obj;",
+        "begin_line": 15,
+        "end_line": 16,
+        "comment": "    \n     * Validates that the obect is not null\n     * @param obj object to test\n     "
+    },
+    {
+        "class_name": "org.jsoup.helper.Validate",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/helper/Validate.java",
+        "signature": "boolean validate1_expr1_line_15",
+        "snippet": "boolean validate1_expr1_line_15 = p_obj_1_line_15 == null;\nint PROBE_END_LINE_15 = 16;",
+        "begin_line": 17,
+        "end_line": 18,
+        "comment": "    \n     * Validates that the obect is not null\n     * @param obj object to test\n     "
+    },
+    {
+        "class_name": "org.jsoup.nodes.Element",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "signature": "int PROBE_START_LINE_40",
+        "snippet": "int PROBE_START_LINE_40 = 40;\norg.jsoup.parser.Tag p_tag_31_line_40 = tag;",
+        "begin_line": 40,
+        "end_line": 41,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     "
+    },
+    {
+        "class_name": "org.jsoup.nodes.Element",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Element.java",
+        "signature": "int PROBE_END_LINE_40",
+        "snippet": "int PROBE_END_LINE_40 = 40;\nValidate.notNull(p_tag_31_line_40);",
+        "begin_line": 42,
+        "end_line": 43,
+        "comment": "    \n     * Create a new, standalone Element. (Standalone in that is has no parent.)\n     * \n     * @param tag tag of this element\n     * @param baseUri the base URI\n     * @param attributes initial attributes\n     * @see #appendChild(Node)\n     * @see #appendElement(String)\n     "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "private boolean isBlock",
+        "snippet": "private boolean isBlock = true; // block or inline\nprivate boolean formatAsBlock = true; // should be formatted as a block\nprivate boolean canContainBlock = true; // Can this tag hold block level tags?\nprivate boolean canContainInline = true; // only pcdata if not\nprivate boolean empty = false; // can hold nothing; e.g. img\nprivate boolean selfClosing = false; // can self close (<foo />). used for unknown tags that self close, without forcing them as empty.\nprivate boolean preserveWhitespace = false; // for pre, textarea, script etc\n\nprivate Tag(String tagName) {\nint PROBE_START_LINE_26 = 26;",
+        "begin_line": 17,
+        "end_line": 26,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "String p_tag_name_174_line_26",
+        "snippet": "String p_tag_name_174_line_26 = tagName;\nString tag1_expr10_line_26 = p_tag_name_174_line_26.toLowerCase();",
+        "begin_line": 27,
+        "end_line": 28,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int PROBE_START_LINE_47",
+        "snippet": "int PROBE_START_LINE_47 = 47;\nString p_tag_name_176_line_47 = tagName;",
+        "begin_line": 51,
+        "end_line": 52,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int PROBE_END_LINE_47",
+        "snippet": "int PROBE_END_LINE_47 = 47;\nValidate.notNull(p_tag_name_176_line_47);",
+        "begin_line": 53,
+        "end_line": 54,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int PROBE_END_LINE_48",
+        "snippet": "int PROBE_END_LINE_48 = 48;\ntagName = tag1_expr12_line_48;",
+        "begin_line": 59,
+        "end_line": 60,
+        "comment": "    \n     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.\n     * <p/>\n     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().\n     *\n     * @param tagName Name of tag, e.g. \"p\". Case insensitive.\n     * @return The tag, either defined or new generic.\n     "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int result",
+        "snippet": "int result = tagName.hashCode();\nresult = 31 * result + (isBlock ? 1 : 0);",
+        "begin_line": 210,
+        "end_line": 211,
+        "comment": "    \n     * Get if this tag should preserve whitespace within child text nodes.\n     *\n     * @return if preserve whitepace\n     "
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int PROBE_START_LINE_222",
+        "snippet": "int PROBE_START_LINE_222 = 225;\nString[] f_block_tags_180_line_222 = blockTags;",
+        "begin_line": 251,
+        "end_line": 252,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources"
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "int PROBE_END_LINE_222",
+        "snippet": "int PROBE_END_LINE_222 = 225;\n// creates\nfor (String tagName : f_block_tags_180_line_222) {\nint PROBE_START_LINE_223 = 223;",
+        "begin_line": 253,
+        "end_line": 256,
+        "comment": "     prepped from http:www.w3.org/TR/REC-html40/sgml/dtd.html and other sources"
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "String v_tag_name_185_line_223",
+        "snippet": "String v_tag_name_185_line_223 = tagName;\nint PROBE_END_LINE_223 = 223;",
+        "begin_line": 257,
+        "end_line": 258,
+        "comment": "\t\t creates"
+    },
+    {
+        "class_name": "org.jsoup.parser.Tag",
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "signature": "Tag tag",
+        "snippet": "Tag tag = new Tag(v_tag_name_185_line_223);\nint PROBE_START_LINE_224 = 224;",
+        "begin_line": 259,
+        "end_line": 260,
+        "comment": "\t\t creates"
+    }
+]

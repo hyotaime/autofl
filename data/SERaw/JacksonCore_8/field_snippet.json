@@ -1,0 +1,56 @@
+[
+    {
+        "class_name": "com.fasterxml.jackson.core.util.TextBuffer",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/TextBuffer.java",
+        "signature": "private boolean _hasSegments",
+        "snippet": "private boolean _hasSegments = false;\n\n// // // Currently used segment; not (yet) contained in _seqments\n\n/**\n* Amount of characters in segments in {@link _segments}\n*/\nprivate int _segmentSize;",
+        "begin_line": 85,
+        "end_line": 92,
+        "comment": "    \n     * Flag that indicates whether _seqments is non-empty\n     "
+    },
+    {
+        "class_name": "com.fasterxml.jackson.core.util.TextBuffer",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/TextBuffer.java",
+        "signature": "int PROBE_START_LINE_122",
+        "snippet": "int PROBE_START_LINE_122 = 122;\ncom.fasterxml.jackson.core.util.BufferRecycler p_allocator_23_line_122 = allocator;",
+        "begin_line": 122,
+        "end_line": 123,
+        "comment": "    ********************************************************\n     "
+    },
+    {
+        "class_name": "com.fasterxml.jackson.core.util.TextBuffer",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/TextBuffer.java",
+        "signature": "int PROBE_START_LINE_156",
+        "snippet": "int PROBE_START_LINE_156 = 156;\nint text_buffer1_expr3_line_156 = -1;",
+        "begin_line": 159,
+        "end_line": 160,
+        "comment": "    \n     * Method called to clear out any content text buffer may have, and\n     * initializes buffer to use non-shared data.\n     "
+    },
+    {
+        "class_name": "com.fasterxml.jackson.core.util.TextBuffer",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/TextBuffer.java",
+        "signature": "int PROBE_END_LINE_156",
+        "snippet": "int PROBE_END_LINE_156 = 156;\n_inputStart = text_buffer1_expr3_line_156; // indicates shared buffer not used\n_currentSize = 0;",
+        "begin_line": 161,
+        "end_line": 163,
+        "comment": "    \n     * Method called to clear out any content text buffer may have, and\n     * initializes buffer to use non-shared data.\n     "
+    },
+    {
+        "class_name": "com.fasterxml.jackson.core.util.BufferRecycler",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/BufferRecycler.java",
+        "signature": "int PROBE_START_LINE_72",
+        "snippet": "int PROBE_START_LINE_72 = 72;\nint p_bb_count_3_line_72 = bbCount;",
+        "begin_line": 72,
+        "end_line": 73,
+        "comment": "    \n     * Alternate constructor to be used by sub-classes, to allow customization\n     * of number of low-level buffers in use.\n     * \n     * @since 2.4\n     "
+    },
+    {
+        "class_name": "com.fasterxml.jackson.core.util.BufferRecycler",
+        "src_path": "/data/bug_db/subjects/defects4j/JacksonCore-8/result/src/com/fasterxml/jackson/core/util/BufferRecycler.java",
+        "signature": "int PROBE_END_LINE_72",
+        "snippet": "int PROBE_END_LINE_72 = 72;\n_byteBuffers = new byte[p_bb_count_3_line_72][];",
+        "begin_line": 74,
+        "end_line": 75,
+        "comment": "    \n     * Alternate constructor to be used by sub-classes, to allow customization\n     * of number of low-level buffers in use.\n     * \n     * @since 2.4\n     "
+    }
+]

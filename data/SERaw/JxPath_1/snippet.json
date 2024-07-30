@@ -1,0 +1,690 @@
+[
+    {
+        "name": "org.apache.commons.jxpath.ri.model.dom.DOMNodeIterator.getNodePointer()#70",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.dom.DOMNodeIterator",
+        "signature": "org.apache.commons.jxpath.ri.model.dom.DOMNodeIterator.getNodePointer()",
+        "snippet": "public NodePointer getNodePointer() {\nint PROBE_START_LINE_54 = 56;\nint f_position_638_line_54 = position;\nboolean domnode_iterator1_expr9_line_54 = f_position_638_line_54 == 0;\nint PROBE_END_LINE_54 = 56;\nif (domnode_iterator1_expr9_line_54) {\nsetPosition(1);\n}",
+        "begin_line": 70,
+        "end_line": 77,
+        "comment": "\n * An iterator of children of a DOM Node.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.DescendantContext.getCurrentNodePointer()#65",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/DescendantContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.DescendantContext",
+        "signature": "org.apache.commons.jxpath.ri.axes.DescendantContext.getCurrentNodePointer()",
+        "snippet": "public NodePointer getCurrentNodePointer() {\nint PROBE_START_LINE_60 = 64;\nint f_position_87_line_60 = position;\nboolean descendant_context1_expr6_line_60 = f_position_87_line_60 == 0;\nint PROBE_END_LINE_60 = 64;\nif (descendant_context1_expr6_line_60) {\nif (!setPosition(1)) {\nreturn null;\n}",
+        "begin_line": 65,
+        "end_line": 73,
+        "comment": "\n * An EvalContext that walks the \"descendant::\" and \"descendant-or-self::\"\n * axes.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.DescendantContext.nextNode()#99",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/DescendantContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.DescendantContext",
+        "signature": "org.apache.commons.jxpath.ri.axes.DescendantContext.nextNode()",
+        "snippet": "public boolean nextNode() {\nint PROBE_START_LINE_87 = 106;\nboolean f_set_started_230_line_87 = setStarted;\nboolean descendant_context1_expr9_line_87 = !f_set_started_230_line_87;\nint PROBE_END_LINE_87 = 106;\nif (descendant_context1_expr9_line_87) {\nsetStarted = true;\nstack = new Stack();\nint PROBE_START_LINE_90 = 90;\norg.apache.commons.jxpath.ri.EvalContext f_parent_context_95_line_90 = parentContext;\norg.apache.commons.jxpath.ri.model.NodePointer descendant_context1_expr12_line_90 = f_parent_context_95_line_90\n.getCurrentNodePointer();\nint PROBE_END_LINE_90 = 90;\ncurrentNodePointer = descendant_context1_expr12_line_90;\nint PROBE_START_LINE_91 = 105;\norg.apache.commons.jxpath.ri.model.NodePointer f_current_node_pointer_237_line_91 = currentNodePointer;\nboolean descendant_context1_expr13_line_91 = f_current_node_pointer_237_line_91 != null;\nint PROBE_END_LINE_91 = 105;\nif (descendant_context1_expr13_line_91) {\nint PROBE_START_LINE_92 = 98;\norg.apache.commons.jxpath.ri.model.NodePointer f_current_node_pointer_237_line_92 = currentNodePointer;\nboolean descendant_context1_expr15_line_92 = f_current_node_pointer_237_line_92.isLeaf();\nboolean descendant_context1_expr14_line_92 = !descendant_context1_expr15_line_92;\nint PROBE_END_LINE_92 = 98;\nif (descendant_context1_expr14_line_92) {\nint PROBE_START_LINE_93 = 97;\njava.util.Stack f_stack_239_line_93 = stack;\nint PROBE_END_LINE_93 = 97;\nf_stack_239_line_93.push(\ncurrentNodePointer.childIterator(\nELEMENT_NODE_TEST,\nfalse,\nnull));\n}",
+        "begin_line": 99,
+        "end_line": 132,
+        "comment": "\n * An EvalContext that walks the \"descendant::\" and \"descendant-or-self::\"\n * axes.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.parser.XPathParser.setCompiler(Compiler compiler)#11",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/parser/XPathParser.java",
+        "class_name": "org.apache.commons.jxpath.ri.parser.XPathParser",
+        "signature": "org.apache.commons.jxpath.ri.parser.XPathParser.setCompiler(Compiler compiler)",
+        "snippet": "public void setCompiler(Compiler compiler){\nint PROBE_START_LINE_11 = 11;\norg.apache.commons.jxpath.ri.Compiler p_compiler_778_line_11 = compiler;\nint PROBE_END_LINE_11 = 11;\nthis.compiler = p_compiler_778_line_11;\n}",
+        "begin_line": 11,
+        "end_line": 16,
+        "comment": "/* Generated By:JavaCC: Do not edit this line. XPathParser.java ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.PackageFunctions.PackageFunctions(String classPrefix, String namespace)#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/PackageFunctions.java",
+        "class_name": "org.apache.commons.jxpath.PackageFunctions",
+        "signature": "org.apache.commons.jxpath.PackageFunctions.PackageFunctions(String classPrefix, String namespace)",
+        "snippet": "public PackageFunctions(String classPrefix, String namespace) {\nint PROBE_START_LINE_77 = 77;\nString p_class_prefix_80_line_77 = classPrefix;\nint PROBE_END_LINE_77 = 77;\nthis.classPrefix = p_class_prefix_80_line_77;\nint PROBE_START_LINE_78 = 78;\nString p_namespace_81_line_78 = namespace;\nint PROBE_END_LINE_78 = 78;\nthis.namespace = p_namespace_81_line_78;\n}",
+        "begin_line": 76,
+        "end_line": 85,
+        "comment": "\n * Extension functions provided by Java classes.  The class prefix specified\n * in the constructor is used when a constructor or a static method is called.\n * Usually, a class prefix is a package name (hence the name of this class).\n *\n * Let's say, we declared a PackageFunction like this:\n * <blockquote><pre>\n *     new PackageFunctions(\"java.util.\", \"util\")\n * </pre></blockquote>\n *\n * We can now use XPaths like:\n * <dl>\n *  <dt><code>\"util:Date.new()\"</code></dt>\n *  <dd>Equivalent to <code>new java.util.Date()</code></dd>\n *  <dt><code>\"util:Collections.singleton('foo')\"</code></dt>\n *  <dd>Equivalent to <code>java.util.Collections.singleton(\"foo\")</code></dd>\n *  <dt><code>\"util:substring('foo', 1, 2)\"</code></dt>\n *  <dd>Equivalent to <code>\"foo\".substring(1, 2)</code>.  Note that in\n *  this case, the class prefix is not used. JXPath does not check that\n *  the first parameter of the function (the method target) is in fact\n *  a member of the package described by this PackageFunctions object.</dd>\n * </dl>\n *\n * <p>\n * If the first argument of a method or constructor is ExpressionContext, the\n * expression context in which the function is evaluated is passed to\n * the method.\n * </p>\n * <p>\n * There is one PackageFunctions object registered by default with each\n * JXPathContext.  It does not have a namespace and uses no class prefix.\n * The existence of this object allows us to use XPaths like:\n * <code>\"java.util.Date.new()\"</code> and <code>\"length('foo')\"</code>\n * without the explicit registration of any extension functions.\n * </p>\n\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.NodePointer.getImmediateParentPointer()#187",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/NodePointer.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.NodePointer",
+        "signature": "org.apache.commons.jxpath.ri.model.NodePointer.getImmediateParentPointer()",
+        "snippet": "public NodePointer getImmediateParentPointer() {\nreturn parent;\n}",
+        "begin_line": 187,
+        "end_line": 189,
+        "comment": "    private NamespaceManager namespaceManager;",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.NodePointer.getIndex()#239",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/NodePointer.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.NodePointer",
+        "signature": "org.apache.commons.jxpath.ri.model.NodePointer.getIndex()",
+        "snippet": "public int getIndex() {\nint PROBE_START_LINE_187 = 187;\nint f_index_470_line_187 = index;\nint PROBE_END_LINE_187 = 187;\nreturn f_index_470_line_187;\n}",
+        "begin_line": 239,
+        "end_line": 244,
+        "comment": "    \n     * If the pointer represents a collection, the index identifies\n     * an element of that collection.  The default value of <code>index</code>\n     * is <code>WHOLE_COLLECTION</code>, which just means that the pointer\n     * is not indexed at all.\n     * Note: the index on NodePointer starts with 0, not 1.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.NodePointer.getValue()#271",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/NodePointer.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.NodePointer",
+        "signature": "org.apache.commons.jxpath.ri.model.NodePointer.getValue()",
+        "snippet": "public Object getValue() {\nNodePointer valuePointer = getValuePointer();\nif (valuePointer != this) {\nreturn valuePointer.getValue();\n}",
+        "begin_line": 271,
+        "end_line": 275,
+        "comment": "    \n     * By default, returns <code>getNode()</code>, can be overridden to\n     * return a \"canonical\" value, like for instance a DOM element should\n     * return its string value.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter.if(currentStep == steps.length - 1)#249",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter",
+        "signature": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter.if(currentStep == steps.length - 1)",
+        "snippet": "else if (currentStep == steps.length - 1) {\n// If this is the last step - we are done, we found it\nreturn childPointer;\n}",
+        "begin_line": 249,
+        "end_line": 252,
+        "comment": "             The property does not exist - create a null pointer.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter.if(quality > bestQuality)#269",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter",
+        "signature": "org.apache.commons.jxpath.ri.axes.SimplePathInterpreter.if(quality > bestQuality)",
+        "snippet": "else if (quality > bestQuality) {\nbestQuality = quality;\nbestMatch = (NodePointer) pointer.clone();\n}",
+        "begin_line": 269,
+        "end_line": 272,
+        "comment": "             looking for the best quality match",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.container.ContainerPointer.isCollection()#71",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.container.ContainerPointer",
+        "signature": "org.apache.commons.jxpath.ri.model.container.ContainerPointer.isCollection()",
+        "snippet": "public boolean isCollection() {\nObject value = getBaseValue();\nreturn value != null && ValueUtils.isCollection(value);\n}",
+        "begin_line": 71,
+        "end_line": 74,
+        "comment": "    \n     * This type of node is auxiliary.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.container.ContainerPointer.getImmediateNode()#103",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.container.ContainerPointer",
+        "signature": "org.apache.commons.jxpath.ri.model.container.ContainerPointer.getImmediateNode()",
+        "snippet": "public Object getImmediateNode() {\nint PROBE_START_LINE_83 = 83;\nObject container_pointer1_expr8_line_83 = getBaseValue();\nint PROBE_END_LINE_83 = 83;\nObject value = container_pointer1_expr8_line_83;\nint PROBE_START_LINE_84 = 94;\nint f_index_470_line_84 = index;\nint f_whole_collection_471_line_84 = WHOLE_COLLECTION;\nboolean container_pointer1_expr9_line_84 = f_index_470_line_84 != f_whole_collection_471_line_84;\nint PROBE_END_LINE_84 = 94;\nif (container_pointer1_expr9_line_84) {\nint PROBE_START_LINE_85 = 90;\nint f_index_470_line_85 = index;\nboolean container_pointer1_expr11_line_85 = f_index_470_line_85 >= 0;\nboolean container_pointer1_expr12_line_85 = true;\nif (container_pointer1_expr11_line_85) {\nint container_pointer1_expr13_line_85 = getLength();\ncontainer_pointer1_expr12_line_85 = index < container_pointer1_expr13_line_85;\n}",
+        "begin_line": 103,
+        "end_line": 121,
+        "comment": "    \n     * This type of node is auxiliary.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.EvalContext.EvalContext(EvalContext parentContext)#63",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/EvalContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.EvalContext",
+        "signature": "org.apache.commons.jxpath.ri.EvalContext.EvalContext(EvalContext parentContext)",
+        "snippet": "public EvalContext(EvalContext parentContext) {\nint PROBE_START_LINE_64 = 64;\norg.apache.commons.jxpath.ri.EvalContext p_parent_context_94_line_64 = parentContext;\nint PROBE_END_LINE_64 = 64;\nthis.parentContext = p_parent_context_94_line_64;\n}",
+        "begin_line": 63,
+        "end_line": 68,
+        "comment": "     interface.",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.EvalContext.isChildOrderingRequired()#114",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/EvalContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.EvalContext",
+        "signature": "org.apache.commons.jxpath.ri.EvalContext.isChildOrderingRequired()",
+        "snippet": "public boolean isChildOrderingRequired() {\nint PROBE_START_LINE_100 = 102;\nint eval_context1_expr14_line_100 = getDocumentOrder();\nboolean eval_context1_expr13_line_100 = eval_context1_expr14_line_100 != 0;\nint PROBE_END_LINE_100 = 102;\n// Default behavior: if this context needs to be ordered,\n// the children need to be ordered too\nif (eval_context1_expr13_line_100) {\nreturn true;\n}",
+        "begin_line": 114,
+        "end_line": 123,
+        "comment": "    \n     * Even if this context has the natural ordering and therefore does\n     * not require collecting and sorting all nodes prior to returning them,\n     * such operation may be required for any child context.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.EvalContext.getNodeSet()#315",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/EvalContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.EvalContext",
+        "signature": "org.apache.commons.jxpath.ri.EvalContext.getNodeSet()",
+        "snippet": "public NodeSet getNodeSet() {\nif (position != 0) {\nthrow new JXPathException(\n\"Simultaneous operations: \"\n+ \"should not request pointer list while \"\n+ \"iterating over an EvalContext\");\n}",
+        "begin_line": 315,
+        "end_line": 321,
+        "comment": "    \n     * Returns the list of all Pointers in this context for all positions\n     * of the parent contexts.  If there was an ongoing iteration over\n     * this context, the method should not be called.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextFactoryReferenceImpl.JXPathContextFactoryReferenceImpl()#31",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextFactoryReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextFactoryReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextFactoryReferenceImpl.JXPathContextFactoryReferenceImpl()",
+        "snippet": "public JXPathContextFactoryReferenceImpl() {\n}",
+        "begin_line": 31,
+        "end_line": 32,
+        "comment": "\n * Default implementation of JXPathContextFactory.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.xml.DOMParser.parseXML(InputStream stream)#35",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/xml/DOMParser.java",
+        "class_name": "org.apache.commons.jxpath.xml.DOMParser",
+        "signature": "org.apache.commons.jxpath.xml.DOMParser.parseXML(InputStream stream)",
+        "snippet": "public Object parseXML(InputStream stream) {\ntry {\nDocumentBuilderFactory factory =\nDocumentBuilderFactory.newInstance();\n\nint PROBE_START_LINE_38 = 38;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_38 = factory;\nboolean domparser1_expr3_line_38 = isValidating();\nint PROBE_END_LINE_38 = 38;\nv_factory_1172_line_38.setValidating(domparser1_expr3_line_38);\nint PROBE_START_LINE_39 = 39;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_39 = factory;\nboolean domparser1_expr5_line_39 = isNamespaceAware();\nint PROBE_END_LINE_39 = 39;\nv_factory_1172_line_39.setNamespaceAware(domparser1_expr5_line_39);\nint PROBE_START_LINE_40 = 41;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_40 = factory;\nint PROBE_END_LINE_40 = 41;\nv_factory_1172_line_40.setIgnoringElementContentWhitespace(\nisIgnoringElementContentWhitespace());\nint PROBE_START_LINE_42 = 42;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_42 = factory;\nboolean domparser1_expr9_line_42 = isExpandEntityReferences();\nint PROBE_END_LINE_42 = 42;\nv_factory_1172_line_42.setExpandEntityReferences(domparser1_expr9_line_42);\nint PROBE_START_LINE_43 = 43;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_43 = factory;\nboolean domparser1_expr11_line_43 = isIgnoringComments();\nint PROBE_END_LINE_43 = 43;\nv_factory_1172_line_43.setIgnoringComments(domparser1_expr11_line_43);\nint PROBE_START_LINE_44 = 44;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_44 = factory;\nboolean domparser1_expr13_line_44 = isCoalescing();\nint PROBE_END_LINE_44 = 44;\nv_factory_1172_line_44.setCoalescing(domparser1_expr13_line_44);\nint PROBE_START_LINE_45 = 45;\njavax.xml.parsers.DocumentBuilderFactory v_factory_1172_line_45 = factory;\njavax.xml.parsers.DocumentBuilder domparser1_expr15_line_45 = v_factory_1172_line_45.newDocumentBuilder();\njava.io.InputStream p_stream_1171_line_45 = stream;\norg.w3c.dom.Document domparser1_expr14_line_45 = domparser1_expr15_line_45.parse(p_stream_1171_line_45);\nint PROBE_END_LINE_45 = 45;\nreturn domparser1_expr14_line_45;\n}",
+        "begin_line": 35,
+        "end_line": 77,
+        "comment": "\n * An implementation of the XMLParser interface that produces a DOM Document.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.JXPathContextFactory.JXPathContextFactory()#58",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/JXPathContextFactory.java",
+        "class_name": "org.apache.commons.jxpath.JXPathContextFactory",
+        "signature": "org.apache.commons.jxpath.JXPathContextFactory.JXPathContextFactory()",
+        "snippet": "protected JXPathContextFactory () {\n\n}",
+        "begin_line": 58,
+        "end_line": 60,
+        "comment": "     Avoid reading all the files when the findFactory\n        method is called the second time ( cache the result of\n        finding the default impl )\n    ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.JXPathContextFactory.findFactory(String property, String defaultFactory)#176",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/JXPathContextFactory.java",
+        "class_name": "org.apache.commons.jxpath.JXPathContextFactory",
+        "signature": "org.apache.commons.jxpath.JXPathContextFactory.findFactory(String property, String defaultFactory)",
+        "snippet": "private static String findFactory(String property, String defaultFactory) {\n// Use the factory ID system property first\ntry {\nint PROBE_START_LINE_160 = 160;\nString p_property_70_line_160 = property;\nString jxpath_context_factory1_expr10_line_160 = System.getProperty(p_property_70_line_160);\nint PROBE_END_LINE_160 = 160;\nString systemProp = jxpath_context_factory1_expr10_line_160;\nint PROBE_START_LINE_161 = 167;\nString v_system_prop_72_line_161 = systemProp;\nboolean jxpath_context_factory1_expr11_line_161 = v_system_prop_72_line_161 != null;\nint PROBE_END_LINE_161 = 167;\nif (jxpath_context_factory1_expr11_line_161) {\nif (debug) {\nSystem.err.println(\n\"JXPath: found system property\" + systemProp);\n}",
+        "begin_line": 176,
+        "end_line": 192,
+        "comment": "     Private implementation method - will find the implementation\n        class in the specified order.\n        @param property    Property name\n        @param defaultFactory Default implementation, if nothing else is found\n        \n        @return class name of the JXPathContextFactory\n    ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.InitialContext.getValue()#65",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/InitialContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.InitialContext",
+        "signature": "org.apache.commons.jxpath.ri.axes.InitialContext.getValue()",
+        "snippet": "public Object getValue() {\nreturn nodePointer.getValue();\n}",
+        "begin_line": 65,
+        "end_line": 67,
+        "comment": "\n * A single-set EvalContext that provides access to the current node of\n * the parent context and nothing else.  It does not pass the iteration\n * on to the parent context.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.axes.InitialContext.setPosition(int position)#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/axes/InitialContext.java",
+        "class_name": "org.apache.commons.jxpath.ri.axes.InitialContext",
+        "signature": "org.apache.commons.jxpath.ri.axes.InitialContext.setPosition(int position)",
+        "snippet": "public boolean setPosition(int position) {\nint PROBE_START_LINE_64 = 64;\nint p_position_250_line_64 = position;\nint PROBE_END_LINE_64 = 64;\nthis.position = p_position_250_line_64;\nint PROBE_START_LINE_65 = 74;\nboolean f_collection_249_line_65 = collection;\nint PROBE_END_LINE_65 = 74;\nif (f_collection_249_line_65) {\nint PROBE_START_LINE_66 = 69;\nint p_position_250_line_66 = position;\nboolean initial_context1_expr11_line_66 = p_position_250_line_66 >= 1;\nboolean initial_context1_expr12_line_66 = true;\nif (initial_context1_expr11_line_66) {\norg.apache.commons.jxpath.ri.model.NodePointer f_node_pointer_248_line_66 = nodePointer;\nint initial_context1_expr13_line_66 = f_node_pointer_248_line_66.getLength();\ninitial_context1_expr12_line_66 = position <= initial_context1_expr13_line_66;\n}",
+        "begin_line": 78,
+        "end_line": 95,
+        "comment": "\n * A single-set EvalContext that provides access to the current node of\n * the parent context and nothing else.  It does not pass the iteration\n * on to the parent context.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.Path.Path(Step[] steps)#47",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/Path.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.Path",
+        "signature": "org.apache.commons.jxpath.ri.compiler.Path.Path(Step[] steps)",
+        "snippet": "public Path(Step[] steps) {\nint PROBE_START_LINE_48 = 48;\norg.apache.commons.jxpath.ri.compiler.Step[] p_steps_382_line_48 = steps;\nint PROBE_END_LINE_48 = 48;\nthis.steps = p_steps_382_line_48;\n}",
+        "begin_line": 47,
+        "end_line": 52,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.Path.isSimplePath()#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/Path.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.Path",
+        "signature": "org.apache.commons.jxpath.ri.compiler.Path.isSimplePath()",
+        "snippet": "public boolean isSimplePath() {\nint PROBE_START_LINE_73 = 83;\nboolean f_basic_known_381_line_73 = basicKnown;\nboolean path1_expr3_line_73 = !f_basic_known_381_line_73;\nint PROBE_END_LINE_73 = 83;\nif (path1_expr3_line_73) {\nbasicKnown = true;\nbasic = true;\nint PROBE_START_LINE_76 = 76;\nStep[] path1_expr6_line_76 = getSteps();\nint PROBE_END_LINE_76 = 76;\nStep[] steps = path1_expr6_line_76;\nfor (int i = 0; i < steps.length; i++) {\nint PROBE_START_LINE_78 = 81;\norg.apache.commons.jxpath.ri.compiler.Step[] v_steps_385_line_78 = steps;\nint v_i_386_line_78 = i;\norg.apache.commons.jxpath.ri.compiler.Step path1_expr10_line_78 = v_steps_385_line_78[v_i_386_line_78];\nboolean path1_expr9_line_78 = isSimpleStep(path1_expr10_line_78);\nboolean path1_expr8_line_78 = !path1_expr9_line_78;\nint PROBE_END_LINE_78 = 81;\nif (path1_expr8_line_78){\nbasic = false;\nbreak;\n}",
+        "begin_line": 78,
+        "end_line": 101,
+        "comment": "    \n     * Recognized  paths formatted as <code>foo/bar[3]/baz[@name = 'biz']\n     * </code>.  The evaluation of such \"simple\" paths is optimized and\n     * streamlined.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.Path.areBasicPredicates(Expression predicates[])#154",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/Path.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.Path",
+        "signature": "org.apache.commons.jxpath.ri.compiler.Path.areBasicPredicates(Expression predicates[])",
+        "snippet": "protected boolean areBasicPredicates(Expression predicates[]) {\nint PROBE_START_LINE_120 = 140;\norg.apache.commons.jxpath.ri.compiler.Expression[] p_predicates_389_line_120 = predicates;\nboolean path1_expr28_line_120 = p_predicates_389_line_120 != null;\nboolean path1_expr29_line_120 = true;\nif (path1_expr28_line_120) {\nint f_length_277_line_120 = predicates.length;\npath1_expr29_line_120 = f_length_277_line_120 != 0;\n}",
+        "begin_line": 154,
+        "end_line": 162,
+        "comment": "    \n     * A Step is \"simple\" if it takes one of these forms: \".\", \"/foo\",\n     * \"@bar\", \"/foo[3]\". If there are predicates, they should be \n     * context independent for the step to still be considered simple.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.QName.QName(String prefix, String localName)#43",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/QName.java",
+        "class_name": "org.apache.commons.jxpath.ri.QName",
+        "signature": "org.apache.commons.jxpath.ri.QName.QName(String prefix, String localName)",
+        "snippet": "public QName(String prefix, String localName) {\nint PROBE_START_LINE_44 = 44;\nString p_prefix_205_line_44 = prefix;\nint PROBE_END_LINE_44 = 44;\nthis.prefix = p_prefix_205_line_44;\nint PROBE_START_LINE_45 = 45;\nString p_local_name_206_line_45 = localName;\nint PROBE_END_LINE_45 = 45;\nthis.name = p_local_name_206_line_45;\n}",
+        "begin_line": 43,
+        "end_line": 52,
+        "comment": "\n * A qualified name: a combination of an optional namespace prefix\n * and an local name.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.xml.XMLParser2.setNamespaceAware(boolean namespaceAware)#70",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/xml/XMLParser2.java",
+        "class_name": "org.apache.commons.jxpath.xml.XMLParser2",
+        "signature": "org.apache.commons.jxpath.xml.XMLParser2.setNamespaceAware(boolean namespaceAware)",
+        "snippet": "public void setNamespaceAware(boolean namespaceAware) {\nint PROBE_START_LINE_62 = 62;\nboolean p_namespace_aware_1204_line_62 = namespaceAware;\nint PROBE_END_LINE_62 = 62;\nthis.namespaceAware = p_namespace_aware_1204_line_62;\n}",
+        "begin_line": 70,
+        "end_line": 75,
+        "comment": "    \n     * @see DocumentBuilderFactory#setNamespaceAware(boolean)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.xml.XMLParser2.isIgnoringElementContentWhitespace()#90",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/xml/XMLParser2.java",
+        "class_name": "org.apache.commons.jxpath.xml.XMLParser2",
+        "signature": "org.apache.commons.jxpath.xml.XMLParser2.isIgnoringElementContentWhitespace()",
+        "snippet": "public boolean isIgnoringElementContentWhitespace() {\nint PROBE_START_LINE_76 = 76;\nboolean f_whitespace_1199_line_76 = whitespace;\nint PROBE_END_LINE_76 = 76;\nreturn f_whitespace_1199_line_76;\n}",
+        "begin_line": 90,
+        "end_line": 95,
+        "comment": "    \n     * @see DocumentBuilderFactory#isIgnoringElementContentWhitespace()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.NamespaceResolver.NamespaceResolver(NamespaceResolver parent)#42",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/NamespaceResolver.java",
+        "class_name": "org.apache.commons.jxpath.ri.NamespaceResolver",
+        "signature": "org.apache.commons.jxpath.ri.NamespaceResolver.NamespaceResolver(NamespaceResolver parent)",
+        "snippet": "public NamespaceResolver(NamespaceResolver parent) {\nint PROBE_START_LINE_43 = 43;\norg.apache.commons.jxpath.ri.NamespaceResolver p_parent_185_line_43 = parent;\nint PROBE_END_LINE_43 = 43;\nthis.parent = p_parent_185_line_43;\n}",
+        "begin_line": 42,
+        "end_line": 47,
+        "comment": "\n * The reference implementation of JXPathContext.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.NamespaceResolver.registerNamespace(String prefix, String namespaceURI)#55",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/NamespaceResolver.java",
+        "class_name": "org.apache.commons.jxpath.ri.NamespaceResolver",
+        "signature": "org.apache.commons.jxpath.ri.NamespaceResolver.registerNamespace(String prefix, String namespaceURI)",
+        "snippet": "public void registerNamespace(String prefix, String namespaceURI) {\nint PROBE_START_LINE_53 = 53;\njava.util.HashMap f_namespace_map_184_line_53 = namespaceMap;\nString p_prefix_187_line_53 = prefix;\nString p_namespace_uri_188_line_53 = namespaceURI;\nint PROBE_END_LINE_53 = 53;\nf_namespace_map_184_line_53.put(p_prefix_187_line_53, p_namespace_uri_188_line_53);\nreverseMap = null;\n}",
+        "begin_line": 55,
+        "end_line": 63,
+        "comment": "    \n     * Registers a namespace prefix.\n     * \n     * @param prefix A namespace prefix\n     * @param namespaceURI A URI for that prefix\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.LocationPath.LocationPath(boolean absolute, Step[] steps)#32",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/LocationPath.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.LocationPath",
+        "signature": "org.apache.commons.jxpath.ri.compiler.LocationPath.LocationPath(boolean absolute, Step[] steps)",
+        "snippet": "public LocationPath(boolean absolute, Step[] steps) {\nsuper(steps);\nint PROBE_START_LINE_32 = 32;\nboolean p_absolute_375_line_32 = absolute;\nint PROBE_END_LINE_32 = 32;\nthis.absolute = p_absolute_375_line_32;\n}",
+        "begin_line": 32,
+        "end_line": 38,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.compare(Object a, Object b)#230",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.compare(Object a, Object b)",
+        "snippet": "public int compare(Object a, Object b) {\nint PROBE_START_LINE_171 = 171;\nObject p_a_118_line_171 = a;\norg.apache.commons.jxpath.ri.model.NodePointerFactory jxpath_context_reference_impl1_expr42_line_171 = ((NodePointerFactory) p_a_118_line_171);\nint jxpath_context_reference_impl1_expr41_line_171 = jxpath_context_reference_impl1_expr42_line_171\n.getOrder();\nint PROBE_END_LINE_171 = 171;\nint orderA = jxpath_context_reference_impl1_expr41_line_171;\nint PROBE_START_LINE_172 = 172;\nObject p_b_119_line_172 = b;\norg.apache.commons.jxpath.ri.model.NodePointerFactory jxpath_context_reference_impl1_expr45_line_172 = ((NodePointerFactory) p_b_119_line_172);\nint jxpath_context_reference_impl1_expr44_line_172 = jxpath_context_reference_impl1_expr45_line_172\n.getOrder();\nint PROBE_END_LINE_172 = 172;\nint orderB = jxpath_context_reference_impl1_expr44_line_172;\nint PROBE_START_LINE_173 = 173;\nint v_order_a_120_line_173 = orderA;\nint v_order_b_121_line_173 = orderB;\nint jxpath_context_reference_impl1_expr47_line_173 = v_order_a_120_line_173\n- v_order_b_121_line_173;\nint PROBE_END_LINE_173 = 173;\nreturn jxpath_context_reference_impl1_expr47_line_173;\n}",
+        "begin_line": 230,
+        "end_line": 252,
+        "comment": "     The frequency of the cache cleanup",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.if(result instanceof EvalContext)#667",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.if(result instanceof EvalContext)",
+        "snippet": "else if (result instanceof EvalContext) {\nEvalContext ctx = (EvalContext) result;\npointer = ctx.getSingleNodePointer();\n}",
+        "begin_line": 667,
+        "end_line": 670,
+        "comment": "                 This should never happen",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.checkSimplePath(Expression expr)#692",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.checkSimplePath(Expression expr)",
+        "snippet": "private void checkSimplePath(Expression expr) {\nif (!(expr instanceof LocationPath)\n|| !((LocationPath) expr).isSimplePath()) {\nthrow new JXPathInvalidSyntaxException(\n\"JXPath can only create a path if it uses exclusively \"\n+ \"the child:: and attribute:: axes and has \"\n+ \"no context-dependent predicates\");\n}",
+        "begin_line": 692,
+        "end_line": 699,
+        "comment": "    \n     * Checks if the path follows the JXPath restrictions on the type\n     * of path that can be passed to create... methods.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.removePath(String xpath)#716",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.removePath(String xpath)",
+        "snippet": "public void removePath(String xpath) {\nremovePath(xpath, compileExpression(xpath));\n}",
+        "begin_line": 716,
+        "end_line": 718,
+        "comment": "    \n     * Traverses the xpath and returns an Iterator of Pointers.\n     * A Pointer provides easy access to a property.\n     * If the xpath matches no properties\n     * in the graph, the Iterator be empty, but not null.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.removePath(String xpath, Expression expr)#720",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+        "class_name": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl",
+        "signature": "org.apache.commons.jxpath.ri.JXPathContextReferenceImpl.removePath(String xpath, Expression expr)",
+        "snippet": "public void removePath(String xpath, Expression expr) {\ntry {\nNodePointer pointer = (NodePointer) getPointer(xpath, expr);\nif (pointer != null) {\n((NodePointer) pointer).remove();\n}",
+        "begin_line": 720,
+        "end_line": 725,
+        "comment": "    \n     * Traverses the xpath and returns an Iterator of Pointers.\n     * A Pointer provides easy access to a property.\n     * If the xpath matches no properties\n     * in the graph, the Iterator be empty, but not null.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.util.ValueUtils.if(collection instanceof List)#275",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/util/ValueUtils.java",
+        "class_name": "org.apache.commons.jxpath.util.ValueUtils",
+        "signature": "org.apache.commons.jxpath.util.ValueUtils.if(collection instanceof List)",
+        "snippet": "else if (collection instanceof List) {\nint size = ((List) collection).size();\nif (index < size) {\n((List) collection).remove(index);\n}",
+        "begin_line": 275,
+        "end_line": 279,
+        "comment": "    \n     * Returns the index'th element from the supplied collection.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator.DOMAttributeIterator(NodePointer parent, QName name)#42",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator",
+        "signature": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator.DOMAttributeIterator(NodePointer parent, QName name)",
+        "snippet": "public DOMAttributeIterator(NodePointer parent, QName name) {\nint PROBE_START_LINE_43 = 43;\norg.apache.commons.jxpath.ri.model.NodePointer p_parent_610_line_43 = parent;\nint PROBE_END_LINE_43 = 43;\nthis.parent = p_parent_610_line_43;\nint PROBE_START_LINE_44 = 44;\norg.apache.commons.jxpath.ri.QName p_name_611_line_44 = name;\nint PROBE_END_LINE_44 = 44;\nthis.name = p_name_611_line_44;\nattributes = new ArrayList();\nint PROBE_START_LINE_46 = 46;\norg.apache.commons.jxpath.ri.model.NodePointer p_parent_610_line_46 = parent;\nObject domattribute_iterator1_expr6_line_46 = p_parent_610_line_46.getNode();\nint PROBE_END_LINE_46 = 46;\nNode node = (Node) domattribute_iterator1_expr6_line_46;\nint PROBE_START_LINE_47 = 65;\norg.w3c.dom.Node v_node_615_line_47 = node;\nshort domattribute_iterator1_expr8_line_47 = v_node_615_line_47.getNodeType();\nshort f_element_node_616_line_47 = Node.ELEMENT_NODE;\nboolean domattribute_iterator1_expr7_line_47 = domattribute_iterator1_expr8_line_47 == f_element_node_616_line_47;\nint PROBE_END_LINE_47 = 65;\nif (domattribute_iterator1_expr7_line_47) {\nint PROBE_START_LINE_48 = 48;\norg.apache.commons.jxpath.ri.QName p_name_611_line_48 = name;\nString domattribute_iterator1_expr9_line_48 = p_name_611_line_48.getName();\nint PROBE_END_LINE_48 = 48;\nString lname = domattribute_iterator1_expr9_line_48;\nint PROBE_START_LINE_49 = 64;\nString v_lname_617_line_49 = lname;\nboolean domattribute_iterator1_expr11_line_49 = v_lname_617_line_49.equals(\"*\");\nboolean domattribute_iterator1_expr10_line_49 = !domattribute_iterator1_expr11_line_49;\nint PROBE_END_LINE_49 = 64;\nif (domattribute_iterator1_expr10_line_49) {\nint PROBE_START_LINE_50 = 50;\norg.w3c.dom.Node v_node_615_line_50 = node;\norg.apache.commons.jxpath.ri.QName p_name_611_line_50 = name;\nAttr domattribute_iterator1_expr13_line_50 = getAttribute((Element) v_node_615_line_50,\np_name_611_line_50);\nint PROBE_END_LINE_50 = 50;\nAttr attr = domattribute_iterator1_expr13_line_50;\nint PROBE_START_LINE_51 = 53;\norg.w3c.dom.Attr v_attr_618_line_51 = attr;\nboolean domattribute_iterator1_expr15_line_51 = v_attr_618_line_51 != null;\nint PROBE_END_LINE_51 = 53;\nif (domattribute_iterator1_expr15_line_51) {\nint PROBE_START_LINE_52 = 52;\njava.util.List f_attributes_614_line_52 = attributes;\norg.w3c.dom.Attr v_attr_618_line_52 = attr;\nint PROBE_END_LINE_52 = 52;\nf_attributes_614_line_52.add(v_attr_618_line_52);\n}",
+        "begin_line": 42,
+        "end_line": 92,
+        "comment": "\n * An iterator of attributes of a DOM Node.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator.getAttribute(Element element, QName name)#151",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java",
+        "class_name": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator",
+        "signature": "org.apache.commons.jxpath.ri.model.dom.DOMAttributeIterator.getAttribute(Element element, QName name)",
+        "snippet": "private Attr getAttribute(Element element, QName name) {\nint PROBE_START_LINE_113 = 113;\norg.apache.commons.jxpath.ri.QName p_name_624_line_113 = name;\nString domattribute_iterator1_expr17_line_113 = p_name_624_line_113.getPrefix();\nint PROBE_END_LINE_113 = 113;\nString testPrefix = domattribute_iterator1_expr17_line_113;\nString testNS = null;\n\nint PROBE_START_LINE_116 = 118;\nString v_test_prefix_625_line_116 = testPrefix;\nboolean domattribute_iterator1_expr18_line_116 = v_test_prefix_625_line_116 != null;\nint PROBE_END_LINE_116 = 118;\nif (domattribute_iterator1_expr18_line_116) {\ntestNS = parent.getNamespaceURI(testPrefix);\n}",
+        "begin_line": 151,
+        "end_line": 165,
+        "comment": "\n * An iterator of attributes of a DOM Node.\n *\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.processingInstructionTest(String instruction)#172",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler",
+        "signature": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.processingInstructionTest(String instruction)",
+        "snippet": "public Object processingInstructionTest(String instruction) {\nreturn new ProcessingInstructionTest(instruction);\n}",
+        "begin_line": 172,
+        "end_line": 174,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.step(int axis, Object nodeTest, Object[] predicates)#176",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler",
+        "signature": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.step(int axis, Object nodeTest, Object[] predicates)",
+        "snippet": "public Object step(int axis, Object nodeTest, Object[] predicates) {\nreturn new Step(\naxis,\n(NodeTest) nodeTest,\ntoExpressionArray(predicates));\n}",
+        "begin_line": 176,
+        "end_line": 181,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.toExpressionArray(Object[] array)#183",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.TreeCompiler",
+        "signature": "org.apache.commons.jxpath.ri.compiler.TreeCompiler.toExpressionArray(Object[] array)",
+        "snippet": "private Expression[] toExpressionArray(Object[] array) {\nExpression expArray[] = null;\nint PROBE_START_LINE_170 = 175;\nObject[] p_array_463_line_170 = array;\nboolean tree_compiler1_expr12_line_170 = p_array_463_line_170 != null;\nint PROBE_END_LINE_170 = 175;\nif (tree_compiler1_expr12_line_170) {\nint PROBE_START_LINE_171 = 171;\nObject[] p_array_463_line_171 = array;\nint f_length_277_line_171 = p_array_463_line_171.length;\nint PROBE_END_LINE_171 = 171;\nexpArray = new Expression[f_length_277_line_171];\nfor (int i = 0; i < expArray.length; i++) {\nexpArray[i] = (Expression) array[i];\n}",
+        "begin_line": 183,
+        "end_line": 197,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.Step.Step(int axis, NodeTest nodeTest, Expression[] predicates)#30",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/Step.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.Step",
+        "signature": "org.apache.commons.jxpath.ri.compiler.Step.Step(int axis, NodeTest nodeTest, Expression[] predicates)",
+        "snippet": "protected Step(int axis, NodeTest nodeTest, Expression[] predicates) {\nint PROBE_START_LINE_31 = 31;\nint p_axis_410_line_31 = axis;\nint PROBE_END_LINE_31 = 31;\nthis.axis = p_axis_410_line_31;\nint PROBE_START_LINE_32 = 32;\norg.apache.commons.jxpath.ri.compiler.NodeTest p_node_test_411_line_32 = nodeTest;\nint PROBE_END_LINE_32 = 32;\nthis.nodeTest = p_node_test_411_line_32;\nint PROBE_START_LINE_33 = 33;\norg.apache.commons.jxpath.ri.compiler.Expression[] p_predicates_412_line_33 = predicates;\nint PROBE_END_LINE_33 = 33;\nthis.predicates = p_predicates_412_line_33;\n}",
+        "begin_line": 30,
+        "end_line": 43,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.jxpath.ri.compiler.Step.getAxis()#45",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/JxPath-1/result/src/org/apache/commons/jxpath/ri/compiler/Step.java",
+        "class_name": "org.apache.commons.jxpath.ri.compiler.Step",
+        "signature": "org.apache.commons.jxpath.ri.compiler.Step.getAxis()",
+        "snippet": "public int getAxis() {\nint PROBE_START_LINE_37 = 37;\nint f_axis_413_line_37 = axis;\nint PROBE_END_LINE_37 = 37;\nreturn f_axis_413_line_37;\n}",
+        "begin_line": 45,
+        "end_line": 50,
+        "comment": "\n * @author Dmitri Plotnikov\n * @version $Revision$ $Date$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

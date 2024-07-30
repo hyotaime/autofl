@@ -1,0 +1,50 @@
+[
+    {
+        "name": "org.jsoup.nodes.Node.Node(String baseUri, Attributes attributes)#31",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.Node(String baseUri, Attributes attributes)",
+        "snippet": "protected Node(String baseUri, Attributes attributes) {\nint PROBE_START_LINE_32 = 32;\nString p_base_uri_110_line_32 = baseUri;\nint PROBE_END_LINE_32 = 32;\nValidate.notNull(p_base_uri_110_line_32);\nint PROBE_START_LINE_33 = 33;\norg.jsoup.nodes.Attributes p_attributes_111_line_33 = attributes;\nint PROBE_END_LINE_33 = 33;\nValidate.notNull(p_attributes_111_line_33);\n\nchildNodes = new ArrayList<Node>(4);\nint PROBE_START_LINE_36 = 36;\nString p_base_uri_110_line_36 = baseUri;\nString node1_expr6_line_36 = p_base_uri_110_line_36.trim();\nint PROBE_END_LINE_36 = 36;\nthis.baseUri = node1_expr6_line_36;\nint PROBE_START_LINE_37 = 37;\norg.jsoup.nodes.Attributes p_attributes_111_line_37 = attributes;\nint PROBE_END_LINE_37 = 37;\nthis.attributes = p_attributes_111_line_37;\n}",
+        "begin_line": 31,
+        "end_line": 51,
+        "comment": "    \n     Create a new Node.\n     @param baseUri base URI\n     @param attributes attributes (not null, but may be empty)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Node.reindexChildren()#445",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/nodes/Node.java",
+        "class_name": "org.jsoup.nodes.Node",
+        "signature": "org.jsoup.nodes.Node.reindexChildren()",
+        "snippet": "private void reindexChildren() {\nfor (int i = 0; i < childNodes.size(); i++) {\nchildNodes.get(i).setSiblingIndex(i);\n}",
+        "begin_line": 445,
+        "end_line": 448,
+        "comment": "        most used. short circuit addChildren(int), which hits reindex children and array copy",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.parser.Tag.Tag(String tagName)#25",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-22/result/src/org/jsoup/parser/Tag.java",
+        "class_name": "org.jsoup.parser.Tag",
+        "signature": "org.jsoup.parser.Tag.Tag(String tagName)",
+        "snippet": "private Tag(String tagName) {\nint PROBE_START_LINE_26 = 26;\nString p_tag_name_174_line_26 = tagName;\nString tag1_expr10_line_26 = p_tag_name_174_line_26.toLowerCase();\nint PROBE_END_LINE_26 = 26;\nthis.tagName = tag1_expr10_line_26;\n}",
+        "begin_line": 25,
+        "end_line": 31,
+        "comment": "\n * HTML Tag capabilities.\n *\n * @author Jonathan Hedley, jonathan@hedley.net\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

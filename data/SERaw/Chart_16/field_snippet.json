@@ -1,0 +1,101 @@
+[
+    {
+        "class_name": "org.jfree.data.general.AbstractDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/general/AbstractDataset.java",
+        "signature": "int PROBE_START_LINE_205",
+        "snippet": "int PROBE_START_LINE_205 = 205;\nObject abstract_dataset1_expr6_line_205 = super.clone();",
+        "begin_line": 205,
+        "end_line": 206,
+        "comment": "    \n     * Returns a clone of the dataset. The cloned dataset will NOT include the \n     * {@link DatasetChangeListener} references that have been registered with \n     * this dataset.\n     * \n     * @return A clone.\n     * \n     * @throws CloneNotSupportedException  if the dataset does not support \n     *                                     cloning.\n     "
+    },
+    {
+        "class_name": "org.jfree.data.general.AbstractDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/general/AbstractDataset.java",
+        "signature": "int PROBE_END_LINE_205",
+        "snippet": "int PROBE_END_LINE_205 = 205;\nAbstractDataset clone = (AbstractDataset) abstract_dataset1_expr6_line_205;",
+        "begin_line": 207,
+        "end_line": 208,
+        "comment": "    \n     * Returns a clone of the dataset. The cloned dataset will NOT include the \n     * {@link DatasetChangeListener} references that have been registered with \n     * this dataset.\n     * \n     * @return A clone.\n     * \n     * @throws CloneNotSupportedException  if the dataset does not support \n     *                                     cloning.\n     "
+    },
+    {
+        "class_name": "org.jfree.data.DataUtilities",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/DataUtilities.java",
+        "signature": "int PROBE_START_LINE_125",
+        "snippet": "int PROBE_START_LINE_125 = 127;\ndouble[][] p_data_6_line_125 = data;",
+        "begin_line": 125,
+        "end_line": 126,
+        "comment": "    \n     * Constructs an array of arrays of <code>Number</code> objects from a \n     * corresponding structure containing <code>double</code> primitives.\n     *\n     * @param data  the data (<code>null</code> not permitted).\n     *\n     * @return An array of <code>Double</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.data.DataUtilities",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/DataUtilities.java",
+        "signature": "boolean data_utilities1_expr1_line_125",
+        "snippet": "boolean data_utilities1_expr1_line_125 = p_data_6_line_125 == null;\nint PROBE_END_LINE_125 = 127;",
+        "begin_line": 127,
+        "end_line": 128,
+        "comment": "    \n     * Constructs an array of arrays of <code>Number</code> objects from a \n     * corresponding structure containing <code>double</code> primitives.\n     *\n     * @param data  the data (<code>null</code> not permitted).\n     *\n     * @return An array of <code>Double</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.data.DataUtilities",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/DataUtilities.java",
+        "signature": "int PROBE_START_LINE_128",
+        "snippet": "int PROBE_START_LINE_128 = 128;\ndouble[][] p_data_6_line_128 = data;",
+        "begin_line": 132,
+        "end_line": 133,
+        "comment": "    \n     * Constructs an array of arrays of <code>Number</code> objects from a \n     * corresponding structure containing <code>double</code> primitives.\n     *\n     * @param data  the data (<code>null</code> not permitted).\n     *\n     * @return An array of <code>Double</code>.\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int PROBE_START_LINE_147",
+        "snippet": "int PROBE_START_LINE_147 = 147;\nNumber[][] p_starts_21_line_147 = starts;",
+        "begin_line": 147,
+        "end_line": 148,
+        "comment": "    \n     * Constructs a DefaultIntervalCategoryDataset, populates it with data\n     * from the arrays, and uses the supplied names for the series and the\n     * supplied objects for the categories.\n     *\n     * @param seriesKeys  the series keys (if <code>null</code>, series keys\n     *         will be generated automatically).\n     * @param categoryKeys  the category keys (if <code>null</code>, category \n     *         keys will be generated automatically).\n     * @param starts  the start values data, indexed as data[series][category].\n     * @param ends  the end values data, indexed as data[series][category].\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int PROBE_END_LINE_147",
+        "snippet": "int PROBE_END_LINE_147 = 147;\nthis.startData = p_starts_21_line_147;",
+        "begin_line": 149,
+        "end_line": 150,
+        "comment": "    \n     * Constructs a DefaultIntervalCategoryDataset, populates it with data\n     * from the arrays, and uses the supplied names for the series and the\n     * supplied objects for the categories.\n     *\n     * @param seriesKeys  the series keys (if <code>null</code>, series keys\n     *         will be generated automatically).\n     * @param categoryKeys  the category keys (if <code>null</code>, category \n     *         keys will be generated automatically).\n     * @param starts  the start values data, indexed as data[series][category].\n     * @param ends  the end values data, indexed as data[series][category].\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int PROBE_START_LINE_148",
+        "snippet": "int PROBE_START_LINE_148 = 148;\nNumber[][] p_ends_22_line_148 = ends;",
+        "begin_line": 151,
+        "end_line": 152,
+        "comment": "    \n     * Constructs a DefaultIntervalCategoryDataset, populates it with data\n     * from the arrays, and uses the supplied names for the series and the\n     * supplied objects for the categories.\n     *\n     * @param seriesKeys  the series keys (if <code>null</code>, series keys\n     *         will be generated automatically).\n     * @param categoryKeys  the category keys (if <code>null</code>, category \n     *         keys will be generated automatically).\n     * @param starts  the start values data, indexed as data[series][category].\n     * @param ends  the end values data, indexed as data[series][category].\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int PROBE_END_LINE_148",
+        "snippet": "int PROBE_END_LINE_148 = 148;\nthis.endData = p_ends_22_line_148;",
+        "begin_line": 153,
+        "end_line": 154,
+        "comment": "    \n     * Constructs a DefaultIntervalCategoryDataset, populates it with data\n     * from the arrays, and uses the supplied names for the series and the\n     * supplied objects for the categories.\n     *\n     * @param seriesKeys  the series keys (if <code>null</code>, series keys\n     *         will be generated automatically).\n     * @param categoryKeys  the category keys (if <code>null</code>, category \n     *         keys will be generated automatically).\n     * @param starts  the start values data, indexed as data[series][category].\n     * @param ends  the end values data, indexed as data[series][category].\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int PROBE_START_LINE_150",
+        "snippet": "int PROBE_START_LINE_150 = 210;\nNumber[][] p_starts_21_line_150 = starts;",
+        "begin_line": 156,
+        "end_line": 157,
+        "comment": "    \n     * Constructs a DefaultIntervalCategoryDataset, populates it with data\n     * from the arrays, and uses the supplied names for the series and the\n     * supplied objects for the categories.\n     *\n     * @param seriesKeys  the series keys (if <code>null</code>, series keys\n     *         will be generated automatically).\n     * @param categoryKeys  the category keys (if <code>null</code>, category \n     *         keys will be generated automatically).\n     * @param starts  the start values data, indexed as data[series][category].\n     * @param ends  the end values data, indexed as data[series][category].\n     "
+    },
+    {
+        "class_name": "org.jfree.data.category.DefaultIntervalCategoryDataset",
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-16/result/src/org/jfree/data/category/DefaultIntervalCategoryDataset.java",
+        "signature": "int default_interval_category_dataset1_expr25_line_641",
+        "snippet": "int default_interval_category_dataset1_expr25_line_641 = getSeriesIndex(p_row_key_61_line_641);\nint PROBE_END_LINE_641 = 641;",
+        "begin_line": 689,
+        "end_line": 690,
+        "comment": "    \n     * Returns a row index.\n     *\n     * @param rowKey  the row key.\n     *\n     * @return The row index.\n     * \n     * @see #getSeriesIndex(Comparable)\n     "
+    }
+]

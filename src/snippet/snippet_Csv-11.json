@@ -1,0 +1,3026 @@
+[
+    {
+        "name": "org.apache.commons.csv.Quote.unknown#24",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Quote.java",
+        "class_name": "org.apache.commons.csv.Quote",
+        "signature": "org.apache.commons.csv.Quote.unknown(...)",
+        "snippet": "public enum Quote {",
+        "begin_line": 24,
+        "end_line": 24,
+        "comment": "\n * Defines quote behavior when printing.\n *\n * @version $Id$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Quote.unknown#29",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Quote.java",
+        "class_name": "org.apache.commons.csv.Quote",
+        "signature": "org.apache.commons.csv.Quote.unknown(...)",
+        "snippet": "ALL,",
+        "begin_line": 29,
+        "end_line": 29,
+        "comment": "    \n     * Quotes all fields.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Quote.unknown#35",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Quote.java",
+        "class_name": "org.apache.commons.csv.Quote",
+        "signature": "org.apache.commons.csv.Quote.unknown(...)",
+        "snippet": "MINIMAL,",
+        "begin_line": 35,
+        "end_line": 35,
+        "comment": "    \n     * Quotes fields which contain special characters such as a delimiter, quote character or any of the characters in\n     * line separator.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Quote.unknown#40",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Quote.java",
+        "class_name": "org.apache.commons.csv.Quote",
+        "signature": "org.apache.commons.csv.Quote.unknown(...)",
+        "snippet": "NON_NUMERIC,",
+        "begin_line": 40,
+        "end_line": 40,
+        "comment": "    \n     * Quotes all non-numeric fields.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Quote.unknown#47",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Quote.java",
+        "class_name": "org.apache.commons.csv.Quote",
+        "signature": "org.apache.commons.csv.Quote.unknown(...)",
+        "snippet": "NONE",
+        "begin_line": 47,
+        "end_line": 47,
+        "comment": "    \n     * Never quotes fields. When the delimiter occurs in data, it is preceded by the current escape character. If the\n     * escape character is not set, printing will throw an exception if any characters that require escaping are\n     * encountered.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#175",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* <li>withQuoteChar('\"')</li>",
+        "begin_line": 175,
+        "end_line": 175,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#187",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "",
+        "begin_line": 187,
+        "end_line": 187,
+        "comment": "\t\n     * Standard comma separated format, as for {@link #RFC4180} but allowing empty lines.\n     * <h3>RFC 4180:</h3>\n     * <ul>\n     * <li>withDelimiter(',')</li>\n     * <li>withQuoteChar('\"')</li>\n     * <li>withRecordSeparator(CRLF)</li>\n     * </ul>\n     * <h3>Additional:</h3>\n     * <ul>\n     * <li>withIgnoreEmptyLines(true)</li>\n     * </ul>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#211",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": ".withIgnoreEmptyLines(false);",
+        "begin_line": 211,
+        "end_line": 211,
+        "comment": "\t\n     * Comma separated format as defined by <a href=\"http:tools.ietf.org/html/rfc4180\">RFC 4180</a>.\n     * <h3>RFC 4180:</h3>\n     * <ul>\n     * <li>withDelimiter(',')</li>\n     * <li>withQuoteChar('\"')</li>\n     * <li>withRecordSeparator(CRLF)</li>\n     * </ul>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#214",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "",
+        "begin_line": 214,
+        "end_line": 214,
+        "comment": "\t\n     * Comma separated format as defined by <a href=\"http:tools.ietf.org/html/rfc4180\">RFC 4180</a>.\n     * <h3>RFC 4180:</h3>\n     * <ul>\n     * <li>withDelimiter(',')</li>\n     * <li>withQuoteChar('\"')</li>\n     * <li>withRecordSeparator(CRLF)</li>\n     * </ul>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#227",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* <p>",
+        "begin_line": 227,
+        "end_line": 227,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#244",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "",
+        "begin_line": 244,
+        "end_line": 244,
+        "comment": "     Tab-delimited format, with quote; leading and trailing spaces ignored. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#256",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": ".withEscape(BACKSLASH)",
+        "begin_line": 256,
+        "end_line": 256,
+        "comment": "    \n     * Default MySQL format used by the <tt>SELECT INTO OUTFILE</tt> and <tt>LOAD DATA INFILE</tt> operations. This is\n     * a tab-delimited format with a LF character as the line separator. Values are not quoted and special characters\n     * are escaped with '\\'.\n     *\n     * @see <a href=\"http:dev.mysql.com/doc/refman/5.1/en/load-data.html\">\n     *      http:dev.mysql.com/doc/refman/5.1/en/load-data.html</a>\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#303",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "return csvformat1_expr15_line_256;",
+        "begin_line": 303,
+        "end_line": 303,
+        "comment": "    \n     * Returns true if the given character is a line break character.\n     *\n     * @param c\n     *            the character to check, may be null\n     *\n     * @return true if <code>c</code> is a line break character (and not null)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#304",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 304,
+        "end_line": 304,
+        "comment": "    \n     * Returns true if the given character is a line break character.\n     *\n     * @param c\n     *            the character to check, may be null\n     *\n     * @return true if <code>c</code> is a line break character (and not null)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#307",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* Creates a new CSV format with the specified delimiter.",
+        "begin_line": 307,
+        "end_line": 307,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#308",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*",
+        "begin_line": 308,
+        "end_line": 308,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#309",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param delimiter",
+        "begin_line": 309,
+        "end_line": 309,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#310",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*            the char used for value separation, must not be a line break character",
+        "begin_line": 310,
+        "end_line": 310,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#311",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @return a new CSV format.",
+        "begin_line": 311,
+        "end_line": 311,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#312",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @throws IllegalArgumentException if the delimiter is a line break character",
+        "begin_line": 312,
+        "end_line": 312,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#313",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 313,
+        "end_line": 313,
+        "comment": "    \n     * Creates a new CSV format with the specified delimiter.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @return a new CSV format.\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#314",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "public static CSVFormat newFormat(final char delimiter) {",
+        "begin_line": 314,
+        "end_line": 314,
+        "comment": "    \n     * Creates a new CSV format with the specified delimiter.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @return a new CSV format.\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#315",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "return new CSVFormat(delimiter, null, null, null, null, false, false, null, null, null, false, false);",
+        "begin_line": 315,
+        "end_line": 315,
+        "comment": "    \n     * Creates a new CSV format with the specified delimiter.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @return a new CSV format.\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#316",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 316,
+        "end_line": 316,
+        "comment": "    \n     * Creates a new CSV format with the specified delimiter.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @return a new CSV format.\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#317",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "",
+        "begin_line": 317,
+        "end_line": 317,
+        "comment": "    \n     * Creates a new CSV format with the specified delimiter.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @return a new CSV format.\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#318",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 318,
+        "end_line": 318,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#320",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*",
+        "begin_line": 320,
+        "end_line": 320,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#321",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param delimiter",
+        "begin_line": 321,
+        "end_line": 321,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#327",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param commentStart",
+        "begin_line": 327,
+        "end_line": 327,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#329",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param escape",
+        "begin_line": 329,
+        "end_line": 329,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#330",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*            the Character used to escape special characters in values, may be {@code null} to disable",
+        "begin_line": 330,
+        "end_line": 330,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#331",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param ignoreSurroundingSpaces",
+        "begin_line": 331,
+        "end_line": 331,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#426",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 426,
+        "end_line": 426,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#435",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 435,
+        "end_line": 435,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#444",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "if (quotePolicy != other.quotePolicy) {",
+        "begin_line": 444,
+        "end_line": 444,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#453",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 453,
+        "end_line": 453,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#473",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "return false;",
+        "begin_line": 473,
+        "end_line": 473,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#483",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 483,
+        "end_line": 483,
+        "comment": "    \n     * Creates a customized CSV format.\n     *\n     * @param delimiter\n     *            the char used for value separation, must not be a line break character\n     * @param quoteChar\n     *            the Character used as value encapsulation marker, may be {@code null} to disable\n     * @param quotePolicy\n     *            the quote policy\n     * @param commentStart\n     *            the Character used for comment identification, may be {@code null} to disable\n     * @param escape\n     *            the Character used to escape special characters in values, may be {@code null} to disable\n     * @param ignoreSurroundingSpaces\n     *            <tt>true</tt> when whitespaces enclosing values should be ignored\n     * @param ignoreEmptyLines\n     *            <tt>true</tt> when the parser should skip empty lines\n     * @param recordSeparator\n     *            the line separator to use for output\n     * @param nullString\n     *            the line separator to use for output\n     * @param header\n     *            the header\n     * @param skipHeaderRecord TODO\n     * @param ignoreEmptyHeaders TODO\n     * @throws IllegalArgumentException if the delimiter is a line break character\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#500",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* @param values",
+        "begin_line": 500,
+        "end_line": 500,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#509",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "} catch (final IOException e) {",
+        "begin_line": 509,
+        "end_line": 509,
+        "comment": "    \n     * Formats the specified values.\n     *\n     * @param values\n     *            the values to format\n     * @return the formatted values\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#611",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* </li>",
+        "begin_line": 611,
+        "end_line": 611,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#675",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "result = prime * result + ((nullString == null) ? 0 : nullString.hashCode());",
+        "begin_line": 675,
+        "end_line": 675,
+        "comment": "    \n     * Returns whether to skip the header record.\n     *\n     * @return whether to skip the header record.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#680",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "result = prime * result + Arrays.hashCode(header);",
+        "begin_line": 680,
+        "end_line": 680,
+        "comment": "    \n     * Returns whether to skip the header record.\n     *\n     * @return whether to skip the header record.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#685",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* Specifies whether comments are supported by this format.",
+        "begin_line": 685,
+        "end_line": 685,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#690",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 690,
+        "end_line": 690,
+        "comment": "    \n     * Specifies whether comments are supported by this format.\n     *\n     * Note that the comment introducer character is only recognized at the start of a line.\n     *\n     * @return <tt>true</tt> is comments are supported, <tt>false</tt> otherwise\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#695",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 695,
+        "end_line": 695,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#700",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "public boolean isEscaping() {",
+        "begin_line": 700,
+        "end_line": 700,
+        "comment": "    \n     * Returns whether escape are being processed.\n     *\n     * @return {@code true} if escapes are processed\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#704",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 704,
+        "end_line": 704,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#710",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "return nullString != null;",
+        "begin_line": 710,
+        "end_line": 710,
+        "comment": "    \n     * Returns whether a nullString has been defined.\n     *\n     * @return {@code true} if a nullString is defined\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#757",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 757,
+        "end_line": 757,
+        "comment": "    \n     * Prints to the specified output.\n     *\n     * <p>\n     * See also {@link CSVPrinter}.\n     * </p>\n     *\n     * @param out\n     *        the output\n     * @return a printer to an output\n     * @throws IOException\n     *         thrown if the optional header cannot be printed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#760",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "public String toString() {",
+        "begin_line": 760,
+        "end_line": 760,
+        "comment": "    \n     * Prints to the specified output.\n     *\n     * <p>\n     * See also {@link CSVPrinter}.\n     * </p>\n     *\n     * @param out\n     *        the output\n     * @return a printer to an output\n     * @throws IOException\n     *         thrown if the optional header cannot be printed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#775",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "if (isNullHandling()) {",
+        "begin_line": 775,
+        "end_line": 775,
+        "comment": "    \n     * Prints to the specified output.\n     *\n     * <p>\n     * See also {@link CSVPrinter}.\n     * </p>\n     *\n     * @param out\n     *        the output\n     * @return a printer to an output\n     * @throws IOException\n     *         thrown if the optional header cannot be printed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#788",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 788,
+        "end_line": 788,
+        "comment": "    \n     * Prints to the specified output.\n     *\n     * <p>\n     * See also {@link CSVPrinter}.\n     * </p>\n     *\n     * @param out\n     *        the output\n     * @return a printer to an output\n     * @throws IOException\n     *         thrown if the optional header cannot be printed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#791",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "sb.append(' ');",
+        "begin_line": 791,
+        "end_line": 791,
+        "comment": "    \n     * Prints to the specified output.\n     *\n     * <p>\n     * See also {@link CSVPrinter}.\n     * </p>\n     *\n     * @param out\n     *        the output\n     * @return a printer to an output\n     * @throws IOException\n     *         thrown if the optional header cannot be printed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#814",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "if (csvformat1_expr42_line_675) {",
+        "begin_line": 814,
+        "end_line": 814,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#828",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "boolean csvformat1_expr46_line_680 = csvformat1_expr47_line_680 && csvformat1_expr48_line_680;",
+        "begin_line": 828,
+        "end_line": 828,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#842",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "csvformat1_expr52_line_685 = f_delimiter_28_line_685 == csvformat1_expr53_line_685;",
+        "begin_line": 842,
+        "end_line": 842,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#856",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "Character f_comment_start_31_line_690 = commentStart;",
+        "begin_line": 856,
+        "end_line": 856,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#877",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "throw new IllegalArgumentException(",
+        "begin_line": 877,
+        "end_line": 877,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#905",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 905,
+        "end_line": 905,
+        "comment": "    \n     * Verifies the consistency of the parameters and throws an IllegalArgumentException if necessary.\n     *\n     * @throws IllegalArgumentException\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#908",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "* Sets the comment start marker of the format to the specified character.",
+        "begin_line": 908,
+        "end_line": 908,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#940",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "}",
+        "begin_line": 940,
+        "end_line": 940,
+        "comment": "    \n     * Sets the comment start marker of the format to the specified character.\n     *\n     * Note that the comment start character is only recognized at the start of a line.\n     *\n     * @param commentStart\n     *            the comment start marker, use {@code null} to disable\n     * @return A new CSVFormat that is equal to this one but with the specified character as the comment start marker\n     * @throws IllegalArgumentException\n     *             thrown if the specified character is a line break\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVFormat.unknown#956",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVFormat.java",
+        "class_name": "org.apache.commons.csv.CSVFormat",
+        "signature": "org.apache.commons.csv.CSVFormat.unknown(...)",
+        "snippet": "if (csvformat1_expr65_line_757) {",
+        "begin_line": 956,
+        "end_line": 956,
+        "comment": "    \n     * Sets the delimiter of the format to the specified character.\n     *\n     * @param delimiter\n     *            the delimiter character\n     * @return A new CSVFormat that is equal to this with the specified character as delimiter\n     * @throws IllegalArgumentException\n     *             thrown if the specified character is a line break\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#29",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "final class Token {",
+        "begin_line": 29,
+        "end_line": 29,
+        "comment": "\n * Internal token representation.\n * <p/>\n * It is used as contract between the lexer and the parser.\n *\n * @version $Id$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#34",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "enum Type {",
+        "begin_line": 34,
+        "end_line": 34,
+        "comment": "     length of the initial token (content-)buffer ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#36",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "INVALID,",
+        "begin_line": 36,
+        "end_line": 36,
+        "comment": "         Token has no valid content, i.e. is in its initialized state. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#39",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "TOKEN,",
+        "begin_line": 39,
+        "end_line": 39,
+        "comment": "         Token with content, at beginning or in the middle of a line. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#42",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "EOF,",
+        "begin_line": 42,
+        "end_line": 42,
+        "comment": "         Token (which can have content) when the end of file is reached. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#45",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "EORECORD,",
+        "begin_line": 45,
+        "end_line": 45,
+        "comment": "         Token with content when the end of a line is reached. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#48",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "COMMENT",
+        "begin_line": 48,
+        "end_line": 48,
+        "comment": "         Token is a comment line. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "         Token is a comment line. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#55",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "int PROBE_END_LINE_51 = 52;",
+        "begin_line": 55,
+        "end_line": 55,
+        "comment": "         Token is a comment line. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#61",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "",
+        "begin_line": 61,
+        "end_line": 61,
+        "comment": "\t Token type ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#62",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "final int f_initial_token_length_151_line_55 = INITIAL_TOKEN_LENGTH;",
+        "begin_line": 62,
+        "end_line": 62,
+        "comment": "\t Token type ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#63",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "",
+        "begin_line": 63,
+        "end_line": 63,
+        "comment": "\t Token type ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Token.unknown#64",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Token.java",
+        "class_name": "org.apache.commons.csv.Token",
+        "signature": "org.apache.commons.csv.Token.unknown(...)",
+        "snippet": "int PROBE_END_LINE_54 = 55;",
+        "begin_line": 64,
+        "end_line": 64,
+        "comment": "\t Token type ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#62",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "Lexer(final CSVFormat format, final ExtendedBufferedReader reader) {",
+        "begin_line": 62,
+        "end_line": 62,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#63",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_63 = 63;",
+        "begin_line": 63,
+        "end_line": 63,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#64",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "org.apache.commons.csv.ExtendedBufferedReader p_reader_121_line_63 = reader;",
+        "begin_line": 64,
+        "end_line": 64,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#65",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_63 = 63;",
+        "begin_line": 65,
+        "end_line": 65,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#66",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "this.reader = p_reader_121_line_63;",
+        "begin_line": 66,
+        "end_line": 66,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#67",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_64 = 64;",
+        "begin_line": 67,
+        "end_line": 67,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#68",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "org.apache.commons.csv.CSVFormat p_format_120_line_64 = format;",
+        "begin_line": 68,
+        "end_line": 68,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#69",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "char lexer1_expr3_line_64 = p_format_120_line_64.getDelimiter();",
+        "begin_line": 69,
+        "end_line": 69,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#70",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_64 = 64;",
+        "begin_line": 70,
+        "end_line": 70,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#86",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "Character lexer1_expr12_line_67 = p_format_120_line_67.getCommentStart();",
+        "begin_line": 86,
+        "end_line": 86,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#89",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "this.commentStart = lexer1_expr11_line_67;",
+        "begin_line": 89,
+        "end_line": 89,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#94",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "this.ignoreSurroundingSpaces = lexer1_expr14_line_68;",
+        "begin_line": 94,
+        "end_line": 94,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#97",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "boolean lexer1_expr16_line_69 = p_format_120_line_69.getIgnoreEmptyLines();",
+        "begin_line": 97,
+        "end_line": 97,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#98",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_69 = 69;",
+        "begin_line": 98,
+        "end_line": 98,
+        "comment": "     INTERNAL API. but ctor needs to be called dynamically by PerformanceTest class ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#113",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "Token nextToken(final Token token) throws IOException {",
+        "begin_line": 113,
+        "end_line": 113,
+        "comment": "    \n     * Returns the next token.\n     * <p/>\n     * A token corresponds to a term, a record change or an end-of-file indicator.\n     *\n     * @param token\n     *            an existing Token object to reuse. The caller is responsible to initialize the Token.\n     * @return the next token found\n     * @throws java.io.IOException\n     *             on stream access error\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#119",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "// get the last read char (required for empty line detection)",
+        "begin_line": 119,
+        "end_line": 119,
+        "comment": "\t\t get the last read char (required for empty line detection)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#133",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "* Note: The following call will swallow LF if c == CR. But we don't need to know if the last char was CR or LF",
+        "begin_line": 133,
+        "end_line": 133,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#135",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 135,
+        "end_line": 135,
+        "comment": "\t\t/*\n         * Note: The following call will swallow LF if c == CR. But we don't need to know if the last char was CR or LF\n         * - they are equivalent here.\n         ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#143",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_98 = 109;",
+        "begin_line": 143,
+        "end_line": 143,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#145",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "boolean lexer1_expr21_line_98 = true;",
+        "begin_line": 145,
+        "end_line": 145,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#146",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "if (v_eol_132_line_98) {",
+        "begin_line": 146,
+        "end_line": 146,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#150",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "boolean lexer1_expr20_line_98 = v_eol_132_line_98 && lexer1_expr21_line_98;",
+        "begin_line": 150,
+        "end_line": 150,
+        "comment": "\t\t empty line detection: eol AND (last char was EOL or beginning)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#153",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "// go on char ahead ...",
+        "begin_line": 153,
+        "end_line": 153,
+        "comment": "                 go on char ahead ...",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#161",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "return token;",
+        "begin_line": 161,
+        "end_line": 161,
+        "comment": "                     don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#164",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "v_eol_132_line_98 = eol;",
+        "begin_line": 164,
+        "end_line": 164,
+        "comment": "                     don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#189",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "}",
+        "begin_line": 189,
+        "end_line": 189,
+        "comment": "                     don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#190",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "boolean lexer1_expr22_line_113 = lexer1_expr23_line_113 || lexer1_expr24_line_113;",
+        "begin_line": 190,
+        "end_line": 190,
+        "comment": "                     don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#191",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_113 = 117;",
+        "begin_line": 191,
+        "end_line": 191,
+        "comment": "                     don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#192",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "// did we reach eof during the last iteration already ? EOF",
+        "begin_line": 192,
+        "end_line": 192,
+        "comment": "\t\t did we reach eof during the last iteration already ? EOF",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#196",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "return token;",
+        "begin_line": 196,
+        "end_line": 196,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#197",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "}",
+        "begin_line": 197,
+        "end_line": 197,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#198",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "",
+        "begin_line": 198,
+        "end_line": 198,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#199",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_START_LINE_119 = 130;",
+        "begin_line": 199,
+        "end_line": 199,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#208",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "int PROBE_END_LINE_119 = 130;",
+        "begin_line": 208,
+        "end_line": 208,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#209",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "if (lexer1_expr29_line_119) {",
+        "begin_line": 209,
+        "end_line": 209,
+        "comment": "             don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#213",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "// don't set token.isReady here because no content",
+        "begin_line": 213,
+        "end_line": 213,
+        "comment": "                 don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#217",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "token.content.append(comment);",
+        "begin_line": 217,
+        "end_line": 217,
+        "comment": "                 don't set token.isReady here because no content",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#292",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "*            the current token",
+        "begin_line": 292,
+        "end_line": 292,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#365",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "*",
+        "begin_line": 365,
+        "end_line": 365,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#369",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "* @throws IOException",
+        "begin_line": 369,
+        "end_line": 369,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#390",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "token.content.append((char) c);",
+        "begin_line": 390,
+        "end_line": 390,
+        "comment": "                     double or escaped encapsulator -> add single encapsulator to token",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#397",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "return token;",
+        "begin_line": 397,
+        "end_line": 397,
+        "comment": "                     token finish mark (encapsulator) reached: ignore whitespace till delimiter",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#401",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "return token;",
+        "begin_line": 401,
+        "end_line": 401,
+        "comment": "                     token finish mark (encapsulator) reached: ignore whitespace till delimiter",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#405",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "} else if (!isWhitespace(c)) {",
+        "begin_line": 405,
+        "end_line": 405,
+        "comment": "                     token finish mark (encapsulator) reached: ignore whitespace till delimiter",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#409",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "}",
+        "begin_line": 409,
+        "end_line": 409,
+        "comment": "                             error invalid char between token and next delimiter",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Lexer.unknown#413",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Lexer.java",
+        "class_name": "org.apache.commons.csv.Lexer",
+        "signature": "org.apache.commons.csv.Lexer.unknown(...)",
+        "snippet": "// error condition (end of file before end of token)",
+        "begin_line": 413,
+        "end_line": 413,
+        "comment": "                 error condition (end of file before end of token)",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Constants.unknown#36",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Constants.java",
+        "class_name": "org.apache.commons.csv.Constants",
+        "signature": "org.apache.commons.csv.Constants.unknown(...)",
+        "snippet": "int PROBE_START_LINE_36 = 36;",
+        "begin_line": 36,
+        "end_line": 36,
+        "comment": "    \n     * Starts a comment, the remainder of the line is the comment.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#35",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "private static final String[] EMPTY_STRING_ARRAY = new String[0];",
+        "begin_line": 35,
+        "end_line": 35,
+        "comment": "\n * A CSV record parsed from a CSV file.\n *\n * @version $Id$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "final String comment, final long recordNumber) {",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#53",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "int PROBE_START_LINE_53 = 53;",
+        "begin_line": 53,
+        "end_line": 53,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#54",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "long p_record_number_101_line_53 = recordNumber;",
+        "begin_line": 54,
+        "end_line": 54,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#55",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "int PROBE_END_LINE_53 = 53;",
+        "begin_line": 55,
+        "end_line": 55,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#56",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "this.recordNumber = p_record_number_101_line_53;",
+        "begin_line": 56,
+        "end_line": 56,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#57",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "int PROBE_START_LINE_54 = 54;",
+        "begin_line": 57,
+        "end_line": 57,
+        "comment": "     The values of the record ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVRecord.unknown#226",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVRecord.java",
+        "class_name": "org.apache.commons.csv.CSVRecord",
+        "signature": "org.apache.commons.csv.CSVRecord.unknown(...)",
+        "snippet": "return Arrays.asList(values);",
+        "begin_line": 226,
+        "end_line": 226,
+        "comment": "    \n     * Converts the values to a List.\n     *\n     * TODO: Maybe make this public?\n     * @return a new List\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#221",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "private final List<String> record = new ArrayList<String>();",
+        "begin_line": 221,
+        "end_line": 221,
+        "comment": "     A record buffer for getRecord(). Grows as necessary and is reused. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#225",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "private final Token reusableToken = new Token();",
+        "begin_line": 225,
+        "end_line": 225,
+        "comment": "     A record buffer for getRecord(). Grows as necessary and is reused. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#244",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "public CSVParser(final Reader reader, final CSVFormat format) throws IOException {",
+        "begin_line": 244,
+        "end_line": 244,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#245",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_START_LINE_245 = 245;",
+        "begin_line": 245,
+        "end_line": 245,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#246",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "java.io.Reader p_reader_73_line_245 = reader;",
+        "begin_line": 246,
+        "end_line": 246,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#248",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "Assertions.notNull(p_reader_73_line_245, \"reader\");",
+        "begin_line": 248,
+        "end_line": 248,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#249",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_START_LINE_246 = 246;",
+        "begin_line": 249,
+        "end_line": 249,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#250",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "org.apache.commons.csv.CSVFormat p_format_74_line_246 = format;",
+        "begin_line": 250,
+        "end_line": 250,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#254",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_START_LINE_248 = 248;",
+        "begin_line": 254,
+        "end_line": 254,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#255",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "org.apache.commons.csv.CSVFormat p_format_74_line_248 = format;",
+        "begin_line": 255,
+        "end_line": 255,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#256",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_END_LINE_248 = 248;",
+        "begin_line": 256,
+        "end_line": 256,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#259",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "org.apache.commons.csv.CSVFormat p_format_74_line_249 = format;",
+        "begin_line": 259,
+        "end_line": 259,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#261",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_END_LINE_249 = 249;",
+        "begin_line": 261,
+        "end_line": 261,
+        "comment": "    \n     * Customized CSV parser using the given {@link CSVFormat}\n     *\n     * <p>\n     * If you do not read all records from the given {@code reader}, you should call {@link #close()} on the parser,\n     * unless you close the {@code reader}.\n     * </p>\n     *\n     * @param reader\n     *            a Reader containing CSV-formatted input. Must not be null.\n     * @param format\n     *            the CSVFormat used for CSV parsing. Must not be null.\n     * @throws IllegalArgumentException\n     *             If the parameters of the format are inconsistent or if either reader or format are null.\n     * @throws IOException\n     *             If there is a problem reading the header or skipping the first record\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#360",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "*             on parse error or input read-failure",
+        "begin_line": 360,
+        "end_line": 360,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#361",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 361,
+        "end_line": 361,
+        "comment": "    \n     * Parses the CSV input according to the given format and returns the content as a list of\n     * {@link CSVRecord CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @return list of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#362",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "public List<CSVRecord> getRecords() throws IOException {",
+        "begin_line": 362,
+        "end_line": 362,
+        "comment": "    \n     * Parses the CSV input according to the given format and returns the content as a list of\n     * {@link CSVRecord CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @return list of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#363",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "return getRecords(new ArrayList<CSVRecord>());",
+        "begin_line": 363,
+        "end_line": 363,
+        "comment": "    \n     * Parses the CSV input according to the given format and returns the content as a list of\n     * {@link CSVRecord CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @return list of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#365",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "",
+        "begin_line": 365,
+        "end_line": 365,
+        "comment": "    \n     * Parses the CSV input according to the given format and returns the content as a list of\n     * {@link CSVRecord CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @return list of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#366",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 366,
+        "end_line": 366,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#368",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "* CSVRecords}.",
+        "begin_line": 368,
+        "end_line": 368,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#369",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "*",
+        "begin_line": 369,
+        "end_line": 369,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#370",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "* <p>",
+        "begin_line": 370,
+        "end_line": 370,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#372",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "* </p>",
+        "begin_line": 372,
+        "end_line": 372,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#380",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 380,
+        "end_line": 380,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#381",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "public <T extends Collection<CSVRecord>> T getRecords(final T records) throws IOException {",
+        "begin_line": 381,
+        "end_line": 381,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#382",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "CSVRecord rec;",
+        "begin_line": 382,
+        "end_line": 382,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#383",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "while ((rec = this.nextRecord()) != null) {",
+        "begin_line": 383,
+        "end_line": 383,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#384",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "records.add(rec);",
+        "begin_line": 384,
+        "end_line": 384,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#385",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "}",
+        "begin_line": 385,
+        "end_line": 385,
+        "comment": "    \n     * Parses the CSV input according to the given format and adds the content to the collection of {@link CSVRecord\n     * CSVRecords}.\n     *\n     * <p>\n     * The returned content starts at the current parse-position in the stream.\n     * </p>\n     *\n     * @param records\n     *            The collection to add to.\n     * @param <T> the type of collection used.\n     * @return a collection of {@link CSVRecord CSVRecords}, may be empty\n     * @throws IOException\n     *             on parse error or input read-failure\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#389",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 389,
+        "end_line": 389,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#464",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "int PROBE_START_LINE_385 = 388;",
+        "begin_line": 464,
+        "end_line": 464,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#465",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean v_contains_header_89_line_385 = containsHeader;",
+        "begin_line": 465,
+        "end_line": 465,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#466",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean csvparser1_expr40_line_385 = true;",
+        "begin_line": 466,
+        "end_line": 466,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#468",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean v_empty_header_90_line_385 = emptyHeader;",
+        "begin_line": 468,
+        "end_line": 468,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#469",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean csvparser1_expr42_line_385 = !v_empty_header_90_line_385;",
+        "begin_line": 469,
+        "end_line": 469,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#470",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean csvparser1_expr43_line_385 = false;",
+        "begin_line": 470,
+        "end_line": 470,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#472",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "org.apache.commons.csv.CSVFormat csvparser1_expr47_line_385 = this.format;",
+        "begin_line": 472,
+        "end_line": 472,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#473",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean csvparser1_expr46_line_385 = csvparser1_expr47_line_385.getIgnoreEmptyHeaders();",
+        "begin_line": 473,
+        "end_line": 473,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#475",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "boolean csvparser1_expr44_line_385 = emptyHeader && csvparser1_expr45_line_385;",
+        "begin_line": 475,
+        "end_line": 475,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#476",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "csvparser1_expr43_line_385 = (csvparser1_expr44_line_385);",
+        "begin_line": 476,
+        "end_line": 476,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#496",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "}",
+        "begin_line": 496,
+        "end_line": 496,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#498",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "}",
+        "begin_line": 498,
+        "end_line": 498,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#499",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "",
+        "begin_line": 499,
+        "end_line": 499,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#500",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "public boolean isClosed() {",
+        "begin_line": 500,
+        "end_line": 500,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#501",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "return this.lexer.isClosed();",
+        "begin_line": 501,
+        "end_line": 501,
+        "comment": "\t\t\t build the name to index mappings",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.CSVParser.unknown#504",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/CSVParser.java",
+        "class_name": "org.apache.commons.csv.CSVParser",
+        "signature": "org.apache.commons.csv.CSVParser.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 504,
+        "end_line": 504,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Assertions.unknown#32",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Assertions.java",
+        "class_name": "org.apache.commons.csv.Assertions",
+        "signature": "org.apache.commons.csv.Assertions.unknown(...)",
+        "snippet": "int PROBE_START_LINE_32 = 34;",
+        "begin_line": 32,
+        "end_line": 32,
+        "comment": "         can not be instantiated",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.Assertions.unknown#35",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/Assertions.java",
+        "class_name": "org.apache.commons.csv.Assertions",
+        "signature": "org.apache.commons.csv.Assertions.unknown(...)",
+        "snippet": "int PROBE_END_LINE_32 = 34;",
+        "begin_line": 35,
+        "end_line": 35,
+        "comment": "         can not be instantiated",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#40",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "",
+        "begin_line": 40,
+        "end_line": 40,
+        "comment": "\n * A special buffered reader which supports sophisticated read access.\n * <p>\n * In particular the reader supports a look-ahead option, which allows you to see the next char returned by\n * {@link #read()}.\n *\n * @version $Id$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#43",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "int PROBE_END_LINE_39 = 40;",
+        "begin_line": 43,
+        "end_line": 43,
+        "comment": "\n * A special buffered reader which supports sophisticated read access.\n * <p>\n * In particular the reader supports a look-ahead option, which allows you to see the next char returned by\n * {@link #read()}.\n *\n * @version $Id$\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#51",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "private boolean closed;",
+        "begin_line": 51,
+        "end_line": 51,
+        "comment": "     The count of EOLs (CR/LF/CRLF) seen so far ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "     The count of EOLs (CR/LF/CRLF) seen so far ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#56",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "ExtendedBufferedReader(final Reader reader) {",
+        "begin_line": 56,
+        "end_line": 56,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#57",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "super(reader);",
+        "begin_line": 57,
+        "end_line": 57,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#58",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "}",
+        "begin_line": 58,
+        "end_line": 58,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#60",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "@Override",
+        "begin_line": 60,
+        "end_line": 60,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#61",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "public int read() throws IOException {",
+        "begin_line": 61,
+        "end_line": 61,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.csv.ExtendedBufferedReader.unknown#73",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Csv-11/result/src/org/apache/commons/csv/ExtendedBufferedReader.java",
+        "class_name": "org.apache.commons.csv.ExtendedBufferedReader",
+        "signature": "org.apache.commons.csv.ExtendedBufferedReader.unknown(...)",
+        "snippet": "boolean extended_buffered_reader1_expr8_line_57 = current == f_lf_12_line_57;",
+        "begin_line": 73,
+        "end_line": 73,
+        "comment": "    \n     * Created extended buffered reader using default buffer-size\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

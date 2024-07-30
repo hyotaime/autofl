@@ -1,0 +1,914 @@
+[
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#145",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "REPLACEMENT_CHARS = new String[128];",
+        "begin_line": 145,
+        "end_line": 145,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#146",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "for (int i = 0; i <= 0x1f; i++) {",
+        "begin_line": 146,
+        "end_line": 146,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#147",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_147 = 147;",
+        "begin_line": 147,
+        "end_line": 147,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#149",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int v_i_2_line_147 = i;",
+        "begin_line": 149,
+        "end_line": 149,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#150",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "String json_writer1_expr4_line_147 = String.format(\"\\\\u%04x\", (int) i);",
+        "begin_line": 150,
+        "end_line": 150,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#151",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_147 = 147;",
+        "begin_line": 151,
+        "end_line": 151,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#152",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_replacement_chars_1_line_147[v_i_2_line_147] = json_writer1_expr4_line_147;",
+        "begin_line": 152,
+        "end_line": 152,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#153",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 153,
+        "end_line": 153,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#154",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_149 = 149;",
+        "begin_line": 154,
+        "end_line": 154,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#155",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "String[] f_replacement_chars_1_line_149 = REPLACEMENT_CHARS;",
+        "begin_line": 155,
+        "end_line": 155,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#156",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_149 = 149;",
+        "begin_line": 156,
+        "end_line": 156,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#157",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_replacement_chars_1_line_149['\"'] = \"\\\\\\\"\";",
+        "begin_line": 157,
+        "end_line": 157,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#158",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_150 = 150;",
+        "begin_line": 158,
+        "end_line": 158,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#159",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "String[] f_replacement_chars_1_line_150 = REPLACEMENT_CHARS;",
+        "begin_line": 159,
+        "end_line": 159,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#160",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_150 = 150;",
+        "begin_line": 160,
+        "end_line": 160,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#161",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_replacement_chars_1_line_150['\\\\'] = \"\\\\\\\\\";",
+        "begin_line": 161,
+        "end_line": 161,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#162",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_151 = 151;",
+        "begin_line": 162,
+        "end_line": 162,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#167",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "String[] f_replacement_chars_1_line_152 = REPLACEMENT_CHARS;",
+        "begin_line": 167,
+        "end_line": 167,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#168",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_152 = 152;",
+        "begin_line": 168,
+        "end_line": 168,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#170",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_153 = 153;",
+        "begin_line": 170,
+        "end_line": 170,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#182",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_START_LINE_156 = 156;",
+        "begin_line": 182,
+        "end_line": 182,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#190",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_html_safe_replacement_chars_3_line_157['<'] = \"\\\\u003c\";",
+        "begin_line": 190,
+        "end_line": 190,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#197",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_159 = 159;",
+        "begin_line": 197,
+        "end_line": 197,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#198",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_html_safe_replacement_chars_3_line_159['&'] = \"\\\\u0026\";",
+        "begin_line": 198,
+        "end_line": 198,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#201",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_160 = 160;",
+        "begin_line": 201,
+        "end_line": 201,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#202",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_html_safe_replacement_chars_3_line_160['='] = \"\\\\u003d\";",
+        "begin_line": 202,
+        "end_line": 202,
+        "comment": "  /*\n   * From RFC 7159, \"All Unicode characters may be placed within the\n   * quotation marks except for the characters that must be escaped:\n   * quotation mark, reverse solidus, and the control characters\n   * (U+0000 through U+001F).\"\n   *\n   * We also escape '\\u2028' and '\\u2029', which JavaScript interprets as\n   * newline characters. This prevents eval() from failing with a syntax\n   * error. http:code.google.com/p/google-gson/issues/detail?id=341\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#287",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "* </ul>",
+        "begin_line": 287,
+        "end_line": 287,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#288",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 288,
+        "end_line": 288,
+        "comment": "  \n   * Configure this writer to relax its syntax rules. By default, this writer\n   * only emits well-formed JSON as specified by <a\n   * href=\"http:www.ietf.org/rfc/rfc7159.txt\">RFC 7159</a>. Setting the writer\n   * to lenient permits the following:\n   * <ul>\n   *   <li>Top-level values of any type. With strict writing, the top-level\n   *       value must be an object or an array.\n   *   <li>Numbers may be {@link Double#isNaN() NaNs} or {@link\n   *       Double#isInfinite() infinities}.\n   * </ul>\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#325",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 325,
+        "end_line": 325,
+        "comment": "  \n   * Sets whether object members are serialized when their value is null.\n   * This has no impact on array elements. The default is true.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#326",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "",
+        "begin_line": 326,
+        "end_line": 326,
+        "comment": "  \n   * Sets whether object members are serialized when their value is null.\n   * This has no impact on array elements. The default is true.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#327",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 327,
+        "end_line": 327,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#328",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "* Returns true if object members are serialized when their value is null.",
+        "begin_line": 328,
+        "end_line": 328,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#354",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 354,
+        "end_line": 354,
+        "comment": "  \n   * Ends encoding the current array.\n   *\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#359",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "/**",
+        "begin_line": 359,
+        "end_line": 359,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#360",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "* Begins encoding a new object. Each call to this method must be paired",
+        "begin_line": 360,
+        "end_line": 360,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#366",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "writeDeferredName();",
+        "begin_line": 366,
+        "end_line": 366,
+        "comment": "  \n   * Begins encoding a new object. Each call to this method must be paired\n   * with a call to {@link #endObject}.\n   *\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#369",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "",
+        "begin_line": 369,
+        "end_line": 369,
+        "comment": "  \n   * Begins encoding a new object. Each call to this method must be paired\n   * with a call to {@link #endObject}.\n   *\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#376",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "return close(EMPTY_OBJECT, NONEMPTY_OBJECT, \"}\");",
+        "begin_line": 376,
+        "end_line": 376,
+        "comment": "  \n   * Ends encoding the current object.\n   *\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#377",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 377,
+        "end_line": 377,
+        "comment": "  \n   * Ends encoding the current object.\n   *\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#400",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 400,
+        "end_line": 400,
+        "comment": "  \n   * Closes the current scope by appending any necessary whitespace and the\n   * given bracket.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#405",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "throw new IllegalStateException(\"Nesting problem.\");",
+        "begin_line": 405,
+        "end_line": 405,
+        "comment": "  \n   * Closes the current scope by appending any necessary whitespace and the\n   * given bracket.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#465",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int json_writer1_expr52_line_376 = f_stack_size_5_line_376 - 1;",
+        "begin_line": 465,
+        "end_line": 465,
+        "comment": "  \n   * Replace the value on the top of the stack with the given value.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#466",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int p_top_of_stack_23_line_376 = topOfStack;",
+        "begin_line": 466,
+        "end_line": 466,
+        "comment": "  \n   * Replace the value on the top of the stack with the given value.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#467",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int PROBE_END_LINE_376 = 376;",
+        "begin_line": 467,
+        "end_line": 467,
+        "comment": "  \n   * Replace the value on the top of the stack with the given value.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#468",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "f_stack_4_line_376[json_writer1_expr52_line_376] = p_top_of_stack_23_line_376;",
+        "begin_line": 468,
+        "end_line": 468,
+        "comment": "  \n   * Replace the value on the top of the stack with the given value.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#588",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 588,
+        "end_line": 588,
+        "comment": "  \n   * Encodes {@code value}.\n   *\n   * @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n   *     {@link Double#isInfinite() infinities}.\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#589",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "writeDeferredName();",
+        "begin_line": 589,
+        "end_line": 589,
+        "comment": "  \n   * Encodes {@code value}.\n   *\n   * @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n   *     {@link Double#isInfinite() infinities}.\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#620",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "String string = value.toString();",
+        "begin_line": 620,
+        "end_line": 620,
+        "comment": "  \n   * Encodes {@code value}.\n   *\n   * @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n   *     {@link Double#isInfinite() infinities}.\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#628",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 628,
+        "end_line": 628,
+        "comment": "  \n   * Encodes {@code value}.\n   *\n   * @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n   *     {@link Double#isInfinite() infinities}.\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#629",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "",
+        "begin_line": 629,
+        "end_line": 629,
+        "comment": "  \n   * Encodes {@code value}.\n   *\n   * @param value a finite value. May not be {@link Double#isNaN() NaNs} or\n   *     {@link Double#isInfinite() infinities}.\n   * @return this writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#632",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "* and flushes that writer.",
+        "begin_line": 632,
+        "end_line": 632,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#633",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 633,
+        "end_line": 633,
+        "comment": "  \n   * Ensures all buffered data is written to the underlying {@link Writer}\n   * and flushes that writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#634",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "public void flush() throws IOException {",
+        "begin_line": 634,
+        "end_line": 634,
+        "comment": "  \n   * Ensures all buffered data is written to the underlying {@link Writer}\n   * and flushes that writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#637",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 637,
+        "end_line": 637,
+        "comment": "  \n   * Ensures all buffered data is written to the underlying {@link Writer}\n   * and flushes that writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#638",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "out.flush();",
+        "begin_line": 638,
+        "end_line": 638,
+        "comment": "  \n   * Ensures all buffered data is written to the underlying {@link Writer}\n   * and flushes that writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#639",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "}",
+        "begin_line": 639,
+        "end_line": 639,
+        "comment": "  \n   * Ensures all buffered data is written to the underlying {@link Writer}\n   * and flushes that writer.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "com.google.gson.stream.JsonWriter.unknown#649",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Gson-9/result/src/com/google/gson/stream/JsonWriter.java",
+        "class_name": "com.google.gson.stream.JsonWriter",
+        "signature": "com.google.gson.stream.JsonWriter.unknown(...)",
+        "snippet": "int size = stackSize;",
+        "begin_line": 649,
+        "end_line": 649,
+        "comment": "  \n   * Flushes and closes this writer and the underlying {@link Writer}.\n   *\n   * @throws IOException if the JSON document is incomplete.\n   ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#47",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 47,
+        "end_line": 47,
+        "comment": "     Unmodifiable set of available locales. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#49",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 49,
+        "end_line": 49,
+        "comment": "     Unmodifiable set of available locales. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#51",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "",
+        "begin_line": 51,
+        "end_line": 51,
+        "comment": "     Unmodifiable set of available locales. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#52",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "/** Unmodifiable map of language locales by country. */",
+        "begin_line": 52,
+        "end_line": 52,
+        "comment": "\t Unmodifiable map of language locales by country. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#53",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "private static final Map cLanguagesByCountry = locale_utils1_expr1_line_47;",
+        "begin_line": 53,
+        "end_line": 53,
+        "comment": "\t Unmodifiable map of language locales by country. ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.apache.commons.lang.LocaleUtils.unknown#223",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-57/result/src/org/apache/commons/lang/LocaleUtils.java",
+        "class_name": "org.apache.commons.lang.LocaleUtils",
+        "signature": "org.apache.commons.lang.LocaleUtils.unknown(...)",
+        "snippet": "* @return the unmodifiable set of available locales",
+        "begin_line": 223,
+        "end_line": 223,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

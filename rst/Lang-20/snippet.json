@@ -1,0 +1,18 @@
+[
+    {
+        "name": "org.apache.commons.lang3.StringUtils.join(Object[] array, char separator)#3300",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-20/result/src/org/apache/commons/lang3/StringUtils.java",
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "signature": "org.apache.commons.lang3.StringUtils.join(Object[] array, char separator)",
+        "snippet": "public static String join(Object[] array, char separator) {\nint PROBE_START_LINE_3256 = 3258;\nObject[] p_array_180_line_3256 = array;\nboolean string_utils1_expr28_line_3256 = p_array_180_line_3256 == null;\nint PROBE_END_LINE_3256 = 3258;\nif (string_utils1_expr28_line_3256) {\nreturn null;\n}",
+        "begin_line": 3300,
+        "end_line": 3307,
+        "comment": "    \n     * <p>Joins the elements of the provided array into a single String\n     * containing the provided list of elements.</p>\n     *\n     * <p>No delimiter is added before or after the list.\n     * Null objects or empty strings within the array are represented by\n     * empty strings.</p>\n     *\n     * <pre>\n     * StringUtils.join(null, *)               = null\n     * StringUtils.join([], *)                 = \"\"\n     * StringUtils.join([null], *)             = \"\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], ';')  = \"a;b;c\"\n     * StringUtils.join([\"a\", \"b\", \"c\"], null) = \"abc\"\n     * StringUtils.join([null, \"\", \"a\"], ';')  = \";;a\"\n     * </pre>\n     *\n     * @param array  the array of values to join together, may be null\n     * @param separator  the separator character to use\n     * @return the joined String, {@code null} if null array input\n     * @since 2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

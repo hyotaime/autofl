@@ -1,0 +1,1730 @@
+[
+    {
+        "name": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer.getBaseURLGenerator()#620",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/xy/AbstractXYItemRenderer.java",
+        "class_name": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer",
+        "signature": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer.getBaseURLGenerator()",
+        "snippet": "public XYURLGenerator getBaseURLGenerator() {\nreturn this.baseURLGenerator;\n}",
+        "begin_line": 620,
+        "end_line": 622,
+        "comment": "    \n     * Returns the default URL generator.\n     *\n     * @return The default URL generator (possibly <code>null</code>).\n     *\n     * @see #setBaseURLGenerator(XYURLGenerator)\n     *\n     * @since 1.2.0\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer.setLegendItemURLGenerator(XYSeriesLabelGenerator generator)#826",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/xy/AbstractXYItemRenderer.java",
+        "class_name": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer",
+        "signature": "org.jfree.chart.renderer.xy.AbstractXYItemRenderer.setLegendItemURLGenerator(XYSeriesLabelGenerator generator)",
+        "snippet": "public void setLegendItemURLGenerator(XYSeriesLabelGenerator generator) {\nthis.legendItemURLGenerator = generator;\nfireChangeEvent();\n}",
+        "begin_line": 826,
+        "end_line": 829,
+        "comment": "    \n     * Sets the legend item URL generator and sends a\n     * {@link RendererChangeEvent} to all registered listeners.\n     *\n     * @param generator  the generator (<code>null</code> permitted).\n     *\n     * @see #getLegendItemURLGenerator()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.ui.Library.Library()#82",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/ui/Library.java",
+        "class_name": "org.jfree.chart.ui.Library",
+        "signature": "org.jfree.chart.ui.Library.Library()",
+        "snippet": "protected Library() {\n// nothing required\n}",
+        "begin_line": 82,
+        "end_line": 84,
+        "comment": "    \n     * Creates a new library reference.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.AbstractRenderer()#409",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.AbstractRenderer()",
+        "snippet": "public AbstractRenderer() {\n\nthis.seriesVisibleList = new BooleanList();\nthis.baseSeriesVisible = true;\n\nthis.seriesVisibleInLegendList = new BooleanList();\nthis.baseSeriesVisibleInLegend = true;\n\nthis.paintList = new PaintList();\nint PROBE_START_LINE_400 = 400;\njava.awt.Paint f_default_paint_2162_line_400 = DEFAULT_PAINT;\nint PROBE_END_LINE_400 = 400;\nthis.basePaint = f_default_paint_2162_line_400;\nthis.autoPopulateSeriesPaint = true;\n\nthis.fillPaintList = new PaintList();\nint PROBE_START_LINE_404 = 404;\njava.awt.Color f_white_355_line_404 = Color.white;\nint PROBE_END_LINE_404 = 404;\nthis.baseFillPaint = f_white_355_line_404;\nthis.autoPopulateSeriesFillPaint = false;\n\nthis.outlinePaintList = new PaintList();\nint PROBE_START_LINE_408 = 408;\njava.awt.Paint f_default_outline_paint_2163_line_408 = DEFAULT_OUTLINE_PAINT;\nint PROBE_END_LINE_408 = 408;\nthis.baseOutlinePaint = f_default_outline_paint_2163_line_408;\nthis.autoPopulateSeriesOutlinePaint = false;\n\nthis.strokeList = new StrokeList();\nint PROBE_START_LINE_412 = 412;\njava.awt.Stroke f_default_stroke_2164_line_412 = DEFAULT_STROKE;\nint PROBE_END_LINE_412 = 412;\nthis.baseStroke = f_default_stroke_2164_line_412;\nthis.autoPopulateSeriesStroke = true;\n\nthis.outlineStrokeList = new StrokeList();\nint PROBE_START_LINE_416 = 416;\njava.awt.Stroke f_default_outline_stroke_2165_line_416 = DEFAULT_OUTLINE_STROKE;\nint PROBE_END_LINE_416 = 416;\nthis.baseOutlineStroke = f_default_outline_stroke_2165_line_416;\nthis.autoPopulateSeriesOutlineStroke = false;\n\nthis.shapeList = new ShapeList();\nint PROBE_START_LINE_420 = 420;\njava.awt.Shape f_default_shape_2166_line_420 = DEFAULT_SHAPE;\nint PROBE_END_LINE_420 = 420;\nthis.baseShape = f_default_shape_2166_line_420;\nthis.autoPopulateSeriesShape = true;\n\nthis.itemLabelsVisibleList = new BooleanList();\nthis.baseItemLabelsVisible = false;\n\nthis.itemLabelFontList = new ObjectList();\nint PROBE_START_LINE_427 = 427;\nint f_plain_444_line_427 = Font.PLAIN;\nint PROBE_END_LINE_427 = 427;\nthis.baseItemLabelFont = new Font(\"Tahoma\", f_plain_444_line_427, 10);\n\nthis.itemLabelPaintList = new PaintList();\nint PROBE_START_LINE_430 = 430;\njava.awt.Color f_black_348_line_430 = Color.black;\nint PROBE_END_LINE_430 = 430;\nthis.baseItemLabelPaint = f_black_348_line_430;\n\nthis.positiveItemLabelPositionList = new ObjectList();\nthis.basePositiveItemLabelPosition = new ItemLabelPosition(\nItemLabelAnchor.OUTSIDE12, TextAnchor.BOTTOM_CENTER);\n\nthis.negativeItemLabelPositionList = new ObjectList();\nthis.baseNegativeItemLabelPosition = new ItemLabelPosition(\nItemLabelAnchor.OUTSIDE6, TextAnchor.TOP_CENTER);\n\nthis.createEntitiesList = new BooleanList();\nthis.baseCreateEntities = true;\n\nthis.defaultEntityRadius = 3;\n\nthis.legendShapeList = new ShapeList();\nthis.baseLegendShape = null;\n\nthis.treatLegendShapeAsLine = false;\n\nthis.legendTextFont = new ObjectList();\nthis.baseLegendTextFont = null;\n\nthis.legendTextPaint = new PaintList();\nthis.baseLegendTextPaint = null;\n\nthis.listenerList = new EventListenerList();\n\n}",
+        "begin_line": 409,
+        "end_line": 500,
+        "comment": "    \n     * Default constructor.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.getSeriesItemLabelFont(int series)#1918",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.getSeriesItemLabelFont(int series)",
+        "snippet": "public Font getSeriesItemLabelFont(int series) {\nreturn (Font) this.itemLabelFontList.get(series);\n}",
+        "begin_line": 1918,
+        "end_line": 1920,
+        "comment": "    \n     * Returns the font for all the item labels in a series.\n     *\n     * @param series  the series index (zero-based).\n     *\n     * @return The font (possibly <code>null</code>).\n     *\n     * @see #setSeriesItemLabelFont(int, Font)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.setSeriesItemLabelFont(int series, Font font)#1931",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.setSeriesItemLabelFont(int series, Font font)",
+        "snippet": "public void setSeriesItemLabelFont(int series, Font font) {\nsetSeriesItemLabelFont(series, font, true);\n}",
+        "begin_line": 1931,
+        "end_line": 1933,
+        "comment": "    \n     * Sets the item label font for a series and sends a\n     * {@link RendererChangeEvent} to all registered listeners.\n     *\n     * @param series  the series index (zero-based).\n     * @param font  the font (<code>null</code> permitted).\n     *\n     * @see #getSeriesItemLabelFont(int)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE3)#2896",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE3)",
+        "snippet": "else if (anchor == ItemLabelAnchor.OUTSIDE3) {\nresult = new Point2D.Double(x + 2.0 * this.itemLabelAnchorOffset,\ny);\n}",
+        "begin_line": 2896,
+        "end_line": 2899,
+        "comment": "    \n     * Calculates the item label anchor point.\n     *\n     * @param anchor  the anchor.\n     * @param x  the x coordinate.\n     * @param y  the y coordinate.\n     * @param orientation  the plot orientation.\n     *\n     * @return The anchor point (never <code>null</code>).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE5)#2905",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE5)",
+        "snippet": "else if (anchor == ItemLabelAnchor.OUTSIDE5) {\nresult = new Point2D.Double(\nx + 2.0 * OPP * this.itemLabelAnchorOffset,\ny + 2.0 * ADJ * this.itemLabelAnchorOffset);\n}",
+        "begin_line": 2905,
+        "end_line": 2909,
+        "comment": "    \n     * Calculates the item label anchor point.\n     *\n     * @param anchor  the anchor.\n     * @param x  the x coordinate.\n     * @param y  the y coordinate.\n     * @param orientation  the plot orientation.\n     *\n     * @return The anchor point (never <code>null</code>).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE6)#2910",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/AbstractRenderer.java",
+        "class_name": "org.jfree.chart.renderer.AbstractRenderer",
+        "signature": "org.jfree.chart.renderer.AbstractRenderer.if(anchor == ItemLabelAnchor.OUTSIDE6)",
+        "snippet": "else if (anchor == ItemLabelAnchor.OUTSIDE6) {\nresult = new Point2D.Double(x,\ny + 2.0 * this.itemLabelAnchorOffset);\n}",
+        "begin_line": 2910,
+        "end_line": 2913,
+        "comment": "    \n     * Calculates the item label anchor point.\n     *\n     * @param anchor  the anchor.\n     * @param x  the x coordinate.\n     * @param y  the y coordinate.\n     * @param orientation  the plot orientation.\n     *\n     * @return The anchor point (never <code>null</code>).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.ColumnArrangement.ColumnArrangement()#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/ColumnArrangement.java",
+        "class_name": "org.jfree.chart.block.ColumnArrangement",
+        "signature": "org.jfree.chart.block.ColumnArrangement.ColumnArrangement()",
+        "snippet": "public ColumnArrangement() {\n}",
+        "begin_line": 78,
+        "end_line": 79,
+        "comment": "    \n     * Creates a new instance.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.general.AbstractDataset.AbstractDataset()#92",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/general/AbstractDataset.java",
+        "class_name": "org.jfree.data.general.AbstractDataset",
+        "signature": "org.jfree.data.general.AbstractDataset.AbstractDataset()",
+        "snippet": "protected AbstractDataset() {\nthis.group = new DatasetGroup();\nthis.listenerList = new EventListenerList();\n}",
+        "begin_line": 92,
+        "end_line": 95,
+        "comment": "    \n     * Constructs a dataset. By default, the dataset is assigned to its own\n     * group.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.general.AbstractDataset.notifyListeners(DatasetChangeEvent event)#184",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/general/AbstractDataset.java",
+        "class_name": "org.jfree.data.general.AbstractDataset",
+        "signature": "org.jfree.data.general.AbstractDataset.notifyListeners(DatasetChangeEvent event)",
+        "snippet": "protected void notifyListeners(DatasetChangeEvent event) {\n\nint PROBE_START_LINE_182 = 182;\njavax.swing.event.EventListenerList abstract_dataset1_expr13_line_182 = this.listenerList;\nObject[] abstract_dataset1_expr12_line_182 = abstract_dataset1_expr13_line_182.getListenerList();\nint PROBE_END_LINE_182 = 182;\nObject[] listeners = abstract_dataset1_expr12_line_182;\nfor (int i = listeners.length - 2; i >= 0; i -= 2) {\nint PROBE_START_LINE_184 = 187;\nObject[] v_listeners_3389_line_184 = listeners;\nint v_i_3390_line_184 = i;\nObject abstract_dataset1_expr17_line_184 = v_listeners_3389_line_184[v_i_3390_line_184];\nboolean abstract_dataset1_expr16_line_184 = abstract_dataset1_expr17_line_184 == DatasetChangeListener.class;\nint PROBE_END_LINE_184 = 187;\nif (abstract_dataset1_expr16_line_184) {\nint PROBE_START_LINE_185 = 186;\nObject[] v_listeners_3389_line_185 = listeners;\nint v_i_3390_line_185 = i;\nint abstract_dataset1_expr22_line_185 = v_i_3390_line_185 + 1;\nObject abstract_dataset1_expr21_line_185 = v_listeners_3389_line_185[abstract_dataset1_expr22_line_185];\norg.jfree.data.general.DatasetChangeListener abstract_dataset1_expr19_line_185 = ((DatasetChangeListener) abstract_dataset1_expr21_line_185);\nint PROBE_END_LINE_185 = 186;\nabstract_dataset1_expr19_line_185.datasetChanged(\nevent);\n}",
+        "begin_line": 184,
+        "end_line": 208,
+        "comment": "    \n     * Notifies all registered listeners that the dataset has changed.\n     *\n     * @param event  contains information about the event that triggered the\n     *               notification.\n     *\n     * @see #addChangeListener(DatasetChangeListener)\n     * @see #removeChangeListener(DatasetChangeListener)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateTickMarkPosition.DateTickMarkPosition(String name)#75",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateTickMarkPosition.java",
+        "class_name": "org.jfree.chart.axis.DateTickMarkPosition",
+        "signature": "org.jfree.chart.axis.DateTickMarkPosition.DateTickMarkPosition(String name)",
+        "snippet": "private DateTickMarkPosition(String name) {\nint PROBE_START_LINE_76 = 76;\nString p_name_790_line_76 = name;\nint PROBE_END_LINE_76 = 76;\nthis.name = p_name_790_line_76;\n}",
+        "begin_line": 75,
+        "end_line": 80,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.LineBorder.LineBorder(Paint paint, Stroke stroke, RectangleInsets insets)#96",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/LineBorder.java",
+        "class_name": "org.jfree.chart.block.LineBorder",
+        "signature": "org.jfree.chart.block.LineBorder.LineBorder(Paint paint, Stroke stroke, RectangleInsets insets)",
+        "snippet": "public LineBorder(Paint paint, Stroke stroke, RectangleInsets insets) {\nint PROBE_START_LINE_97 = 99;\njava.awt.Paint p_paint_1232_line_97 = paint;\nboolean line_border1_expr9_line_97 = p_paint_1232_line_97 == null;\nint PROBE_END_LINE_97 = 99;\nif (line_border1_expr9_line_97) {\nthrow new IllegalArgumentException(\"Null 'paint' argument.\");\n}",
+        "begin_line": 96,
+        "end_line": 103,
+        "comment": "    \n     * Creates a new border with the specified color.\n     *\n     * @param paint  the color (<code>null</code> not permitted).\n     * @param stroke  the border stroke (<code>null</code> not permitted).\n     * @param insets  the insets (<code>null</code> not permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.ui.ProjectInfo.ProjectInfo()#67",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/ui/ProjectInfo.java",
+        "class_name": "org.jfree.chart.ui.ProjectInfo",
+        "signature": "org.jfree.chart.ui.ProjectInfo.ProjectInfo()",
+        "snippet": "public ProjectInfo() {\n// nothing required\n}",
+        "begin_line": 67,
+        "end_line": 69,
+        "comment": "    \n     * Constructs an empty project info object.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.ObjectList.ObjectList()#58",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/ObjectList.java",
+        "class_name": "org.jfree.chart.util.ObjectList",
+        "signature": "org.jfree.chart.util.ObjectList.ObjectList()",
+        "snippet": "public ObjectList() {\n}",
+        "begin_line": 58,
+        "end_line": 59,
+        "comment": "    \n     * Default constructor.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.xy.GradientXYBarPainter.GradientXYBarPainter(double g1, double g2, double g3)#87",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/xy/GradientXYBarPainter.java",
+        "class_name": "org.jfree.chart.renderer.xy.GradientXYBarPainter",
+        "signature": "org.jfree.chart.renderer.xy.GradientXYBarPainter.GradientXYBarPainter(double g1, double g2, double g3)",
+        "snippet": "public GradientXYBarPainter(double g1, double g2, double g3) {\nint PROBE_START_LINE_88 = 88;\ndouble p_g_1_2752_line_88 = g1;\nint PROBE_END_LINE_88 = 88;\nthis.g1 = p_g_1_2752_line_88;\nint PROBE_START_LINE_89 = 89;\ndouble p_g_2_2753_line_89 = g2;\nint PROBE_END_LINE_89 = 89;\nthis.g2 = p_g_2_2753_line_89;\nint PROBE_START_LINE_90 = 90;\ndouble p_g_3_2754_line_90 = g3;\nint PROBE_END_LINE_90 = 90;\nthis.g3 = p_g_3_2754_line_90;\n}",
+        "begin_line": 87,
+        "end_line": 100,
+        "comment": "    \n     * Creates a new instance.\n     *\n     * @param g1\n     * @param g2\n     * @param g3\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.Day.getFirstMillisecond()#306",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/Day.java",
+        "class_name": "org.jfree.data.time.Day",
+        "signature": "org.jfree.data.time.Day.getFirstMillisecond()",
+        "snippet": "public long getFirstMillisecond() {\nreturn this.firstMillisecond;\n}",
+        "begin_line": 306,
+        "end_line": 308,
+        "comment": "    \n     * Returns the first millisecond of the day.  This will be determined\n     * relative to the time zone specified in the constructor, or in the\n     * calendar instance passed in the most recent call to the\n     * {@link #peg(Calendar)} method.\n     *\n     * @return The first millisecond of the day.\n     *\n     * @see #getLastMillisecond()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.Day.previous()#350",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/Day.java",
+        "class_name": "org.jfree.data.time.Day",
+        "signature": "org.jfree.data.time.Day.previous()",
+        "snippet": "public RegularTimePeriod previous() {\n\nDay result;\nint serial = this.serialDate.toSerial();\nif (serial > SerialDate.SERIAL_LOWER_BOUND) {\nSerialDate yesterday = SerialDate.createInstance(serial - 1);\nreturn new Day(yesterday);\n}",
+        "begin_line": 350,
+        "end_line": 357,
+        "comment": "    \n     * Returns the day preceding this one.\n     *\n     * @return The day preceding this one.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.Day.getSerialIndex()#409",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/Day.java",
+        "class_name": "org.jfree.data.time.Day",
+        "signature": "org.jfree.data.time.Day.getSerialIndex()",
+        "snippet": "public long getSerialIndex() {\nint PROBE_START_LINE_306 = 306;\norg.jfree.data.time.SerialDate day1_expr36_line_306 = this.serialDate;\nint day1_expr35_line_306 = day1_expr36_line_306.toSerial();\nint PROBE_END_LINE_306 = 306;\nreturn day1_expr35_line_306;\n}",
+        "begin_line": 409,
+        "end_line": 415,
+        "comment": "    \n     * Returns a serial index number for the day.\n     *\n     * @return The serial index number.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.labels.StandardXYSeriesLabelGenerator.StandardXYSeriesLabelGenerator(String format)#86",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/labels/StandardXYSeriesLabelGenerator.java",
+        "class_name": "org.jfree.chart.labels.StandardXYSeriesLabelGenerator",
+        "signature": "org.jfree.chart.labels.StandardXYSeriesLabelGenerator.StandardXYSeriesLabelGenerator(String format)",
+        "snippet": "public StandardXYSeriesLabelGenerator(String format) {\nint PROBE_START_LINE_87 = 89;\nString p_format_1371_line_87 = format;\nboolean standard_xyseries_label_generator1_expr1_line_87 = p_format_1371_line_87 == null;\nint PROBE_END_LINE_87 = 89;\nif (standard_xyseries_label_generator1_expr1_line_87) {\nthrow new IllegalArgumentException(\"Null 'format' argument.\");\n}",
+        "begin_line": 86,
+        "end_line": 93,
+        "comment": "    \n     * Creates a new series label generator.\n     *\n     * @param format  the format pattern (<code>null</code> not permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateAxis.DateAxis(String label, TimeZone zone, Locale locale)#388",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateAxis.java",
+        "class_name": "org.jfree.chart.axis.DateAxis",
+        "signature": "org.jfree.chart.axis.DateAxis.DateAxis(String label, TimeZone zone, Locale locale)",
+        "snippet": "public DateAxis(String label, TimeZone zone, Locale locale) {\nsuper(label, DateAxis.createStandardDateTickUnits(zone, locale));\nint PROBE_START_LINE_384 = 384;\norg.jfree.chart.axis.DateTickUnit f_default_date_tick_unit_669_line_384 = DateAxis.DEFAULT_DATE_TICK_UNIT;\nint PROBE_END_LINE_384 = 384;\nsetTickUnit(f_default_date_tick_unit_669_line_384, false, false);\nsetAutoRangeMinimumSize(\nDEFAULT_AUTO_RANGE_MINIMUM_SIZE_IN_MILLISECONDS);\nint PROBE_START_LINE_387 = 387;\norg.jfree.data.time.DateRange f_default_date_range_668_line_387 = DEFAULT_DATE_RANGE;\nint PROBE_END_LINE_387 = 387;\nsetRange(f_default_date_range_668_line_387, false, false);\nthis.dateFormatOverride = null;\nint PROBE_START_LINE_389 = 389;\njava.util.TimeZone p_zone_688_line_389 = zone;\nint PROBE_END_LINE_389 = 389;\nthis.timeZone = p_zone_688_line_389;\nint PROBE_START_LINE_390 = 390;\njava.util.Locale p_locale_689_line_390 = locale;\nint PROBE_END_LINE_390 = 390;\nthis.locale = p_locale_689_line_390;\nint PROBE_START_LINE_391 = 391;\norg.jfree.chart.axis.Timeline f_default_timeline_683_line_391 = DEFAULT_TIMELINE;\nint PROBE_END_LINE_391 = 391;\nthis.timeline = f_default_timeline_683_line_391;\n}",
+        "begin_line": 388,
+        "end_line": 413,
+        "comment": "    \n     * Creates a date axis. A timeline is specified for the axis. This allows\n     * special transformations to occur between a domain of values and the\n     * values included in the axis.\n     *\n     * @see org.jfree.chart.axis.SegmentedTimeline\n     *\n     * @param label  the axis label (<code>null</code> permitted).\n     * @param zone  the time zone.\n     * @param locale  the locale (<code>null</code> not permitted).\n     *\n     * @since 1.0.11\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateAxis.setMaximumDate(Date maximumDate)#718",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateAxis.java",
+        "class_name": "org.jfree.chart.axis.DateAxis",
+        "signature": "org.jfree.chart.axis.DateAxis.setMaximumDate(Date maximumDate)",
+        "snippet": "public void setMaximumDate(Date maximumDate) {\nif (maximumDate == null) {\nthrow new IllegalArgumentException(\"Null 'maximumDate' argument.\");\n}",
+        "begin_line": 718,
+        "end_line": 721,
+        "comment": "    \n     * Sets the maximum date visible on the axis and sends an\n     * {@link AxisChangeEvent} to all registered listeners.  If\n     * <code>maximumDate</code> is on or before the current minimum date for\n     * the axis, the minimum date will be shifted to preserve the current\n     * length of the axis.\n     *\n     * @param maximumDate  the date (<code>null</code> not permitted).\n     *\n     * @see #getMinimumDate()\n     * @see #setMinimumDate(Date)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateAxis.createStandardDateTickUnits(TimeZone zone)#1177",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateAxis.java",
+        "class_name": "org.jfree.chart.axis.DateAxis",
+        "signature": "org.jfree.chart.axis.DateAxis.createStandardDateTickUnits(TimeZone zone)",
+        "snippet": "public static TickUnitSource createStandardDateTickUnits(TimeZone zone) {\nreturn createStandardDateTickUnits(zone, Locale.getDefault());\n}",
+        "begin_line": 1177,
+        "end_line": 1179,
+        "comment": "    \n     * Returns a collection of standard date tick units.  This collection will\n     * be used by default, but you are free to create your own collection if\n     * you want to (see the\n     * {@link ValueAxis#setStandardTickUnits(TickUnitSource)} method inherited\n     * from the {@link ValueAxis} class).\n     *\n     * @param zone  the time zone (<code>null</code> not permitted).\n     *\n     * @return A collection of standard date tick units.\n     *\n     * @deprecated Since 1.0.11, use {@link #createStandardDateTickUnits(\n     *         TimeZone, Locale)} to explicitly set the locale as well as the\n     *         time zone.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.ui.BasicProjectInfo.BasicProjectInfo()#145",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/ui/BasicProjectInfo.java",
+        "class_name": "org.jfree.chart.ui.BasicProjectInfo",
+        "signature": "org.jfree.chart.ui.BasicProjectInfo.BasicProjectInfo()",
+        "snippet": "public BasicProjectInfo() {\nthis.libraries = new ArrayList();\nthis.optionalLibraries = new ArrayList();\n}",
+        "begin_line": 145,
+        "end_line": 148,
+        "comment": "    \n     * Default constructor.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.StandardChartTheme(String name)#309",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.StandardChartTheme(String name)",
+        "snippet": "public StandardChartTheme(String name) {\nint PROBE_START_LINE_304 = 306;\nString p_name_439_line_304 = name;\nboolean standard_chart_theme1_expr1_line_304 = p_name_439_line_304 == null;\nint PROBE_END_LINE_304 = 306;\nif (standard_chart_theme1_expr1_line_304) {\nthrow new IllegalArgumentException(\"Null 'name' argument.\");\n}",
+        "begin_line": 309,
+        "end_line": 316,
+        "comment": "    \n     * Creates a new default instance.\n     *\n     * @param name  the name of the theme (<code>null</code> not permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.getErrorIndicatorPaint()#1103",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.getErrorIndicatorPaint()",
+        "snippet": "public Paint getErrorIndicatorPaint() {\nreturn this.errorIndicatorPaint;\n}",
+        "begin_line": 1103,
+        "end_line": 1105,
+        "comment": "    \n     * Returns the error indicator paint.\n     *\n     * @return The error indicator paint (never <code>null</code>).\n     *\n     * @see #setErrorIndicatorPaint(Paint)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.setGridBandPaint(Paint paint)#1139",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.setGridBandPaint(Paint paint)",
+        "snippet": "public void setGridBandPaint(Paint paint) {\nif (paint == null) {\nthrow new IllegalArgumentException(\"Null 'paint' argument.\");\n}",
+        "begin_line": 1139,
+        "end_line": 1142,
+        "comment": "    \n     * Sets the grid band paint.\n     *\n     * @param paint  the paint (<code>null</code> not permitted).\n     *\n     * @see #getGridBandPaint()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.getGridBandAlternatePaint()#1153",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.getGridBandAlternatePaint()",
+        "snippet": "public Paint getGridBandAlternatePaint() {\nreturn this.gridBandAlternatePaint;\n}",
+        "begin_line": 1153,
+        "end_line": 1155,
+        "comment": "    \n     * Returns the grid band alternate paint (used for a {@link SymbolAxis}).\n     *\n     * @return The paint (never <code>null</code>).\n     *\n     * @see #setGridBandAlternatePaint(Paint)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.applyToPlot(Plot plot)#1386",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.applyToPlot(Plot plot)",
+        "snippet": "protected void applyToPlot(Plot plot) {\nint PROBE_START_LINE_1236 = 1238;\norg.jfree.chart.plot.Plot p_plot_519_line_1236 = plot;\nboolean standard_chart_theme1_expr88_line_1236 = p_plot_519_line_1236 == null;\nint PROBE_END_LINE_1236 = 1238;\nif (standard_chart_theme1_expr88_line_1236) {\nthrow new IllegalArgumentException(\"Null 'plot' argument.\");\n}",
+        "begin_line": 1386,
+        "end_line": 1393,
+        "comment": "    \n     * Applies the attributes of this theme to a plot.\n     *\n     * @param plot  the plot (<code>null</code>).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.StandardChartTheme.applyToXYPlot(XYPlot plot)#1589",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/StandardChartTheme.java",
+        "class_name": "org.jfree.chart.StandardChartTheme",
+        "signature": "org.jfree.chart.StandardChartTheme.applyToXYPlot(XYPlot plot)",
+        "snippet": "protected void applyToXYPlot(XYPlot plot) {\nint PROBE_START_LINE_1380 = 1380;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1380 = plot;\norg.jfree.chart.util.RectangleInsets standard_chart_theme1_expr119_line_1380 = this.axisOffset;\nint PROBE_END_LINE_1380 = 1380;\np_plot_523_line_1380.setAxisOffset(standard_chart_theme1_expr119_line_1380);\nint PROBE_START_LINE_1381 = 1381;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1381 = plot;\njava.awt.Paint standard_chart_theme1_expr121_line_1381 = this.baselinePaint;\nint PROBE_END_LINE_1381 = 1381;\np_plot_523_line_1381.setDomainZeroBaselinePaint(standard_chart_theme1_expr121_line_1381);\nint PROBE_START_LINE_1382 = 1382;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1382 = plot;\njava.awt.Paint standard_chart_theme1_expr123_line_1382 = this.baselinePaint;\nint PROBE_END_LINE_1382 = 1382;\np_plot_523_line_1382.setRangeZeroBaselinePaint(standard_chart_theme1_expr123_line_1382);\nint PROBE_START_LINE_1383 = 1383;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1383 = plot;\njava.awt.Paint standard_chart_theme1_expr125_line_1383 = this.domainGridlinePaint;\nint PROBE_END_LINE_1383 = 1383;\np_plot_523_line_1383.setDomainGridlinePaint(standard_chart_theme1_expr125_line_1383);\nint PROBE_START_LINE_1384 = 1384;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1384 = plot;\njava.awt.Paint standard_chart_theme1_expr127_line_1384 = this.rangeGridlinePaint;\nint PROBE_END_LINE_1384 = 1384;\np_plot_523_line_1384.setRangeGridlinePaint(standard_chart_theme1_expr127_line_1384);\nint PROBE_START_LINE_1385 = 1385;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1385 = plot;\njava.awt.Paint standard_chart_theme1_expr129_line_1385 = this.crosshairPaint;\nint PROBE_END_LINE_1385 = 1385;\np_plot_523_line_1385.setDomainCrosshairPaint(standard_chart_theme1_expr129_line_1385);\nint PROBE_START_LINE_1386 = 1386;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1386 = plot;\njava.awt.Paint standard_chart_theme1_expr131_line_1386 = this.crosshairPaint;\nint PROBE_END_LINE_1386 = 1386;\np_plot_523_line_1386.setRangeCrosshairPaint(standard_chart_theme1_expr131_line_1386);\nint PROBE_START_LINE_1388 = 1388;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1388 = plot;\nint standard_chart_theme1_expr132_line_1388 = p_plot_523_line_1388.getDomainAxisCount();\nint PROBE_END_LINE_1388 = 1388;\n// process all domain axes\nint domainAxisCount = standard_chart_theme1_expr132_line_1388;\nfor (int i = 0; i < domainAxisCount; i++) {\nint PROBE_START_LINE_1390 = 1390;\norg.jfree.chart.plot.XYPlot p_plot_523_line_1390 = plot;\nint v_i_525_line_1390 = i;\nValueAxis standard_chart_theme1_expr134_line_1390 = p_plot_523_line_1390.getDomainAxis(v_i_525_line_1390);\nint PROBE_END_LINE_1390 = 1390;\nValueAxis axis = standard_chart_theme1_expr134_line_1390;\nint PROBE_START_LINE_1391 = 1393;\norg.jfree.chart.axis.ValueAxis v_axis_526_line_1391 = axis;\nboolean standard_chart_theme1_expr135_line_1391 = v_axis_526_line_1391 != null;\nint PROBE_END_LINE_1391 = 1393;\nif (standard_chart_theme1_expr135_line_1391) {\nint PROBE_START_LINE_1392 = 1392;\norg.jfree.chart.axis.ValueAxis v_axis_526_line_1392 = axis;\nint PROBE_END_LINE_1392 = 1392;\napplyToValueAxis(v_axis_526_line_1392);\n}",
+        "begin_line": 1589,
+        "end_line": 1647,
+        "comment": "    \n     * Applies the attributes of this theme to a {@link XYPlot}.\n     *\n     * @param plot  the plot (<code>null</code> not permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.Plot.Plot()#317",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/Plot.java",
+        "class_name": "org.jfree.chart.plot.Plot",
+        "signature": "org.jfree.chart.plot.Plot.Plot()",
+        "snippet": "protected Plot() {\n\nthis.parent = null;\nint PROBE_START_LINE_302 = 302;\norg.jfree.chart.util.RectangleInsets f_default_insets_1651_line_302 = DEFAULT_INSETS;\nint PROBE_END_LINE_302 = 302;\nthis.insets = f_default_insets_1651_line_302;\nint PROBE_START_LINE_303 = 303;\njava.awt.Paint f_default_background_paint_1652_line_303 = DEFAULT_BACKGROUND_PAINT;\nint PROBE_END_LINE_303 = 303;\nthis.backgroundPaint = f_default_background_paint_1652_line_303;\nint PROBE_START_LINE_304 = 304;\nfloat f_default_background_alpha_1660_line_304 = DEFAULT_BACKGROUND_ALPHA;\nint PROBE_END_LINE_304 = 304;\nthis.backgroundAlpha = f_default_background_alpha_1660_line_304;\nthis.backgroundImage = null;\nthis.outlineVisible = true;\nint PROBE_START_LINE_307 = 307;\njava.awt.Stroke f_default_outline_stroke_1499_line_307 = DEFAULT_OUTLINE_STROKE;\nint PROBE_END_LINE_307 = 307;\nthis.outlineStroke = f_default_outline_stroke_1499_line_307;\nint PROBE_START_LINE_308 = 308;\njava.awt.Paint f_default_outline_paint_1495_line_308 = DEFAULT_OUTLINE_PAINT;\nint PROBE_END_LINE_308 = 308;\nthis.outlinePaint = f_default_outline_paint_1495_line_308;\nint PROBE_START_LINE_309 = 309;\nfloat f_default_foreground_alpha_1666_line_309 = DEFAULT_FOREGROUND_ALPHA;\nint PROBE_END_LINE_309 = 309;\nthis.foregroundAlpha = f_default_foreground_alpha_1666_line_309;\n\nthis.noDataMessage = null;\nint PROBE_START_LINE_312 = 312;\nint f_plain_444_line_312 = Font.PLAIN;\nint PROBE_END_LINE_312 = 312;\nthis.noDataMessageFont = new Font(\"Tahoma\", f_plain_444_line_312, 12);\nint PROBE_START_LINE_313 = 313;\njava.awt.Color f_black_348_line_313 = Color.black;\nint PROBE_END_LINE_313 = 313;\nthis.noDataMessagePaint = f_black_348_line_313;\n\nthis.drawingSupplier = new DefaultDrawingSupplier();\n\nthis.notify = true;\nthis.listenerList = new EventListenerList();\n\n}",
+        "begin_line": 317,
+        "end_line": 362,
+        "comment": "    \n     * Creates a new plot.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.Plot.isSubplot()#538",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/Plot.java",
+        "class_name": "org.jfree.chart.plot.Plot",
+        "signature": "org.jfree.chart.plot.Plot.isSubplot()",
+        "snippet": "public boolean isSubplot() {\nreturn (getParent() != null);\n}",
+        "begin_line": 538,
+        "end_line": 540,
+        "comment": "    \n     * Returns <code>true</code> if this plot is part of a combined plot\n     * structure (that is, {@link #getParent()} returns a non-<code>null</code>\n     * value), and <code>false</code> otherwise.\n     *\n     * @return <code>true</code> if this plot is part of a combined plot\n     *         structure.\n     *\n     * @see #getParent()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.Plot.setOutlinePaint(Paint paint)#941",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/Plot.java",
+        "class_name": "org.jfree.chart.plot.Plot",
+        "signature": "org.jfree.chart.plot.Plot.setOutlinePaint(Paint paint)",
+        "snippet": "public void setOutlinePaint(Paint paint) {\nint PROBE_START_LINE_846 = 860;\njava.awt.Paint p_paint_1694_line_846 = paint;\nboolean plot1_expr51_line_846 = p_paint_1694_line_846 == null;\nint PROBE_END_LINE_846 = 860;\nif (plot1_expr51_line_846) {\nif (this.outlinePaint != null) {\nthis.outlinePaint = null;\nfireChangeEvent();\n}",
+        "begin_line": 941,
+        "end_line": 950,
+        "comment": "    \n     * Sets the paint used to draw the outline of the plot area and sends a\n     * {@link PlotChangeEvent} to all registered listeners.  If you set this\n     * attribute to <code>null</code>, no outline will be drawn.\n     *\n     * @param paint  the paint (<code>null</code> permitted).\n     *\n     * @see #getOutlinePaint()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.DefaultXYDataset.DefaultXYDataset()#81",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/DefaultXYDataset.java",
+        "class_name": "org.jfree.data.xy.DefaultXYDataset",
+        "signature": "org.jfree.data.xy.DefaultXYDataset.DefaultXYDataset()",
+        "snippet": "public DefaultXYDataset() {\nthis.seriesKeys = new java.util.ArrayList();\nthis.seriesList = new java.util.ArrayList();\n}",
+        "begin_line": 81,
+        "end_line": 84,
+        "comment": "    \n     * Creates a new <code>DefaultXYDataset</code> instance, initially\n     * containing no data.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.PiePlot.PiePlot()#559",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/PiePlot.java",
+        "class_name": "org.jfree.chart.plot.PiePlot",
+        "signature": "org.jfree.chart.plot.PiePlot.PiePlot()",
+        "snippet": "public PiePlot() {\nthis(null);\n}",
+        "begin_line": 559,
+        "end_line": 561,
+        "comment": "    \n     * Creates a new plot.  The dataset is initially set to <code>null</code>.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.PiePlot.PiePlot(PieDataset dataset)#568",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/PiePlot.java",
+        "class_name": "org.jfree.chart.plot.PiePlot",
+        "signature": "org.jfree.chart.plot.PiePlot.PiePlot(PieDataset dataset)",
+        "snippet": "public PiePlot(PieDataset dataset) {\nsuper();\nint PROBE_START_LINE_540 = 540;\norg.jfree.data.general.PieDataset p_dataset_1478_line_540 = dataset;\nint PROBE_END_LINE_540 = 540;\nthis.dataset = p_dataset_1478_line_540;\nint PROBE_START_LINE_541 = 543;\norg.jfree.data.general.PieDataset p_dataset_1478_line_541 = dataset;\nboolean pie_plot1_expr26_line_541 = p_dataset_1478_line_541 != null;\nint PROBE_END_LINE_541 = 543;\nif (pie_plot1_expr26_line_541) {\nint PROBE_START_LINE_542 = 542;\norg.jfree.data.general.PieDataset p_dataset_1478_line_542 = dataset;\nint PROBE_END_LINE_542 = 542;\np_dataset_1478_line_542.addChangeListener(this);\n}",
+        "begin_line": 568,
+        "end_line": 583,
+        "comment": "    \n     * Creates a plot that will draw a pie chart for the specified dataset.\n     *\n     * @param dataset  the dataset (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.PiePlot.getLabelLinksVisible()#1769",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/PiePlot.java",
+        "class_name": "org.jfree.chart.plot.PiePlot",
+        "signature": "org.jfree.chart.plot.PiePlot.getLabelLinksVisible()",
+        "snippet": "public boolean getLabelLinksVisible() {\nreturn this.labelLinksVisible;\n}",
+        "begin_line": 1769,
+        "end_line": 1771,
+        "comment": "    \n     * Returns the flag that controls whether or not label linking lines are\n     * visible.\n     *\n     * @return A boolean.\n     *\n     * @see #setLabelLinksVisible(boolean)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.labels.ItemLabelAnchor.ItemLabelAnchor(String name)#167",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/labels/ItemLabelAnchor.java",
+        "class_name": "org.jfree.chart.labels.ItemLabelAnchor",
+        "signature": "org.jfree.chart.labels.ItemLabelAnchor.ItemLabelAnchor(String name)",
+        "snippet": "private ItemLabelAnchor(String name) {\nint PROBE_START_LINE_168 = 168;\nString p_name_1329_line_168 = name;\nint PROBE_END_LINE_168 = 168;\nthis.name = p_name_1329_line_168;\n}",
+        "begin_line": 167,
+        "end_line": 172,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateTickUnitType.DateTickUnitType(String name, int calendarField)#97",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateTickUnitType.java",
+        "class_name": "org.jfree.chart.axis.DateTickUnitType",
+        "signature": "org.jfree.chart.axis.DateTickUnitType.DateTickUnitType(String name, int calendarField)",
+        "snippet": "private DateTickUnitType(String name, int calendarField) {\nint PROBE_START_LINE_98 = 98;\nString p_name_819_line_98 = name;\nint PROBE_END_LINE_98 = 98;\nthis.name = p_name_819_line_98;\nint PROBE_START_LINE_99 = 99;\nint p_calendar_field_820_line_99 = calendarField;\nint PROBE_END_LINE_99 = 99;\nthis.calendarField = p_calendar_field_820_line_99;\n}",
+        "begin_line": 97,
+        "end_line": 106,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     * @param calendarField  the calendar field.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateTickUnitType.equals(Object obj)#137",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateTickUnitType.java",
+        "class_name": "org.jfree.chart.axis.DateTickUnitType",
+        "signature": "org.jfree.chart.axis.DateTickUnitType.equals(Object obj)",
+        "snippet": "public boolean equals(Object obj) {\nint PROBE_START_LINE_129 = 131;\nObject p_obj_823_line_129 = obj;\nboolean date_tick_unit_type1_expr11_line_129 = this == p_obj_823_line_129;\nint PROBE_END_LINE_129 = 131;\nif (date_tick_unit_type1_expr11_line_129) {\nreturn true;\n}",
+        "begin_line": 137,
+        "end_line": 144,
+        "comment": "    \n     * Returns <code>true</code> if this object is equal to the specified\n     * object, and <code>false</code> otherwise.\n     *\n     * @param obj  the other object.\n     *\n     * @return A boolean.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.ui.Contributor.Contributor(String name, String email)#63",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/ui/Contributor.java",
+        "class_name": "org.jfree.chart.ui.Contributor",
+        "signature": "org.jfree.chart.ui.Contributor.Contributor(String name, String email)",
+        "snippet": "public Contributor(String name, String email) {\nint PROBE_START_LINE_64 = 64;\nString p_name_3125_line_64 = name;\nint PROBE_END_LINE_64 = 64;\nthis.name = p_name_3125_line_64;\nint PROBE_START_LINE_65 = 65;\nString p_email_3126_line_65 = email;\nint PROBE_END_LINE_65 = 65;\nthis.email = p_email_3126_line_65;\n}",
+        "begin_line": 63,
+        "end_line": 72,
+        "comment": "    \n     * Creates a new contributor.\n     *\n     * @param name  the name.\n     * @param email  the e-mail address.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.RectangleAnchor.RectangleAnchor(final String name)#106",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/RectangleAnchor.java",
+        "class_name": "org.jfree.chart.util.RectangleAnchor",
+        "signature": "org.jfree.chart.util.RectangleAnchor.RectangleAnchor(final String name)",
+        "snippet": "private RectangleAnchor(final String name) {\nint PROBE_START_LINE_107 = 107;\nString p_name_3223_line_107 = name;\nint PROBE_END_LINE_107 = 107;\nthis.name = p_name_3223_line_107;\n}",
+        "begin_line": 106,
+        "end_line": 111,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.Axis.Axis(String label)#331",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/Axis.java",
+        "class_name": "org.jfree.chart.axis.Axis",
+        "signature": "org.jfree.chart.axis.Axis.Axis(String label)",
+        "snippet": "protected Axis(String label) {\n\nint PROBE_START_LINE_309 = 309;\nString p_label_560_line_309 = label;\nint PROBE_END_LINE_309 = 309;\nthis.label = p_label_560_line_309;\nint PROBE_START_LINE_310 = 310;\nboolean f_default_axis_visible_562_line_310 = DEFAULT_AXIS_VISIBLE;\nint PROBE_END_LINE_310 = 310;\nthis.visible = f_default_axis_visible_562_line_310;\nint PROBE_START_LINE_311 = 311;\njava.awt.Font f_default_axis_label_font_550_line_311 = DEFAULT_AXIS_LABEL_FONT;\nint PROBE_END_LINE_311 = 311;\nthis.labelFont = f_default_axis_label_font_550_line_311;\nint PROBE_START_LINE_312 = 312;\njava.awt.Paint f_default_axis_label_paint_551_line_312 = DEFAULT_AXIS_LABEL_PAINT;\nint PROBE_END_LINE_312 = 312;\nthis.labelPaint = f_default_axis_label_paint_551_line_312;\nint PROBE_START_LINE_313 = 313;\norg.jfree.chart.util.RectangleInsets f_default_axis_label_insets_552_line_313 = DEFAULT_AXIS_LABEL_INSETS;\nint PROBE_END_LINE_313 = 313;\nthis.labelInsets = f_default_axis_label_insets_552_line_313;\nthis.labelAngle = 0.0;\nthis.labelToolTip = null;\nthis.labelURL = null;\n\nthis.axisLineVisible = true;\nint PROBE_START_LINE_319 = 319;\njava.awt.Paint f_default_axis_line_paint_553_line_319 = DEFAULT_AXIS_LINE_PAINT;\nint PROBE_END_LINE_319 = 319;\nthis.axisLinePaint = f_default_axis_line_paint_553_line_319;\nint PROBE_START_LINE_320 = 320;\njava.awt.Stroke f_default_axis_line_stroke_554_line_320 = DEFAULT_AXIS_LINE_STROKE;\nint PROBE_END_LINE_320 = 320;\nthis.axisLineStroke = f_default_axis_line_stroke_554_line_320;\n\nint PROBE_START_LINE_322 = 322;\nboolean f_default_tick_labels_visible_573_line_322 = DEFAULT_TICK_LABELS_VISIBLE;\nint PROBE_END_LINE_322 = 322;\nthis.tickLabelsVisible = f_default_tick_labels_visible_573_line_322;\nint PROBE_START_LINE_323 = 323;\njava.awt.Font f_default_tick_label_font_555_line_323 = DEFAULT_TICK_LABEL_FONT;\nint PROBE_END_LINE_323 = 323;\nthis.tickLabelFont = f_default_tick_label_font_555_line_323;\nint PROBE_START_LINE_324 = 324;\njava.awt.Paint f_default_tick_label_paint_556_line_324 = DEFAULT_TICK_LABEL_PAINT;\nint PROBE_END_LINE_324 = 324;\nthis.tickLabelPaint = f_default_tick_label_paint_556_line_324;\nint PROBE_START_LINE_325 = 325;\norg.jfree.chart.util.RectangleInsets f_default_tick_label_insets_557_line_325 = DEFAULT_TICK_LABEL_INSETS;\nint PROBE_END_LINE_325 = 325;\nthis.tickLabelInsets = f_default_tick_label_insets_557_line_325;\n\nint PROBE_START_LINE_327 = 327;\nboolean f_default_tick_marks_visible_578_line_327 = DEFAULT_TICK_MARKS_VISIBLE;\nint PROBE_END_LINE_327 = 327;\nthis.tickMarksVisible = f_default_tick_marks_visible_578_line_327;\nint PROBE_START_LINE_328 = 328;\njava.awt.Stroke f_default_tick_mark_stroke_558_line_328 = DEFAULT_TICK_MARK_STROKE;\nint PROBE_END_LINE_328 = 328;\nthis.tickMarkStroke = f_default_tick_mark_stroke_558_line_328;\nint PROBE_START_LINE_329 = 329;\njava.awt.Paint f_default_tick_mark_paint_559_line_329 = DEFAULT_TICK_MARK_PAINT;\nint PROBE_END_LINE_329 = 329;\nthis.tickMarkPaint = f_default_tick_mark_paint_559_line_329;\nint PROBE_START_LINE_330 = 330;\nfloat f_default_tick_mark_inside_length_582_line_330 = DEFAULT_TICK_MARK_INSIDE_LENGTH;\nint PROBE_END_LINE_330 = 330;\nthis.tickMarkInsideLength = f_default_tick_mark_inside_length_582_line_330;\nint PROBE_START_LINE_331 = 331;\nfloat f_default_tick_mark_outside_length_584_line_331 = DEFAULT_TICK_MARK_OUTSIDE_LENGTH;\nint PROBE_END_LINE_331 = 331;\nthis.tickMarkOutsideLength = f_default_tick_mark_outside_length_584_line_331;\n\nthis.minorTickMarksVisible = false;\nthis.minorTickMarkInsideLength = 0.0f;\nthis.minorTickMarkOutsideLength = 2.0f;\n\nthis.plot = null;\n\nthis.listenerList = new EventListenerList();\n\n}",
+        "begin_line": 331,
+        "end_line": 413,
+        "comment": "    \n     * Constructs an axis, using default values where necessary.\n     *\n     * @param label  the axis label (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.Axis.setVisible(boolean flag)#435",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/Axis.java",
+        "class_name": "org.jfree.chart.axis.Axis",
+        "signature": "org.jfree.chart.axis.Axis.setVisible(boolean flag)",
+        "snippet": "public void setVisible(boolean flag) {\nif (flag != this.visible) {\nthis.visible = flag;\nfireChangeEvent();\n}",
+        "begin_line": 435,
+        "end_line": 439,
+        "comment": "    \n     * Sets a flag that controls whether or not the axis is visible and sends\n     * an {@link AxisChangeEvent} to all registered listeners.\n     *\n     * @param flag  the flag.\n     *\n     * @see #isVisible()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.Axis.setLabel(String label)#465",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/Axis.java",
+        "class_name": "org.jfree.chart.axis.Axis",
+        "signature": "org.jfree.chart.axis.Axis.setLabel(String label)",
+        "snippet": "public void setLabel(String label) {\n\nString existing = this.label;\nif (existing != null) {\nif (!existing.equals(label)) {\nthis.label = label;\nfireChangeEvent();\n}",
+        "begin_line": 465,
+        "end_line": 472,
+        "comment": "    \n     * Sets the label for the axis and sends an {@link AxisChangeEvent} to all\n     * registered listeners.\n     *\n     * @param label  the new label (<code>null</code> permitted).\n     *\n     * @see #getLabel()\n     * @see #setLabelFont(Font)\n     * @see #setLabelPaint(Paint)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.DefaultKeyedValues.DefaultKeyedValues()#97",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/DefaultKeyedValues.java",
+        "class_name": "org.jfree.data.DefaultKeyedValues",
+        "signature": "org.jfree.data.DefaultKeyedValues.DefaultKeyedValues()",
+        "snippet": "public DefaultKeyedValues() {\nthis.keys = new ArrayList();\nthis.values = new ArrayList();\nthis.indexMap = new HashMap();\n}",
+        "begin_line": 97,
+        "end_line": 101,
+        "comment": "  \n     * Creates a new collection (initially empty).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.BlockBorder.BlockBorder(RectangleInsets insets, Paint paint)#128",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/BlockBorder.java",
+        "class_name": "org.jfree.chart.block.BlockBorder",
+        "signature": "org.jfree.chart.block.BlockBorder.BlockBorder(RectangleInsets insets, Paint paint)",
+        "snippet": "public BlockBorder(RectangleInsets insets, Paint paint) {\nint PROBE_START_LINE_129 = 131;\norg.jfree.chart.util.RectangleInsets p_insets_1145_line_129 = insets;\nboolean block_border1_expr2_line_129 = p_insets_1145_line_129 == null;\nint PROBE_END_LINE_129 = 131;\nif (block_border1_expr2_line_129) {\nthrow new IllegalArgumentException(\"Null 'insets' argument.\");\n}",
+        "begin_line": 128,
+        "end_line": 135,
+        "comment": "    \n     * Creates a new border.\n     *\n     * @param insets  the border insets (<code>null</code> not permitted).\n     * @param paint  the paint (<code>null</code> not permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.AbstractPieLabelDistributor.AbstractPieLabelDistributor()#60",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/AbstractPieLabelDistributor.java",
+        "class_name": "org.jfree.chart.plot.AbstractPieLabelDistributor",
+        "signature": "org.jfree.chart.plot.AbstractPieLabelDistributor.AbstractPieLabelDistributor()",
+        "snippet": "public AbstractPieLabelDistributor() {\nthis.labels = new java.util.ArrayList();\n}",
+        "begin_line": 60,
+        "end_line": 62,
+        "comment": "    \n     * Creates a new instance.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.UnitType.UnitType(String name)#69",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/UnitType.java",
+        "class_name": "org.jfree.chart.util.UnitType",
+        "signature": "org.jfree.chart.util.UnitType.UnitType(String name)",
+        "snippet": "private UnitType(String name) {\nint PROBE_START_LINE_70 = 70;\nString p_name_3317_line_70 = name;\nint PROBE_END_LINE_70 = 70;\nthis.name = p_name_3317_line_70;\n}",
+        "begin_line": 69,
+        "end_line": 74,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.BooleanList.BooleanList()#60",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/BooleanList.java",
+        "class_name": "org.jfree.chart.util.BooleanList",
+        "signature": "org.jfree.chart.util.BooleanList.BooleanList()",
+        "snippet": "public BooleanList() {\n}",
+        "begin_line": 60,
+        "end_line": 61,
+        "comment": "    \n     * Creates a new list.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.AxisLocation.AxisLocation(String name)#84",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/AxisLocation.java",
+        "class_name": "org.jfree.chart.axis.AxisLocation",
+        "signature": "org.jfree.chart.axis.AxisLocation.AxisLocation(String name)",
+        "snippet": "private AxisLocation(String name) {\nint PROBE_START_LINE_85 = 85;\nString p_name_664_line_85 = name;\nint PROBE_END_LINE_85 = 85;\nthis.name = p_name_664_line_85;\n}",
+        "begin_line": 84,
+        "end_line": 89,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.xy.XYLineAndShapeRenderer.XYLineAndShapeRenderer(boolean lines, boolean shapes)#184",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/xy/XYLineAndShapeRenderer.java",
+        "class_name": "org.jfree.chart.renderer.xy.XYLineAndShapeRenderer",
+        "signature": "org.jfree.chart.renderer.xy.XYLineAndShapeRenderer.XYLineAndShapeRenderer(boolean lines, boolean shapes)",
+        "snippet": "public XYLineAndShapeRenderer(boolean lines, boolean shapes) {\nthis.seriesLinesVisible = new BooleanList();\nint PROBE_START_LINE_186 = 186;\nboolean p_lines_2787_line_186 = lines;\nint PROBE_END_LINE_186 = 186;\nthis.baseLinesVisible = p_lines_2787_line_186;\nint PROBE_START_LINE_187 = 187;\ndouble xyline_and_shape_renderer1_expr9_line_187 = -7.0;\nint PROBE_END_LINE_187 = 187;\nthis.legendLine = new Line2D.Double(xyline_and_shape_renderer1_expr9_line_187, 0.0, 7.0, 0.0);\n\nthis.seriesShapesVisible = new BooleanList();\nint PROBE_START_LINE_190 = 190;\nboolean p_shapes_2788_line_190 = shapes;\nint PROBE_END_LINE_190 = 190;\nthis.baseShapesVisible = p_shapes_2788_line_190;\n\nthis.useFillPaint = false;     // use item paint for fills by default\nthis.seriesShapesFilled = new BooleanList();\nthis.baseShapesFilled = true;\n\nthis.drawOutlines = true;\nthis.useOutlinePaint = false;  // use item paint for outlines by\n// default, not outline paint\n\nthis.drawSeriesLineAsPath = false;\n}",
+        "begin_line": 184,
+        "end_line": 210,
+        "comment": "    \n     * Creates a new renderer.\n     *\n     * @param lines  lines visible?\n     * @param shapes  shapes visible?\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.general.DefaultPieDataset.DefaultPieDataset()#85",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/general/DefaultPieDataset.java",
+        "class_name": "org.jfree.data.general.DefaultPieDataset",
+        "signature": "org.jfree.data.general.DefaultPieDataset.DefaultPieDataset()",
+        "snippet": "public DefaultPieDataset() {\nthis.data = new DefaultKeyedValues();\n}",
+        "begin_line": 85,
+        "end_line": 87,
+        "comment": "    \n     * Constructs a new dataset, initially empty.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.RectangleEdge.RectangleEdge(String name)#80",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/RectangleEdge.java",
+        "class_name": "org.jfree.chart.util.RectangleEdge",
+        "signature": "org.jfree.chart.util.RectangleEdge.RectangleEdge(String name)",
+        "snippet": "private RectangleEdge(String name) {\nint PROBE_START_LINE_81 = 81;\nString p_name_3233_line_81 = name;\nint PROBE_END_LINE_81 = 81;\nthis.name = p_name_3233_line_81;\n}",
+        "begin_line": 80,
+        "end_line": 85,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.HorizontalAlignment.HorizontalAlignment(String name)#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/HorizontalAlignment.java",
+        "class_name": "org.jfree.chart.util.HorizontalAlignment",
+        "signature": "org.jfree.chart.util.HorizontalAlignment.HorizontalAlignment(String name)",
+        "snippet": "private HorizontalAlignment(String name) {\nint PROBE_START_LINE_77 = 77;\nString p_name_3193_line_77 = name;\nint PROBE_END_LINE_77 = 77;\nthis.name = p_name_3193_line_77;\n}",
+        "begin_line": 76,
+        "end_line": 81,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.DefaultDrawingSupplier.getNextShape()#292",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/DefaultDrawingSupplier.java",
+        "class_name": "org.jfree.chart.plot.DefaultDrawingSupplier",
+        "signature": "org.jfree.chart.plot.DefaultDrawingSupplier.getNextShape()",
+        "snippet": "public Shape getNextShape() {\nShape result = this.shapeSequence[\nthis.shapeIndex % this.shapeSequence.length];\nthis.shapeIndex++;\nreturn result;\n}",
+        "begin_line": 292,
+        "end_line": 297,
+        "comment": "    \n     * Returns the next shape in the sequence.\n     *\n     * @return The shape.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.PaintMap.PaintMap()#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/PaintMap.java",
+        "class_name": "org.jfree.chart.util.PaintMap",
+        "signature": "org.jfree.chart.util.PaintMap.PaintMap()",
+        "snippet": "public PaintMap() {\nthis.store = new HashMap();\n}",
+        "begin_line": 78,
+        "end_line": 80,
+        "comment": "    \n     * Creates a new (empty) map.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.Range.Range(double lower, double upper)#86",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/Range.java",
+        "class_name": "org.jfree.data.Range",
+        "signature": "org.jfree.data.Range.Range(double lower, double upper)",
+        "snippet": "public Range(double lower, double upper) {\nint PROBE_START_LINE_87 = 91;\ndouble p_lower_3353_line_87 = lower;\ndouble p_upper_3354_line_87 = upper;\nboolean range1_expr1_line_87 = p_lower_3353_line_87 > p_upper_3354_line_87;\nint PROBE_END_LINE_87 = 91;\nif (range1_expr1_line_87) {\nString msg = \"Range(double, double): require lower (\" + lower\n+ \") <= upper (\" + upper + \").\";\nthrow new IllegalArgumentException(msg);\n}",
+        "begin_line": 86,
+        "end_line": 96,
+        "comment": "    \n     * Creates a new range.\n     *\n     * @param lower  the lower bound (must be <= upper bound).\n     * @param upper  the upper bound (must be >= lower bound).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.DatasetRenderingOrder.DatasetRenderingOrder(String name)#80",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/DatasetRenderingOrder.java",
+        "class_name": "org.jfree.chart.plot.DatasetRenderingOrder",
+        "signature": "org.jfree.chart.plot.DatasetRenderingOrder.DatasetRenderingOrder(String name)",
+        "snippet": "private DatasetRenderingOrder(String name) {\nint PROBE_START_LINE_81 = 81;\nString p_name_1402_line_81 = name;\nint PROBE_END_LINE_81 = 81;\nthis.name = p_name_1402_line_81;\n}",
+        "begin_line": 80,
+        "end_line": 85,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYSeries.getMinY()#251",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYSeries.java",
+        "class_name": "org.jfree.data.xy.XYSeries",
+        "signature": "org.jfree.data.xy.XYSeries.getMinY()",
+        "snippet": "public double getMinY() {\nreturn this.minY;\n}",
+        "begin_line": 251,
+        "end_line": 253,
+        "comment": "    \n     * Returns the smallest y-value in the series, ignoring any null and\n     * Double.NaN values.  This method returns Double.NaN if there is no\n     * smallest y-value (for example, when the series is empty).\n     *\n     * @return The smallest y-value.\n     *\n     * @see #getMaxY()\n     *\n     * @since 1.0.13\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYSeries.add(double x, Number y)#508",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYSeries.java",
+        "class_name": "org.jfree.data.xy.XYSeries",
+        "signature": "org.jfree.data.xy.XYSeries.add(double x, Number y)",
+        "snippet": "public void add(double x, Number y) {\nadd(new Double(x), y);\n}",
+        "begin_line": 508,
+        "end_line": 510,
+        "comment": "    \n     * Adds a data item to the series and sends a {@link SeriesChangeEvent} to\n     * all registered listeners.  The unusual pairing of parameter types is to\n     * make it easier to add <code>null</code> y-values.\n     *\n     * @param x  the x value.\n     * @param y  the y value (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.RectangleInsets.getRight()#188",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/RectangleInsets.java",
+        "class_name": "org.jfree.chart.util.RectangleInsets",
+        "signature": "org.jfree.chart.util.RectangleInsets.getRight()",
+        "snippet": "public double getRight() {\nreturn this.right;\n}",
+        "begin_line": 188,
+        "end_line": 190,
+        "comment": "    \n     * Returns the right insets.\n     *\n     * @return The right insets.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.renderer.category.GradientBarPainter.GradientBarPainter(double g1, double g2, double g3)#88",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/renderer/category/GradientBarPainter.java",
+        "class_name": "org.jfree.chart.renderer.category.GradientBarPainter",
+        "signature": "org.jfree.chart.renderer.category.GradientBarPainter.GradientBarPainter(double g1, double g2, double g3)",
+        "snippet": "public GradientBarPainter(double g1, double g2, double g3) {\nint PROBE_START_LINE_89 = 89;\ndouble p_g_1_2553_line_89 = g1;\nint PROBE_END_LINE_89 = 89;\nthis.g1 = p_g_1_2553_line_89;\nint PROBE_START_LINE_90 = 90;\ndouble p_g_2_2554_line_90 = g2;\nint PROBE_END_LINE_90 = 90;\nthis.g2 = p_g_2_2554_line_90;\nint PROBE_START_LINE_91 = 91;\ndouble p_g_3_2555_line_91 = g3;\nint PROBE_END_LINE_91 = 91;\nthis.g3 = p_g_3_2555_line_91;\n}",
+        "begin_line": 88,
+        "end_line": 101,
+        "comment": "    \n     * Creates a new instance.\n     *\n     * @param g1\n     * @param g2\n     * @param g3\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.text.TextAnchor.TextAnchor(String name)#124",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/text/TextAnchor.java",
+        "class_name": "org.jfree.chart.text.TextAnchor",
+        "signature": "org.jfree.chart.text.TextAnchor.TextAnchor(String name)",
+        "snippet": "private TextAnchor(String name) {\nint PROBE_START_LINE_125 = 125;\nString p_name_2970_line_125 = name;\nint PROBE_END_LINE_125 = 125;\nthis.name = p_name_2970_line_125;\n}",
+        "begin_line": 124,
+        "end_line": 129,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.TickUnit.TickUnit(double size)#83",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/TickUnit.java",
+        "class_name": "org.jfree.chart.axis.TickUnit",
+        "signature": "org.jfree.chart.axis.TickUnit.TickUnit(double size)",
+        "snippet": "public TickUnit(double size) {\nint PROBE_START_LINE_84 = 84;\ndouble p_size_959_line_84 = size;\nint PROBE_END_LINE_84 = 84;\nthis.size = p_size_959_line_84;\n}",
+        "begin_line": 83,
+        "end_line": 88,
+        "comment": "    \n     * Constructs a new tick unit.\n     *\n     * @param size  the tick unit size.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.TickUnit.TickUnit(double size, int minorTickCount)#98",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/TickUnit.java",
+        "class_name": "org.jfree.chart.axis.TickUnit",
+        "signature": "org.jfree.chart.axis.TickUnit.TickUnit(double size, int minorTickCount)",
+        "snippet": "public TickUnit(double size, int minorTickCount) {\nint PROBE_START_LINE_96 = 96;\ndouble p_size_961_line_96 = size;\nint PROBE_END_LINE_96 = 96;\nthis.size = p_size_961_line_96;\nint PROBE_START_LINE_97 = 97;\nint p_minor_tick_count_962_line_97 = minorTickCount;\nint PROBE_END_LINE_97 = 97;\nthis.minorTickCount = p_minor_tick_count_962_line_97;\n}",
+        "begin_line": 98,
+        "end_line": 107,
+        "comment": "    \n     * Constructs a new tick unit.\n     *\n     * @param size  the tick unit size.\n     * @param minorTickCount  the minor tick count.\n     *\n     * @since 1.0.7\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.PieLabelLinkStyle.PieLabelLinkStyle(String name)#74",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/PieLabelLinkStyle.java",
+        "class_name": "org.jfree.chart.plot.PieLabelLinkStyle",
+        "signature": "org.jfree.chart.plot.PieLabelLinkStyle.PieLabelLinkStyle(String name)",
+        "snippet": "private PieLabelLinkStyle(String name) {\nint PROBE_START_LINE_75 = 75;\nString p_name_1458_line_75 = name;\nint PROBE_END_LINE_75 = 75;\nthis.name = p_name_1458_line_75;\n}",
+        "begin_line": 74,
+        "end_line": 79,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.DateTickUnit.getCalendarField()#310",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/DateTickUnit.java",
+        "class_name": "org.jfree.chart.axis.DateTickUnit",
+        "signature": "org.jfree.chart.axis.DateTickUnit.getCalendarField()",
+        "snippet": "public int getCalendarField() {\nreturn this.unitType.getCalendarField();\n}",
+        "begin_line": 310,
+        "end_line": 312,
+        "comment": "    \n     * Returns a field code that can be used with the <code>Calendar</code>\n     * class.\n     *\n     * @return The field code.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYDataItem.XYDataItem(Number x, Number y)#83",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYDataItem.java",
+        "class_name": "org.jfree.data.xy.XYDataItem",
+        "signature": "org.jfree.data.xy.XYDataItem.XYDataItem(Number x, Number y)",
+        "snippet": "public XYDataItem(Number x, Number y) {\nint PROBE_START_LINE_84 = 86;\nNumber p_x_3937_line_84 = x;\nboolean xydata_item1_expr1_line_84 = p_x_3937_line_84 == null;\nint PROBE_END_LINE_84 = 86;\nif (xydata_item1_expr1_line_84) {\nthrow new IllegalArgumentException(\"Null 'x' argument.\");\n}",
+        "begin_line": 83,
+        "end_line": 90,
+        "comment": "    \n     * Constructs a new data item.\n     *\n     * @param x  the x-value (<code>null</code> NOT permitted).\n     * @param y  the y-value (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYDataItem.XYDataItem(double x, double y)#108",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYDataItem.java",
+        "class_name": "org.jfree.data.xy.XYDataItem",
+        "signature": "org.jfree.data.xy.XYDataItem.XYDataItem(double x, double y)",
+        "snippet": "public XYDataItem(double x, double y) {\nthis(new Double(x), new Double(y));\n}",
+        "begin_line": 108,
+        "end_line": 110,
+        "comment": "    \n     * Constructs a new data item.\n     *\n     * @param x  the x-value.\n     * @param y  the y-value.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYDataItem.getY()#148",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYDataItem.java",
+        "class_name": "org.jfree.data.xy.XYDataItem",
+        "signature": "org.jfree.data.xy.XYDataItem.getY()",
+        "snippet": "public Number getY() {\nint PROBE_START_LINE_132 = 132;\nNumber xydata_item1_expr9_line_132 = this.y;\nint PROBE_END_LINE_132 = 132;\nreturn xydata_item1_expr9_line_132;\n}",
+        "begin_line": 148,
+        "end_line": 153,
+        "comment": "    \n     * Returns the y-value.\n     *\n     * @return The y-value (possibly <code>null</code>).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.SpreadsheetDate.SpreadsheetDate(final int day, final int month, final int year)#107",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/SpreadsheetDate.java",
+        "class_name": "org.jfree.data.time.SpreadsheetDate",
+        "signature": "org.jfree.data.time.SpreadsheetDate.SpreadsheetDate(final int day, final int month, final int year)",
+        "snippet": "public SpreadsheetDate(final int day, final int month, final int year) {\n\nint PROBE_START_LINE_109 = 116;\nint p_year_3685_line_109 = year;\nboolean spreadsheet_date1_expr3_line_109 = p_year_3685_line_109 >= 1900;\nboolean spreadsheet_date1_expr2_line_109 = (spreadsheet_date1_expr3_line_109);\nboolean spreadsheet_date1_expr4_line_109 = true;\nif (spreadsheet_date1_expr2_line_109) {\nboolean spreadsheet_date1_expr5_line_109 = year <= 9999;\nspreadsheet_date1_expr4_line_109 = (spreadsheet_date1_expr5_line_109);\n}",
+        "begin_line": 107,
+        "end_line": 117,
+        "comment": "    \n     * Creates a new date instance.\n     *\n     * @param day  the day (in the range 1 to 28/29/30/31).\n     * @param month  the month (in the range 1 to 12).\n     * @param year  the year (in the range 1900 to 9999).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.AbstractBlock.AbstractBlock()#109",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/AbstractBlock.java",
+        "class_name": "org.jfree.chart.block.AbstractBlock",
+        "signature": "org.jfree.chart.block.AbstractBlock.AbstractBlock()",
+        "snippet": "protected AbstractBlock() {\nthis.id = null;\nthis.width = 0.0;\nthis.height = 0.0;\nthis.bounds = new Rectangle2D.Float();\nint PROBE_START_LINE_114 = 114;\norg.jfree.chart.util.RectangleInsets f_zero_insets_350_line_114 = RectangleInsets.ZERO_INSETS;\nint PROBE_END_LINE_114 = 114;\nthis.margin = f_zero_insets_350_line_114;\nint PROBE_START_LINE_115 = 115;\norg.jfree.chart.block.BlockBorder f_none_1099_line_115 = BlockBorder.NONE;\nint PROBE_END_LINE_115 = 115;\nthis.frame = f_none_1099_line_115;\nint PROBE_START_LINE_116 = 116;\norg.jfree.chart.util.RectangleInsets f_zero_insets_350_line_116 = RectangleInsets.ZERO_INSETS;\nint PROBE_END_LINE_116 = 116;\nthis.padding = f_zero_insets_350_line_116;\n}",
+        "begin_line": 109,
+        "end_line": 126,
+        "comment": "    \n     * Creates a new block.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.AbstractBlock.getFrame()#254",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/AbstractBlock.java",
+        "class_name": "org.jfree.chart.block.AbstractBlock",
+        "signature": "org.jfree.chart.block.AbstractBlock.getFrame()",
+        "snippet": "public BlockFrame getFrame() {\nreturn this.frame;\n}",
+        "begin_line": 254,
+        "end_line": 256,
+        "comment": "    \n     * Returns the current frame (border).\n     *\n     * @return The frame.\n     *\n     * @since 1.0.5\n     * @see #setFrame(BlockFrame)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.event.ChartChangeEventType.ChartChangeEventType(String name)#74",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/event/ChartChangeEventType.java",
+        "class_name": "org.jfree.chart.event.ChartChangeEventType",
+        "signature": "org.jfree.chart.event.ChartChangeEventType.ChartChangeEventType(String name)",
+        "snippet": "private ChartChangeEventType(String name) {\nint PROBE_START_LINE_75 = 75;\nString p_name_1258_line_75 = name;\nint PROBE_END_LINE_75 = 75;\nthis.name = p_name_1258_line_75;\n}",
+        "begin_line": 74,
+        "end_line": 79,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.XYPlot.mapDatasetToRangeAxis(int index, int axisIndex)#1745",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/XYPlot.java",
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "signature": "org.jfree.chart.plot.XYPlot.mapDatasetToRangeAxis(int index, int axisIndex)",
+        "snippet": "public void mapDatasetToRangeAxis(int index, int axisIndex) {\nList axisIndices = new java.util.ArrayList(1);\nint PROBE_START_LINE_1500 = 1500;\njava.util.List v_axis_indices_1873_line_1500 = axisIndices;\nint p_axis_index_1872_line_1500 = axisIndex;\nint PROBE_END_LINE_1500 = 1500;\nv_axis_indices_1873_line_1500.add(new Integer(p_axis_index_1872_line_1500));\nint PROBE_START_LINE_1501 = 1501;\nint p_index_1871_line_1501 = index;\njava.util.List v_axis_indices_1873_line_1501 = axisIndices;\nint PROBE_END_LINE_1501 = 1501;\nmapDatasetToRangeAxes(p_index_1871_line_1501, v_axis_indices_1873_line_1501);\n}",
+        "begin_line": 1745,
+        "end_line": 1757,
+        "comment": "    \n     * Maps a dataset to a particular range axis.  All data will be plotted\n     * against axis zero by default, no mapping is required for this case.\n     *\n     * @param index  the dataset index (zero-based).\n     * @param axisIndex  the axis index.\n     *\n     * @see #mapDatasetToDomainAxis(int, int)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.XYPlot.drawZeroDomainBaseline(Graphics2D g2, Rectangle2D area)#4410",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/XYPlot.java",
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "signature": "org.jfree.chart.plot.XYPlot.drawZeroDomainBaseline(Graphics2D g2, Rectangle2D area)",
+        "snippet": "protected void drawZeroDomainBaseline(Graphics2D g2, Rectangle2D area) {\nif (isDomainZeroBaselineVisible()) {\nXYItemRenderer r = getRenderer();\nr.drawDomainLine(g2, this, getDomainAxis(), area, 0.0,\nthis.domainZeroBaselinePaint,\nthis.domainZeroBaselineStroke);\n}",
+        "begin_line": 4410,
+        "end_line": 4416,
+        "comment": "    \n     * Draws a base line across the chart at value zero on the domain axis.\n     *\n     * @param g2  the graphics device.\n     * @param area  the data area.\n     *\n     * @see #setDomainZeroBaselineVisible(boolean)\n     *\n     * @since 1.0.5\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.XYPlot.drawZeroRangeBaseline(Graphics2D g2, Rectangle2D area)#4427",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/XYPlot.java",
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "signature": "org.jfree.chart.plot.XYPlot.drawZeroRangeBaseline(Graphics2D g2, Rectangle2D area)",
+        "snippet": "protected void drawZeroRangeBaseline(Graphics2D g2, Rectangle2D area) {\nif (isRangeZeroBaselineVisible()) {\ngetRenderer().drawRangeLine(g2, this, getRangeAxis(), area, 0.0,\nthis.rangeZeroBaselinePaint, this.rangeZeroBaselineStroke);\n}",
+        "begin_line": 4427,
+        "end_line": 4431,
+        "comment": "    \n     * Draws a base line across the chart at value zero on the range axis.\n     *\n     * @param g2  the graphics device.\n     * @param area  the data area.\n     *\n     * @see #setRangeZeroBaselineVisible(boolean)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.XYPlot.getDomainMarkers(Layer layer)#4529",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/XYPlot.java",
+        "class_name": "org.jfree.chart.plot.XYPlot",
+        "signature": "org.jfree.chart.plot.XYPlot.getDomainMarkers(Layer layer)",
+        "snippet": "public Collection getDomainMarkers(Layer layer) {\nreturn getDomainMarkers(0, layer);\n}",
+        "begin_line": 4529,
+        "end_line": 4531,
+        "comment": "    \n     * Returns the list of domain markers (read only) for the specified layer.\n     *\n     * @param layer  the layer (foreground or background).\n     *\n     * @return The list of domain markers.\n     *\n     * @see #getRangeMarkers(Layer)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.Rotation.Rotation(final String name, final double factor)#81",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/Rotation.java",
+        "class_name": "org.jfree.chart.util.Rotation",
+        "signature": "org.jfree.chart.util.Rotation.Rotation(final String name, final double factor)",
+        "snippet": "private Rotation(final String name, final double factor) {\nint PROBE_START_LINE_82 = 82;\nString p_name_3292_line_82 = name;\nint PROBE_END_LINE_82 = 82;\nthis.name = p_name_3292_line_82;\nint PROBE_START_LINE_83 = 83;\ndouble p_factor_3293_line_83 = factor;\nint PROBE_END_LINE_83 = 83;\nthis.factor = p_factor_3293_line_83;\n}",
+        "begin_line": 81,
+        "end_line": 90,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     * @param factor  the rotation factor.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.TimeSeriesDataItem.TimeSeriesDataItem(RegularTimePeriod period, Number value)#105",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/TimeSeriesDataItem.java",
+        "class_name": "org.jfree.data.time.TimeSeriesDataItem",
+        "signature": "org.jfree.data.time.TimeSeriesDataItem.TimeSeriesDataItem(RegularTimePeriod period, Number value)",
+        "snippet": "public TimeSeriesDataItem(RegularTimePeriod period, Number value) {\nint PROBE_START_LINE_106 = 108;\norg.jfree.data.time.RegularTimePeriod p_period_3866_line_106 = period;\nboolean time_series_data_item1_expr1_line_106 = p_period_3866_line_106 == null;\nint PROBE_END_LINE_106 = 108;\nif (time_series_data_item1_expr1_line_106) {\nthrow new IllegalArgumentException(\"Null 'period' argument.\");\n}",
+        "begin_line": 105,
+        "end_line": 112,
+        "comment": "    \n     * Constructs a new data item that associates a value with a time period.\n     *\n     * @param period  the time period (<code>null</code> not permitted).\n     * @param value  the value (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.TimeSeriesDataItem.TimeSeriesDataItem(RegularTimePeriod period, double value)#130",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/TimeSeriesDataItem.java",
+        "class_name": "org.jfree.data.time.TimeSeriesDataItem",
+        "signature": "org.jfree.data.time.TimeSeriesDataItem.TimeSeriesDataItem(RegularTimePeriod period, double value)",
+        "snippet": "public TimeSeriesDataItem(RegularTimePeriod period, double value) {\nthis(period, new Double(value));\n}",
+        "begin_line": 130,
+        "end_line": 132,
+        "comment": "    \n     * Constructs a new data item that associates a value with a time period.\n     *\n     * @param period  the time period (<code>null</code> not permitted).\n     * @param value  the value associated with the time period.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.RangeType.RangeType(String name)#74",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/RangeType.java",
+        "class_name": "org.jfree.data.RangeType",
+        "signature": "org.jfree.data.RangeType.RangeType(String name)",
+        "snippet": "private RangeType(String name) {\nint PROBE_START_LINE_75 = 75;\nString p_name_3379_line_75 = name;\nint PROBE_END_LINE_75 = 75;\nthis.name = p_name_3379_line_75;\n}",
+        "begin_line": 74,
+        "end_line": 79,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.TickUnits.TickUnits()#79",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/TickUnits.java",
+        "class_name": "org.jfree.chart.axis.TickUnits",
+        "signature": "org.jfree.chart.axis.TickUnits.TickUnits()",
+        "snippet": "public TickUnits() {\nthis.tickUnits = new ArrayList();\n}",
+        "begin_line": 79,
+        "end_line": 81,
+        "comment": "    \n     * Constructs a new collection of tick units.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.VerticalAlignment.VerticalAlignment(String name)#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/VerticalAlignment.java",
+        "class_name": "org.jfree.chart.util.VerticalAlignment",
+        "signature": "org.jfree.chart.util.VerticalAlignment.VerticalAlignment(String name)",
+        "snippet": "private VerticalAlignment(String name) {\nint PROBE_START_LINE_77 = 77;\nString p_name_3322_line_77 = name;\nint PROBE_END_LINE_77 = 77;\nthis.name = p_name_3322_line_77;\n}",
+        "begin_line": 76,
+        "end_line": 81,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.SeriesRenderingOrder.SeriesRenderingOrder(String name)#78",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/SeriesRenderingOrder.java",
+        "class_name": "org.jfree.chart.plot.SeriesRenderingOrder",
+        "signature": "org.jfree.chart.plot.SeriesRenderingOrder.SeriesRenderingOrder(String name)",
+        "snippet": "private SeriesRenderingOrder(String name) {\nint PROBE_START_LINE_79 = 79;\nString p_name_1753_line_79 = name;\nint PROBE_END_LINE_79 = 79;\nthis.name = p_name_1753_line_79;\n}",
+        "begin_line": 78,
+        "end_line": 83,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.plot.PlotOrientation.PlotOrientation(String name)#72",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/plot/PlotOrientation.java",
+        "class_name": "org.jfree.chart.plot.PlotOrientation",
+        "signature": "org.jfree.chart.plot.PlotOrientation.PlotOrientation(String name)",
+        "snippet": "private PlotOrientation(String name) {\nint PROBE_START_LINE_73 = 73;\nString p_name_1748_line_73 = name;\nint PROBE_END_LINE_73 = 73;\nthis.name = p_name_1748_line_73;\n}",
+        "begin_line": 72,
+        "end_line": 77,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.NumberAxis.setMarkerBand(MarkerAxisBand band)#435",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/NumberAxis.java",
+        "class_name": "org.jfree.chart.axis.NumberAxis",
+        "signature": "org.jfree.chart.axis.NumberAxis.setMarkerBand(MarkerAxisBand band)",
+        "snippet": "public void setMarkerBand(MarkerAxisBand band) {\nthis.markerBand = band;\nnotifyListeners(new AxisChangeEvent(this));\n}",
+        "begin_line": 435,
+        "end_line": 438,
+        "comment": "    \n     * Sets the marker band for the axis.\n     * <P>\n     * The marker band is optional, leave it set to <code>null</code> if you\n     * don't require it.\n     *\n     * @param band the new band (<code>null<code> permitted).\n     *\n     * @see #getMarkerBand()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.NumberAxis.calculateLowestVisibleTickValue()#738",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/NumberAxis.java",
+        "class_name": "org.jfree.chart.axis.NumberAxis",
+        "signature": "org.jfree.chart.axis.NumberAxis.calculateLowestVisibleTickValue()",
+        "snippet": "protected double calculateLowestVisibleTickValue() {\n\ndouble unit = getTickUnit().getSize();\ndouble index = Math.ceil(getRange().getLowerBound() / unit);\nreturn index * unit;\n\n}",
+        "begin_line": 738,
+        "end_line": 744,
+        "comment": "    \n     * Calculates the value of the lowest visible tick on the axis.\n     *\n     * @return The value of the lowest visible tick on the axis.\n     *\n     * @see #calculateHighestVisibleTickValue()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.NumberAxis.calculateHighestVisibleTickValue()#753",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/NumberAxis.java",
+        "class_name": "org.jfree.chart.axis.NumberAxis",
+        "signature": "org.jfree.chart.axis.NumberAxis.calculateHighestVisibleTickValue()",
+        "snippet": "protected double calculateHighestVisibleTickValue() {\n\ndouble unit = getTickUnit().getSize();\ndouble index = Math.floor(getRange().getUpperBound() / unit);\nreturn index * unit;\n\n}",
+        "begin_line": 753,
+        "end_line": 759,
+        "comment": "    \n     * Calculates the value of the highest visible tick on the axis.\n     *\n     * @return The value of the highest visible tick on the axis.\n     *\n     * @see #calculateLowestVisibleTickValue()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.NumberAxis.calculateVisibleTickCount()#766",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/NumberAxis.java",
+        "class_name": "org.jfree.chart.axis.NumberAxis",
+        "signature": "org.jfree.chart.axis.NumberAxis.calculateVisibleTickCount()",
+        "snippet": "protected int calculateVisibleTickCount() {\n\ndouble unit = getTickUnit().getSize();\nRange range = getRange();\nreturn (int) (Math.floor(range.getUpperBound() / unit)\n- Math.ceil(range.getLowerBound() / unit) + 1);\n\n}",
+        "begin_line": 766,
+        "end_line": 773,
+        "comment": "    \n     * Calculates the number of visible ticks.\n     *\n     * @return The number of visible ticks on the axis.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.general.Series.Series(Comparable key, String description)#111",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/general/Series.java",
+        "class_name": "org.jfree.data.general.Series",
+        "signature": "org.jfree.data.general.Series.Series(Comparable key, String description)",
+        "snippet": "protected Series(Comparable key, String description) {\nint PROBE_START_LINE_112 = 114;\nComparable p_key_3539_line_112 = key;\nboolean series1_expr2_line_112 = p_key_3539_line_112 == null;\nint PROBE_END_LINE_112 = 114;\nif (series1_expr2_line_112) {\nthrow new IllegalArgumentException(\"Null 'key' argument.\");\n}",
+        "begin_line": 111,
+        "end_line": 118,
+        "comment": "    \n     * Creates a new series with the specified key and description.\n     *\n     * @param key  the series key (<code>null</code> NOT permitted).\n     * @param description  the series description (<code>null</code> permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.general.Series.fireSeriesChanged()#326",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/general/Series.java",
+        "class_name": "org.jfree.data.general.Series",
+        "signature": "org.jfree.data.general.Series.fireSeriesChanged()",
+        "snippet": "public void fireSeriesChanged() {\nint PROBE_START_LINE_313 = 315;\nboolean series1_expr15_line_313 = this.notify;\nint PROBE_END_LINE_313 = 315;\nif (series1_expr15_line_313) {\nnotifyListeners(new SeriesChangeEvent(this));\n}",
+        "begin_line": 326,
+        "end_line": 332,
+        "comment": "    \n     * General method for signalling to registered listeners that the series\n     * has been changed.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.block.BlockContainer.BlockContainer(Arrangement arrangement)#93",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/block/BlockContainer.java",
+        "class_name": "org.jfree.chart.block.BlockContainer",
+        "signature": "org.jfree.chart.block.BlockContainer.BlockContainer(Arrangement arrangement)",
+        "snippet": "public BlockContainer(Arrangement arrangement) {\nint PROBE_START_LINE_94 = 96;\norg.jfree.chart.block.Arrangement p_arrangement_1154_line_94 = arrangement;\nboolean block_container1_expr1_line_94 = p_arrangement_1154_line_94 == null;\nint PROBE_END_LINE_94 = 96;\nif (block_container1_expr1_line_94) {\nthrow new IllegalArgumentException(\"Null 'arrangement' argument.\");\n}",
+        "begin_line": 93,
+        "end_line": 100,
+        "comment": "    \n     * Creates a new instance with the specified arrangement.\n     *\n     * @param arrangement  the arrangement manager (<code>null</code> not\n     *                     permitted).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYSeriesCollection.XYSeriesCollection(XYSeries series)#113",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYSeriesCollection.java",
+        "class_name": "org.jfree.data.xy.XYSeriesCollection",
+        "signature": "org.jfree.data.xy.XYSeriesCollection.XYSeriesCollection(XYSeries series)",
+        "snippet": "public XYSeriesCollection(XYSeries series) {\nthis.data = new java.util.ArrayList();\nthis.intervalDelegate = new IntervalXYDelegate(this, false);\nint PROBE_START_LINE_116 = 116;\norg.jfree.data.xy.IntervalXYDelegate xyseries_collection1_expr9_line_116 = this.intervalDelegate;\nint PROBE_END_LINE_116 = 116;\naddChangeListener(xyseries_collection1_expr9_line_116);\nint PROBE_START_LINE_117 = 120;\norg.jfree.data.xy.XYSeries p_series_4018_line_117 = series;\nboolean xyseries_collection1_expr10_line_117 = p_series_4018_line_117 != null;\nint PROBE_END_LINE_117 = 120;\nif (xyseries_collection1_expr10_line_117) {\nint PROBE_START_LINE_118 = 118;\njava.util.List xyseries_collection1_expr12_line_118 = this.data;\norg.jfree.data.xy.XYSeries p_series_4018_line_118 = series;\nint PROBE_END_LINE_118 = 118;\nxyseries_collection1_expr12_line_118.add(p_series_4018_line_118);\nint PROBE_START_LINE_119 = 119;\norg.jfree.data.xy.XYSeries p_series_4018_line_119 = series;\nint PROBE_END_LINE_119 = 119;\np_series_4018_line_119.addChangeListener(this);\n}",
+        "begin_line": 113,
+        "end_line": 134,
+        "comment": "    \n     * Constructs a dataset and populates it with a single series.\n     *\n     * @param series  the series (<code>null</code> ignored).\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.XYSeriesCollection.getDomainUpperBound(boolean includeInterval)#591",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/XYSeriesCollection.java",
+        "class_name": "org.jfree.data.xy.XYSeriesCollection",
+        "signature": "org.jfree.data.xy.XYSeriesCollection.getDomainUpperBound(boolean includeInterval)",
+        "snippet": "public double getDomainUpperBound(boolean includeInterval) {\nif (includeInterval) {\nreturn this.intervalDelegate.getDomainUpperBound(includeInterval);\n}",
+        "begin_line": 591,
+        "end_line": 594,
+        "comment": "    \n     * Returns the maximum x-value in the dataset.\n     *\n     * @param includeInterval  a flag that determines whether or not the\n     *                         x-interval is taken into account.\n     *\n     * @return The maximum value.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.title.TextTitle.getTextAlignment()#327",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/title/TextTitle.java",
+        "class_name": "org.jfree.chart.title.TextTitle",
+        "signature": "org.jfree.chart.title.TextTitle.getTextAlignment()",
+        "snippet": "public HorizontalAlignment getTextAlignment() {\nreturn this.textAlignment;\n}",
+        "begin_line": 327,
+        "end_line": 329,
+        "comment": "    \n     * Returns the text alignment.  This controls how the text is aligned\n     * within the title's bounds, whereas the title's horizontal alignment\n     * controls how the title's bounding rectangle is aligned within the\n     * drawing space.\n     *\n     * @return The text alignment.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.title.TextTitle.getFont()#352",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/title/TextTitle.java",
+        "class_name": "org.jfree.chart.title.TextTitle",
+        "signature": "org.jfree.chart.title.TextTitle.getFont()",
+        "snippet": "public Font getFont() {\nreturn this.font;\n}",
+        "begin_line": 352,
+        "end_line": 354,
+        "comment": "    \n     * Returns the font used to display the title string.\n     *\n     * @return The font (never <code>null</code>).\n     *\n     * @see #setFont(Font)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.ValueAxis.isAutoRange()#1033",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/ValueAxis.java",
+        "class_name": "org.jfree.chart.axis.ValueAxis",
+        "signature": "org.jfree.chart.axis.ValueAxis.isAutoRange()",
+        "snippet": "public boolean isAutoRange() {\nint PROBE_START_LINE_951 = 951;\nboolean value_axis1_expr68_line_951 = this.autoRange;\nint PROBE_END_LINE_951 = 951;\nreturn value_axis1_expr68_line_951;\n}",
+        "begin_line": 1033,
+        "end_line": 1038,
+        "comment": "    \n     * Returns the flag that controls whether or not the axis range is\n     * automatically adjusted to fit the data values.\n     *\n     * @return The flag.\n     *\n     * @see #setAutoRange(boolean)\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.ValueAxis.setAutoRange(boolean auto)#1049",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/ValueAxis.java",
+        "class_name": "org.jfree.chart.axis.ValueAxis",
+        "signature": "org.jfree.chart.axis.ValueAxis.setAutoRange(boolean auto)",
+        "snippet": "public void setAutoRange(boolean auto) {\nsetAutoRange(auto, true);\n}",
+        "begin_line": 1049,
+        "end_line": 1051,
+        "comment": "    \n     * Sets a flag that determines whether or not the axis range is\n     * automatically adjusted to fit the data, and notifies registered\n     * listeners that the axis has been modified.\n     *\n     * @param auto  the new value of the flag.\n     *\n     * @see #isAutoRange()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.ValueAxis.setAutoRangeMinimumSize(double size)#1097",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/ValueAxis.java",
+        "class_name": "org.jfree.chart.axis.ValueAxis",
+        "signature": "org.jfree.chart.axis.ValueAxis.setAutoRangeMinimumSize(double size)",
+        "snippet": "public void setAutoRangeMinimumSize(double size) {\nint PROBE_START_LINE_1009 = 1009;\ndouble p_size_1044_line_1009 = size;\nint PROBE_END_LINE_1009 = 1009;\nsetAutoRangeMinimumSize(p_size_1044_line_1009, true);\n}",
+        "begin_line": 1097,
+        "end_line": 1102,
+        "comment": "    \n     * Sets the auto range minimum size and sends an {@link AxisChangeEvent}\n     * to all registered listeners.\n     *\n     * @param size  the size.\n     *\n     * @see #getAutoRangeMinimumSize()\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.axis.ValueAxis.setAutoRangeMinimumSize(double size, boolean notify)#1114",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/axis/ValueAxis.java",
+        "class_name": "org.jfree.chart.axis.ValueAxis",
+        "signature": "org.jfree.chart.axis.ValueAxis.setAutoRangeMinimumSize(double size, boolean notify)",
+        "snippet": "public void setAutoRangeMinimumSize(double size, boolean notify) {\nint PROBE_START_LINE_1023 = 1026;\ndouble p_size_1045_line_1023 = size;\nboolean value_axis1_expr72_line_1023 = p_size_1045_line_1023 <= 0.0;\nint PROBE_END_LINE_1023 = 1026;\nif (value_axis1_expr72_line_1023) {\nthrow new IllegalArgumentException(\n\"NumberAxis.setAutoRangeMinimumSize(double): must be > 0.0.\");\n}",
+        "begin_line": 1114,
+        "end_line": 1122,
+        "comment": "    \n     * Sets the minimum size allowed for the axis range when it is\n     * automatically calculated.\n     * <p>\n     * If requested, an {@link AxisChangeEvent} is forwarded to all registered\n     * listeners.\n     *\n     * @param size  the new minimum.\n     * @param notify  notify listeners?\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.time.TimePeriodAnchor.TimePeriodAnchor(String name)#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/time/TimePeriodAnchor.java",
+        "class_name": "org.jfree.data.time.TimePeriodAnchor",
+        "signature": "org.jfree.data.time.TimePeriodAnchor.TimePeriodAnchor(String name)",
+        "snippet": "private TimePeriodAnchor(String name) {\nint PROBE_START_LINE_77 = 77;\nString p_name_3724_line_77 = name;\nint PROBE_END_LINE_77 = 77;\nthis.name = p_name_3724_line_77;\n}",
+        "begin_line": 76,
+        "end_line": 81,
+        "comment": "    \n     * Private constructor.\n     *\n     * @param name  the name.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.IntervalXYDelegate.IntervalXYDelegate(XYDataset dataset, boolean autoWidth)#132",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/IntervalXYDelegate.java",
+        "class_name": "org.jfree.data.xy.IntervalXYDelegate",
+        "signature": "org.jfree.data.xy.IntervalXYDelegate.IntervalXYDelegate(XYDataset dataset, boolean autoWidth)",
+        "snippet": "public IntervalXYDelegate(XYDataset dataset, boolean autoWidth) {\nint PROBE_START_LINE_133 = 135;\norg.jfree.data.xy.XYDataset p_dataset_3910_line_133 = dataset;\nboolean interval_xydelegate1_expr1_line_133 = p_dataset_3910_line_133 == null;\nint PROBE_END_LINE_133 = 135;\nif (interval_xydelegate1_expr1_line_133) {\nthrow new IllegalArgumentException(\"Null 'dataset' argument.\");\n}",
+        "begin_line": 132,
+        "end_line": 139,
+        "comment": "    \n     * Creates a new delegate for the specified dataset.\n     *\n     * @param dataset  the underlying dataset (<code>null</code> not permitted).\n     * @param autoWidth  a flag that controls whether the interval width is\n     *                   calculated automatically.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.IntervalXYDelegate.getFixedIntervalWidth()#228",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/IntervalXYDelegate.java",
+        "class_name": "org.jfree.data.xy.IntervalXYDelegate",
+        "signature": "org.jfree.data.xy.IntervalXYDelegate.getFixedIntervalWidth()",
+        "snippet": "public double getFixedIntervalWidth() {\nreturn this.fixedIntervalWidth;\n}",
+        "begin_line": 228,
+        "end_line": 230,
+        "comment": "    \n     * Returns the fixed interval width.\n     *\n     * @return The fixed interval width.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.data.xy.IntervalXYDelegate.getDomainLowerBound(boolean includeInterval)#369",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/data/xy/IntervalXYDelegate.java",
+        "class_name": "org.jfree.data.xy.IntervalXYDelegate",
+        "signature": "org.jfree.data.xy.IntervalXYDelegate.getDomainLowerBound(boolean includeInterval)",
+        "snippet": "public double getDomainLowerBound(boolean includeInterval) {\ndouble result = Double.NaN;\nRange r = getDomainBounds(includeInterval);\nif (r != null) {\nresult = r.getLowerBound();\n}",
+        "begin_line": 369,
+        "end_line": 374,
+        "comment": "    \n     * Returns the minimum x-value in the dataset.\n     *\n     * @param includeInterval  a flag that determines whether or not the\n     *                         x-interval is taken into account.\n     *\n     * @return The minimum value.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jfree.chart.util.StrokeMap.StrokeMap()#76",
+        "is_bug": false,
+        "src_path": "/data/bug_db/subjects/defects4j/Chart-4/result/src/org/jfree/chart/util/StrokeMap.java",
+        "class_name": "org.jfree.chart.util.StrokeMap",
+        "signature": "org.jfree.chart.util.StrokeMap.StrokeMap()",
+        "snippet": "public StrokeMap() {\nthis.store = new TreeMap();\n}",
+        "begin_line": 76,
+        "end_line": 78,
+        "comment": "    \n     * Creates a new (empty) map.\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]

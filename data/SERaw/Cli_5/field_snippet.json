@@ -1,0 +1,299 @@
+[
+    {
+        "class_name": "org.apache.commons.cli.OptionValidator",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/OptionValidator.java",
+        "signature": "int PROBE_START_LINE_45",
+        "snippet": "int PROBE_START_LINE_45 = 76;\nString p_opt_50_line_45 = opt;",
+        "begin_line": 44,
+        "end_line": 45,
+        "comment": "    \n     * <p>Validates whether <code>opt</code> is a permissable Option\n     * shortOpt.  The rules that specify if the <code>opt</code>\n     * is valid are:</p>\n     * <ul>\n     *  <li><code>opt</code> is not NULL</li>\n     *  <li>a single character <code>opt</code> that is either\n     *  ' '(special case), '?', '@' or a letter</li>\n     *  <li>a multi character <code>opt</code> that only contains\n     *  letters.</li>\n     * </ul>\n     *\n     * @param opt The option string to validate\n     * @throws IllegalArgumentException if the Option is not valid.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.OptionValidator",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/OptionValidator.java",
+        "signature": "int PROBE_START_LINE_51",
+        "snippet": "int PROBE_START_LINE_51 = 76;\nString p_opt_50_line_51 = opt;",
+        "begin_line": 53,
+        "end_line": 54,
+        "comment": "\t\t check that opt is not NULL"
+    },
+    {
+        "class_name": "org.apache.commons.cli.OptionValidator",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/OptionValidator.java",
+        "signature": "int option_validator1_expr3_line_51",
+        "snippet": "int option_validator1_expr3_line_51 = p_opt_50_line_51.length();\nboolean option_validator1_expr2_line_51 = option_validator1_expr3_line_51 == 1;",
+        "begin_line": 55,
+        "end_line": 56,
+        "comment": "\t\t check that opt is not NULL"
+    },
+    {
+        "class_name": "org.apache.commons.cli.OptionValidator",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/OptionValidator.java",
+        "signature": "boolean option_validator1_expr13_line_88",
+        "snippet": "boolean option_validator1_expr13_line_88 = false;\nboolean option_validator1_expr15_line_88 = false;",
+        "begin_line": 87,
+        "end_line": 88,
+        "comment": "    \n     * <p>Returns whether the specified character is a valid Option.</p>\n     *\n     * @param c the option to validate\n     * @return true if <code>c</code> is a letter, ' ', '?' or '@', \n     * otherwise false.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "private Map shortOpts",
+        "snippet": "private Map shortOpts = new HashMap();\n\n/** a map of the options with the long key */\nprivate Map longOpts = new HashMap();",
+        "begin_line": 46,
+        "end_line": 49,
+        "comment": "     a map of the options with the character key "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "private List requiredOpts",
+        "snippet": "private List requiredOpts = new ArrayList();\n\n/** a map of the option groups */\nprivate Map optionGroups = new HashMap();",
+        "begin_line": 52,
+        "end_line": 55,
+        "comment": "     a map of the required options "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "int PROBE_START_LINE_146",
+        "snippet": "int PROBE_START_LINE_146 = 146;\norg.apache.commons.cli.Option p_opt_66_line_146 = opt;",
+        "begin_line": 146,
+        "end_line": 147,
+        "comment": "    \n     * Adds an option instance\n     *\n     * @param opt the option that is to be added \n     * @return the resulting Options instance\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "String options1_expr5_line_146",
+        "snippet": "String options1_expr5_line_146 = p_opt_66_line_146.getKey();\nint PROBE_END_LINE_146 = 146;",
+        "begin_line": 148,
+        "end_line": 149,
+        "comment": "    \n     * Adds an option instance\n     *\n     * @param opt the option that is to be added \n     * @return the resulting Options instance\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "boolean options1_expr6_line_149",
+        "snippet": "boolean options1_expr6_line_149 = p_opt_66_line_149.hasLongOpt();\nint PROBE_END_LINE_149 = 152;",
+        "begin_line": 154,
+        "end_line": 155,
+        "comment": "    \n     * Adds an option instance\n     *\n     * @param opt the option that is to be added \n     * @return the resulting Options instance\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "int PROBE_START_LINE_155",
+        "snippet": "int PROBE_START_LINE_155 = 161;\norg.apache.commons.cli.Option p_opt_66_line_155 = opt;",
+        "begin_line": 162,
+        "end_line": 163,
+        "comment": "\t\t add it to the long option list"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "boolean options1_expr7_line_155",
+        "snippet": "boolean options1_expr7_line_155 = p_opt_66_line_155.isRequired();\nint PROBE_END_LINE_155 = 161;",
+        "begin_line": 164,
+        "end_line": 165,
+        "comment": "\t\t add it to the long option list"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Options",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Options.java",
+        "signature": "Iterator options1_expr12_line_189",
+        "snippet": "Iterator options1_expr12_line_189 = options1_expr13_line_189.iterator();\nint PROBE_END_LINE_189 = 189;",
+        "begin_line": 211,
+        "end_line": 212,
+        "comment": "    \n     * Returns the Options for use by the HelpFormatter.\n     *\n     * @return the List of Options\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.CommandLine",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/CommandLine.java",
+        "signature": "private List args",
+        "snippet": "private List args = new LinkedList();\n\n/** the processed options */\nprivate Set options = new HashSet();",
+        "begin_line": 44,
+        "end_line": 47,
+        "comment": "     the unrecognised options/arguments "
+    },
+    {
+        "class_name": "org.apache.commons.cli.CommandLine",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/CommandLine.java",
+        "signature": "int PROBE_START_LINE_68",
+        "snippet": "int PROBE_START_LINE_68 = 68;\njava.util.Set f_options_2_line_68 = options;",
+        "begin_line": 68,
+        "end_line": 69,
+        "comment": "     \n     * Query to see if an option has been set.\n     *\n     * @param opt Short name of the option\n     * @return true if set, false if not\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "int PROBE_START_LINE_71",
+        "snippet": "int PROBE_START_LINE_71 = 71;\norg.apache.commons.cli.Options p_options_76_line_71 = options;",
+        "begin_line": 71,
+        "end_line": 72,
+        "comment": "    \n     * <p>Parses the specified <code>arguments</code> \n     * based on the specifed {@link Options}.</p>\n     *\n     * @param options the <code>Options</code>\n     * @param arguments the <code>arguments</code>\n     * @return the <code>CommandLine</code>\n     * @throws ParseException if an error occurs when parsing the\n     * arguments.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "int PROBE_START_LINE_135",
+        "snippet": "int PROBE_START_LINE_135 = 135;\norg.apache.commons.cli.Options p_options_84_line_135 = options;",
+        "begin_line": 140,
+        "end_line": 141,
+        "comment": "    \n     * Parse the arguments according to the specified options and\n     * properties.\n     *\n     * @param options the specified Options\n     * @param arguments the command line arguments\n     * @param properties command line option name-value pairs\n     * @param stopAtNonOption stop parsing the arguments when the first\n     * non option is encountered.\n     *\n     * @return the list of atomic option and value tokens\n     *\n     * @throws ParseException if there are any problems encountered\n     * while parsing the command line tokens.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "int PROBE_END_LINE_135",
+        "snippet": "int PROBE_END_LINE_135 = 135;\n// initialise members\nthis.options = p_options_84_line_135;",
+        "begin_line": 142,
+        "end_line": 144,
+        "comment": "    \n     * Parse the arguments according to the specified options and\n     * properties.\n     *\n     * @param options the specified Options\n     * @param arguments the command line arguments\n     * @param properties command line option name-value pairs\n     * @param stopAtNonOption stop parsing the arguments when the first\n     * non option is encountered.\n     *\n     * @return the list of atomic option and value tokens\n     *\n     * @throws ParseException if there are any problems encountered\n     * while parsing the command line tokens.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "int PROBE_START_LINE_139",
+        "snippet": "int PROBE_START_LINE_139 = 139;\njava.util.Iterator v_it_89_line_139 = it;",
+        "begin_line": 148,
+        "end_line": 149,
+        "comment": "         clear out the data in options in case it's been used before (CLI-71)"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "Object parser1_expr8_line_139",
+        "snippet": "Object parser1_expr8_line_139 = v_it_89_line_139.next();\nint PROBE_END_LINE_139 = 139;",
+        "begin_line": 150,
+        "end_line": 151,
+        "comment": "         clear out the data in options in case it's been used before (CLI-71)"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "Option opt",
+        "snippet": "Option opt = (Option) parser1_expr8_line_139;\nint PROBE_START_LINE_140 = 140;",
+        "begin_line": 152,
+        "end_line": 153,
+        "comment": "         clear out the data in options in case it's been used before (CLI-71)"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "int PROBE_START_LINE_143",
+        "snippet": "int PROBE_START_LINE_143 = 143;\norg.apache.commons.cli.Options p_options_84_line_143 = options;",
+        "begin_line": 159,
+        "end_line": 160,
+        "comment": "         clear out the data in options in case it's been used before (CLI-71)"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Parser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Parser.java",
+        "signature": "String option",
+        "snippet": "String option = e.nextElement().toString();\n\nif (!cmd.hasOption(option))\n{\nOption opt = options.getOption(option);",
+        "begin_line": 294,
+        "end_line": 298,
+        "comment": "    \n     * <p>Sets the values of Options using the values in \n     * <code>properties</code>.</p>\n     *\n     * @param properties The value properties to be processed.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.PosixParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/PosixParser.java",
+        "signature": "int PROBE_START_LINE_53",
+        "snippet": "int PROBE_START_LINE_53 = 53;\njava.util.ArrayList f_tokens_101_line_53 = tokens;",
+        "begin_line": 54,
+        "end_line": 55,
+        "comment": "    \n     * <p>Resets the members to their original state i.e. remove\n     * all of <code>tokens</code> entries, set <code>eatTheRest</code>\n     * to false and set <code>currentOption</code> to null.</p>\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.PosixParser",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/PosixParser.java",
+        "signature": "int PROBE_END_LINE_99",
+        "snippet": "int PROBE_END_LINE_99 = 99;\nthis.options = p_options_104_line_99;",
+        "begin_line": 105,
+        "end_line": 106,
+        "comment": "    \n     * <p>An implementation of {@link Parser}'s abstract\n     * {@link Parser#flatten(Options,String[],boolean) flatten} method.</p>\n     *\n     * <p>The following are the rules used by this flatten method.\n     * <ol>\n     *  <li>if <code>stopAtNonOption</code> is <b>true</b> then do not\n     *  burst anymore of <code>arguments</code> entries, just add each\n     *  successive entry without further processing.  Otherwise, ignore\n     *  <code>stopAtNonOption</code>.</li>\n     *  <li>if the current <code>arguments</code> entry is \"<b>--</b>\"\n     *  just add the entry to the list of processed tokens</li>\n     *  <li>if the current <code>arguments</code> entry is \"<b>-</b>\"\n     *  just add the entry to the list of processed tokens</li>\n     *  <li>if the current <code>arguments</code> entry is two characters\n     *  in length and the first character is \"<b>-</b>\" then check if this\n     *  is a valid {@link Option} id.  If it is a valid id, then add the\n     *  entry to the list of processed tokens and set the current {@link Option}\n     *  member.  If it is not a valid id and <code>stopAtNonOption</code>\n     *  is true, then the remaining entries are copied to the list of \n     *  processed tokens.  Otherwise, the current entry is ignored.</li>\n     *  <li>if the current <code>arguments</code> entry is more than two\n     *  characters in length and the first character is \"<b>-</b>\" then\n     *  we need to burst the entry to determine its constituents.  For more\n     *  information on the bursting algorithm see \n     *  {@link PosixParser#burstToken(String, boolean) burstToken}.</li>\n     *  <li>if the current <code>arguments</code> entry is not handled \n     *  by any of the previous rules, then the entry is added to the list\n     *  of processed tokens.</li>\n     * </ol>\n     * </p>\n     *\n     * @param options The command line {@link Options}\n     * @param arguments The command line arguments to be parsed\n     * @param stopAtNonOption Specifies whether to stop flattening\n     * when an non option is found.\n     * @return The flattened <code>arguments</code> String array.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "private String argName",
+        "snippet": "private String argName = \"arg\";\n\n/** description of the option */\nprivate String description;",
+        "begin_line": 55,
+        "end_line": 58,
+        "comment": "     argName specifies the name of the argument for this option "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "int PROBE_END_LINE_66",
+        "snippet": "int PROBE_END_LINE_66 = 70;\n\n/**\n* numberOfArgs specifies the number of argument values this option\n* can have\n*/\nprivate int numberOfArgs = f_uninitialized_20_line_70;",
+        "begin_line": 70,
+        "end_line": 76,
+        "comment": "     specifies whether the argument value of this Option is optional "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "int PROBE_START_LINE_128",
+        "snippet": "int PROBE_START_LINE_128 = 128;\nString p_opt_27_line_128 = opt;",
+        "begin_line": 133,
+        "end_line": 134,
+        "comment": "    \n     * Creates an Option using the specified parameters.\n     *\n     * @param opt short representation of the option\n     * @param longOpt the long representation of the option\n     * @param hasArg specifies whether the Option takes an argument or not\n     * @param description describes the function of the option\n     *\n     * @throws IllegalArgumentException if there are any non valid\n     * Option characters in <code>opt</code>.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "int PROBE_START_LINE_130",
+        "snippet": "int PROBE_START_LINE_130 = 130;\nString p_opt_27_line_130 = opt;",
+        "begin_line": 139,
+        "end_line": 140,
+        "comment": "\t\t ensure that the option is valid"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "int PROBE_END_LINE_130",
+        "snippet": "int PROBE_END_LINE_130 = 130;\nthis.opt = p_opt_27_line_130;",
+        "begin_line": 141,
+        "end_line": 142,
+        "comment": "\t\t ensure that the option is valid"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Option",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Option.java",
+        "signature": "int PROBE_END_LINE_140",
+        "snippet": "int PROBE_END_LINE_140 = 140;\nthis.description = p_description_30_line_140;",
+        "begin_line": 163,
+        "end_line": 164,
+        "comment": "\t\t if hasArg is set then the number of arguments is 1"
+    },
+    {
+        "class_name": "org.apache.commons.cli.Util",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Util.java",
+        "signature": "int PROBE_START_LINE_36",
+        "snippet": "int PROBE_START_LINE_36 = 43;\nString p_str_116_line_36 = str;",
+        "begin_line": 36,
+        "end_line": 37,
+        "comment": "    \n     * <p>Remove the hyphens from the begining of <code>str</code> and\n     * return the new String.</p>\n     *\n     * @param str The string from which the hyphens should be removed.\n     *\n     * @return the new String.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Util",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Util.java",
+        "signature": "boolean util1_expr1_line_36",
+        "snippet": "boolean util1_expr1_line_36 = p_str_116_line_36.startsWith(\"--\");\nint PROBE_END_LINE_36 = 43;",
+        "begin_line": 38,
+        "end_line": 39,
+        "comment": "    \n     * <p>Remove the hyphens from the begining of <code>str</code> and\n     * return the new String.</p>\n     *\n     * @param str The string from which the hyphens should be removed.\n     *\n     * @return the new String.\n     "
+    },
+    {
+        "class_name": "org.apache.commons.cli.Util",
+        "src_path": "/data/bug_db/subjects/defects4j/Cli-5/result/src/org/apache/commons/cli/Util.java",
+        "signature": "int PROBE_START_LINE_38",
+        "snippet": "int PROBE_START_LINE_38 = 38;\nString p_str_116_line_38 = str;",
+        "begin_line": 42,
+        "end_line": 43,
+        "comment": "    \n     * <p>Remove the hyphens from the begining of <code>str</code> and\n     * return the new String.</p>\n     *\n     * @param str The string from which the hyphens should be removed.\n     *\n     * @return the new String.\n     "
+    }
+]

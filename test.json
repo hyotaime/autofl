@@ -1,5 +1,5 @@
 {
-    "time": 1720503502.283473,
+    "time": 1722248722.896319,
     "messages": [
         {
             "role": "system",
@@ -20,7 +20,7 @@
         {
             "role": "function",
             "name": "get_failing_tests_covered_classes",
-            "content": "{\"org.jfree.data.category\": [\"AbstractCategoryDataset\", \"DefaultCategoryDataset\"], \"org.jfree.chart.event\": [\"ChartChangeEvent\", \"ChartChangeEventType\", \"PlotChangeEvent\"], \"org.jfree.chart\": [\"LegendItemCollection\", \"ChartColor\"], \"org.jfree.chart.labels\": [\"StandardCategorySeriesLabelGenerator\", \"ItemLabelAnchor\", \"ItemLabelPosition\"], \"org.jfree.chart.axis\": [\"CategoryAnchor\", \"AxisLocation\"], \"org.jfree.chart.util\": [\"ResourceBundleWrapper\", \"PaintList\", \"DefaultShadowGenerator\", \"RectangleInsets\", \"BooleanList\", \"StrokeList\", \"ObjectList\", \"UnitType\", \"AbstractObjectList\", \"ShapeList\", \"SortOrder\"], \"org.jfree.data\": [\"KeyedObjects2D\", \"KeyedObjects\", \"KeyedObject\", \"SelectableValue\"], \"org.jfree.data.general\": [\"DatasetGroup\", \"AbstractDataset\"], \"org.jfree.chart.text\": [\"TextAnchor\"], \"org.jfree.chart.plot\": [\"CategoryPlot\", \"Plot\", \"DatasetRenderingOrder\", \"DefaultDrawingSupplier\", \"PlotOrientation\"], \"org.jfree.chart.renderer.category\": [\"LineAndShapeRenderer\", \"AbstractCategoryItemRenderer\"], \"org.jfree.chart.renderer\": [\"RenderAttributes\", \"AbstractRenderer\"], \"org.jfree.data.event\": [\"DatasetChangeEvent\"]}"
+            "content": "{\"org.jfree.chart.util\": [\"ShapeList\", \"ResourceBundleWrapper\", \"AbstractObjectList\", \"ObjectList\", \"StrokeList\", \"DefaultShadowGenerator\", \"PaintList\", \"BooleanList\", \"SortOrder\", \"RectangleInsets\", \"UnitType\"], \"org.jfree.chart.event\": [\"ChartChangeEvent\", \"PlotChangeEvent\", \"ChartChangeEventType\"], \"org.jfree.chart.plot\": [\"DefaultDrawingSupplier\", \"Plot\", \"DatasetRenderingOrder\", \"CategoryPlot\", \"PlotOrientation\"], \"org.jfree.data\": [\"KeyedObjects2D\", \"KeyedObject\", \"SelectableValue\", \"KeyedObjects\"], \"org.jfree.chart.renderer.category\": [\"LineAndShapeRenderer\", \"AbstractCategoryItemRenderer\"], \"org.jfree.chart.axis\": [\"CategoryAnchor\", \"AxisLocation\"], \"org.jfree.chart\": [\"ChartColor\", \"LegendItemCollection\"], \"org.jfree.data.general\": [\"DatasetGroup\", \"AbstractDataset\"], \"org.jfree.data.event\": [\"DatasetChangeEvent\"], \"org.jfree.chart.text\": [\"TextAnchor\"], \"org.jfree.chart.labels\": [\"ItemLabelAnchor\", \"ItemLabelPosition\", \"StandardCategorySeriesLabelGenerator\"], \"org.jfree.chart.renderer\": [\"RenderAttributes\", \"AbstractRenderer\"], \"org.jfree.data.category\": [\"AbstractCategoryDataset\", \"DefaultCategoryDataset\"]}"
         }
     ],
     "interaction_records": {

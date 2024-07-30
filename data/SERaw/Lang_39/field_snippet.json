@@ -1,0 +1,245 @@
+[
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3502",
+        "snippet": "int PROBE_START_LINE_3502 = 3502;\nString p_text_191_line_3502 = text;",
+        "begin_line": 3502,
+        "end_line": 3503,
+        "comment": "    \n     * <p>\n     * Replaces all occurrences of Strings within another String.\n     * </p>\n     * \n     * <p>\n     * A <code>null</code> reference passed to this method is a no-op, or if\n     * any \"search string\" or \"string to replace\" is null, that replace will be\n     * ignored. This will not repeat. For repeating replaces, call the\n     * overloaded method.\n     * </p>\n     * \n     * <pre>\n     *  StringUtils.replaceEach(null, *, *)        = null\n     *  StringUtils.replaceEach(\"\", *, *)          = \"\"\n     *  StringUtils.replaceEach(\"aba\", null, null) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[0], null) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", null, new String[0]) = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, null)  = \"aba\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{\"a\"}, new String[]{\"\"})  = \"b\"\n     *  StringUtils.replaceEach(\"aba\", new String[]{null}, new String[]{\"a\"})  = \"aba\"\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"w\", \"t\"})  = \"wcte\"\n     *  (example of how it does not repeat)\n     *  StringUtils.replaceEach(\"abcde\", new String[]{\"ab\", \"d\"}, new String[]{\"d\", \"t\"})  = \"dcte\"\n     * </pre>\n     * \n     * @param text\n     *            text to search and replace in, no-op if null\n     * @param searchList\n     *            the Strings to search for, no-op if null\n     * @param replacementList\n     *            the Strings to replace them with, no-op if null\n     * @return the text with any replacements processed, <code>null</code> if\n     *         null String input\n     * @throws IndexOutOfBoundsException\n     *             if the lengths of the arrays are not the same (null is ok,\n     *             and/or size 0)\n     * @since 2.4\n     "
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3612",
+        "snippet": "int PROBE_START_LINE_3612 = 3616;\nString p_text_197_line_3612 = text;",
+        "begin_line": 3619,
+        "end_line": 3620,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int string_utils1_expr11_line_3612",
+        "snippet": "int string_utils1_expr11_line_3612 = text.length();\nstring_utils1_expr10_line_3612 = string_utils1_expr11_line_3612 == 0;",
+        "begin_line": 3624,
+        "end_line": 3625,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr8_line_3612",
+        "snippet": "boolean string_utils1_expr8_line_3612 = string_utils1_expr9_line_3612 || string_utils1_expr10_line_3612;\nboolean string_utils1_expr12_line_3612 = false;",
+        "begin_line": 3627,
+        "end_line": 3628,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr5_line_3612",
+        "snippet": "boolean string_utils1_expr5_line_3612 = string_utils1_expr6_line_3612 || replacementList == null;\nboolean string_utils1_expr4_line_3612 = string_utils1_expr5_line_3612 || replacementList.length == 0;",
+        "begin_line": 3635,
+        "end_line": 3636,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3612",
+        "snippet": "int PROBE_END_LINE_3612 = 3616;\nif (string_utils1_expr4_line_3612)\n{\nint PROBE_START_LINE_3615 = 3615;",
+        "begin_line": 3637,
+        "end_line": 3640,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr13_line_3619",
+        "snippet": "boolean string_utils1_expr13_line_3619 = p_time_to_live_201_line_3619 < 0;\nint PROBE_END_LINE_3619 = 3621;",
+        "begin_line": 3648,
+        "end_line": 3649,
+        "comment": "         let me know if there are performance requests, we can create a harness to measure"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3623",
+        "snippet": "int PROBE_START_LINE_3623 = 3623;\nString[] p_search_list_198_line_3623 = searchList;",
+        "begin_line": 3655,
+        "end_line": 3656,
+        "comment": "\t\t if recursing, this shouldnt be less than 0"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int f_length_203_line_3623",
+        "snippet": "int f_length_203_line_3623 = p_search_list_198_line_3623.length;\nint PROBE_END_LINE_3623 = 3623;",
+        "begin_line": 3657,
+        "end_line": 3658,
+        "comment": "\t\t if recursing, this shouldnt be less than 0"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3627",
+        "snippet": "int PROBE_START_LINE_3627 = 3632;\nint v_search_length_202_line_3627 = searchLength;",
+        "begin_line": 3666,
+        "end_line": 3667,
+        "comment": "\t\t if recursing, this shouldnt be less than 0"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int v_replacement_length_204_line_3627",
+        "snippet": "int v_replacement_length_204_line_3627 = replacementLength;\nboolean string_utils1_expr14_line_3627 = v_search_length_202_line_3627 != v_replacement_length_204_line_3627;",
+        "begin_line": 3668,
+        "end_line": 3669,
+        "comment": "\t\t if recursing, this shouldnt be less than 0"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3627",
+        "snippet": "int PROBE_END_LINE_3627 = 3632;\n// make sure lengths are ok, these need to be equal\nif (string_utils1_expr14_line_3627) {\nthrow new IllegalArgumentException(\"Search and Replace array lengths don't match: \"\n+ searchLength\n+ \" vs \"\n+ replacementLength);",
+        "begin_line": 3670,
+        "end_line": 3676,
+        "comment": "\t\t if recursing, this shouldnt be less than 0"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3635",
+        "snippet": "int PROBE_END_LINE_3635 = 3635;\n// keep track of which still have matches\nboolean[] noMoreMatchesForReplIndex = new boolean[v_search_length_202_line_3635];",
+        "begin_line": 3681,
+        "end_line": 3683,
+        "comment": "\t\t make sure lengths are ok, these need to be equal"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3638",
+        "snippet": "int PROBE_START_LINE_3638 = 3638;\nint string_utils1_expr16_line_3638 = -1;",
+        "begin_line": 3685,
+        "end_line": 3686,
+        "comment": "\t\t keep track of which still have matches"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3638",
+        "snippet": "int PROBE_END_LINE_3638 = 3638;\n// index on index that the match was found\nint textIndex = string_utils1_expr16_line_3638;",
+        "begin_line": 3687,
+        "end_line": 3689,
+        "comment": "\t\t keep track of which still have matches"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3639",
+        "snippet": "int PROBE_START_LINE_3639 = 3639;\nint string_utils1_expr17_line_3639 = -1;",
+        "begin_line": 3690,
+        "end_line": 3691,
+        "comment": "\t\t index on index that the match was found"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3639",
+        "snippet": "int PROBE_END_LINE_3639 = 3639;\nint replaceIndex = string_utils1_expr17_line_3639;",
+        "begin_line": 3692,
+        "end_line": 3693,
+        "comment": "\t\t index on index that the match was found"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3640",
+        "snippet": "int PROBE_START_LINE_3640 = 3640;\nint string_utils1_expr18_line_3640 = -1;",
+        "begin_line": 3694,
+        "end_line": 3695,
+        "comment": "\t\t index on index that the match was found"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3640",
+        "snippet": "int PROBE_END_LINE_3640 = 3640;\nint tempIndex = string_utils1_expr18_line_3640;",
+        "begin_line": 3696,
+        "end_line": 3697,
+        "comment": "\t\t index on index that the match was found"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr24_line_3645",
+        "snippet": "boolean string_utils1_expr24_line_3645 = false;\nif (!string_utils1_expr23_line_3645) {\nString[] p_search_list_198_line_3645 = searchList;",
+        "begin_line": 3706,
+        "end_line": 3708,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "String string_utils1_expr25_line_3645",
+        "snippet": "String string_utils1_expr25_line_3645 = p_search_list_198_line_3645[i];\nstring_utils1_expr24_line_3645 = string_utils1_expr25_line_3645 == null;",
+        "begin_line": 3709,
+        "end_line": 3710,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr22_line_3645",
+        "snippet": "boolean string_utils1_expr22_line_3645 = string_utils1_expr23_line_3645 || string_utils1_expr24_line_3645;\nboolean string_utils1_expr21_line_3645 = string_utils1_expr22_line_3645 || searchList[i].length() == 0;",
+        "begin_line": 3712,
+        "end_line": 3713,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "boolean string_utils1_expr20_line_3645",
+        "snippet": "boolean string_utils1_expr20_line_3645 = string_utils1_expr21_line_3645 || replacementList[i] == null;\nint PROBE_END_LINE_3645 = 3649;",
+        "begin_line": 3714,
+        "end_line": 3715,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_START_LINE_3650",
+        "snippet": "int PROBE_START_LINE_3650 = 3650;\nString p_text_197_line_3650 = text;",
+        "begin_line": 3720,
+        "end_line": 3721,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "String[] p_search_list_198_line_3650",
+        "snippet": "String[] p_search_list_198_line_3650 = searchList;\nint v_i_209_line_3650 = i;",
+        "begin_line": 3722,
+        "end_line": 3723,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "String string_utils1_expr27_line_3650",
+        "snippet": "String string_utils1_expr27_line_3650 = p_search_list_198_line_3650[v_i_209_line_3650];\nint string_utils1_expr26_line_3650 = p_text_197_line_3650.indexOf(string_utils1_expr27_line_3650);",
+        "begin_line": 3724,
+        "end_line": 3725,
+        "comment": "         NOTE: logic duplicated below START"
+    },
+    {
+        "class_name": "org.apache.commons.lang3.StringUtils",
+        "src_path": "/data/bug_db/subjects/defects4j/Lang-39/result/src/org/apache/commons/lang3/StringUtils.java",
+        "signature": "int PROBE_END_LINE_3650",
+        "snippet": "int PROBE_END_LINE_3650 = 3650;\ntempIndex = string_utils1_expr26_line_3650;",
+        "begin_line": 3726,
+        "end_line": 3727,
+        "comment": "         NOTE: logic duplicated below START"
+    }
+]

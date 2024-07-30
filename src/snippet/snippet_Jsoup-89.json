@@ -1,0 +1,354 @@
+[
+    {
+        "name": "org.jsoup.helper.Validate.unknown#15",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "int PROBE_START_LINE_15 = 16;",
+        "begin_line": 15,
+        "end_line": 15,
+        "comment": "    \n     * Validates that the object is not null\n     * @param obj object to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#17",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "boolean validate1_expr1_line_15 = p_obj_1_line_15 == null;",
+        "begin_line": 17,
+        "end_line": 17,
+        "comment": "    \n     * Validates that the object is not null\n     * @param obj object to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#91",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "* Validates that the string is not empty",
+        "begin_line": 91,
+        "end_line": 91,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.helper.Validate.unknown#93",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/helper/Validate.java",
+        "class_name": "org.jsoup.helper.Validate",
+        "signature": "org.jsoup.helper.Validate.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 93,
+        "end_line": 93,
+        "comment": "    \n     * Validates that the string is not empty\n     * @param string the string to test\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#15",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "private static final String[] booleanAttributes = {",
+        "begin_line": 15,
+        "end_line": 15,
+        "comment": "\n A single key + value attribute. (Only used for presentation.)\n ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#33",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "this(key, value, null);",
+        "begin_line": 33,
+        "end_line": 33,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param value attribute value\n     * @see #createFromEncoded\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#34",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "}",
+        "begin_line": 34,
+        "end_line": 34,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param value attribute value\n     * @see #createFromEncoded\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#42",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "public Attribute(String key, String val, Attributes parent) {",
+        "begin_line": 42,
+        "end_line": 42,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#43",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "int PROBE_START_LINE_43 = 43;",
+        "begin_line": 43,
+        "end_line": 43,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#44",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "String p_key_20_line_43 = key;",
+        "begin_line": 44,
+        "end_line": 44,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#45",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "int PROBE_END_LINE_43 = 43;",
+        "begin_line": 45,
+        "end_line": 45,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#46",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "Validate.notNull(p_key_20_line_43);",
+        "begin_line": 46,
+        "end_line": 46,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#47",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "int PROBE_START_LINE_44 = 44;",
+        "begin_line": 47,
+        "end_line": 47,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#48",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "String p_key_20_line_44 = key;",
+        "begin_line": 48,
+        "end_line": 48,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#49",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "String attribute1_expr4_line_44 = p_key_20_line_44.trim();",
+        "begin_line": 49,
+        "end_line": 49,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#64",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "int PROBE_START_LINE_48 = 48;",
+        "begin_line": 64,
+        "end_line": 64,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#65",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "org.jsoup.nodes.Attributes p_parent_22_line_48 = parent;",
+        "begin_line": 65,
+        "end_line": 65,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#66",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "int PROBE_END_LINE_48 = 48;",
+        "begin_line": 66,
+        "end_line": 66,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#67",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "this.parent = p_parent_22_line_48;",
+        "begin_line": 67,
+        "end_line": 67,
+        "comment": "    \n     * Create a new attribute from unencoded (raw) key and value.\n     * @param key attribute key; case is preserved.\n     * @param val attribute value\n     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)\n     * @see #createFromEncoded",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#72",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "@return the attribute key",
+        "begin_line": 72,
+        "end_line": 72,
+        "comment": "",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#73",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "*/",
+        "begin_line": 73,
+        "end_line": 73,
+        "comment": "    \n     Get the attribute key.\n     @return the attribute key\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    },
+    {
+        "name": "org.jsoup.nodes.Attribute.unknown#88",
+        "is_bug": true,
+        "src_path": "/data/bug_db/subjects/defects4j/Jsoup-89/result/src/org/jsoup/nodes/Attribute.java",
+        "class_name": "org.jsoup.nodes.Attribute",
+        "signature": "org.jsoup.nodes.Attribute.unknown(...)",
+        "snippet": "String p_key_26_line_65 = key;",
+        "begin_line": 88,
+        "end_line": 88,
+        "comment": "    \n     Set the attribute key; case is preserved.\n     @param key the new key; must not be null\n     ",
+        "resolved_comments": {},
+        "susp": {
+            "ochiai_susp": 0.5
+        },
+        "num_failing_tests": 0
+    }
+]
