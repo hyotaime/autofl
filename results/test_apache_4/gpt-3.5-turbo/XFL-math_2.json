@@ -1,0 +1,2510 @@
+{
+    "time": 1722876252.2015831,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.math.linear.SparseRealMatrixTest.testSetSubMatrix()']` failed.\nThe test looks like:\n\n```java\n583 : @Test\n584 :     public void testSetSubMatrix() {\n585 :         OpenMapRealMatrix m = createSparseMatrix(testData);\n586 :         m.setSubMatrix(detData2, 1, 1);\n587 :         RealMatrix expected = createSparseMatrix(new double[][] {\n588 :                 { 1.0, 2.0, 3.0 }, { 2.0, 1.0, 3.0 }, { 1.0, 2.0, 4.0 } });\n589 :         Assert.assertEquals(expected, m);\n590 : \n591 :         m.setSubMatrix(detData2, 0, 0);\n592 :         expected = createSparseMatrix(new double[][] {\n593 :                 { 1.0, 3.0, 3.0 }, { 2.0, 4.0, 3.0 }, { 1.0, 2.0, 4.0 } });\n594 :         Assert.assertEquals(expected, m);\n595 : \n596 :         m.setSubMatrix(testDataPlus2, 0, 0);\n597 :         expected = createSparseMatrix(new double[][] {\n598 :                 { 3.0, 4.0, 5.0 }, { 4.0, 7.0, 5.0 }, { 3.0, 2.0, 10.0 } });\n599 :         Assert.assertEquals(expected, m);\n600 : \n601 :         // javadoc example\n602 :         OpenMapRealMatrix matrix =\n603 :             createSparseMatrix(new double[][] {\n604 :         { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 0, 1, 2 } });\n605 :         matrix.setSubMatrix(new double[][] { { 3, 4 }, { 5, 6 } }, 1, 1);\n606 :         expected = createSparseMatrix(new double[][] {\n607 :                 { 1, 2, 3, 4 }, { 5, 3, 4, 8 }, { 9, 5, 6, 2 } });\n608 :         Assert.assertEquals(expected, matrix);\n609 : \n610 :         // dimension overflow\n611 :         try {\n612 :             m.setSubMatrix(testData, 1, 1);\n613 :             Assert.fail(\"expecting OutOfRangeException\");\n614 :         } catch (OutOfRangeException e) {\n615 :             // expected\n616 :         }\n617 :         // dimension underflow\n618 :         try {\n619 :             m.setSubMatrix(testData, -1, 1);\n620 :             Assert.fail(\"expecting OutOfRangeException\");\n621 :         } catch (OutOfRangeException e) {\n622 :             // expected\n623 :         }\n624 :         try {\n625 :             m.setSubMatrix(testData, 1, -1);\n626 :             Assert.fail(\"expecting OutOfRangeException\");\n627 :         } catch (OutOfRangeException e) {\n628 :             // expected\n629 :         }\n630 : \n631 :         // null\n632 :         try {\n633 :             m.setSubMatrix(null, 1, 1);\n634 :             Assert.fail(\"expecting NullArgumentException\");\n635 :         } catch (NullArgumentException e) {\n636 :             // expected\n637 :         }\n638 :         try {\n639 :             new OpenMapRealMatrix(0, 0);\n640 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n641 :         } catch (MathIllegalArgumentException e) {\n642 :             // expected\n643 :         }\n644 : \n645 :         // ragged\n646 :         try {\n647 :             m.setSubMatrix(new double[][] { { 1 }, { 2, 3 } }, 0, 0);\n648 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n649 :         } catch (MathIllegalArgumentException e) {\n650 :             // expected\n651 :         }\n652 : \n653 :         // empty\n654 :         try {\n655 :             m.setSubMatrix(new double[][] { {} }, 0, 0);\n656 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n657 :         } catch (MathIllegalArgumentException e) {\n658 :             // expected\n659 :         }\n660 : \n661 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(AbstractRealMatrix.java:389)\n       org.apache.commons.math.linear.SparseRealMatrixTest.testSetSubMatrix(SparseRealMatrixTest.java:632)\n       java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n       java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.math.linear\": [\"AbstractRealMatrix\", \"Array2DRowRealMatrix\", \"OpenMapRealMatrix\", \"BlockFieldMatrix\", \"BlockRealMatrix\", \"MatrixUtils\", \"AbstractFieldMatrix\"], \"org.apache.commons.math.fraction\": [\"Fraction\", \"FractionField\"], \"org.apache.commons.math.util\": [\"FastMath\", \"OpenIntToDoubleHashMap\", \"MathUtils\"], \"org.apache.commons.math.exception.util\": [\"LocalizedFormats\", \"ExceptionContext\", \"ArgUtils\"], \"org.apache.commons.math.exception\": [\"MathIllegalArgumentException\", \"OutOfRangeException\", \"MathIllegalNumberException\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `SparseRealMatrixTest.testSetSubMatrix` is in the `org.apache.commons.math.linear` package, specifically in the `SparseRealMatrixTest` class. The `AbstractRealMatrix` class is involved in the error at line 389 in the `setSubMatrix` method. Next, I will retrieve the methods covered by failing tests for the `AbstractRealMatrix` class.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.math.linear.AbstractRealMatrix\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".AbstractRealMatrix()\", \".AbstractRealMatrix(int, int)\", \".createMatrix(int, int)\", \".copy()\", \".add(org.apache.commons.math.linear.RealMatrix)\", \".subtract(org.apache.commons.math.linear.RealMatrix)\", \".scalarAdd(double)\", \".scalarMultiply(double)\", \".multiply(org.apache.commons.math.linear.RealMatrix)\", \".preMultiply(org.apache.commons.math.linear.RealMatrix)\", \".power(int)\", \".getData()\", \".getNorm()\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".end()\", \".getFrobeniusNorm()\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".end()\", \".getSubMatrix(int, int, int, int)\", \".getSubMatrix(int[], int[])\", \".visit(int, int, double)\", \".copySubMatrix(int, int, int, int, double[][])\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".copySubMatrix(int[], int[], double[][])\", \".setSubMatrix(double[][], int, int)\", \".getRowMatrix(int)\", \".setRowMatrix(int, org.apache.commons.math.linear.RealMatrix)\", \".getColumnMatrix(int)\", \".setColumnMatrix(int, org.apache.commons.math.linear.RealMatrix)\", \".getRowVector(int)\", \".setRowVector(int, org.apache.commons.math.linear.RealVector)\", \".getColumnVector(int)\", \".setColumnVector(int, org.apache.commons.math.linear.RealVector)\", \".getRow(int)\", \".setRow(int, double[])\", \".getColumn(int)\", \".setColumn(int, double[])\", \".getEntry(int, int)\", \".setEntry(int, int, double)\", \".addToEntry(int, int, double)\", \".multiplyEntry(int, int, double)\", \".transpose()\", \".visit(int, int, double)\", \".isSquare()\", \".getRowDimension()\", \".getColumnDimension()\", \".getTrace()\", \".operate(double[])\", \".operate(org.apache.commons.math.linear.RealVector)\", \".preMultiply(double[])\", \".preMultiply(org.apache.commons.math.linear.RealVector)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".toString()\", \".equals(java.lang.Object)\", \".hashCode()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing tests cover several methods in the `AbstractRealMatrix` class. The error occurred in the `setSubMatrix(double[][], int, int)` method of `AbstractRealMatrix`. Let's retrieve the code snippet for this method to analyze the issue.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"388 : public void setSubMatrix(final double[][] subMatrix, final int row, final int column) {\\n389 :         final int nRows = subMatrix.length;\\n390 :         if (nRows == 0) {\\n391 :             throw new NoDataException(LocalizedFormats.AT_LEAST_ONE_ROW);\\n392 :         }\\n393 : \\n394 :         final int nCols = subMatrix[0].length;\\n395 :         if (nCols == 0) {\\n396 :             throw new NoDataException(LocalizedFormats.AT_LEAST_ONE_COLUMN);\\n397 :         }\\n398 : \\n399 :         for (int r = 1; r < nRows; ++r) {\\n400 :             if (subMatrix[r].length != nCols) {\\n401 :                 throw new DimensionMismatchException(nCols, subMatrix[r].length);\\n402 :             }\\n403 :         }\\n404 : \\n405 :         MatrixUtils.checkRowIndex(this, row);\\n406 :         MatrixUtils.checkColumnIndex(this, column);\\n407 :         MatrixUtils.checkRowIndex(this, nRows + row - 1);\\n408 :         MatrixUtils.checkColumnIndex(this, nCols + column - 1);\\n409 : \\n410 :         for (int i = 0; i < nRows; ++i) {\\n411 :             for (int j = 0; j < nCols; ++j) {\\n412 :                 setEntry(row + i, column + j, subMatrix[i][j]);\\n413 :             }\\n414 :         }\\n415 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `setSubMatrix` method in `AbstractRealMatrix` class is responsible for setting a submatrix within the matrix. The method first validates the dimensions of the submatrix and checks if the submatrix is valid. The issue causing the `NullPointerException` might be related to the submatrix or its dimensions being `null`.\n\nOne possibility is that the `subMatrix` is null when setting the submatrix within the matrix, resulting in the `NullPointerException`. The code snippet provided does not directly show where the issue might be occurring, but examining the calling code or the data provided to this method could help diagnose the problem.\n\nTo resolve the `NullPointerException`, you should ensure that the `subMatrix` is not null before calling the `setSubMatrix` method.\n\nNext, I will suggest the locations that could be fixed to address this issue.\nHere are the methods that could be fixed to address the `NullPointerException` issue:\n\n```\norg.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)\n```"
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.math.linear.SparseRealMatrixTest.testSetSubMatrix()']` failed.\nThe test looks like:\n\n```java\n583 : @Test\n584 :     public void testSetSubMatrix() {\n585 :         OpenMapRealMatrix m = createSparseMatrix(testData);\n586 :         m.setSubMatrix(detData2, 1, 1);\n587 :         RealMatrix expected = createSparseMatrix(new double[][] {\n588 :                 { 1.0, 2.0, 3.0 }, { 2.0, 1.0, 3.0 }, { 1.0, 2.0, 4.0 } });\n589 :         Assert.assertEquals(expected, m);\n590 : \n591 :         m.setSubMatrix(detData2, 0, 0);\n592 :         expected = createSparseMatrix(new double[][] {\n593 :                 { 1.0, 3.0, 3.0 }, { 2.0, 4.0, 3.0 }, { 1.0, 2.0, 4.0 } });\n594 :         Assert.assertEquals(expected, m);\n595 : \n596 :         m.setSubMatrix(testDataPlus2, 0, 0);\n597 :         expected = createSparseMatrix(new double[][] {\n598 :                 { 3.0, 4.0, 5.0 }, { 4.0, 7.0, 5.0 }, { 3.0, 2.0, 10.0 } });\n599 :         Assert.assertEquals(expected, m);\n600 : \n601 :         // javadoc example\n602 :         OpenMapRealMatrix matrix =\n603 :             createSparseMatrix(new double[][] {\n604 :         { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 0, 1, 2 } });\n605 :         matrix.setSubMatrix(new double[][] { { 3, 4 }, { 5, 6 } }, 1, 1);\n606 :         expected = createSparseMatrix(new double[][] {\n607 :                 { 1, 2, 3, 4 }, { 5, 3, 4, 8 }, { 9, 5, 6, 2 } });\n608 :         Assert.assertEquals(expected, matrix);\n609 : \n610 :         // dimension overflow\n611 :         try {\n612 :             m.setSubMatrix(testData, 1, 1);\n613 :             Assert.fail(\"expecting OutOfRangeException\");\n614 :         } catch (OutOfRangeException e) {\n615 :             // expected\n616 :         }\n617 :         // dimension underflow\n618 :         try {\n619 :             m.setSubMatrix(testData, -1, 1);\n620 :             Assert.fail(\"expecting OutOfRangeException\");\n621 :         } catch (OutOfRangeException e) {\n622 :             // expected\n623 :         }\n624 :         try {\n625 :             m.setSubMatrix(testData, 1, -1);\n626 :             Assert.fail(\"expecting OutOfRangeException\");\n627 :         } catch (OutOfRangeException e) {\n628 :             // expected\n629 :         }\n630 : \n631 :         // null\n632 :         try {\n633 :             m.setSubMatrix(null, 1, 1);\n634 :             Assert.fail(\"expecting NullArgumentException\");\n635 :         } catch (NullArgumentException e) {\n636 :             // expected\n637 :         }\n638 :         try {\n639 :             new OpenMapRealMatrix(0, 0);\n640 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n641 :         } catch (MathIllegalArgumentException e) {\n642 :             // expected\n643 :         }\n644 : \n645 :         // ragged\n646 :         try {\n647 :             m.setSubMatrix(new double[][] { { 1 }, { 2, 3 } }, 0, 0);\n648 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n649 :         } catch (MathIllegalArgumentException e) {\n650 :             // expected\n651 :         }\n652 : \n653 :         // empty\n654 :         try {\n655 :             m.setSubMatrix(new double[][] { {} }, 0, 0);\n656 :             Assert.fail(\"expecting MathIllegalArgumentException\");\n657 :         } catch (MathIllegalArgumentException e) {\n658 :             // expected\n659 :         }\n660 : \n661 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(AbstractRealMatrix.java:389)\n       org.apache.commons.math.linear.SparseRealMatrixTest.testSetSubMatrix(SparseRealMatrixTest.java:632)\n       java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n       java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.math.linear\": [\"AbstractRealMatrix\", \"Array2DRowRealMatrix\", \"OpenMapRealMatrix\", \"BlockFieldMatrix\", \"BlockRealMatrix\", \"MatrixUtils\", \"AbstractFieldMatrix\"], \"org.apache.commons.math.fraction\": [\"Fraction\", \"FractionField\"], \"org.apache.commons.math.util\": [\"FastMath\", \"OpenIntToDoubleHashMap\", \"MathUtils\"], \"org.apache.commons.math.exception.util\": [\"LocalizedFormats\", \"ExceptionContext\", \"ArgUtils\"], \"org.apache.commons.math.exception\": [\"MathIllegalArgumentException\", \"OutOfRangeException\", \"MathIllegalNumberException\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `SparseRealMatrixTest.testSetSubMatrix` is in the `org.apache.commons.math.linear` package, specifically in the `SparseRealMatrixTest` class. The `AbstractRealMatrix` class is involved in the error at line 389 in the `setSubMatrix` method. Next, I will retrieve the methods covered by failing tests for the `AbstractRealMatrix` class.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.math.linear.AbstractRealMatrix\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".AbstractRealMatrix()\", \".AbstractRealMatrix(int, int)\", \".createMatrix(int, int)\", \".copy()\", \".add(org.apache.commons.math.linear.RealMatrix)\", \".subtract(org.apache.commons.math.linear.RealMatrix)\", \".scalarAdd(double)\", \".scalarMultiply(double)\", \".multiply(org.apache.commons.math.linear.RealMatrix)\", \".preMultiply(org.apache.commons.math.linear.RealMatrix)\", \".power(int)\", \".getData()\", \".getNorm()\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".end()\", \".getFrobeniusNorm()\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".end()\", \".getSubMatrix(int, int, int, int)\", \".getSubMatrix(int[], int[])\", \".visit(int, int, double)\", \".copySubMatrix(int, int, int, int, double[][])\", \".start(int, int, int, int, int, int)\", \".visit(int, int, double)\", \".copySubMatrix(int[], int[], double[][])\", \".setSubMatrix(double[][], int, int)\", \".getRowMatrix(int)\", \".setRowMatrix(int, org.apache.commons.math.linear.RealMatrix)\", \".getColumnMatrix(int)\", \".setColumnMatrix(int, org.apache.commons.math.linear.RealMatrix)\", \".getRowVector(int)\", \".setRowVector(int, org.apache.commons.math.linear.RealVector)\", \".getColumnVector(int)\", \".setColumnVector(int, org.apache.commons.math.linear.RealVector)\", \".getRow(int)\", \".setRow(int, double[])\", \".getColumn(int)\", \".setColumn(int, double[])\", \".getEntry(int, int)\", \".setEntry(int, int, double)\", \".addToEntry(int, int, double)\", \".multiplyEntry(int, int, double)\", \".transpose()\", \".visit(int, int, double)\", \".isSquare()\", \".getRowDimension()\", \".getColumnDimension()\", \".getTrace()\", \".operate(double[])\", \".operate(org.apache.commons.math.linear.RealVector)\", \".preMultiply(double[])\", \".preMultiply(org.apache.commons.math.linear.RealVector)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)\", \".walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)\", \".toString()\", \".equals(java.lang.Object)\", \".hashCode()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The failing tests cover several methods in the `AbstractRealMatrix` class. The error occurred in the `setSubMatrix(double[][], int, int)` method of `AbstractRealMatrix`. Let's retrieve the code snippet for this method to analyze the issue.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"388 : public void setSubMatrix(final double[][] subMatrix, final int row, final int column) {\\n389 :         final int nRows = subMatrix.length;\\n390 :         if (nRows == 0) {\\n391 :             throw new NoDataException(LocalizedFormats.AT_LEAST_ONE_ROW);\\n392 :         }\\n393 : \\n394 :         final int nCols = subMatrix[0].length;\\n395 :         if (nCols == 0) {\\n396 :             throw new NoDataException(LocalizedFormats.AT_LEAST_ONE_COLUMN);\\n397 :         }\\n398 : \\n399 :         for (int r = 1; r < nRows; ++r) {\\n400 :             if (subMatrix[r].length != nCols) {\\n401 :                 throw new DimensionMismatchException(nCols, subMatrix[r].length);\\n402 :             }\\n403 :         }\\n404 : \\n405 :         MatrixUtils.checkRowIndex(this, row);\\n406 :         MatrixUtils.checkColumnIndex(this, column);\\n407 :         MatrixUtils.checkRowIndex(this, nRows + row - 1);\\n408 :         MatrixUtils.checkColumnIndex(this, nCols + column - 1);\\n409 : \\n410 :         for (int i = 0; i < nRows; ++i) {\\n411 :             for (int j = 0; j < nCols; ++j) {\\n412 :                 setEntry(row + i, column + j, subMatrix[i][j]);\\n413 :             }\\n414 :         }\\n415 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `setSubMatrix` method in `AbstractRealMatrix` class is responsible for setting a submatrix within the matrix. The method first validates the dimensions of the submatrix and checks if the submatrix is valid. The issue causing the `NullPointerException` might be related to the submatrix or its dimensions being `null`.\n\nOne possibility is that the `subMatrix` is null when setting the submatrix within the matrix, resulting in the `NullPointerException`. The code snippet provided does not directly show where the issue might be occurring, but examining the calling code or the data provided to this method could help diagnose the problem.\n\nTo resolve the `NullPointerException`, you should ensure that the `subMatrix` is not null before calling the `setSubMatrix` method.\n\nNext, I will suggest the locations that could be fixed to address this issue.\nHere are the methods that could be fixed to address the `NullPointerException` issue:\n\n```\norg.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)\n```"
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.math.exception.MathIllegalArgumentException.MathIllegalArgumentException(org.apache.commons.math.exception.util.Localizable, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.MathIllegalArgumentException.getContext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.MathIllegalArgumentException.getMessage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.MathIllegalArgumentException.getLocalizedMessage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.MathIllegalNumberException.MathIllegalNumberException(org.apache.commons.math.exception.util.Localizable, java.lang.Number, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.MathIllegalNumberException.getArgument()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.OutOfRangeException.OutOfRangeException(java.lang.Number, java.lang.Number, java.lang.Number)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.OutOfRangeException.OutOfRangeException(org.apache.commons.math.exception.util.Localizable, java.lang.Number, java.lang.Number, java.lang.Number)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.OutOfRangeException.getLo()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.OutOfRangeException.getHi()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ArgUtils.ArgUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ArgUtils.flatten(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.addMessage(org.apache.commons.math.exception.util.Localizable, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.setValue(java.lang.String, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getKeys()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getMessage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getLocalizedMessage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getMessage(java.util.Locale)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.getMessage(java.util.Locale, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.buildMessage(java.util.Locale, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.serializeMessages(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.deSerializeMessages(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.serializeContext(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.deSerializeContext(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.ExceptionContext.nonSerializableReplacement(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.LocalizedFormats.LocalizedFormats(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.LocalizedFormats.getSourceString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.exception.util.LocalizedFormats.getLocalizedString(java.util.Locale)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(double, double, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.Fraction(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.abs()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.compareTo(org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.doubleValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.floatValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.getDenominator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.getNumerator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.intValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.longValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.negate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.reciprocal()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.add(org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.add(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.subtract(org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.subtract(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.addSub(org.apache.commons.math.fraction.Fraction, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.multiply(org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.multiply(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.divide(org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.divide(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.getReducedFraction(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.Fraction.getField()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.FractionField.FractionField()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.FractionField.getInstance()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.FractionField.getOne()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.FractionField.getZero()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.fraction.FractionField.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.AbstractFieldMatrix()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.AbstractFieldMatrix(org.apache.commons.math.Field<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.AbstractFieldMatrix(org.apache.commons.math.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.extractField(T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.extractField(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.buildArray(org.apache.commons.math.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.buildArray(org.apache.commons.math.Field<T>, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getField()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.add(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.subtract(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.scalarAdd(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.scalarMultiply(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.multiply(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.preMultiply(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.power(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getSubMatrix(int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getSubMatrix(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.visit(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.copySubMatrix(int, int, int, int, T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.start(int, int, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.copySubMatrix(int[], int[], T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setSubMatrix(T[][], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getRowMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setRowMatrix(int, org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getColumnMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setColumnMatrix(int, org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getRowVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setRowVector(int, org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getColumnVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setColumnVector(int, org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getRow(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setRow(int, T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getColumn(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setColumn(int, T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.setEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.addToEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.multiplyEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.transpose()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.isSquare()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.getTrace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.operate(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.operate(org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.preMultiply(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.preMultiply(org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInColumnOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInColumnOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInColumnOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInColumnOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkRowIndex(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkColumnIndex(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkSubMatrixIndex(int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkSubMatrixIndex(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkAdditionCompatible(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkSubtractionCompatible(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractFieldMatrix.checkMultiplicationCompatible(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.AbstractRealMatrix()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.AbstractRealMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.add(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.subtract(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.scalarAdd(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.scalarMultiply(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.multiply(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.preMultiply(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.power(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.start(int, int, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.visit(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.end()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getFrobeniusNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getSubMatrix(int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getSubMatrix(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.copySubMatrix(int, int, int, int, double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.copySubMatrix(int[], int[], double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)"
+            ]
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getRowMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setRowMatrix(int, org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getColumnMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setColumnMatrix(int, org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getRowVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setRowVector(int, org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getColumnVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setColumnVector(int, org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getRow(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setRow(int, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getColumn(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setColumn(int, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.setEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.addToEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.multiplyEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.transpose()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.isSquare()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.getTrace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.operate(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.operate(org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.preMultiply(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.preMultiply(org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.AbstractRealMatrix.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.Array2DRowRealMatrix()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.Array2DRowRealMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.Array2DRowRealMatrix(double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.Array2DRowRealMatrix(double[][], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.Array2DRowRealMatrix(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.add(org.apache.commons.math.linear.Array2DRowRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.subtract(org.apache.commons.math.linear.Array2DRowRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.multiply(org.apache.commons.math.linear.Array2DRowRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.getData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.getDataRef()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.setSubMatrix(double[][], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.setEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.addToEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.multiplyEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.operate(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.preMultiply(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.walkInColumnOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.copyOut()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.Array2DRowRealMatrix.copyIn(double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.BlockFieldMatrix(org.apache.commons.math.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.BlockFieldMatrix(T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.BlockFieldMatrix(int, int, T[][], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.toBlocksLayout(T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.createBlocksLayout(org.apache.commons.math.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.add(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.add(org.apache.commons.math.linear.BlockFieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.subtract(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.subtract(org.apache.commons.math.linear.BlockFieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.scalarAdd(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.scalarMultiply(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.multiply(org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.multiply(org.apache.commons.math.linear.BlockFieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getSubMatrix(int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.copyBlockPart(T[], int, int, int, int, int, T[], int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setSubMatrix(T[][], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getRowMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setRowMatrix(int, org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setRowMatrix(int, org.apache.commons.math.linear.BlockFieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getColumnMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setColumnMatrix(int, org.apache.commons.math.linear.FieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setColumnMatrix(int, org.apache.commons.math.linear.BlockFieldMatrix<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getRowVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setRowVector(int, org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getColumnVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setColumnVector(int, org.apache.commons.math.linear.FieldVector<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getRow(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setRow(int, T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getColumn(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setColumn(int, T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.setEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.addToEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.multiplyEntry(int, int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.transpose()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.operate(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.preMultiply(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInRowOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixChangingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.FieldMatrixPreservingVisitor<T>, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.blockHeight(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockFieldMatrix.blockWidth(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.BlockRealMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.BlockRealMatrix(double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.BlockRealMatrix(int, int, double[][], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.toBlocksLayout(double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.createBlocksLayout(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.add(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.add(org.apache.commons.math.linear.BlockRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.subtract(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.subtract(org.apache.commons.math.linear.BlockRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.scalarAdd(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.scalarMultiply(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.multiply(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.multiply(org.apache.commons.math.linear.BlockRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getFrobeniusNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getSubMatrix(int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.copyBlockPart(double[], int, int, int, int, int, double[], int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setSubMatrix(double[][], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getRowMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setRowMatrix(int, org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setRowMatrix(int, org.apache.commons.math.linear.BlockRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getColumnMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setColumnMatrix(int, org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setColumnMatrix(int, org.apache.commons.math.linear.BlockRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getRowVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setRowVector(int, org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getColumnVector(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setColumnVector(int, org.apache.commons.math.linear.RealVector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getRow(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setRow(int, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getColumn(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setColumn(int, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.setEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.addToEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.multiplyEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.transpose()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.operate(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.preMultiply(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInRowOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixChangingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.walkInOptimizedOrder(org.apache.commons.math.linear.RealMatrixPreservingVisitor, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.blockHeight(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.BlockRealMatrix.blockWidth(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.MatrixUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRealMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createFieldMatrix(org.apache.commons.math.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRealMatrix(double[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createFieldMatrix(T[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRealIdentityMatrix(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createFieldIdentityMatrix(org.apache.commons.math.Field<T>, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRealDiagonalMatrix(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createFieldDiagonalMatrix(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRealVector(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createFieldVector(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRowRealMatrix(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createRowFieldMatrix(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createColumnRealMatrix(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.createColumnFieldMatrix(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkMatrixIndex(org.apache.commons.math.linear.AnyMatrix, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkRowIndex(org.apache.commons.math.linear.AnyMatrix, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkColumnIndex(org.apache.commons.math.linear.AnyMatrix, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkSubMatrixIndex(org.apache.commons.math.linear.AnyMatrix, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkSubMatrixIndex(org.apache.commons.math.linear.AnyMatrix, int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkAdditionCompatible(org.apache.commons.math.linear.AnyMatrix, org.apache.commons.math.linear.AnyMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkSubtractionCompatible(org.apache.commons.math.linear.AnyMatrix, org.apache.commons.math.linear.AnyMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.checkMultiplicationCompatible(org.apache.commons.math.linear.AnyMatrix, org.apache.commons.math.linear.AnyMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.fractionMatrixToRealMatrix(org.apache.commons.math.linear.FieldMatrix<org.apache.commons.math.fraction.Fraction>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.FractionMatrixConverter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.start(int, int, int, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.visit(int, int, org.apache.commons.math.fraction.Fraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.getConvertedMatrix()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.bigFractionMatrixToRealMatrix(org.apache.commons.math.linear.FieldMatrix<org.apache.commons.math.fraction.BigFraction>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.BigFractionMatrixConverter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.visit(int, int, org.apache.commons.math.fraction.BigFraction)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.serializeRealVector(org.apache.commons.math.linear.RealVector, java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.deserializeRealVector(java.lang.Object, java.lang.String, java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.serializeRealMatrix(org.apache.commons.math.linear.RealMatrix, java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.MatrixUtils.deserializeRealMatrix(java.lang.Object, java.lang.String, java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.OpenMapRealMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.OpenMapRealMatrix(org.apache.commons.math.linear.OpenMapRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.copy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.createMatrix(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.getColumnDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.add(org.apache.commons.math.linear.OpenMapRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.subtract(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.subtract(org.apache.commons.math.linear.OpenMapRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.multiply(org.apache.commons.math.linear.RealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.multiply(org.apache.commons.math.linear.OpenMapRealMatrix)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.getEntry(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.getRowDimension()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.setEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.addToEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.multiplyEntry(int, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.linear.OpenMapRealMatrix.computeKey(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.FastMath()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.doubleHighPart(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.sqrt(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.cosh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.sinh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.tanh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.acosh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.asinh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.atanh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.signum(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.signum(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.nextUp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.nextUp(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.random()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.exp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.exp(double, double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.expm1(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.expm1(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.slowexp(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.split(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.resplit(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.splitMult(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.splitAdd(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.splitReciprocal(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.quadMult(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.expint(int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.log(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.log(double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.log1p(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.log10(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.pow(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.slowLog(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.slowSin(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.slowCos(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.buildSinCosTables()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.polySine(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.polyCosine(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.sinQ(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.cosQ(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.tanQ(double, double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.reducePayneHanek(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.sin(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.cos(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.tan(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.atan(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.atan(double, double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.atan2(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.asin(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.acos(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.cbrt(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.toRadians(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.toDegrees(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.abs(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.abs(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.abs(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.abs(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.ulp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.ulp(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.scalb(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.scalb(float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.nextAfter(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.nextAfter(float, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.floor(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.ceil(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.rint(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.round(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.round(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.min(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.min(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.min(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.min(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.max(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.max(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.max(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.max(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.hypot(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.IEEEremainder(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.copySign(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.copySign(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.getExponent(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.FastMath.getExponent(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.MathUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.addAndCheck(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.addAndCheck(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.addAndCheck(long, long, org.apache.commons.math.exception.util.Localizable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.binomialCoefficient(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.binomialCoefficientDouble(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.binomialCoefficientLog(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkBinomial(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.compareTo(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.compareTo(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.cosh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(float, float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(float, float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(float, float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(float, float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(float[], float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(float[], float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equals(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.equalsIncludingNaN(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.factorial(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.factorialDouble(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.factorialLog(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.gcd(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.gcd(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.hash(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.hash(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.indicator(short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.lcm(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.lcm(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.log(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.mulAndCheck(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.mulAndCheck(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.normalizeAngle(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.reduce(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.normalizeArray(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.round(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.round(double, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.round(float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.round(float, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.roundUnscaled(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sign(short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sinh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.subAndCheck(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.subAndCheck(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(int, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(long, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(java.math.BigInteger, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(java.math.BigInteger, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.pow(java.math.BigInteger, java.math.BigInteger)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distance1(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distance1(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distance(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distance(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distanceInf(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.distanceInf(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkOrder(double[], org.apache.commons.math.util.MathUtils.OrderDirection, boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkOrder(double[], org.apache.commons.math.util.MathUtils.OrderDirection, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkOrder(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkFinite(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkFinite(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.safeNorm(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sortInPlace(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.sortInPlace(double[], org.apache.commons.math.util.MathUtils.OrderDirection, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.compare(org.apache.commons.math.util.Pair<java.lang.Double,double[]>, org.apache.commons.math.util.Pair<java.lang.Double,double[]>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.copyOf(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.copyOf(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.copyOf(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.copyOf(double[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkNotNull(java.lang.Object, org.apache.commons.math.exception.util.Localizable, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.MathUtils.checkNotNull(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.OpenIntToDoubleHashMap()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.OpenIntToDoubleHashMap(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.OpenIntToDoubleHashMap(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.OpenIntToDoubleHashMap(int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.OpenIntToDoubleHashMap(org.apache.commons.math.util.OpenIntToDoubleHashMap)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.computeCapacity(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.nextPowerOfTwo(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.get(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.containsKey(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.perturb(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.findInsertionIndex(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.findInsertionIndex(int[], byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.probe(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.changeIndexSign(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.remove(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.containsKey(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.doRemove(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.put(int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.growTable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.shouldGrowTable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.hashOf(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.Iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.hasNext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.key()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.value()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.advance()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math.util.OpenIntToDoubleHashMap.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}
