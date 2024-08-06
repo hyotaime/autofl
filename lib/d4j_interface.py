@@ -125,7 +125,7 @@ class D4JRepositoryInterface():
         return method_list
 
     def _load_test_lists(self, bug_name):
-        with open(os.path.join(BUG_INFO_DIR, bug_name, "test_snippet.json")) as f:
+        with open(os.path.join(BUG_INFO_DIR, bug_name, "test_snippet.json"), 'r', encoding='utf-8') as f:
             test_list = json.load(f)
         return test_list
 

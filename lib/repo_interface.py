@@ -7,6 +7,7 @@ D4J_PROJECTS = [
     'Closure',
     'Codec',
     'Collections',
+    'commons-io',
     'Compress',
     'Csv',
     'Gson',
