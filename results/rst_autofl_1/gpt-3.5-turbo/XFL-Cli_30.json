@@ -1,14 +1,713 @@
 {
-    "time": 1722929133.8160927,
+    "time": 1722947551.96518,
     "messages": [
         {
             "role": "system",
             "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.cli.ParserTestCase.testPropertyOptionUnexpected()']` failed.\nThe test looks like:\n\n```java\n1002 : public void testPropertyOptionUnexpected() throws Exception\n1003 :     {\n1004 :         Options opts = new Options();\n1005 :         \n1006 :         Properties properties = new Properties();\n1007 :         properties.setProperty(\"f\", \"true\");\n1008 :         \n1009 :         try {\n1010 :             parse(parser, opts, null, properties);\n1011 :             fail(\"UnrecognizedOptionException expected\");\n1012 :         } catch (UnrecognizedOptionException e) {\n1013 :             // expected\n1014 :         }\n1015 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\n\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.cli\": [\"CommandLine\", \"DefaultParser\", \"PosixParser\", \"Options\", \"Parser\", \"Option\", \"GnuParser\", \"BasicParser\", \"Util\", \"OptionValidator\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `org.apache.commons.cli.ParserTestCase.testPropertyOptionUnexpected()` covers classes such as `CommandLine`, `DefaultParser`, `PosixParser`, `Options`, `Parser`, `Option`, `GnuParser`, `BasicParser`, `Util`, and `OptionValidator` in the `org.apache.commons.cli` package. Let's proceed by examining the covered methods for the `Options` class to understand the issue better. Please call the `get_failing_tests_covered_methods_for_class` function with the class name `org.apache.commons.cli.Options`.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.cli.Options\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".addOptionGroup(org.apache.commons.cli.OptionGroup)\", \".getOptionGroups()\", \".addOption(java.lang.String, boolean, java.lang.String)\", \".addOption(java.lang.String, java.lang.String, boolean, java.lang.String)\", \".addOption(org.apache.commons.cli.Option)\", \".getOptions()\", \".helpOptions()\", \".getRequiredOptions()\", \".getOption(java.lang.String)\", \".getMatchingOptions(java.lang.String)\", \".hasOption(java.lang.String)\", \".hasLongOption(java.lang.String)\", \".hasShortOption(java.lang.String)\", \".getOptionGroup(org.apache.commons.cli.Option)\", \".toString()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The `Options` class has several methods covered by failing tests. To identify the issue in the failing test `testPropertyOptionUnexpected()` related to `Options`, we need to investigate the implementation of these methods. Let's start by examining the code snippet for the method `addOption` in the `Options` class. Please retrieve the code snippet for the method `addOption(java.lang.String, boolean, java.lang.String)`.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.cli.Options.addOption(java.lang.String, boolean, java.lang.String)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"113 : public Options addOption(String opt, boolean hasArg, String description)\\n114 :     {\\n115 :         addOption(opt, null, hasArg, description);\\n116 : \\n117 :         return this;\\n118 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `addOption(String opt, boolean hasArg, String description)` method in the `Options` class simply delegates the call to another method. It doesn't directly manipulate the options. Let's investigate further by looking at the code snippet for the method `addOption(org.apache.commons.cli.Option)`. Please retrieve the code snippet for this method.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.cli.Options.addOption(org.apache.commons.cli.Option)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"143 : public Options addOption(Option opt)\\n144 :     {\\n145 :         String key = opt.getKey();\\n146 : \\n147 :         // add it to the long option list\\n148 :         if (opt.hasLongOpt())\\n149 :         {\\n150 :             longOpts.put(opt.getLongOpt(), opt);\\n151 :         }\\n152 : \\n153 :         // if the option is required add it to the required list\\n154 :         if (opt.isRequired())\\n155 :         {\\n156 :             if (requiredOpts.contains(key))\\n157 :             {\\n158 :                 requiredOpts.remove(requiredOpts.indexOf(key));\\n159 :             }\\n160 :             requiredOpts.add(key);\\n161 :         }\\n162 : \\n163 :         shortOpts.put(key, opt);\\n164 : \\n165 :         return this;\\n166 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `addOption(Option opt)` method in the `Options` class adds an option to the option list, updates long and short option mappings, and handles required options. This method seems to be involved in managing the options. To understand the issue better, let's investigate the implementation of the `parse` method that is referenced in the failing test `testPropertyOptionUnexpected()`. Please retrieve the code snippet for the `parse` method in the parser class used in that test.\nThe failing test `testPropertyOptionUnexpected()` uses a method called `parse` which is part of the parser class. The `parse` method seems to be related to the parsing of options. Let's proceed by looking at the code snippet for the `parse` method in the parser class used in the failing test. Please retrieve the code snippet for the `parse` method."
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties, boolean)\norg.apache.commons.cli.Options.addOption(java.lang.String, java.lang.String, boolean, java.lang.String)\n```"
         }
     ],
     "interaction_records": {
-        "step_histories": [],
-        "mid_to_message": {}
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.cli.ParserTestCase.testPropertyOptionUnexpected()']` failed.\nThe test looks like:\n\n```java\n1002 : public void testPropertyOptionUnexpected() throws Exception\n1003 :     {\n1004 :         Options opts = new Options();\n1005 :         \n1006 :         Properties properties = new Properties();\n1007 :         properties.setProperty(\"f\", \"true\");\n1008 :         \n1009 :         try {\n1010 :             parse(parser, opts, null, properties);\n1011 :             fail(\"UnrecognizedOptionException expected\");\n1012 :         } catch (UnrecognizedOptionException e) {\n1013 :             // expected\n1014 :         }\n1015 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\n\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.cli\": [\"CommandLine\", \"DefaultParser\", \"PosixParser\", \"Options\", \"Parser\", \"Option\", \"GnuParser\", \"BasicParser\", \"Util\", \"OptionValidator\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `org.apache.commons.cli.ParserTestCase.testPropertyOptionUnexpected()` covers classes such as `CommandLine`, `DefaultParser`, `PosixParser`, `Options`, `Parser`, `Option`, `GnuParser`, `BasicParser`, `Util`, and `OptionValidator` in the `org.apache.commons.cli` package. Let's proceed by examining the covered methods for the `Options` class to understand the issue better. Please call the `get_failing_tests_covered_methods_for_class` function with the class name `org.apache.commons.cli.Options`.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.cli.Options\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".addOptionGroup(org.apache.commons.cli.OptionGroup)\", \".getOptionGroups()\", \".addOption(java.lang.String, boolean, java.lang.String)\", \".addOption(java.lang.String, java.lang.String, boolean, java.lang.String)\", \".addOption(org.apache.commons.cli.Option)\", \".getOptions()\", \".helpOptions()\", \".getRequiredOptions()\", \".getOption(java.lang.String)\", \".getMatchingOptions(java.lang.String)\", \".hasOption(java.lang.String)\", \".hasLongOption(java.lang.String)\", \".hasShortOption(java.lang.String)\", \".getOptionGroup(org.apache.commons.cli.Option)\", \".toString()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The `Options` class has several methods covered by failing tests. To identify the issue in the failing test `testPropertyOptionUnexpected()` related to `Options`, we need to investigate the implementation of these methods. Let's start by examining the code snippet for the method `addOption` in the `Options` class. Please retrieve the code snippet for the method `addOption(java.lang.String, boolean, java.lang.String)`.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.cli.Options.addOption(java.lang.String, boolean, java.lang.String)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"113 : public Options addOption(String opt, boolean hasArg, String description)\\n114 :     {\\n115 :         addOption(opt, null, hasArg, description);\\n116 : \\n117 :         return this;\\n118 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `addOption(String opt, boolean hasArg, String description)` method in the `Options` class simply delegates the call to another method. It doesn't directly manipulate the options. Let's investigate further by looking at the code snippet for the method `addOption(org.apache.commons.cli.Option)`. Please retrieve the code snippet for this method.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.cli.Options.addOption(org.apache.commons.cli.Option)\"}"
+                }
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"143 : public Options addOption(Option opt)\\n144 :     {\\n145 :         String key = opt.getKey();\\n146 : \\n147 :         // add it to the long option list\\n148 :         if (opt.hasLongOpt())\\n149 :         {\\n150 :             longOpts.put(opt.getLongOpt(), opt);\\n151 :         }\\n152 : \\n153 :         // if the option is required add it to the required list\\n154 :         if (opt.isRequired())\\n155 :         {\\n156 :             if (requiredOpts.contains(key))\\n157 :             {\\n158 :                 requiredOpts.remove(requiredOpts.indexOf(key));\\n159 :             }\\n160 :             requiredOpts.add(key);\\n161 :         }\\n162 : \\n163 :         shortOpts.put(key, opt);\\n164 : \\n165 :         return this;\\n166 :     }\""
+            },
+            "m11": {
+                "role": "assistant",
+                "content": "The `addOption(Option opt)` method in the `Options` class adds an option to the option list, updates long and short option mappings, and handles required options. This method seems to be involved in managing the options. To understand the issue better, let's investigate the implementation of the `parse` method that is referenced in the failing test `testPropertyOptionUnexpected()`. Please retrieve the code snippet for the `parse` method in the parser class used in that test.\nThe failing test `testPropertyOptionUnexpected()` uses a method called `parse` which is part of the parser class. The `parse` method seems to be related to the parsing of options. Let's proceed by looking at the code snippet for the `parse` method in the parser class used in the failing test. Please retrieve the code snippet for the `parse` method."
+            }
+        }
     },
-    "buggy_methods": "Traceback (most recent call last):\n  File \"C:\\Projects\\SELab\\autofl\\autofl.py\", line 257, in <module>\n    grade = ad.run(args.max_budget)\n            ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Projects\\SELab\\autofl\\autofl.py\", line 216, in run\n    self.startup()\n  File \"C:\\Projects\\SELab\\autofl\\autofl.py\", line 79, in startup\n    offset = self._test_offset % len(fail_test_signatures)\n             ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: integer modulo by zero\n"
+    "buggy_methods": {
+        "org.apache.commons.cli.BasicParser.flatten(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.CommandLine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.hasOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.hasOption(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionObject(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getParsedOptionValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionObject(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValue(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValues(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.resolveOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValues(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValue(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionValue(char, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptionProperties(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getArgs()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getArgList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.addArg(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.addOption(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.CommandLine.getOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.parse(org.apache.commons.cli.Options, java.lang.String[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.parse(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleProperties(java.util.Properties)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.checkRequiredOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.checkRequiredArgs()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleToken(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isArgument(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isNegativeNumber(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isShortOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isLongOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleUnknownToken(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleLongOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleLongOptionWithoutEqual(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleLongOptionWithEqual(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleShortAndLongOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.getLongPrefix(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.isJavaProperty(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleOption(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.updateRequiredOptions(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.DefaultParser.handleConcatenatedOptions(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.GnuParser.flatten(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.Option(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.Option(java.lang.String, boolean, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.Option(java.lang.String, java.lang.String, boolean, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getId()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getKey()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getOpt()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setType(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getLongOpt()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setLongOpt(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setOptionalArg(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasOptionalArg()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasLongOpt()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasArg()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getDescription()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setDescription(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.isRequired()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setRequired(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setArgName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getArgName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasArgName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasArgs()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setArgs(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.setValueSeparator(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValueSeparator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasValueSeparator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getArgs()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.addValueForProcessing(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.processValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.add(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValue(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValues()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.getValuesList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hasNoValues()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.clearValues()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.addValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.acceptsArg()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Option.requiresArg()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.OptionValidator.validateOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.OptionValidator.isValidOpt(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.OptionValidator.isValidChar(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.addOptionGroup(org.apache.commons.cli.OptionGroup)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getOptionGroups()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.addOption(java.lang.String, boolean, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.addOption(java.lang.String, java.lang.String, boolean, java.lang.String)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.cli.Options.addOption(java.lang.String, java.lang.String, boolean, java.lang.String)"
+            ]
+        },
+        "org.apache.commons.cli.Options.addOption(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.helpOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getRequiredOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getMatchingOptions(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.hasOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.hasLongOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.hasShortOption(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.getOptionGroup(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Options.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.setOptions(org.apache.commons.cli.Options)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.getOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.getRequiredOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.flatten(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties, boolean)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.cli.Parser.parse(org.apache.commons.cli.Options, java.lang.String[], java.util.Properties, boolean)"
+            ]
+        },
+        "org.apache.commons.cli.Parser.processProperties(java.util.Properties)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.checkRequiredOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.processArgs(org.apache.commons.cli.Option, java.util.ListIterator)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.processOption(java.lang.String, java.util.ListIterator)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Parser.updateRequiredOptions(org.apache.commons.cli.Option)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.init()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.flatten(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.gobble(java.util.Iterator)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.processNonOptionToken(java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.processOptionToken(java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.PosixParser.burstToken(java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Util.stripLeadingHyphens(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.cli.Util.stripLeadingAndTrailingQuotes(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
 }
