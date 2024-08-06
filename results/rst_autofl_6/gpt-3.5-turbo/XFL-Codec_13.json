@@ -1,0 +1,399 @@
+{
+    "time": 1722934044.5764232,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184()']` failed.\nThe test looks like:\n\n```java\n1064 : @Test\n1065 :     public void testCodec184() throws Throwable { // error occurred here\n1071 :         assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual(\"\", \"aa\", true));\n1072 :       }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(DoubleMetaphone.java:244)\n\tat org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(DoubleMetaphoneTest.java:1065)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.codec.language\": [\"DoubleMetaphone\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.codec.language.DoubleMetaphone\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".DoubleMetaphone()\", \".doubleMetaphone(java.lang.String)\", \".doubleMetaphone(java.lang.String, boolean)\", \".encode(java.lang.Object)\", \".encode(java.lang.String)\", \".isDoubleMetaphoneEqual(java.lang.String, java.lang.String)\", \".isDoubleMetaphoneEqual(java.lang.String, java.lang.String, boolean)\", \".getMaxCodeLen()\", \".setMaxCodeLen(int)\", \".handleAEIOUY(org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleCC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleCH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleD(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleG(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleGH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleJ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleL(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleP(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleR(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleS(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleSC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleT(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleW(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleX(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleZ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".conditionC0(java.lang.String, int)\", \".conditionCH0(java.lang.String, int)\", \".conditionCH1(java.lang.String, int)\", \".conditionL0(java.lang.String, int)\", \".conditionM0(java.lang.String, int)\", \".isSlavoGermanic(java.lang.String)\", \".isVowel(char)\", \".isSilentStart(java.lang.String)\", \".cleanInput(java.lang.String)\", \".charAt(java.lang.String, int)\", \".contains(java.lang.String, int, int, java.lang.String)\", \".DoubleMetaphoneResult(int)\", \".append(char)\", \".append(char, char)\", \".appendPrimary(char)\", \".appendAlternate(char)\", \".append(java.lang.String)\", \".append(java.lang.String, java.lang.String)\", \".appendPrimary(java.lang.String)\", \".appendAlternate(java.lang.String)\", \".getPrimary()\", \".getAlternate()\", \".isComplete()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"229 : public boolean isDoubleMetaphoneEqual(final String value1, final String value2) {\\n230 :         return isDoubleMetaphoneEqual(value1, value2, false);\\n231 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String, boolean)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"243 : public boolean isDoubleMetaphoneEqual(final String value1, final String value2, final boolean alternate) {\\n244 :         return doubleMetaphone(value1, alternate).equals(doubleMetaphone(value2, alternate));\\n245 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `DoubleMetaphoneTest.testCodec184()` is testing the `isDoubleMetaphoneEqual` method of the `DoubleMetaphone` class in the `org.apache.commons.codec.language` package. The test is calling the `isDoubleMetaphoneEqual` method with an empty string and \"aa\", expecting the result to be false.\n\nThe error in the test is caused by a `NullPointerException` at line 244 of the `DoubleMetaphone` class. This error occurs because the `doubleMetaphone` method is being called with a `null` value for `value1` or `value2` inside the `isDoubleMetaphoneEqual` method.\n\nTo fix this issue, the `isDoubleMetaphoneEqual` method should handle null values for `value1` and `value2` before calling the `doubleMetaphone` method."
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.codec.language.DoubleMetaphone.doubleMetaphone(java.lang.String, boolean)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184()']` failed.\nThe test looks like:\n\n```java\n1064 : @Test\n1065 :     public void testCodec184() throws Throwable { // error occurred here\n1071 :         assertFalse(new DoubleMetaphone().isDoubleMetaphoneEqual(\"\", \"aa\", true));\n1072 :       }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(DoubleMetaphone.java:244)\n\tat org.apache.commons.codec.language.DoubleMetaphoneTest.testCodec184(DoubleMetaphoneTest.java:1065)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.codec.language\": [\"DoubleMetaphone\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.codec.language.DoubleMetaphone\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".DoubleMetaphone()\", \".doubleMetaphone(java.lang.String)\", \".doubleMetaphone(java.lang.String, boolean)\", \".encode(java.lang.Object)\", \".encode(java.lang.String)\", \".isDoubleMetaphoneEqual(java.lang.String, java.lang.String)\", \".isDoubleMetaphoneEqual(java.lang.String, java.lang.String, boolean)\", \".getMaxCodeLen()\", \".setMaxCodeLen(int)\", \".handleAEIOUY(org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleCC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleCH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleD(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleG(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleGH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleJ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleL(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleP(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleR(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleS(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".handleSC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleT(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleW(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleX(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)\", \".handleZ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)\", \".conditionC0(java.lang.String, int)\", \".conditionCH0(java.lang.String, int)\", \".conditionCH1(java.lang.String, int)\", \".conditionL0(java.lang.String, int)\", \".conditionM0(java.lang.String, int)\", \".isSlavoGermanic(java.lang.String)\", \".isVowel(char)\", \".isSilentStart(java.lang.String)\", \".cleanInput(java.lang.String)\", \".charAt(java.lang.String, int)\", \".contains(java.lang.String, int, int, java.lang.String)\", \".DoubleMetaphoneResult(int)\", \".append(char)\", \".append(char, char)\", \".appendPrimary(char)\", \".appendAlternate(char)\", \".append(java.lang.String)\", \".append(java.lang.String, java.lang.String)\", \".appendPrimary(java.lang.String)\", \".appendAlternate(java.lang.String)\", \".getPrimary()\", \".getAlternate()\", \".isComplete()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"229 : public boolean isDoubleMetaphoneEqual(final String value1, final String value2) {\\n230 :         return isDoubleMetaphoneEqual(value1, value2, false);\\n231 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String, boolean)\"}"
+                }
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"243 : public boolean isDoubleMetaphoneEqual(final String value1, final String value2, final boolean alternate) {\\n244 :         return doubleMetaphone(value1, alternate).equals(doubleMetaphone(value2, alternate));\\n245 :     }\""
+            },
+            "m11": {
+                "role": "assistant",
+                "content": "The failing test `DoubleMetaphoneTest.testCodec184()` is testing the `isDoubleMetaphoneEqual` method of the `DoubleMetaphone` class in the `org.apache.commons.codec.language` package. The test is calling the `isDoubleMetaphoneEqual` method with an empty string and \"aa\", expecting the result to be false.\n\nThe error in the test is caused by a `NullPointerException` at line 244 of the `DoubleMetaphone` class. This error occurs because the `doubleMetaphone` method is being called with a `null` value for `value1` or `value2` inside the `isDoubleMetaphoneEqual` method.\n\nTo fix this issue, the `isDoubleMetaphoneEqual` method should handle null values for `value1` and `value2` before calling the `doubleMetaphone` method."
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.doubleMetaphone(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.doubleMetaphone(java.lang.String, boolean)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.codec.language.DoubleMetaphone.doubleMetaphone(java.lang.String, boolean)"
+            ]
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.encode(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.encode(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isDoubleMetaphoneEqual(java.lang.String, java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.getMaxCodeLen()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.setMaxCodeLen(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleAEIOUY(org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleCC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleCH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleD(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleG(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleGH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleH(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleJ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleL(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleP(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleR(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleS(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleSC(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleT(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleW(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleX(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.handleZ(java.lang.String, org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult, int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.conditionC0(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.conditionCH0(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.conditionCH1(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.conditionL0(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.conditionM0(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isSlavoGermanic(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isVowel(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isSilentStart(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.cleanInput(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.charAt(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.contains(java.lang.String, int, int, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.DoubleMetaphoneResult(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.append(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.append(char, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.appendPrimary(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.appendAlternate(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.append(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.append(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.appendPrimary(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.appendAlternate(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.getPrimary()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.getAlternate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.codec.language.DoubleMetaphone.isComplete()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

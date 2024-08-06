@@ -1,0 +1,1572 @@
+{
+    "time": 1722938095.1751502,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['com.fasterxml.jackson.databind.type.TestTypeFactory.testCanonicalNames()']` failed.\nThe test looks like:\n\n```java\n209 : public void testCanonicalNames()\n210 :     {\n211 :         TypeFactory tf = TypeFactory.defaultInstance();\n212 :         JavaType t = tf.constructType(java.util.Calendar.class);\n213 :         String can = t.toCanonical();\n216 : \n217 :         // Generic maps and collections will default to Object.class if type-erased\n218 :         t = tf.constructType(java.util.ArrayList.class);\n219 :         can = t.toCanonical();\n222 : \n223 :         t = tf.constructType(java.util.TreeMap.class);\n224 :         can = t.toCanonical();\n227 : \n228 :         // And then EnumMap (actual use case for us)\n229 :         t = tf.constructMapType(EnumMap.class, EnumForCanonical.class, String.class);\n230 :         can = t.toCanonical();\n234 : \n235 :         // [databind#1941]: allow \"raw\" types too\n236 : \n237 :         t = tf.constructFromCanonical(\"java.util.List\"); // error occurred here\n250 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromVariable(TypeFactory.java:1413)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1175)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromParamType(TypeFactory.java:1396)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1165)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._resolveSuperInterfaces(TypeFactory.java:1311)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromClass(TypeFactory.java:1254)\n\tat com.fasterxml.jackson.databind.type.TypeParser.parseType(TypeParser.java:59)\n\tat com.fasterxml.jackson.databind.type.TypeParser.parse(TypeParser.java:32)\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructFromCanonical(TypeFactory.java:536)\n\tat com.fasterxml.jackson.databind.type.TestTypeFactory.testCanonicalNames(TestTypeFactory.java:237)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"com.fasterxml.jackson.databind.type\": [\"MapType\", \"ClassStack\", \"CollectionType\", \"TypeBindings\", \"TypeBase\", \"MapLikeType\", \"SimpleType\", \"TypeParser\", \"TypeFactory\", \"CollectionLikeType\"], \"com.fasterxml.jackson.databind\": [\"JavaType\"], \"com.fasterxml.jackson.databind.util\": [\"LRUMap\", \"ClassUtil\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `TestTypeFactory.testCanonicalNames()` is in the `com.fasterxml.jackson.databind.type` package. The test covers classes such as `MapType`, `ClassStack`, `CollectionType`, `TypeBindings`, `TypeBase`, `MapLikeType`, `SimpleType`, `TypeParser`, `TypeFactory`, and `CollectionLikeType`."
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\nTypeFactory._fromVariable(TypeFactory, ValueType)\nTypeFactory._fromAny(TypeFactory, ValueType)\nTypeFactory._fromParamType(TypeFactory, JavaType)\nTypeFactory._fromClass(TypeFactory, Class<?>)\nTypeFactory.constructFromCanonical(TypeFactory, String)\nTypeParser.parseType(TypeParser, String)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['com.fasterxml.jackson.databind.type.TestTypeFactory.testCanonicalNames()']` failed.\nThe test looks like:\n\n```java\n209 : public void testCanonicalNames()\n210 :     {\n211 :         TypeFactory tf = TypeFactory.defaultInstance();\n212 :         JavaType t = tf.constructType(java.util.Calendar.class);\n213 :         String can = t.toCanonical();\n216 : \n217 :         // Generic maps and collections will default to Object.class if type-erased\n218 :         t = tf.constructType(java.util.ArrayList.class);\n219 :         can = t.toCanonical();\n222 : \n223 :         t = tf.constructType(java.util.TreeMap.class);\n224 :         can = t.toCanonical();\n227 : \n228 :         // And then EnumMap (actual use case for us)\n229 :         t = tf.constructMapType(EnumMap.class, EnumForCanonical.class, String.class);\n230 :         can = t.toCanonical();\n234 : \n235 :         // [databind#1941]: allow \"raw\" types too\n236 : \n237 :         t = tf.constructFromCanonical(\"java.util.List\"); // error occurred here\n250 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromVariable(TypeFactory.java:1413)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1175)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromParamType(TypeFactory.java:1396)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromAny(TypeFactory.java:1165)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._resolveSuperInterfaces(TypeFactory.java:1311)\n\tat com.fasterxml.jackson.databind.type.TypeFactory._fromClass(TypeFactory.java:1254)\n\tat com.fasterxml.jackson.databind.type.TypeParser.parseType(TypeParser.java:59)\n\tat com.fasterxml.jackson.databind.type.TypeParser.parse(TypeParser.java:32)\n\tat com.fasterxml.jackson.databind.type.TypeFactory.constructFromCanonical(TypeFactory.java:536)\n\tat com.fasterxml.jackson.databind.type.TestTypeFactory.testCanonicalNames(TestTypeFactory.java:237)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"com.fasterxml.jackson.databind.type\": [\"MapType\", \"ClassStack\", \"CollectionType\", \"TypeBindings\", \"TypeBase\", \"MapLikeType\", \"SimpleType\", \"TypeParser\", \"TypeFactory\", \"CollectionLikeType\"], \"com.fasterxml.jackson.databind\": [\"JavaType\"], \"com.fasterxml.jackson.databind.util\": [\"LRUMap\", \"ClassUtil\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `TestTypeFactory.testCanonicalNames()` is in the `com.fasterxml.jackson.databind.type` package. The test covers classes such as `MapType`, `ClassStack`, `CollectionType`, `TypeBindings`, `TypeBase`, `MapLikeType`, `SimpleType`, `TypeParser`, `TypeFactory`, and `CollectionLikeType`."
+            }
+        }
+    },
+    "buggy_methods": {
+        "com.fasterxml.jackson.databind.JavaType.JavaType(java.lang.Class<?>, int, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.JavaType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withHandlersFrom(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.forcedNarrowBy(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getRawClass()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hasRawClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hasContentType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isTypeOrSubTypeOf(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isAbstract()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isConcrete()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isThrowable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isArrayType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isEnumType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isInterface()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isPrimitive()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isFinal()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isContainerType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isCollectionLikeType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isMapLikeType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.isJavaLangObject()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.useStaticType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hasGenericTypes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getKeyType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getContentType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getReferencedType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.containedTypeCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.containedType(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.containedTypeName(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getParameterSource()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.containedTypeOrUnknown(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getBindings()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.findSuperType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getSuperClass()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getInterfaces()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.findTypeParameters(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getValueHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getTypeHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getContentValueHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getContentTypeHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hasValueHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hasHandlers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getGenericSignature()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getGenericSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getErasedSignature()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.getErasedSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.JavaType.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.ClassStack(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.ClassStack(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.child(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.addSelfReference(com.fasterxml.jackson.databind.type.ResolvedRecursiveType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.resolveSelfReferences(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.find(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.ClassStack.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.CollectionLikeType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.CollectionLikeType(com.fasterxml.jackson.databind.type.TypeBase, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.upgradeFrom(com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withHandlersFrom(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.isContainerType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.isCollectionLikeType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.getContentType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.getContentValueHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.getContentTypeHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.hasHandlers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.getErasedSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.getGenericSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.buildCanonicalName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.isTrueCollectionType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionLikeType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.CollectionType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.CollectionType(com.fasterxml.jackson.databind.type.TypeBase, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.CollectionType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.MapLikeType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.MapLikeType(com.fasterxml.jackson.databind.type.TypeBase, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.upgradeFrom(com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withKeyType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withHandlersFrom(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.buildCanonicalName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.isContainerType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.isMapLikeType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getKeyType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getContentType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getContentValueHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getContentTypeHandler()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.hasHandlers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getErasedSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.getGenericSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withKeyTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.withKeyValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.isTrueMapType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapLikeType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.MapType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.MapType(com.fasterxml.jackson.databind.type.TypeBase, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.construct(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withKeyType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withKeyTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.withKeyValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.MapType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.SimpleType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.SimpleType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.SimpleType(com.fasterxml.jackson.databind.type.TypeBase)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.SimpleType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.SimpleType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], int, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.constructUnsafe(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.construct(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType._narrow(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withContentType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withContentTypeHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withContentValueHandler(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.withStaticTyping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.refine(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.buildCanonicalName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.isContainerType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.hasContentType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.getErasedSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.getGenericSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType._buildSuperClass(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.SimpleType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.TypeBase(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[], int, java.lang.Object, java.lang.Object, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.TypeBase(com.fasterxml.jackson.databind.type.TypeBase)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.toCanonical()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.buildCanonicalName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.getGenericSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.getErasedSignature(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.getBindings()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.containedTypeCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.containedType(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.containedTypeName(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.getSuperClass()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.getInterfaces()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.findSuperType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.findTypeParameters(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.serializeWithType(JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider, com.fasterxml.jackson.databind.jsontype.TypeSerializer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase.serialize(JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase._classSignature(java.lang.Class<?>, java.lang.StringBuilder, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBase._bogusSuperClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.TypeBindings(java.lang.String[], com.fasterxml.jackson.databind.JavaType[], java.lang.String[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.emptyBindings()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.create(java.lang.Class<?>, java.util.List<com.fasterxml.jackson.databind.JavaType>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.create(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.create(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.create(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.createIfNeeded(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.createIfNeeded(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.withUnboundVariable(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.findBoundType(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.getBoundName(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.getBoundType(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.getTypeParameters()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.hasUnbound(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.asKey(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.typeParameterArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.paramsFor1(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.paramsFor2(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeBindings.AsKey(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.TypeFactory()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.TypeFactory(com.fasterxml.jackson.databind.util.LRUMap<java.lang.Object,com.fasterxml.jackson.databind.JavaType>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.TypeFactory(com.fasterxml.jackson.databind.util.LRUMap<java.lang.Object,com.fasterxml.jackson.databind.JavaType>, com.fasterxml.jackson.databind.type.TypeParser, com.fasterxml.jackson.databind.type.TypeModifier[], java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.withModifier(com.fasterxml.jackson.databind.type.TypeModifier)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.withClassLoader(java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.withCache(com.fasterxml.jackson.databind.util.LRUMap<java.lang.Object,com.fasterxml.jackson.databind.JavaType>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.defaultInstance()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.clearCache()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.getClassLoader()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.unknownType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.rawClass(java.lang.reflect.Type)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.findClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.classForName(java.lang.String, boolean, java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.classForName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._findPrimitive(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructSpecializedType(com.fasterxml.jackson.databind.JavaType, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._bindingsForSubtype(com.fasterxml.jackson.databind.JavaType, int, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._resolveTypePlaceholders(com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._verifyAndResolvePlaceholders(com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructGeneralizedType(com.fasterxml.jackson.databind.JavaType, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructFromCanonical(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.findTypeParameters(com.fasterxml.jackson.databind.JavaType, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.findTypeParameters(java.lang.Class<?>, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.findTypeParameters(java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.moreSpecificType(com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructType(java.lang.reflect.Type)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructType(java.lang.reflect.Type, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructType(TypeReference<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructType(java.lang.reflect.Type, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructType(java.lang.reflect.Type, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructArrayType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructArrayType(com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructCollectionType(java.lang.Class<? extends java.util.Collection>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructCollectionType(java.lang.Class<? extends java.util.Collection>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructCollectionLikeType(java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructCollectionLikeType(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructMapType(java.lang.Class<? extends java.util.Map>, java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructMapType(java.lang.Class<? extends java.util.Map>, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructMapLikeType(java.lang.Class<?>, java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructMapLikeType(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructSimpleType(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructSimpleType(java.lang.Class<?>, java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructReferenceType(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.uncheckedSimpleType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructParametricType(java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructParametricType(java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructParametrizedType(java.lang.Class<?>, java.lang.Class<?>, com.fasterxml.jackson.databind.JavaType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructParametrizedType(java.lang.Class<?>, java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructRawCollectionType(java.lang.Class<? extends java.util.Collection>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructRawCollectionLikeType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructRawMapType(java.lang.Class<? extends java.util.Map>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory.constructRawMapLikeType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._mapType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._collectionType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._referenceType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._constructSimple(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._newSimpleType(java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._unknownType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._findWellKnownSimple(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromAny(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.Type, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromClass(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._resolveSuperClass(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._resolveSuperInterfaces(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromWellKnownClass(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromWellKnownInterface(com.fasterxml.jackson.databind.type.ClassStack, java.lang.Class<?>, com.fasterxml.jackson.databind.type.TypeBindings, com.fasterxml.jackson.databind.JavaType, com.fasterxml.jackson.databind.JavaType[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromParamType(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.ParameterizedType, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromArrayType(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.GenericArrayType, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromVariable(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.TypeVariable<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeFactory._fromWildcard(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.WildcardType, com.fasterxml.jackson.databind.type.TypeBindings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.TypeParser(com.fasterxml.jackson.databind.type.TypeFactory)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.withFactory(com.fasterxml.jackson.databind.type.TypeFactory)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.parse(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.parseType(com.fasterxml.jackson.databind.type.TypeParser.MyTokenizer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.parseTypes(com.fasterxml.jackson.databind.type.TypeParser.MyTokenizer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.findClass(java.lang.String, com.fasterxml.jackson.databind.type.TypeParser.MyTokenizer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser._problem(com.fasterxml.jackson.databind.type.TypeParser.MyTokenizer, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.MyTokenizer(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.hasMoreTokens()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.nextToken()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.pushBack(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.getAllInput()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.type.TypeParser.getRemainingInput()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.hasNext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.next()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.emptyIterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findSuperTypes(com.fasterxml.jackson.databind.JavaType, java.lang.Class<?>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findRawSuperTypes(java.lang.Class<?>, java.lang.Class<?>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findSuperClasses(java.lang.Class<?>, java.lang.Class<?>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findSuperTypes(java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findSuperTypes(java.lang.Class<?>, java.lang.Class<?>, java.util.List<java.lang.Class<?>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil._addSuperTypes(com.fasterxml.jackson.databind.JavaType, java.lang.Class<?>, java.util.Collection<com.fasterxml.jackson.databind.JavaType>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil._addRawSuperTypes(java.lang.Class<?>, java.lang.Class<?>, java.util.Collection<java.lang.Class<?>>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.canBeABeanType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isLocalType(java.lang.Class<?>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getOuterClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isProxyType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isConcrete(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isConcrete(java.lang.reflect.Member)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isCollectionMapOrArray(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getClassDescription(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.hasGetterSignature(java.lang.reflect.Method)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getRootCause(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.throwRootCause(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.throwRootCauseIfIOE(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.throwAsIAE(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.throwAsIAE(java.lang.Throwable, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.unwrapAndThrowAsIAE(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.unwrapAndThrowAsIAE(java.lang.Throwable, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.closeOnFailAndThrowAsIAE(JsonGenerator, java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.closeOnFailAndThrowAsIAE(JsonGenerator, java.io.Closeable, java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.createInstance(java.lang.Class<T>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findConstructor(java.lang.Class<T>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.defaultValue(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.wrapperType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.primitiveType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.checkAndFixAccess(java.lang.reflect.Member)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.checkAndFixAccess(java.lang.reflect.Member, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findEnumType(java.util.EnumSet<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findEnumType(java.util.EnumMap<?,?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findEnumType(java.lang.Enum<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findEnumType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findFirstAnnotatedEnumValue(java.lang.Class<java.lang.Enum<?>>, java.lang.Class<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isJacksonStdImpl(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isJacksonStdImpl(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isBogusClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isNonStaticInnerClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.isObjectOrPrimitive(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getPackageName(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.hasEnclosingMethod(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getDeclaredFields(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getDeclaredMethods(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.findClassAnnotations(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getConstructors(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getDeclaringClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getGenericSuperclass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getGenericInterfaces(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getEnclosingClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil._interfaces(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.EnumTypeLocator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.enumTypeFor(java.util.EnumSet<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.enumTypeFor(java.util.EnumMap<?,?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.get(java.lang.Object, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.locateField(java.lang.Class<?>, java.lang.String, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.Ctor(java.lang.reflect.Constructor<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getConstructor()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getParamCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getDeclaringClass()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getDeclaredAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.ClassUtil.getParameterAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.LRUMap(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.put(K, V)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.putIfAbsent(K, V)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.get(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "com.fasterxml.jackson.databind.util.LRUMap.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

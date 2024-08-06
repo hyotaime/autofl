@@ -1,0 +1,1005 @@
+{
+    "time": 1722937078.1462004,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.io.input.ReaderInputStreamTest.testResetCharset()']` failed.\nThe test looks like:\n\n```java\n246 : @Test\n247 :     public void testResetCharset() {\n248 :         assertNotNull(ReaderInputStream.builder().setReader(new StringReader(\"\\uD800\")).setCharset((Charset) null).getCharset());\n249 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.io.input.ReaderInputStream$Builder.setCharset(ReaderInputStream.java:132)\n       org.apache.commons.io.input.ReaderInputStreamTest.testResetCharset(ReaderInputStreamTest.java:247)\n       java.base/java.lang.reflect.Method.invoke(Method.java:568)\n       java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.io.build\": [\"AbstractOrigin\", \"AbstractOriginSupplier\", \"AbstractStreamBuilder\", \"AbstractSupplier\"], \"org.apache.commons.io.file\": [\"PathUtils\"], \"org.apache.commons.io.input\": [\"ReaderInputStream\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test covers the following classes:\n- org.apache.commons.io.build: AbstractOrigin, AbstractOriginSupplier, AbstractStreamBuilder, AbstractSupplier\n- org.apache.commons.io.file: PathUtils\n- org.apache.commons.io.input: ReaderInputStream\n\nNext, I will check which methods are covered by failing tests for the class `org.apache.commons.io.input.ReaderInputStream`.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.io.input.ReaderInputStream\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".get()\", \".getCharsetEncoder()\", \".setCharset(java.nio.charset.Charset)\", \".setCharsetEncoder(java.nio.charset.CharsetEncoder)\", \".builder()\", \".checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\", \".minBufferSize(java.nio.charset.CharsetEncoder)\", \".ReaderInputStream(java.io.Reader)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.Charset)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)\", \".ReaderInputStream(java.io.Reader, java.lang.String)\", \".ReaderInputStream(java.io.Reader, java.lang.String, int)\", \".close()\", \".fillBuffer()\", \".getCharsetEncoder()\", \".read()\", \".read(byte[])\", \".read(byte[], int, int)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor methods such as .ReaderInputStream(java.io.Reader) and variations\n- Other methods related to reading and encoding\n\nNext, I will retrieve the code snippet for the method `.setCharset(java.nio.charset.Charset)` to understand the implementation."
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m6"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m8"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m10"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m11"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m12"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m13"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m14"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m6",
+                    "m7"
+                ],
+                "response_message": "m15"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.io.input.ReaderInputStreamTest.testResetCharset()']` failed.\nThe test looks like:\n\n```java\n246 : @Test\n247 :     public void testResetCharset() {\n248 :         assertNotNull(ReaderInputStream.builder().setReader(new StringReader(\"\\uD800\")).setCharset((Charset) null).getCharset());\n249 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.io.input.ReaderInputStream$Builder.setCharset(ReaderInputStream.java:132)\n       org.apache.commons.io.input.ReaderInputStreamTest.testResetCharset(ReaderInputStreamTest.java:247)\n       java.base/java.lang.reflect.Method.invoke(Method.java:568)\n       java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.io.build\": [\"AbstractOrigin\", \"AbstractOriginSupplier\", \"AbstractStreamBuilder\", \"AbstractSupplier\"], \"org.apache.commons.io.file\": [\"PathUtils\"], \"org.apache.commons.io.input\": [\"ReaderInputStream\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test is covering the class `org.apache.commons.io.input.ReaderInputStream`. The method `setCharset` in the `ReaderInputStream` class is throwing a `NullPointerException`. Let's retrieve the code snippet for the `setCharset` method in the `ReaderInputStream` class. Start by calling the `get_code_snippet` function with the signature of the `setCharset` method in the `ReaderInputStream` class.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset\"}"
+                }
+            },
+            "m6": {
+                "role": "assistant",
+                "content": "The failing test covers the following classes:\n- org.apache.commons.io.build: AbstractOrigin, AbstractOriginSupplier, AbstractStreamBuilder, AbstractSupplier\n- org.apache.commons.io.file: PathUtils\n- org.apache.commons.io.input: ReaderInputStream\n\nNext, I will check which methods are covered by failing tests for the class `org.apache.commons.io.input.ReaderInputStream`.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.io.input.ReaderInputStream\"}"
+                }
+            },
+            "m7": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".get()\", \".getCharsetEncoder()\", \".setCharset(java.nio.charset.Charset)\", \".setCharsetEncoder(java.nio.charset.CharsetEncoder)\", \".builder()\", \".checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\", \".minBufferSize(java.nio.charset.CharsetEncoder)\", \".ReaderInputStream(java.io.Reader)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.Charset)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)\", \".ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)\", \".ReaderInputStream(java.io.Reader, java.lang.String)\", \".ReaderInputStream(java.io.Reader, java.lang.String, int)\", \".close()\", \".fillBuffer()\", \".getCharsetEncoder()\", \".read()\", \".read(byte[])\", \".read(byte[], int, int)\"]"
+            },
+            "m8": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- `.get()`\n- `.getCharsetEncoder()`\n- `.setCharset(java.nio.charset.Charset)`\n- `.setCharsetEncoder(java.nio.charset.CharsetEncoder)`\n- `.builder()`\n- `.checkMinBufferSize(java.nio.charset.CharsetEncoder, int)`\n- `.minBufferSize(java.nio.charset.CharsetEncoder)`\n- Constructor methods like `.ReaderInputStream(java.io.Reader)`\n- Reading methods like `.read()`, `.read(byte[])`, `.read(byte[], int, int)`, etc.\n\nLet's investigate the code snippet for the `setCharset(java.nio.charset.Charset)` method to understand the cause of the `NullPointerException`.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor methods: .ReaderInputStream(java.io.Reader), .ReaderInputStream(java.io.Reader, java.nio.charset.Charset), .ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int), .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder), .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int), .ReaderInputStream(java.io.Reader, java.lang.String), .ReaderInputStream(java.io.Reader, java.lang.String, int)\n- Other methods: .close(), .fillBuffer(), .read(), .read(byte[]), .read(byte[], int, int)\n\nLet's investigate the `setCharset(java.nio.charset.Charset)` method, which is called in the failing test. I will retrieve the code snippet for this method to understand what might be causing the `NullPointerException`.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m10": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor: .ReaderInputStream(java.io.Reader)\n- Constructor: .ReaderInputStream(java.io.Reader, java.nio.charset.Charset)\n- Constructor: .ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)\n- Constructor: .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)\n- Constructor: .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)\n- Constructor: .ReaderInputStream(java.io.Reader, java.lang.String)\n- Constructor: .ReaderInputStream(java.io.Reader, java.lang.String, int)\n- .close()\n- .fillBuffer()\n- .getCharsetEncoder()\n- .read()\n- .read(byte[])\n- .read(byte[], int, int)\n\nLet's examine the code for the `setCharset(java.nio.charset.Charset)` method in the `ReaderInputStream` class to understand the cause of the failure.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m11": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- .ReaderInputStream(java.io.Reader)\n- .ReaderInputStream(java.io.Reader, java.nio.charset.Charset)\n- .ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)\n- .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)\n- .ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)\n- .ReaderInputStream(java.io.Reader, java.lang.String)\n- .ReaderInputStream(java.io.Reader, java.lang.String, int)\n- .close()\n- .fillBuffer()\n- .getCharsetEncoder()\n- .read()\n- .read(byte[])\n- .read(byte[], int, int)\n\nLet's investigate the code snippet for the `.setCharset(java.nio.charset.Charset)` method in the `org.apache.commons.io.input.ReaderInputStream` class to understand why the test `testResetCharset()` is failing.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m12": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor overloads for ReaderInputStream\n- .close()\n- .fillBuffer()\n- .read()\n- .read(byte[])\n- .read(byte[], int, int)\n\nNow, let's take a look at the code snippet for the method `.setCharset(java.nio.charset.Charset)` in the `ReaderInputStream` class.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m13": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- get()\n- getCharsetEncoder()\n- setCharset(java.nio.charset.Charset)\n- setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- builder()\n- checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- minBufferSize(java.nio.charset.CharsetEncoder)\n- ReaderInputStream(java.io.Reader)\n- ReaderInputStream(java.io.Reader, java.nio.charset.Charset)\n- ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)\n- ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)\n- ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)\n- ReaderInputStream(java.io.Reader, java.lang.String)\n- ReaderInputStream(java.io.Reader, java.lang.String, int)\n- close()\n- fillBuffer()\n- read()\n- read(byte[])\n- read(byte[], int, int)\n\nI will now retrieve the code snippet for the method `setCharset(java.nio.charset.Charset)` to understand why it is causing a `NullPointerException`.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m14": {
+                "role": "assistant",
+                "content": "The failing test covers the following methods in the class `org.apache.commons.io.input.ReaderInputStream`:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor methods with various parameters\n- .close()\n- .fillBuffer()\n- .read()\n- .read(byte[])\n- .read(byte[], int, int)\n\nLet's take a look at the code snippet for the method `.setCharset(java.nio.charset.Charset)` to understand why the test `testResetCharset` is failing.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)\"}"
+                }
+            },
+            "m15": {
+                "role": "assistant",
+                "content": "The failing tests cover the following methods in the `org.apache.commons.io.input.ReaderInputStream` class:\n- .get()\n- .getCharsetEncoder()\n- .setCharset(java.nio.charset.Charset)\n- .setCharsetEncoder(java.nio.charset.CharsetEncoder)\n- .builder()\n- .checkMinBufferSize(java.nio.charset.CharsetEncoder, int)\n- .minBufferSize(java.nio.charset.CharsetEncoder)\n- Constructor methods such as .ReaderInputStream(java.io.Reader) and variations\n- Other methods related to reading and encoding\n\nNext, I will retrieve the code snippet for the method `.setCharset(java.nio.charset.Charset)` to understand the implementation."
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.io.build.AbstractOrigin.ByteArrayOrigin(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getByteArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getInputStream(java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getReader(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.CharSequenceOrigin(java.lang.CharSequence)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getCharSequence(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.FileOrigin(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getByteArray(long, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getFile()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getPath()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.InputStreamOrigin(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.OutputStreamOrigin(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getOutputStream(java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.getWriter(java.nio.charset.Charset, java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.PathOrigin(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.ReaderOrigin(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.URIOrigin(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.WriterOrigin(java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.AbstractOrigin(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.get()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOrigin.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newByteArrayOrigin(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newCharSequenceOrigin(java.lang.CharSequence)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newFileOrigin(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newFileOrigin(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newInputStreamOrigin(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newOutputStreamOrigin(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newPathOrigin(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newPathOrigin(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newReaderOrigin(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newURIOrigin(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.newWriterOrigin(java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.checkOrigin()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.getOrigin()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.hasOrigin()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setByteArray(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setCharSequence(java.lang.CharSequence)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setFile(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setFile(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setInputStream(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setOrigin(org.apache.commons.io.build.AbstractOrigin<?,?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setOutputStream(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setPath(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setPath(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setReader(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setURI(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractOriginSupplier.setWriter(java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getBufferSize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getBufferSizeDefault()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getCharSequence()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getCharset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getCharsetDefault()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getInputStream()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getOpenOptions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getOutputStream()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getPath()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.getWriter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setBufferSize(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setBufferSize(java.lang.Integer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setBufferSizeDefault(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setCharset(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setCharset(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setCharsetDefault(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractStreamBuilder.setOpenOptions(java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.build.AbstractSupplier.asThis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.RelativeSortedPaths(java.nio.file.Path, java.nio.file.Path, int, java.nio.file.LinkOption[], java.nio.file.FileVisitOption[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.accumulate(java.nio.file.Path, int, java.nio.file.FileVisitOption[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.cleanDirectory(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.cleanDirectory(java.nio.file.Path, org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.compareLastModifiedTimeTo(java.nio.file.Path, java.nio.file.attribute.FileTime, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.copy(org.apache.commons.io.function.IOSupplier<java.io.InputStream>, java.nio.file.Path, java.nio.file.CopyOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.copyDirectory(java.nio.file.Path, java.nio.file.Path, java.nio.file.CopyOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.copyFile(java.net.URL, java.nio.file.Path, java.nio.file.CopyOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.copyFileToDirectory(java.nio.file.Path, java.nio.file.Path, java.nio.file.CopyOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.copyFileToDirectory(java.net.URL, java.nio.file.Path, java.nio.file.CopyOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.countDirectory(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.countDirectoryAsBigInteger(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.createParentDirectories(java.nio.file.Path, java.nio.file.attribute.FileAttribute<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.createParentDirectories(java.nio.file.Path, java.nio.file.LinkOption, java.nio.file.attribute.FileAttribute<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.current()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.delete(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.delete(java.nio.file.Path, org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.delete(java.nio.file.Path, java.nio.file.LinkOption[], org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteDirectory(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteDirectory(java.nio.file.Path, org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteDirectory(java.nio.file.Path, java.nio.file.LinkOption[], org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteFile(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteFile(java.nio.file.Path, org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteFile(java.nio.file.Path, java.nio.file.LinkOption[], org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.deleteOnExit(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.directoryAndFileContentEquals(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.directoryAndFileContentEquals(java.nio.file.Path, java.nio.file.Path, java.nio.file.LinkOption[], java.nio.file.OpenOption[], java.nio.file.FileVisitOption[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.directoryContentEquals(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.directoryContentEquals(java.nio.file.Path, java.nio.file.Path, int, java.nio.file.LinkOption[], java.nio.file.FileVisitOption[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.exists(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.fileContentEquals(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.fileContentEquals(java.nio.file.Path, java.nio.file.Path, java.nio.file.LinkOption[], java.nio.file.OpenOption[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.filter(org.apache.commons.io.file.PathFilter, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.filterPaths(org.apache.commons.io.file.PathFilter, java.util.stream.Stream<java.nio.file.Path>, java.util.stream.Collector<? super java.nio.file.Path,A,R>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getAclEntryList(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getAclFileAttributeView(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getDosFileAttributeView(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedFileTime(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedFileTime(java.nio.file.Path, java.nio.file.attribute.FileTime, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedFileTime(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedFileTime(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedFileTime(java.net.URL)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getLastModifiedTime(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getParent(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getPosixFileAttributeView(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.getTempDirectory()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isDirectory(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isEmpty(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isEmptyDirectory(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isEmptyFile(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isNewer(java.nio.file.Path, java.time.chrono.ChronoZonedDateTime<?>, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isNewer(java.nio.file.Path, java.nio.file.attribute.FileTime, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isNewer(java.nio.file.Path, java.time.Instant, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isNewer(java.nio.file.Path, long, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isNewer(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isOlder(java.nio.file.Path, java.nio.file.attribute.FileTime, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isOlder(java.nio.file.Path, java.time.Instant, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isOlder(java.nio.file.Path, long, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isOlder(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isPosix(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.isRegularFile(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.newDirectoryStream(java.nio.file.Path, org.apache.commons.io.file.PathFilter)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.newOutputStream(java.nio.file.Path, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.newOutputStream(java.nio.file.Path, java.nio.file.LinkOption[], java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.noFollowLinkOptionArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.notExists(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.overrideReadOnly(org.apache.commons.io.file.DeleteOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readAttributes(java.nio.file.Path, java.lang.Class<A>, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readBasicFileAttributes(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readBasicFileAttributes(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readBasicFileAttributesUnchecked(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readDosFileAttributes(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readIfSymbolicLink(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readOsFileAttributes(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readPosixFileAttributes(java.nio.file.Path, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.readString(java.nio.file.Path, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.relativize(java.util.Collection<java.nio.file.Path>, java.nio.file.Path, boolean, java.util.Comparator<? super java.nio.file.Path>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.requireExists(java.nio.file.Path, java.lang.String, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setDosReadOnly(java.nio.file.Path, boolean, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setLastModifiedTime(java.nio.file.Path, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setPosixDeletePermissions(java.nio.file.Path, boolean, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setPosixPermissions(java.nio.file.Path, boolean, java.util.List<java.nio.file.attribute.PosixFilePermission>, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setPosixReadOnlyFile(java.nio.file.Path, boolean, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.setReadOnly(java.nio.file.Path, boolean, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.sizeOf(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.sizeOfAsBigInteger(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.sizeOfDirectory(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.sizeOfDirectoryAsBigInteger(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.toFileVisitOptionSet(java.nio.file.FileVisitOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.touch(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.visitFileTree(T, java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.visitFileTree(T, java.nio.file.Path, java.util.Set<java.nio.file.FileVisitOption>, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.visitFileTree(T, java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.visitFileTree(T, java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.waitFor(java.nio.file.Path, java.time.Duration, java.nio.file.LinkOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.walk(java.nio.file.Path, org.apache.commons.io.file.PathFilter, int, boolean, java.nio.file.FileVisitOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.withPosixFileAttributes(java.nio.file.Path, java.nio.file.LinkOption[], boolean, org.apache.commons.io.function.IOFunction<java.nio.file.attribute.PosixFileAttributes,R>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.writeString(java.nio.file.Path, java.lang.CharSequence, java.nio.charset.Charset, java.nio.file.OpenOption)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.file.PathUtils.PathUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.get()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.getCharsetEncoder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.io.input.ReaderInputStream.setCharset(java.nio.charset.Charset)"
+            ]
+        },
+        "org.apache.commons.io.input.ReaderInputStream.setCharsetEncoder(java.nio.charset.CharsetEncoder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.builder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.checkMinBufferSize(java.nio.charset.CharsetEncoder, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.minBufferSize(java.nio.charset.CharsetEncoder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.nio.charset.Charset, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.fillBuffer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.read()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.read(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.input.ReaderInputStream.read(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

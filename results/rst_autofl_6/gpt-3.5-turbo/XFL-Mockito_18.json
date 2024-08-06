@@ -1,0 +1,1261 @@
+{
+    "time": 1722934872.4026058,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValuesTest.should_return_empty_iterable()']` failed.\nThe test looks like:\n\n```java\n56 : @Test\n57 :     public void should_return_empty_iterable() throws Exception { // error occurred here\n58 :         assertFalse(((Iterable) values.returnValueFor(Iterable.class)).iterator().hasNext());\n59 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValuesTest.should_return_empty_iterable(ReturnsEmptyValuesTest.java:57)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.mockito.internal.progress\": [\"MockingProgressImpl\", \"ThreadSafeMockingProgress\", \"ArgumentMatcherStorageImpl\"], \"org.mockito.internal.stubbing.defaultanswers\": [\"ReturnsEmptyValues\"], \"org.mockito.internal.exceptions.stacktrace\": [\"DefaultStackTraceCleanerProvider\"], \"org.mockito.internal.util\": [\"Primitives\", \"ObjectMethodsGuru\", \"Checks\", \"MockUtil\"], \"org.mockito.internal.configuration.injection\": [\"PropertyAndSetterInjection\", \"MockInjection\", \"MockInjectionStrategy\", \"SpyOnInjectedFieldsHandler\", \"ConstructorInjection\"], \"org.mockito.internal.configuration\": [\"DefaultInjectionEngine\", \"DefaultAnnotationEngine\", \"InjectingAnnotationEngine\", \"GlobalConfiguration\", \"CaptorAnnotationProcessor\", \"ClassPathLoader\", \"SpyAnnotationEngine\", \"MockAnnotationProcessor\", \"MockitoAnnotationsMockAnnotationProcessor\"], \"org.mockito.internal.configuration.plugins\": [\"PluginRegistry\", \"PluginFinder\", \"PluginLoader\", \"DefaultPluginSwitch\", \"Plugins\"], \"org.mockito.internal.configuration.injection.scanner\": [\"MockScanner\", \"InjectMocksScanner\"], \"org.mockito.configuration\": [\"DefaultMockitoConfiguration\"], \"org.mockito.internal.util.collections\": [\"HashCodeAndEqualsSafeSet\", \"Sets\", \"Iterables\"], \"org.mockito.internal.configuration.injection.filter\": [\"NameBasedCandidateFilter\", \"TypeBasedCandidateFilter\", \"FinalMockCandidateFilter\"], \"org.mockito.exceptions\": [\"Reporter\"], \"org.mockito.internal.util.reflection\": [\"AccessibilityChanger\", \"FieldReader\"], \"org.mockito\": [\"MockitoAnnotations\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test covers classes mainly from the `org.mockito.internal` package. The specific class that contains the failing test is `org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues`. Next, I will retrieve the methods covered by failing tests for this class.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".answer(org.mockito.invocation.InvocationOnMock)\", \".returnValueFor(java.lang.Class<?>)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test covers the methods `answer(org.mockito.invocation.InvocationOnMock)` and `returnValueFor(java.lang.Class<?>)` in the `org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues` class. Now, I will retrieve the code snippets for these methods to analyze the cause of the failure. Let's start with the `answer` method.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"62 : public Object answer(InvocationOnMock invocation) {\\n63 :         if (methodsGuru.isToString(invocation.getMethod())) {\\n64 :             Object mock = invocation.getMock();\\n65 :             MockName name = mockUtil.getMockName(mock);\\n66 :             if (name.isDefault()) {\\n67 :                 return \\\"Mock for \\\" + mockUtil.getMockSettings(mock).getTypeToMock().getSimpleName() + \\\", hashCode: \\\" + mock.hashCode();\\n68 :             } else {\\n69 :                 return name.toString();\\n70 :             }\\n71 :         } else if (methodsGuru.isCompareToMethod(invocation.getMethod())) {\\n72 :             //see issue 184.\\n73 :             //mocks by default should return 0 if references are the same, otherwise some other value because they are not the same. Hence we return 1 (anything but 0 is good).\\n74 :             //Only for compareTo() method by the Comparable interface\\n75 :             return invocation.getMock() == invocation.getArguments()[0] ? 0 : 1;\\n76 :         }\\n77 :         \\n78 :         Class<?> returnType = invocation.getMethod().getReturnType();\\n79 :         return returnValueFor(returnType);\\n80 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `answer` method in the `ReturnsEmptyValues` class is responsible for handling different types of method invocations. It checks if the method is a `toString` method or a `compareTo` method and returns specific values accordingly. For other methods, it obtains the return type and delegates to the `returnValueFor` method. Now, I will retrieve the code snippet for the `returnValueFor` method.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\" 82 : Object returnValueFor(Class<?> type) {\\n 83 :         if (Primitives.isPrimitiveOrWrapper(type)) {\\n 84 :             return Primitives.defaultValueForPrimitiveOrWrapper(type);\\n 85 :             //new instances are used instead of Collections.emptyList(), etc.\\n 86 :             //to avoid UnsupportedOperationException if code under test modifies returned collection\\n 87 :         } else if (type == Collection.class) {\\n 88 :             return new LinkedList<Object>();\\n 89 :         } else if (type == Set.class) {\\n 90 :             return new HashSet<Object>();\\n 91 :         } else if (type == HashSet.class) {\\n 92 :             return new HashSet<Object>();\\n 93 :         } else if (type == SortedSet.class) {\\n 94 :             return new TreeSet<Object>();\\n 95 :         } else if (type == TreeSet.class) {\\n 96 :             return new TreeSet<Object>();\\n 97 :         } else if (type == LinkedHashSet.class) {\\n 98 :             return new LinkedHashSet<Object>();\\n 99 :         } else if (type == List.class) {\\n100 :             return new LinkedList<Object>();\\n101 :         } else if (type == LinkedList.class) {\\n102 :             return new LinkedList<Object>();\\n103 :         } else if (type == ArrayList.class) {\\n104 :             return new ArrayList<Object>();\\n105 :         } else if (type == Map.class) {\\n106 :             return new HashMap<Object, Object>();\\n107 :         } else if (type == HashMap.class) {\\n108 :             return new HashMap<Object, Object>();\\n109 :         } else if (type == SortedMap.class) {\\n110 :             return new TreeMap<Object, Object>();\\n111 :         } else if (type == TreeMap.class) {\\n112 :             return new TreeMap<Object, Object>();\\n113 :         } else if (type == LinkedHashMap.class) {\\n114 :             return new LinkedHashMap<Object, Object>();\\n115 :         }\\n116 :         //Let's not care about the rest of collections.\\n117 :         return null;\\n118 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `returnValueFor` method in the `ReturnsEmptyValues` class is responsible for returning empty instances of various collection types based on the given class type. It creates new instances of collection types like `LinkedList`, `HashSet`, `TreeSet`, etc., or their respective interfaces like `Set`, `List`, `Map`, etc.\n\nBased on the code snippets of the `answer` and `returnValueFor` methods, the failing test `should_return_empty_iterable` is likely failing due to a `NullPointerException` at line 57 where it attempts to call `values.returnValueFor(Iterable.class)` without handling the case where `returnValueFor` returns `null`. The test is expecting an empty iterable, but the `returnValueFor` method returns `null` when the type is not one of the supported collection types.\n\nTo fix the issue, a null check should be added in the `answer` method after invoking `returnValueFor` to ensure that the returned value is not null before using it in the test. This will prevent the `NullPointerException` and ensure that an empty iterable is returned as expected.\n\nNext, I will provide the methods that need to be fixed based on this diagnosis.\n```java\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)\n```"
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValuesTest.should_return_empty_iterable()']` failed.\nThe test looks like:\n\n```java\n56 : @Test\n57 :     public void should_return_empty_iterable() throws Exception { // error occurred here\n58 :         assertFalse(((Iterable) values.returnValueFor(Iterable.class)).iterator().hasNext());\n59 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValuesTest.should_return_empty_iterable(ReturnsEmptyValuesTest.java:57)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)\n\tat org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.mockito.internal.progress\": [\"MockingProgressImpl\", \"ThreadSafeMockingProgress\", \"ArgumentMatcherStorageImpl\"], \"org.mockito.internal.stubbing.defaultanswers\": [\"ReturnsEmptyValues\"], \"org.mockito.internal.exceptions.stacktrace\": [\"DefaultStackTraceCleanerProvider\"], \"org.mockito.internal.util\": [\"Primitives\", \"ObjectMethodsGuru\", \"Checks\", \"MockUtil\"], \"org.mockito.internal.configuration.injection\": [\"PropertyAndSetterInjection\", \"MockInjection\", \"MockInjectionStrategy\", \"SpyOnInjectedFieldsHandler\", \"ConstructorInjection\"], \"org.mockito.internal.configuration\": [\"DefaultInjectionEngine\", \"DefaultAnnotationEngine\", \"InjectingAnnotationEngine\", \"GlobalConfiguration\", \"CaptorAnnotationProcessor\", \"ClassPathLoader\", \"SpyAnnotationEngine\", \"MockAnnotationProcessor\", \"MockitoAnnotationsMockAnnotationProcessor\"], \"org.mockito.internal.configuration.plugins\": [\"PluginRegistry\", \"PluginFinder\", \"PluginLoader\", \"DefaultPluginSwitch\", \"Plugins\"], \"org.mockito.internal.configuration.injection.scanner\": [\"MockScanner\", \"InjectMocksScanner\"], \"org.mockito.configuration\": [\"DefaultMockitoConfiguration\"], \"org.mockito.internal.util.collections\": [\"HashCodeAndEqualsSafeSet\", \"Sets\", \"Iterables\"], \"org.mockito.internal.configuration.injection.filter\": [\"NameBasedCandidateFilter\", \"TypeBasedCandidateFilter\", \"FinalMockCandidateFilter\"], \"org.mockito.exceptions\": [\"Reporter\"], \"org.mockito.internal.util.reflection\": [\"AccessibilityChanger\", \"FieldReader\"], \"org.mockito\": [\"MockitoAnnotations\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test covers classes mainly from the `org.mockito.internal` package. The specific class that contains the failing test is `org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues`. Next, I will retrieve the methods covered by failing tests for this class.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".answer(org.mockito.invocation.InvocationOnMock)\", \".returnValueFor(java.lang.Class<?>)\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The failing test covers the methods `answer(org.mockito.invocation.InvocationOnMock)` and `returnValueFor(java.lang.Class<?>)` in the `org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues` class. Now, I will retrieve the code snippets for these methods to analyze the cause of the failure. Let's start with the `answer` method.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"62 : public Object answer(InvocationOnMock invocation) {\\n63 :         if (methodsGuru.isToString(invocation.getMethod())) {\\n64 :             Object mock = invocation.getMock();\\n65 :             MockName name = mockUtil.getMockName(mock);\\n66 :             if (name.isDefault()) {\\n67 :                 return \\\"Mock for \\\" + mockUtil.getMockSettings(mock).getTypeToMock().getSimpleName() + \\\", hashCode: \\\" + mock.hashCode();\\n68 :             } else {\\n69 :                 return name.toString();\\n70 :             }\\n71 :         } else if (methodsGuru.isCompareToMethod(invocation.getMethod())) {\\n72 :             //see issue 184.\\n73 :             //mocks by default should return 0 if references are the same, otherwise some other value because they are not the same. Hence we return 1 (anything but 0 is good).\\n74 :             //Only for compareTo() method by the Comparable interface\\n75 :             return invocation.getMock() == invocation.getArguments()[0] ? 0 : 1;\\n76 :         }\\n77 :         \\n78 :         Class<?> returnType = invocation.getMethod().getReturnType();\\n79 :         return returnValueFor(returnType);\\n80 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `answer` method in the `ReturnsEmptyValues` class is responsible for handling different types of method invocations. It checks if the method is a `toString` method or a `compareTo` method and returns specific values accordingly. For other methods, it obtains the return type and delegates to the `returnValueFor` method. Now, I will retrieve the code snippet for the `returnValueFor` method.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)\"}"
+                }
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\" 82 : Object returnValueFor(Class<?> type) {\\n 83 :         if (Primitives.isPrimitiveOrWrapper(type)) {\\n 84 :             return Primitives.defaultValueForPrimitiveOrWrapper(type);\\n 85 :             //new instances are used instead of Collections.emptyList(), etc.\\n 86 :             //to avoid UnsupportedOperationException if code under test modifies returned collection\\n 87 :         } else if (type == Collection.class) {\\n 88 :             return new LinkedList<Object>();\\n 89 :         } else if (type == Set.class) {\\n 90 :             return new HashSet<Object>();\\n 91 :         } else if (type == HashSet.class) {\\n 92 :             return new HashSet<Object>();\\n 93 :         } else if (type == SortedSet.class) {\\n 94 :             return new TreeSet<Object>();\\n 95 :         } else if (type == TreeSet.class) {\\n 96 :             return new TreeSet<Object>();\\n 97 :         } else if (type == LinkedHashSet.class) {\\n 98 :             return new LinkedHashSet<Object>();\\n 99 :         } else if (type == List.class) {\\n100 :             return new LinkedList<Object>();\\n101 :         } else if (type == LinkedList.class) {\\n102 :             return new LinkedList<Object>();\\n103 :         } else if (type == ArrayList.class) {\\n104 :             return new ArrayList<Object>();\\n105 :         } else if (type == Map.class) {\\n106 :             return new HashMap<Object, Object>();\\n107 :         } else if (type == HashMap.class) {\\n108 :             return new HashMap<Object, Object>();\\n109 :         } else if (type == SortedMap.class) {\\n110 :             return new TreeMap<Object, Object>();\\n111 :         } else if (type == TreeMap.class) {\\n112 :             return new TreeMap<Object, Object>();\\n113 :         } else if (type == LinkedHashMap.class) {\\n114 :             return new LinkedHashMap<Object, Object>();\\n115 :         }\\n116 :         //Let's not care about the rest of collections.\\n117 :         return null;\\n118 :     }\""
+            },
+            "m11": {
+                "role": "assistant",
+                "content": "The `returnValueFor` method in the `ReturnsEmptyValues` class is responsible for returning empty instances of various collection types based on the given class type. It creates new instances of collection types like `LinkedList`, `HashSet`, `TreeSet`, etc., or their respective interfaces like `Set`, `List`, `Map`, etc.\n\nBased on the code snippets of the `answer` and `returnValueFor` methods, the failing test `should_return_empty_iterable` is likely failing due to a `NullPointerException` at line 57 where it attempts to call `values.returnValueFor(Iterable.class)` without handling the case where `returnValueFor` returns `null`. The test is expecting an empty iterable, but the `returnValueFor` method returns `null` when the type is not one of the supported collection types.\n\nTo fix the issue, a null check should be added in the `answer` method after invoking `returnValueFor` to ensure that the returned value is not null before using it in the test. This will prevent the `NullPointerException` and ensure that an empty iterable is returned as expected.\n\nNext, I will provide the methods that need to be fixed based on this diagnosis.\n```java\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)\norg.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)\n```"
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.mockito.MockitoAnnotations.initMocks(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.MockitoAnnotations.scanDeprecatedWay(org.mockito.configuration.AnnotationEngine, java.lang.Object, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.MockitoAnnotations.processAnnotationDeprecatedWay(org.mockito.configuration.AnnotationEngine, java.lang.Object, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.MockitoAnnotations.throwIfAlreadyAssigned(java.lang.reflect.Field, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.configuration.DefaultMockitoConfiguration.getReturnValues()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.configuration.DefaultMockitoConfiguration.getDefaultAnswer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.configuration.DefaultMockitoConfiguration.getAnnotationEngine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.configuration.DefaultMockitoConfiguration.cleansStackTrace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.configuration.DefaultMockitoConfiguration.enableClassCache()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.checkedExceptionInvalid(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotStubWithNullThrowable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.unfinishedStubbing(org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.incorrectUseOfApi()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.missingMethodInvocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.unfinishedVerificationException(org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.notAMockPassedToVerify(java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.nullPassedToVerify()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.notAMockPassedToWhenMethod()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.nullPassedToWhenMethod()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.mocksHaveToBePassedToVerifyNoMoreInteractions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.notAMockPassedToVerifyNoMoreInteractions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.nullPassedToVerifyNoMoreInteractions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.notAMockPassedWhenCreatingInOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.nullPassedWhenCreatingInOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.mocksHaveToBePassedWhenCreatingInOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.inOrderRequiresFamiliarMock()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invalidUseOfMatchers(int, java.util.List<org.mockito.internal.matchers.LocalizedMatcher>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.incorrectUseOfAdditionalMatchers(java.lang.String, int, java.util.Collection<org.mockito.internal.matchers.LocalizedMatcher>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.stubPassedToVerify()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.reportNoSubMatchersFound(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.locationsOf(java.util.Collection<org.mockito.internal.matchers.LocalizedMatcher>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.argumentsAreDifferent(java.lang.String, java.lang.String, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wantedButNotInvoked(org.mockito.invocation.DescribedInvocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wantedButNotInvoked(org.mockito.invocation.DescribedInvocation, java.util.List<? extends org.mockito.invocation.DescribedInvocation>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.createWantedButNotInvokedMessage(org.mockito.invocation.DescribedInvocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wantedButNotInvokedInOrder(org.mockito.invocation.DescribedInvocation, org.mockito.invocation.DescribedInvocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.tooManyActualInvocations(int, int, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.createTooManyInvocationsMessage(int, int, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.neverWantedButInvoked(org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.tooManyActualInvocationsInOrder(int, int, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.createTooLittleInvocationsMessage(org.mockito.internal.reporting.Discrepancy, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.tooLittleActualInvocations(org.mockito.internal.reporting.Discrepancy, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.tooLittleActualInvocationsInOrder(org.mockito.internal.reporting.Discrepancy, org.mockito.invocation.DescribedInvocation, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.noMoreInteractionsWanted(org.mockito.invocation.Invocation, java.util.List<org.mockito.internal.exceptions.VerificationAwareInvocation>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.noMoreInteractionsWantedInOrder(org.mockito.invocation.Invocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotMockFinalClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotStubVoidMethodWithAReturnValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.onlyVoidMethodsCanBeSetToDoNothing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wrongTypeOfReturnValue(java.lang.String, java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wrongTypeReturnedByDefaultAnswer(java.lang.Object, java.lang.String, java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wantedAtMostX(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.misplacedArgumentMatcher(java.util.List<org.mockito.internal.matchers.LocalizedMatcher>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.smartNullPointerException(java.lang.String, org.mockito.invocation.Location)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.noArgumentValueWasCaptured()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.extraInterfacesDoesNotAcceptNullParameters()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.extraInterfacesAcceptsOnlyInterfaces(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.extraInterfacesCannotContainMockedType(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.extraInterfacesRequiresAtLeastOneInterface()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.mockedTypeIsInconsistentWithSpiedInstanceType(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotCallAbstractRealMethod()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotVerifyToString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.moreThanOneAnnotationNotAllowed(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.unsupportedCombinationOfAnnotations(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotInitializeForSpyAnnotation(java.lang.String, java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotInitializeForInjectMocksAnnotation(java.lang.String, java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.atMostAndNeverShouldNotBeUsedWithTimeout()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.fieldInitialisationThrewException(java.lang.reflect.Field, java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invocationListenerDoesNotAcceptNullParameters()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invocationListenersRequiresAtLeastOneListener()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invocationListenerThrewException(org.mockito.listeners.InvocationListener, java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotInjectDependency(java.lang.reflect.Field, java.lang.Object, java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.exceptionCauseMessageIfAvailable(java.lang.Exception)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.mockedTypeIsInconsistentWithDelegatedInstanceType(java.lang.Class, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.spyAndDelegateAreMutuallyExclusive()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invalidArgumentRangeAtIdentityAnswerCreationTime()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.invalidArgumentPositionRangeAtInvocationTime(org.mockito.invocation.InvocationOnMock, boolean, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.possibleArgumentTypesOf(org.mockito.invocation.InvocationOnMock)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.wrongTypeOfArgumentToReturn(org.mockito.invocation.InvocationOnMock, java.lang.String, java.lang.Class, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.defaultAnswerDoesNotAcceptNullParameter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.serializableWontWorkForObjectsThatDontImplementSerializable(java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.delegatedMethodHasWrongReturnType(java.lang.reflect.Method, java.lang.reflect.Method, java.lang.Object, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.delegatedMethodDoesNotExistOnDelegate(java.lang.reflect.Method, java.lang.Object, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.usingConstructorWithFancySerializable(org.mockito.mock.SerializableMode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.cannotCreateTimerWithNegativeDurationTime(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.exceptions.Reporter.safelyGetMockName(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.CaptorAnnotationProcessor.process(org.mockito.Captor, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.ClassPathLoader.loadConfiguration()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.DefaultAnnotationEngine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.createMockFor(java.lang.annotation.Annotation, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.forAnnotation(A)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.process(A, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.registerAnnotationProcessor(java.lang.Class<A>, org.mockito.internal.configuration.FieldAnnotationProcessor<A>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.process(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultAnnotationEngine.throwIfAlreadyAssigned(java.lang.reflect.Field, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.DefaultInjectionEngine.injectMocksOnFields(java.util.Set<java.lang.reflect.Field>, java.util.Set<java.lang.Object>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.getIt()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.GlobalConfiguration()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.createConfig()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.validate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.getReturnValues()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.getAnnotationEngine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.cleansStackTrace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.enableClassCache()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.GlobalConfiguration.getDefaultAnswer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.InjectingAnnotationEngine.createMockFor(java.lang.annotation.Annotation, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.InjectingAnnotationEngine.process(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.InjectingAnnotationEngine.processInjectMocks(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.InjectingAnnotationEngine.injectMocks(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.MockAnnotationProcessor.process(org.mockito.Mock, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.MockitoAnnotationsMockAnnotationProcessor.process(org.mockito.MockitoAnnotations.Mock, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.SpyAnnotationEngine.createMockFor(java.lang.annotation.Annotation, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.SpyAnnotationEngine.process(java.lang.Class<?>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.SpyAnnotationEngine.assertNotInterface(java.lang.Object, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.SpyAnnotationEngine.newSpyInstance(java.lang.Object, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.SpyAnnotationEngine.assertNoIncompatibleAnnotations(java.lang.Class, java.lang.reflect.Field, java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.ConstructorInjection()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.ConstructorInjection(org.mockito.internal.util.reflection.FieldInitializer.ConstructorArgumentResolver)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.processInjection(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.SimpleArgumentResolver(java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.resolveTypeInstances(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.ConstructorInjection.objectThatIsAssignableFrom(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.onField(java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.onFields(java.util.Set<java.lang.reflect.Field>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.OngoingMockInjection(java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.OngoingMockInjection(java.util.Set<java.lang.reflect.Field>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.withMocks(java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.tryConstructorInjection()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.tryPropertyOrFieldInjection()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.handleSpyAnnotation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjection.apply()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjectionStrategy.nop()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjectionStrategy.processInjection(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjectionStrategy.thenTry(org.mockito.internal.configuration.injection.MockInjectionStrategy)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjectionStrategy.process(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.MockInjectionStrategy.relayProcessToNextStrategy(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.isOut(java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.processInjection(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.initializeInjectMocksField(java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.injectMockCandidates(java.lang.Class<?>, java.util.Set<java.lang.Object>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.injectMockCandidatesOnFields(java.util.Set<java.lang.Object>, java.lang.Object, boolean, java.util.List<java.lang.reflect.Field>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.PropertyAndSetterInjection.orderedInstanceFieldsFrom(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.SpyOnInjectedFieldsHandler.processInjection(java.lang.reflect.Field, java.lang.Object, java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.FinalMockCandidateFilter.filterCandidate(java.util.Collection<java.lang.Object>, java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.FinalMockCandidateFilter.thenInject()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter.NameBasedCandidateFilter(org.mockito.internal.configuration.injection.filter.MockCandidateFilter)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter.filterCandidate(java.util.Collection<java.lang.Object>, java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.TypeBasedCandidateFilter.TypeBasedCandidateFilter(org.mockito.internal.configuration.injection.filter.MockCandidateFilter)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.filter.TypeBasedCandidateFilter.filterCandidate(java.util.Collection<java.lang.Object>, java.lang.reflect.Field, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.InjectMocksScanner(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.addTo(java.util.Set<java.lang.reflect.Field>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.scan()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.InjectMocksScanner.assertNoAnnotations(java.lang.reflect.Field, java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.MockScanner(java.lang.Object, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.addPreparedMocks(java.util.Set<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.scan()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.preparedMock(java.lang.Object, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.isAnnotatedByMockOrSpy(java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.injection.scanner.MockScanner.isMockOrSpy(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.DefaultPluginSwitch.isEnabled(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginFinder.PluginFinder(org.mockito.plugins.PluginSwitch)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginFinder.findPluginClass(java.lang.Iterable<java.net.URL>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginLoader.PluginLoader(org.mockito.plugins.PluginSwitch)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginLoader.loadPlugin(java.lang.Class<T>, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginLoader.loadImpl(java.lang.Class<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginRegistry.getStackTraceCleanerProvider()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.PluginRegistry.getMockMaker()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.Plugins.getStackTraceCleanerProvider()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.configuration.plugins.Plugins.getMockMaker()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider.getStackTraceCleaner(org.mockito.exceptions.stacktrace.StackTraceCleaner)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.reportMatcher(Matcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.pullLocalizedMatchers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.reportAnd()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.reportOr()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.reportNot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.assertStateFor(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.popLastArgumentMatchers(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.assertMatchersFoundFor(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.assertIncorrectUseOfAdditionalMatchers(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.validateState()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ArgumentMatcherStorageImpl.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.reportOngoingStubbing(org.mockito.internal.progress.IOngoingStubbing)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.pullOngoingStubbing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.verificationStarted(org.mockito.verification.VerificationMode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.resetOngoingStubbing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.pullVerificationMode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.stubbingStarted()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.validateState()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.validateMostStuff()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.stubbingCompleted(org.mockito.invocation.Invocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.getArgumentMatcherStorage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.mockingStarted(java.lang.Object, java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.MockingProgressImpl.setListener(org.mockito.internal.listeners.MockingProgressListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.threadSafely()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.reportOngoingStubbing(org.mockito.internal.progress.IOngoingStubbing)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.pullOngoingStubbing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.verificationStarted(org.mockito.verification.VerificationMode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.pullVerificationMode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.stubbingStarted()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.validateState()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.stubbingCompleted(org.mockito.invocation.Invocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.resetOngoingStubbing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.getArgumentMatcherStorage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.mockingStarted(java.lang.Object, java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.progress.ThreadSafeMockingProgress.setListener(org.mockito.internal.listeners.MockingProgressListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)"
+            ]
+        },
+        "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)"
+            ]
+        },
+        "org.mockito.internal.util.Checks.checkNotNull(T, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.Checks.checkItemsNotNull(T, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.isTypeMockable(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.createMock(org.mockito.mock.MockCreationSettings<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.resetMock(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.getMockHandler(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.isMock(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.isSpy(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.isMockitoMock(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.getMockName(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.maybeRedefineMockName(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.MockUtil.getMockSettings(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.ObjectMethodsGuru.isToString(java.lang.reflect.Method)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.ObjectMethodsGuru.isToString(org.mockito.internal.invocation.MockitoMethod)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.ObjectMethodsGuru.isEqualsMethod(java.lang.reflect.Method)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.ObjectMethodsGuru.isHashCodeMethod(java.lang.reflect.Method)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.ObjectMethodsGuru.isCompareToMethod(java.lang.reflect.Method)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.Primitives.primitiveTypeOf(java.lang.Class<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.Primitives.isPrimitiveOrWrapper(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.Primitives.defaultValueForPrimitiveOrWrapper(java.lang.Class<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.hasNext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.next()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.contains(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.add(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.remove(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.toArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.unwrapTo(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.toArray(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.removeAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.containsAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.addAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.retainAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.asWrappedMocks(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.of(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.HashCodeAndEqualsSafeSet.of(java.lang.Iterable<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.Iterables.toIterable(java.util.Enumeration<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.Sets.newMockSafeHashSet(java.lang.Iterable<java.lang.Object>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.Sets.newMockSafeHashSet(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.Sets.newIdentitySet()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.collections.Sets.newSet(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.reflection.AccessibilityChanger.safelyDisableAccess(java.lang.reflect.AccessibleObject)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.reflection.AccessibilityChanger.enableAccess(java.lang.reflect.AccessibleObject)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.reflection.FieldReader.FieldReader(java.lang.Object, java.lang.reflect.Field)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.reflection.FieldReader.isNull()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.mockito.internal.util.reflection.FieldReader.read()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}
