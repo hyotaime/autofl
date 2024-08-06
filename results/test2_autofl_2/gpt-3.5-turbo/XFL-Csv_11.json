@@ -1,0 +1,598 @@
+{
+    "time": 1722793555.526195,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull()']` failed.\nThe test looks like:\n\n```java\n668 : @Test\n669 :     public void testHeaderMissingWithNull() throws Exception {\n670 :         final Reader in = new StringReader(\"a,,c,,d\\n1,2,3,4\\nx,y,z,zz\"); // error occurred here\n671 :         CSVFormat.DEFAULT.withHeader().withNullString(\"\").withIgnoreEmptyHeaders(true).parse(in).iterator();\n672 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.csv.CSVParser.initializeHeader(CSVParser.java:384)\n\tat org.apache.commons.csv.CSVParser.<init>(CSVParser.java:250)\n\tat org.apache.commons.csv.CSVFormat.parse(CSVFormat.java:611)\n\tat org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull(CSVParserTest.java:670)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.csv\": [\"CSVRecord\", \"CSVParser\", \"ExtendedBufferedReader\", \"CSVFormat\", \"Assertions\", \"Lexer\", \"Token\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull()` covers classes `CSVRecord`, `CSVParser`, `ExtendedBufferedReader`, `CSVFormat`, `Assertions`, `Lexer`, and `Token` from the `org.apache.commons.csv` package. \n\nNext, let's retrieve the list of methods covered by failing tests for the `CSVParser` class to understand the flow. I will call the `get_failing_tests_covered_methods_for_class` function with the class name `org.apache.commons.csv.CSVParser`.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.csv.CSVParser\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".parse(java.io.File, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)\", \".parse(java.lang.String, org.apache.commons.csv.CSVFormat)\", \".parse(java.net.URL, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)\", \".CSVParser(java.io.Reader, org.apache.commons.csv.CSVFormat)\", \".addRecordValue()\", \".close()\", \".getCurrentLineNumber()\", \".getHeaderMap()\", \".getRecordNumber()\", \".getRecords()\", \".getRecords(T)\", \".initializeHeader()\", \".isClosed()\", \".iterator()\", \".getNextRecord()\", \".hasNext()\", \".next()\", \".remove()\", \".nextRecord()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The `CSVParser` class has several methods covered by failing tests. The `initializeHeader()` method is one of them, which is involved in the test failure. \n\nLet's retrieve the code snippet for the `initializeHeader()` method to analyze the potential issue. I'll use the `get_code_snippet` function for that.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.csv.CSVParser.initializeHeader()\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"359 : private Map<String, Integer> initializeHeader() throws IOException {\\n360 :         Map<String, Integer> hdrMap = null;\\n361 :         final String[] formatHeader = this.format.getHeader();\\n362 :         if (formatHeader != null) {\\n363 :             hdrMap = new LinkedHashMap<String, Integer>();\\n364 : \\n365 :             String[] headerRecord = null;\\n366 :             if (formatHeader.length == 0) {\\n367 :                 // read the header from the first line of the file\\n368 :                 final CSVRecord nextRecord = this.nextRecord();\\n369 :                 if (nextRecord != null) {\\n370 :                     headerRecord = nextRecord.values();\\n371 :                 }\\n372 :             } else {\\n373 :                 if (this.format.getSkipHeaderRecord()) {\\n374 :                     this.nextRecord();\\n375 :                 }\\n376 :                 headerRecord = formatHeader;\\n377 :             }\\n378 : \\n379 :             // build the name to index mappings\\n380 :             if (headerRecord != null) {\\n381 :                 for (int i = 0; i < headerRecord.length; i++) {\\n382 :                     final String header = headerRecord[i];\\n383 :                     final boolean containsHeader = hdrMap.containsKey(header);\\n384 :                     final boolean emptyHeader = header.trim().isEmpty();\\n385 :                     if (containsHeader && (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {\\n386 :                         throw new IllegalArgumentException(\\\"The header contains a duplicate name: \\\\\\\"\\\" + header +\\n387 :                                 \\\"\\\\\\\" in \\\" + Arrays.toString(headerRecord));\\n388 :                     }\\n389 :                     hdrMap.put(header, Integer.valueOf(i));\\n390 :                 }\\n391 :             }\\n392 :         }\\n393 :         return hdrMap;\\n394 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `initializeHeader()` method in the `CSVParser` class is responsible for initializing the header map based on the header information provided. It checks for duplicate headers and handles empty headers based on the CSV format settings.\n\nNext, let's analyze the test logic and the error message to understand why the test `testHeaderMissingWithNull()` failed. We can see that the error occurred in the `initializeHeader()` method at line 384 of the CSVParser.\n\nFrom the test code snippet provided, we can infer that the error may have been caused by a `NullPointerException` in the `initializeHeader()` method, possibly due to a header being null or empty. \n\nTo address this issue, we may need to handle null or empty headers properly in the `initializeHeader()` method to avoid the `NullPointerException`.\n\nNow, let's suggest the methods that need to be fixed based on this analysis.\nThe method that needs to be fixed is:\n\n```\norg.apache.commons.csv.CSVParser.initializeHeader()\n```"
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.csv.CSVParser.initializeHeader()\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull()']` failed.\nThe test looks like:\n\n```java\n668 : @Test\n669 :     public void testHeaderMissingWithNull() throws Exception {\n670 :         final Reader in = new StringReader(\"a,,c,,d\\n1,2,3,4\\nx,y,z,zz\"); // error occurred here\n671 :         CSVFormat.DEFAULT.withHeader().withNullString(\"\").withIgnoreEmptyHeaders(true).parse(in).iterator();\n672 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.csv.CSVParser.initializeHeader(CSVParser.java:384)\n\tat org.apache.commons.csv.CSVParser.<init>(CSVParser.java:250)\n\tat org.apache.commons.csv.CSVFormat.parse(CSVFormat.java:611)\n\tat org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull(CSVParserTest.java:670)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.csv\": [\"CSVRecord\", \"CSVParser\", \"ExtendedBufferedReader\", \"CSVFormat\", \"Assertions\", \"Lexer\", \"Token\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `org.apache.commons.csv.CSVParserTest.testHeaderMissingWithNull()` covers classes `CSVRecord`, `CSVParser`, `ExtendedBufferedReader`, `CSVFormat`, `Assertions`, `Lexer`, and `Token` from the `org.apache.commons.csv` package. \n\nNext, let's retrieve the list of methods covered by failing tests for the `CSVParser` class to understand the flow. I will call the `get_failing_tests_covered_methods_for_class` function with the class name `org.apache.commons.csv.CSVParser`.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.csv.CSVParser\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".parse(java.io.File, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)\", \".parse(java.lang.String, org.apache.commons.csv.CSVFormat)\", \".parse(java.net.URL, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)\", \".CSVParser(java.io.Reader, org.apache.commons.csv.CSVFormat)\", \".addRecordValue()\", \".close()\", \".getCurrentLineNumber()\", \".getHeaderMap()\", \".getRecordNumber()\", \".getRecords()\", \".getRecords(T)\", \".initializeHeader()\", \".isClosed()\", \".iterator()\", \".getNextRecord()\", \".hasNext()\", \".next()\", \".remove()\", \".nextRecord()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The `CSVParser` class has several methods covered by failing tests. The `initializeHeader()` method is one of them, which is involved in the test failure. \n\nLet's retrieve the code snippet for the `initializeHeader()` method to analyze the potential issue. I'll use the `get_code_snippet` function for that.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.csv.CSVParser.initializeHeader()\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"359 : private Map<String, Integer> initializeHeader() throws IOException {\\n360 :         Map<String, Integer> hdrMap = null;\\n361 :         final String[] formatHeader = this.format.getHeader();\\n362 :         if (formatHeader != null) {\\n363 :             hdrMap = new LinkedHashMap<String, Integer>();\\n364 : \\n365 :             String[] headerRecord = null;\\n366 :             if (formatHeader.length == 0) {\\n367 :                 // read the header from the first line of the file\\n368 :                 final CSVRecord nextRecord = this.nextRecord();\\n369 :                 if (nextRecord != null) {\\n370 :                     headerRecord = nextRecord.values();\\n371 :                 }\\n372 :             } else {\\n373 :                 if (this.format.getSkipHeaderRecord()) {\\n374 :                     this.nextRecord();\\n375 :                 }\\n376 :                 headerRecord = formatHeader;\\n377 :             }\\n378 : \\n379 :             // build the name to index mappings\\n380 :             if (headerRecord != null) {\\n381 :                 for (int i = 0; i < headerRecord.length; i++) {\\n382 :                     final String header = headerRecord[i];\\n383 :                     final boolean containsHeader = hdrMap.containsKey(header);\\n384 :                     final boolean emptyHeader = header.trim().isEmpty();\\n385 :                     if (containsHeader && (!emptyHeader || (emptyHeader && !this.format.getIgnoreEmptyHeaders()))) {\\n386 :                         throw new IllegalArgumentException(\\\"The header contains a duplicate name: \\\\\\\"\\\" + header +\\n387 :                                 \\\"\\\\\\\" in \\\" + Arrays.toString(headerRecord));\\n388 :                     }\\n389 :                     hdrMap.put(header, Integer.valueOf(i));\\n390 :                 }\\n391 :             }\\n392 :         }\\n393 :         return hdrMap;\\n394 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `initializeHeader()` method in the `CSVParser` class is responsible for initializing the header map based on the header information provided. It checks for duplicate headers and handles empty headers based on the CSV format settings.\n\nNext, let's analyze the test logic and the error message to understand why the test `testHeaderMissingWithNull()` failed. We can see that the error occurred in the `initializeHeader()` method at line 384 of the CSVParser.\n\nFrom the test code snippet provided, we can infer that the error may have been caused by a `NullPointerException` in the `initializeHeader()` method, possibly due to a header being null or empty. \n\nTo address this issue, we may need to handle null or empty headers properly in the `initializeHeader()` method to avoid the `NullPointerException`.\n\nNow, let's suggest the methods that need to be fixed based on this analysis.\nThe method that needs to be fixed is:\n\n```\norg.apache.commons.csv.CSVParser.initializeHeader()\n```"
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.csv.Assertions.Assertions()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Assertions.notNull(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isLineBreak(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isLineBreak(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.newFormat(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.CSVFormat(char, java.lang.Character, org.apache.commons.csv.Quote, java.lang.Character, java.lang.Character, boolean, boolean, java.lang.String, java.lang.String, java.lang.String[], boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.format(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getCommentStart()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getDelimiter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getEscape()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getHeader()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getIgnoreEmptyHeaders()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getIgnoreEmptyLines()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getIgnoreSurroundingSpaces()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getNullString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getQuoteChar()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getQuotePolicy()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getRecordSeparator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.getSkipHeaderRecord()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isCommentingEnabled()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isEscaping()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isNullHandling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.isQuoting()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.parse(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.print(java.lang.Appendable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.validate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withCommentStart(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withCommentStart(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withDelimiter(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withEscape(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withEscape(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withHeader(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withIgnoreEmptyHeaders(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withIgnoreEmptyLines(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withIgnoreSurroundingSpaces(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withNullString(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withQuoteChar(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withQuoteChar(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withQuotePolicy(org.apache.commons.csv.Quote)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withRecordSeparator(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withRecordSeparator(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVFormat.withSkipHeaderRecord(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.parse(java.io.File, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.parse(java.lang.String, org.apache.commons.csv.CSVFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.parse(java.net.URL, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.CSVParser(java.io.Reader, org.apache.commons.csv.CSVFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.addRecordValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getCurrentLineNumber()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getHeaderMap()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getRecordNumber()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getRecords()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getRecords(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.initializeHeader()": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.csv.CSVParser.initializeHeader()"
+            ]
+        },
+        "org.apache.commons.csv.CSVParser.isClosed()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.getNextRecord()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.hasNext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.next()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVParser.nextRecord()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.CSVRecord(java.lang.String[], java.util.Map<java.lang.String,java.lang.Integer>, java.lang.String, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.get(java.lang.Enum<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.get(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.get(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.getComment()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.getRecordNumber()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.isConsistent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.isMapped(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.isSet(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.putIn(M)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.toList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.toMap()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.CSVRecord.values()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.ExtendedBufferedReader(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.read()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.getLastChar()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.read(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.readLine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.lookAhead()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.getCurrentLineNumber()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.isClosed()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.ExtendedBufferedReader.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.Lexer(org.apache.commons.csv.CSVFormat, org.apache.commons.csv.ExtendedBufferedReader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.nextToken(org.apache.commons.csv.Token)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.parseSimpleToken(org.apache.commons.csv.Token, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.parseEncapsulatedToken(org.apache.commons.csv.Token)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.mapNullToDisabled(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.getCurrentLineNumber()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.readEscape()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.trimTrailingSpaces(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.readEndOfLine(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isClosed()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isWhitespace(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isStartOfLine(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isEndOfFile(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isDelimiter(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isEscape(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isQuoteChar(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isCommentStart(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.isMetaChar(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Lexer.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Token.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.csv.Token.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

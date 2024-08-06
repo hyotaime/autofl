@@ -1,0 +1,2779 @@
+{
+    "time": 1722794735.93372,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()']` failed.\nThe test looks like:\n\n```java\n1035 : public void testRemoveRangeMarker() {\n1036 :     \tXYPlot plot = new XYPlot();\n1037 :     \tassertFalse(plot.removeRangeMarker(new ValueMarker(0.5))); // error occurred here\n1038 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2529)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2498)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2481)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2465)\n\tat org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker(XYPlotTests.java:1037)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.jfree.chart.event\": [\"MarkerChangeEvent\", \"PlotChangeEvent\", \"ChartChangeEventType\", \"ChartChangeEvent\"], \"org.jfree.chart.util\": [\"RectangleInsets\", \"ObjectList\", \"RectangleAnchor\", \"LengthAdjustmentType\", \"UnitType\", \"SortOrder\", \"AbstractObjectList\", \"Layer\"], \"org.jfree.chart.plot\": [\"DefaultDrawingSupplier\", \"Marker\", \"CategoryMarker\", \"CategoryPlot\", \"SeriesRenderingOrder\", \"Plot\", \"XYPlot\", \"DatasetRenderingOrder\", \"ValueMarker\", \"PlotOrientation\"], \"org.jfree.chart.axis\": [\"CategoryAnchor\", \"AxisLocation\"], \"org.jfree.chart.text\": [\"TextAnchor\"], \"org.jfree.chart\": [\"ChartColor\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()` covers classes from the `org.jfree.chart` and `org.jfree.chart.plot` packages. Let's proceed by retrieving the methods covered by failing tests for the `XYPlot` class in the `org.jfree.chart.plot` package.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.jfree.chart.plot.XYPlot\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".XYPlot()\", \".XYPlot(org.jfree.data.xy.XYDataset, org.jfree.chart.axis.ValueAxis, org.jfree.chart.axis.ValueAxis, org.jfree.chart.renderer.xy.XYItemRenderer)\", \".getPlotType()\", \".getOrientation()\", \".setOrientation(org.jfree.chart.plot.PlotOrientation)\", \".getAxisOffset()\", \".setAxisOffset(org.jfree.chart.util.RectangleInsets)\", \".getDomainAxis()\", \".getDomainAxis(int)\", \".setDomainAxis(org.jfree.chart.axis.ValueAxis)\", \".setDomainAxis(int, org.jfree.chart.axis.ValueAxis)\", \".setDomainAxis(int, org.jfree.chart.axis.ValueAxis, boolean)\", \".setDomainAxes(org.jfree.chart.axis.ValueAxis[])\", \".getDomainAxisLocation()\", \".setDomainAxisLocation(org.jfree.chart.axis.AxisLocation)\", \".setDomainAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)\", \".getDomainAxisEdge()\", \".getDomainAxisCount()\", \".clearDomainAxes()\", \".configureDomainAxes()\", \".getDomainAxisLocation(int)\", \".setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation)\", \".setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)\", \".getDomainAxisEdge(int)\", \".getRangeAxis()\", \".setRangeAxis(org.jfree.chart.axis.ValueAxis)\", \".getRangeAxisLocation()\", \".setRangeAxisLocation(org.jfree.chart.axis.AxisLocation)\", \".setRangeAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)\", \".getRangeAxisEdge()\", \".getRangeAxis(int)\", \".setRangeAxis(int, org.jfree.chart.axis.ValueAxis)\", \".setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean)\", \".setRangeAxes(org.jfree.chart.axis.ValueAxis[])\", \".getRangeAxisCount()\", \".clearRangeAxes()\", \".configureRangeAxes()\", \".getRangeAxisLocation(int)\", \".setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation)\", \".setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)\", \".getRangeAxisEdge(int)\", \".getDataset()\", \".getDataset(int)\", \".setDataset(org.jfree.data.xy.XYDataset)\", \".setDataset(int, org.jfree.data.xy.XYDataset)\", \".getDatasetCount()\", \".indexOf(org.jfree.data.xy.XYDataset)\", \".mapDatasetToDomainAxis(int, int)\", \".mapDatasetToRangeAxis(int, int)\", \".getRenderer()\", \".getRenderer(int)\", \".setRenderer(org.jfree.chart.renderer.xy.XYItemRenderer)\", \".setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer)\", \".setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer, boolean)\", \".setRenderers(org.jfree.chart.renderer.xy.XYItemRenderer[])\", \".getDatasetRenderingOrder()\", \".setDatasetRenderingOrder(org.jfree.chart.plot.DatasetRenderingOrder)\", \".getSeriesRenderingOrder()\", \".setSeriesRenderingOrder(org.jfree.chart.plot.SeriesRenderingOrder)\", \".getIndexOf(org.jfree.chart.renderer.xy.XYItemRenderer)\", \".getRendererForDataset(org.jfree.data.xy.XYDataset)\", \".getWeight()\", \".setWeight(int)\", \".isDomainGridlinesVisible()\", \".setDomainGridlinesVisible(boolean)\", \".getDomainGridlineStroke()\", \".setDomainGridlineStroke(java.awt.Stroke)\", \".getDomainGridlinePaint()\", \".setDomainGridlinePaint(java.awt.Paint)\", \".isRangeGridlinesVisible()\", \".setRangeGridlinesVisible(boolean)\", \".getRangeGridlineStroke()\", \".setRangeGridlineStroke(java.awt.Stroke)\", \".getRangeGridlinePaint()\", \".setRangeGridlinePaint(java.awt.Paint)\", \".isDomainZeroBaselineVisible()\", \".setDomainZeroBaselineVisible(boolean)\", \".getDomainZeroBaselineStroke()\", \".setDomainZeroBaselineStroke(java.awt.Stroke)\", \".getDomainZeroBaselinePaint()\", \".setDomainZeroBaselinePaint(java.awt.Paint)\", \".isRangeZeroBaselineVisible()\", \".setRangeZeroBaselineVisible(boolean)\", \".getRangeZeroBaselineStroke()\", \".setRangeZeroBaselineStroke(java.awt.Stroke)\", \".getRangeZeroBaselinePaint()\", \".setRangeZeroBaselinePaint(java.awt.Paint)\", \".getDomainTickBandPaint()\", \".setDomainTickBandPaint(java.awt.Paint)\", \".getRangeTickBandPaint()\", \".setRangeTickBandPaint(java.awt.Paint)\", \".getQuadrantOrigin()\", \".setQuadrantOrigin(java.awt.geom.Point2D)\", \".getQuadrantPaint(int)\", \".setQuadrantPaint(int, java.awt.Paint)\", \".addDomainMarker(org.jfree.chart.plot.Marker)\", \".addDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".clearDomainMarkers()\", \".clearDomainMarkers(int)\", \".addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".removeDomainMarker(org.jfree.chart.plot.Marker)\", \".removeDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".addRangeMarker(org.jfree.chart.plot.Marker)\", \".addRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".clearRangeMarkers()\", \".addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".clearRangeMarkers(int)\", \".removeRangeMarker(org.jfree.chart.plot.Marker)\", \".removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".addAnnotation(org.jfree.chart.annotations.XYAnnotation)\", \".addAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)\", \".removeAnnotation(org.jfree.chart.annotations.XYAnnotation)\", \".removeAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)\", \".getAnnotations()\", \".clearAnnotations()\", \".calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".calculateDomainAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)\", \".calculateRangeAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)\", \".draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo)\", \".drawBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawDomainTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawRangeTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawAxes(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)\", \".render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState)\", \".getDomainAxisForDataset(int)\", \".getRangeAxisForDataset(int)\", \".drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawZeroDomainBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawZeroRangeBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawAnnotations(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)\", \".drawDomainMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)\", \".drawRangeMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)\", \".getDomainMarkers(org.jfree.chart.util.Layer)\", \".getRangeMarkers(org.jfree.chart.util.Layer)\", \".getDomainMarkers(int, org.jfree.chart.util.Layer)\", \".getRangeMarkers(int, org.jfree.chart.util.Layer)\", \".drawHorizontalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)\", \".drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)\", \".drawVerticalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)\", \".drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)\", \".handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo)\", \".getDatasetsMappedToDomainAxis(java.lang.Integer)\", \".getDatasetsMappedToRangeAxis(java.lang.Integer)\", \".getDomainAxisIndex(org.jfree.chart.axis.ValueAxis)\", \".getRangeAxisIndex(org.jfree.chart.axis.ValueAxis)\", \".getDataRange(org.jfree.chart.axis.ValueAxis)\", \".datasetChanged(org.jfree.data.general.DatasetChangeEvent)\", \".rendererChanged(org.jfree.chart.event.RendererChangeEvent)\", \".isDomainCrosshairVisible()\", \".setDomainCrosshairVisible(boolean)\", \".isDomainCrosshairLockedOnData()\", \".setDomainCrosshairLockedOnData(boolean)\", \".getDomainCrosshairValue()\", \".setDomainCrosshairValue(double)\", \".setDomainCrosshairValue(double, boolean)\", \".getDomainCrosshairStroke()\", \".setDomainCrosshairStroke(java.awt.Stroke)\", \".getDomainCrosshairPaint()\", \".setDomainCrosshairPaint(java.awt.Paint)\", \".isRangeCrosshairVisible()\", \".setRangeCrosshairVisible(boolean)\", \".isRangeCrosshairLockedOnData()\", \".setRangeCrosshairLockedOnData(boolean)\", \".getRangeCrosshairValue()\", \".setRangeCrosshairValue(double)\", \".setRangeCrosshairValue(double, boolean)\", \".getRangeCrosshairStroke()\", \".setRangeCrosshairStroke(java.awt.Stroke)\", \".getRangeCrosshairPaint()\", \".setRangeCrosshairPaint(java.awt.Paint)\", \".getFixedDomainAxisSpace()\", \".setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace)\", \".setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)\", \".getFixedRangeAxisSpace()\", \".setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace)\", \".setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)\", \".zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)\", \".zoomDomainAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)\", \".zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".isDomainZoomable()\", \".isRangeZoomable()\", \".getSeriesCount()\", \".getFixedLegendItems()\", \".setFixedLegendItems(org.jfree.chart.LegendItemCollection)\", \".getLegendItems()\", \".equals(java.lang.Object)\", \".clone()\", \".writeObject(java.io.ObjectOutputStream)\", \".readObject(java.io.ObjectInputStream)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The `XYPlot` class in the `org.jfree.chart.plot` package has a method named `removeRangeMarker(Marker)`. The failing test `testRemoveRangeMarker()` is calling this method, which results in a `java.lang.NullPointerException`. The error stack trace indicates that the exception occurs in the `XYPlot.removeRangeMarker` method.\n\nThe issue seems to be related to how the `removeRangeMarker` method is handling the removal of a range marker. To investigate further, we can retrieve the code snippet for the `removeRangeMarker` method. Let's fetch the code snippet for this method.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"2464 : public boolean removeRangeMarker(Marker marker) {\\n2465 :         return removeRangeMarker(marker, Layer.FOREGROUND);\\n2466 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `removeRangeMarker` method in the `XYPlot` class delegates the removal of a range marker to another method `removeRangeMarker(marker, Layer.FOREGROUND)`. It seems like the issue might be related to the implementation in this particular method. Let's fetch the code snippet for the `removeRangeMarker(marker, Layer.FOREGROUND)` method to investigate further.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"2480 : public boolean removeRangeMarker(Marker marker, Layer layer) {\\n2481 :         return removeRangeMarker(0, marker, layer);\\n2482 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `removeRangeMarker` method in the `XYPlot` class further delegates the removal of a range marker to another method `removeRangeMarker(0, marker, layer)`. This method invocation pattern could lead to a `java.lang.NullPointerException` if the `removeRangeMarker` method is not properly handling the given parameters. Let's retrieve the code snippet for the `removeRangeMarker(0, marker, layer)` method to continue our investigation.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"2497 : public boolean removeRangeMarker(int index, Marker marker, Layer layer) {\\n2498 :     \\treturn removeRangeMarker(index, marker, layer, true);\\n2499 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `removeRangeMarker` method in the `XYPlot` class is using another method `removeRangeMarker(int, Marker, Layer, boolean)` to assist in removing a range marker. The exception might be coming from this latter method based on the call stack.\n\nTo further investigate the root cause of the `java.lang.NullPointerException` in the `removeRangeMarker` method, let's retrieve the code snippet for the `removeRangeMarker(int, Marker, Layer, boolean)` method.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"2515 : public boolean removeRangeMarker(int index, Marker marker, Layer layer,\\n2516 :     \\t\\tboolean notify) {\\n2517 :         if (marker == null) {\\n2518 :             throw new IllegalArgumentException(\\\"Null 'marker' argument.\\\");\\n2519 :         }\\n2520 :         ArrayList markers;\\n2521 :         if (layer == Layer.FOREGROUND) {\\n2522 :             markers = (ArrayList) this.foregroundRangeMarkers.get(new Integer(\\n2523 :                     index));\\n2524 :         }\\n2525 :         else {\\n2526 :             markers = (ArrayList) this.backgroundRangeMarkers.get(new Integer(\\n2527 :                     index));\\n2528 :         }\\n2529 :         boolean removed = markers.remove(marker);\\n2530 :         if (removed && notify) {\\n2531 :             fireChangeEvent();\\n2532 :         }\\n2533 :         return removed;\\n2534 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "In the `removeRangeMarker(int, Marker, Layer, boolean)` method of the `XYPlot` class, a `java.lang.NullPointerException` can occur if the `marker` argument is `null`. The method checks if the `marker` is `null` and throws an `IllegalArgumentException` if that is the case. This validation logic seems to be in place to handle the scenario where a `null` marker is passed, but the exception is not caught at the point of invocation in the test.\n\nTherefore, the failure in the test `org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()` is likely due to passing a `null` marker to the `removeRangeMarker` method without proper handling in the test case.\n\nTo resolve the issue, the test case should be updated to ensure that it does not pass a `null` marker when calling the `removeRangeMarker` method.\n\nHere are the methods that need to be fixed:\n```plaintext\norg.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\n```\n\nThe bug is caused by passing a `null` marker to the `removeRangeMarker` method in the `XYPlot` class without proper handling. The methods that need to be fixed are related to the `removeRangeMarker` method in the `XYPlot` class."
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12"
+                ],
+                "response_message": "m13"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12",
+                    "m13",
+                    "m14"
+                ],
+                "response_message": "m15"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()']` failed.\nThe test looks like:\n\n```java\n1035 : public void testRemoveRangeMarker() {\n1036 :     \tXYPlot plot = new XYPlot();\n1037 :     \tassertFalse(plot.removeRangeMarker(new ValueMarker(0.5))); // error occurred here\n1038 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2529)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2498)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2481)\n\tat org.jfree.chart.plot.XYPlot.removeRangeMarker(XYPlot.java:2465)\n\tat org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker(XYPlotTests.java:1037)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.jfree.chart.event\": [\"MarkerChangeEvent\", \"PlotChangeEvent\", \"ChartChangeEventType\", \"ChartChangeEvent\"], \"org.jfree.chart.util\": [\"RectangleInsets\", \"ObjectList\", \"RectangleAnchor\", \"LengthAdjustmentType\", \"UnitType\", \"SortOrder\", \"AbstractObjectList\", \"Layer\"], \"org.jfree.chart.plot\": [\"DefaultDrawingSupplier\", \"Marker\", \"CategoryMarker\", \"CategoryPlot\", \"SeriesRenderingOrder\", \"Plot\", \"XYPlot\", \"DatasetRenderingOrder\", \"ValueMarker\", \"PlotOrientation\"], \"org.jfree.chart.axis\": [\"CategoryAnchor\", \"AxisLocation\"], \"org.jfree.chart.text\": [\"TextAnchor\"], \"org.jfree.chart\": [\"ChartColor\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()` covers classes from the `org.jfree.chart` and `org.jfree.chart.plot` packages. Let's proceed by retrieving the methods covered by failing tests for the `XYPlot` class in the `org.jfree.chart.plot` package.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.jfree.chart.plot.XYPlot\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".XYPlot()\", \".XYPlot(org.jfree.data.xy.XYDataset, org.jfree.chart.axis.ValueAxis, org.jfree.chart.axis.ValueAxis, org.jfree.chart.renderer.xy.XYItemRenderer)\", \".getPlotType()\", \".getOrientation()\", \".setOrientation(org.jfree.chart.plot.PlotOrientation)\", \".getAxisOffset()\", \".setAxisOffset(org.jfree.chart.util.RectangleInsets)\", \".getDomainAxis()\", \".getDomainAxis(int)\", \".setDomainAxis(org.jfree.chart.axis.ValueAxis)\", \".setDomainAxis(int, org.jfree.chart.axis.ValueAxis)\", \".setDomainAxis(int, org.jfree.chart.axis.ValueAxis, boolean)\", \".setDomainAxes(org.jfree.chart.axis.ValueAxis[])\", \".getDomainAxisLocation()\", \".setDomainAxisLocation(org.jfree.chart.axis.AxisLocation)\", \".setDomainAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)\", \".getDomainAxisEdge()\", \".getDomainAxisCount()\", \".clearDomainAxes()\", \".configureDomainAxes()\", \".getDomainAxisLocation(int)\", \".setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation)\", \".setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)\", \".getDomainAxisEdge(int)\", \".getRangeAxis()\", \".setRangeAxis(org.jfree.chart.axis.ValueAxis)\", \".getRangeAxisLocation()\", \".setRangeAxisLocation(org.jfree.chart.axis.AxisLocation)\", \".setRangeAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)\", \".getRangeAxisEdge()\", \".getRangeAxis(int)\", \".setRangeAxis(int, org.jfree.chart.axis.ValueAxis)\", \".setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean)\", \".setRangeAxes(org.jfree.chart.axis.ValueAxis[])\", \".getRangeAxisCount()\", \".clearRangeAxes()\", \".configureRangeAxes()\", \".getRangeAxisLocation(int)\", \".setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation)\", \".setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)\", \".getRangeAxisEdge(int)\", \".getDataset()\", \".getDataset(int)\", \".setDataset(org.jfree.data.xy.XYDataset)\", \".setDataset(int, org.jfree.data.xy.XYDataset)\", \".getDatasetCount()\", \".indexOf(org.jfree.data.xy.XYDataset)\", \".mapDatasetToDomainAxis(int, int)\", \".mapDatasetToRangeAxis(int, int)\", \".getRenderer()\", \".getRenderer(int)\", \".setRenderer(org.jfree.chart.renderer.xy.XYItemRenderer)\", \".setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer)\", \".setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer, boolean)\", \".setRenderers(org.jfree.chart.renderer.xy.XYItemRenderer[])\", \".getDatasetRenderingOrder()\", \".setDatasetRenderingOrder(org.jfree.chart.plot.DatasetRenderingOrder)\", \".getSeriesRenderingOrder()\", \".setSeriesRenderingOrder(org.jfree.chart.plot.SeriesRenderingOrder)\", \".getIndexOf(org.jfree.chart.renderer.xy.XYItemRenderer)\", \".getRendererForDataset(org.jfree.data.xy.XYDataset)\", \".getWeight()\", \".setWeight(int)\", \".isDomainGridlinesVisible()\", \".setDomainGridlinesVisible(boolean)\", \".getDomainGridlineStroke()\", \".setDomainGridlineStroke(java.awt.Stroke)\", \".getDomainGridlinePaint()\", \".setDomainGridlinePaint(java.awt.Paint)\", \".isRangeGridlinesVisible()\", \".setRangeGridlinesVisible(boolean)\", \".getRangeGridlineStroke()\", \".setRangeGridlineStroke(java.awt.Stroke)\", \".getRangeGridlinePaint()\", \".setRangeGridlinePaint(java.awt.Paint)\", \".isDomainZeroBaselineVisible()\", \".setDomainZeroBaselineVisible(boolean)\", \".getDomainZeroBaselineStroke()\", \".setDomainZeroBaselineStroke(java.awt.Stroke)\", \".getDomainZeroBaselinePaint()\", \".setDomainZeroBaselinePaint(java.awt.Paint)\", \".isRangeZeroBaselineVisible()\", \".setRangeZeroBaselineVisible(boolean)\", \".getRangeZeroBaselineStroke()\", \".setRangeZeroBaselineStroke(java.awt.Stroke)\", \".getRangeZeroBaselinePaint()\", \".setRangeZeroBaselinePaint(java.awt.Paint)\", \".getDomainTickBandPaint()\", \".setDomainTickBandPaint(java.awt.Paint)\", \".getRangeTickBandPaint()\", \".setRangeTickBandPaint(java.awt.Paint)\", \".getQuadrantOrigin()\", \".setQuadrantOrigin(java.awt.geom.Point2D)\", \".getQuadrantPaint(int)\", \".setQuadrantPaint(int, java.awt.Paint)\", \".addDomainMarker(org.jfree.chart.plot.Marker)\", \".addDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".clearDomainMarkers()\", \".clearDomainMarkers(int)\", \".addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".removeDomainMarker(org.jfree.chart.plot.Marker)\", \".removeDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".addRangeMarker(org.jfree.chart.plot.Marker)\", \".addRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".clearRangeMarkers()\", \".addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".clearRangeMarkers(int)\", \".removeRangeMarker(org.jfree.chart.plot.Marker)\", \".removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\", \".removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\", \".addAnnotation(org.jfree.chart.annotations.XYAnnotation)\", \".addAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)\", \".removeAnnotation(org.jfree.chart.annotations.XYAnnotation)\", \".removeAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)\", \".getAnnotations()\", \".clearAnnotations()\", \".calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".calculateDomainAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)\", \".calculateRangeAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)\", \".draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo)\", \".drawBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawDomainTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawRangeTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawAxes(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)\", \".render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState)\", \".getDomainAxisForDataset(int)\", \".getRangeAxisForDataset(int)\", \".drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)\", \".drawZeroDomainBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawZeroRangeBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)\", \".drawAnnotations(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)\", \".drawDomainMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)\", \".drawRangeMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)\", \".getDomainMarkers(org.jfree.chart.util.Layer)\", \".getRangeMarkers(org.jfree.chart.util.Layer)\", \".getDomainMarkers(int, org.jfree.chart.util.Layer)\", \".getRangeMarkers(int, org.jfree.chart.util.Layer)\", \".drawHorizontalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)\", \".drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)\", \".drawVerticalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)\", \".drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)\", \".handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo)\", \".getDatasetsMappedToDomainAxis(java.lang.Integer)\", \".getDatasetsMappedToRangeAxis(java.lang.Integer)\", \".getDomainAxisIndex(org.jfree.chart.axis.ValueAxis)\", \".getRangeAxisIndex(org.jfree.chart.axis.ValueAxis)\", \".getDataRange(org.jfree.chart.axis.ValueAxis)\", \".datasetChanged(org.jfree.data.general.DatasetChangeEvent)\", \".rendererChanged(org.jfree.chart.event.RendererChangeEvent)\", \".isDomainCrosshairVisible()\", \".setDomainCrosshairVisible(boolean)\", \".isDomainCrosshairLockedOnData()\", \".setDomainCrosshairLockedOnData(boolean)\", \".getDomainCrosshairValue()\", \".setDomainCrosshairValue(double)\", \".setDomainCrosshairValue(double, boolean)\", \".getDomainCrosshairStroke()\", \".setDomainCrosshairStroke(java.awt.Stroke)\", \".getDomainCrosshairPaint()\", \".setDomainCrosshairPaint(java.awt.Paint)\", \".isRangeCrosshairVisible()\", \".setRangeCrosshairVisible(boolean)\", \".isRangeCrosshairLockedOnData()\", \".setRangeCrosshairLockedOnData(boolean)\", \".getRangeCrosshairValue()\", \".setRangeCrosshairValue(double)\", \".setRangeCrosshairValue(double, boolean)\", \".getRangeCrosshairStroke()\", \".setRangeCrosshairStroke(java.awt.Stroke)\", \".getRangeCrosshairPaint()\", \".setRangeCrosshairPaint(java.awt.Paint)\", \".getFixedDomainAxisSpace()\", \".setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace)\", \".setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)\", \".getFixedRangeAxisSpace()\", \".setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace)\", \".setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)\", \".zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)\", \".zoomDomainAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)\", \".zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)\", \".isDomainZoomable()\", \".isRangeZoomable()\", \".getSeriesCount()\", \".getFixedLegendItems()\", \".setFixedLegendItems(org.jfree.chart.LegendItemCollection)\", \".getLegendItems()\", \".equals(java.lang.Object)\", \".clone()\", \".writeObject(java.io.ObjectOutputStream)\", \".readObject(java.io.ObjectInputStream)\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The `XYPlot` class in the `org.jfree.chart.plot` package has a method named `removeRangeMarker(Marker)`. The failing test `testRemoveRangeMarker()` is calling this method, which results in a `java.lang.NullPointerException`. The error stack trace indicates that the exception occurs in the `XYPlot.removeRangeMarker` method.\n\nThe issue seems to be related to how the `removeRangeMarker` method is handling the removal of a range marker. To investigate further, we can retrieve the code snippet for the `removeRangeMarker` method. Let's fetch the code snippet for this method.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"2464 : public boolean removeRangeMarker(Marker marker) {\\n2465 :         return removeRangeMarker(marker, Layer.FOREGROUND);\\n2466 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `removeRangeMarker` method in the `XYPlot` class delegates the removal of a range marker to another method `removeRangeMarker(marker, Layer.FOREGROUND)`. It seems like the issue might be related to the implementation in this particular method. Let's fetch the code snippet for the `removeRangeMarker(marker, Layer.FOREGROUND)` method to investigate further.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\"}"
+                }
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"2480 : public boolean removeRangeMarker(Marker marker, Layer layer) {\\n2481 :         return removeRangeMarker(0, marker, layer);\\n2482 :     }\""
+            },
+            "m11": {
+                "role": "assistant",
+                "content": "The `removeRangeMarker` method in the `XYPlot` class further delegates the removal of a range marker to another method `removeRangeMarker(0, marker, layer)`. This method invocation pattern could lead to a `java.lang.NullPointerException` if the `removeRangeMarker` method is not properly handling the given parameters. Let's retrieve the code snippet for the `removeRangeMarker(0, marker, layer)` method to continue our investigation.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)\"}"
+                }
+            },
+            "m12": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"2497 : public boolean removeRangeMarker(int index, Marker marker, Layer layer) {\\n2498 :     \\treturn removeRangeMarker(index, marker, layer, true);\\n2499 :     }\""
+            },
+            "m13": {
+                "role": "assistant",
+                "content": "The `removeRangeMarker` method in the `XYPlot` class is using another method `removeRangeMarker(int, Marker, Layer, boolean)` to assist in removing a range marker. The exception might be coming from this latter method based on the call stack.\n\nTo further investigate the root cause of the `java.lang.NullPointerException` in the `removeRangeMarker` method, let's retrieve the code snippet for the `removeRangeMarker(int, Marker, Layer, boolean)` method.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\"}"
+                }
+            },
+            "m14": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"2515 : public boolean removeRangeMarker(int index, Marker marker, Layer layer,\\n2516 :     \\t\\tboolean notify) {\\n2517 :         if (marker == null) {\\n2518 :             throw new IllegalArgumentException(\\\"Null 'marker' argument.\\\");\\n2519 :         }\\n2520 :         ArrayList markers;\\n2521 :         if (layer == Layer.FOREGROUND) {\\n2522 :             markers = (ArrayList) this.foregroundRangeMarkers.get(new Integer(\\n2523 :                     index));\\n2524 :         }\\n2525 :         else {\\n2526 :             markers = (ArrayList) this.backgroundRangeMarkers.get(new Integer(\\n2527 :                     index));\\n2528 :         }\\n2529 :         boolean removed = markers.remove(marker);\\n2530 :         if (removed && notify) {\\n2531 :             fireChangeEvent();\\n2532 :         }\\n2533 :         return removed;\\n2534 :     }\""
+            },
+            "m15": {
+                "role": "assistant",
+                "content": "In the `removeRangeMarker(int, Marker, Layer, boolean)` method of the `XYPlot` class, a `java.lang.NullPointerException` can occur if the `marker` argument is `null`. The method checks if the `marker` is `null` and throws an `IllegalArgumentException` if that is the case. This validation logic seems to be in place to handle the scenario where a `null` marker is passed, but the exception is not caught at the point of invocation in the test.\n\nTherefore, the failure in the test `org.jfree.chart.plot.junit.XYPlotTests.testRemoveRangeMarker()` is likely due to passing a `null` marker to the `removeRangeMarker` method without proper handling in the test case.\n\nTo resolve the issue, the test case should be updated to ensure that it does not pass a `null` marker when calling the `removeRangeMarker` method.\n\nHere are the methods that need to be fixed:\n```plaintext\norg.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)\n```\n\nThe bug is caused by passing a `null` marker to the `removeRangeMarker` method in the `XYPlot` class without proper handling. The methods that need to be fixed are related to the `removeRangeMarker` method in the `XYPlot` class."
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.jfree.chart.ChartColor.ChartColor(int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.ChartColor.createDefaultPaintArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.AxisLocation(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.getOpposite()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.getOpposite(org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.AxisLocation.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.CategoryAnchor.CategoryAnchor(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.CategoryAnchor.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.CategoryAnchor.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.axis.CategoryAnchor.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.ChartChangeEvent(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.ChartChangeEvent(java.lang.Object, org.jfree.chart.JFreeChart)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.ChartChangeEvent(java.lang.Object, org.jfree.chart.JFreeChart, org.jfree.chart.event.ChartChangeEventType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.getChart()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.setChart(org.jfree.chart.JFreeChart)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.getType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEvent.setType(org.jfree.chart.event.ChartChangeEventType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEventType.ChartChangeEventType(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEventType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEventType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEventType.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.ChartChangeEventType.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.MarkerChangeEvent.MarkerChangeEvent(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.MarkerChangeEvent.getMarker()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.PlotChangeEvent.PlotChangeEvent(org.jfree.chart.plot.Plot)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.event.PlotChangeEvent.getPlot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.CategoryMarker(java.lang.Comparable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.CategoryMarker(java.lang.Comparable, java.awt.Paint, java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.CategoryMarker(java.lang.Comparable, java.awt.Paint, java.awt.Stroke, java.awt.Paint, java.awt.Stroke, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.getKey()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.setKey(java.lang.Comparable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.getDrawAsLine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.setDrawAsLine(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryMarker.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.CategoryPlot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.CategoryPlot(org.jfree.data.category.CategoryDataset, org.jfree.chart.axis.CategoryAxis, org.jfree.chart.axis.ValueAxis, org.jfree.chart.renderer.category.CategoryItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getPlotType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getOrientation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setOrientation(org.jfree.chart.plot.PlotOrientation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getAxisOffset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setAxisOffset(org.jfree.chart.util.RectangleInsets)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxis(org.jfree.chart.axis.CategoryAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxis(int, org.jfree.chart.axis.CategoryAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxis(int, org.jfree.chart.axis.CategoryAxis, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxes(org.jfree.chart.axis.CategoryAxis[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisIndex(org.jfree.chart.axis.CategoryAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisLocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisLocation(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxisLocation(org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisEdge()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisEdge(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearDomainAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.configureDomainAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxis(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxis(int, org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxes(org.jfree.chart.axis.ValueAxis[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisIndex(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisLocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisLocation(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxisLocation(org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisEdge()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisEdge(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearRangeAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.configureRangeAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDataset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDataset(org.jfree.data.category.CategoryDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDataset(int, org.jfree.data.category.CategoryDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDatasetCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.mapDatasetToDomainAxis(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainAxisForDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.mapDatasetToRangeAxis(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeAxisForDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRenderer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRenderer(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRenderer(org.jfree.chart.renderer.category.CategoryItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRenderer(org.jfree.chart.renderer.category.CategoryItemRenderer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRenderer(int, org.jfree.chart.renderer.category.CategoryItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRenderer(int, org.jfree.chart.renderer.category.CategoryItemRenderer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRenderers(org.jfree.chart.renderer.category.CategoryItemRenderer[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRendererForDataset(org.jfree.data.category.CategoryDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getIndexOf(org.jfree.chart.renderer.category.CategoryItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDatasetRenderingOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDatasetRenderingOrder(org.jfree.chart.plot.DatasetRenderingOrder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getColumnRenderingOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setColumnRenderingOrder(org.jfree.chart.util.SortOrder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRowRenderingOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRowRenderingOrder(org.jfree.chart.util.SortOrder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isDomainGridlinesVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainGridlinesVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainGridlinePosition()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainGridlinePosition(org.jfree.chart.axis.CategoryAnchor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainGridlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainGridlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainGridlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDomainGridlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isRangeGridlinesVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeGridlinesVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeGridlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeGridlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeGridlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeGridlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getFixedLegendItems()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setFixedLegendItems(org.jfree.chart.LegendItemCollection)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getLegendItems()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoom(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.datasetChanged(org.jfree.data.general.DatasetChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.rendererChanged(org.jfree.chart.event.RendererChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addDomainMarker(org.jfree.chart.plot.CategoryMarker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addDomainMarker(org.jfree.chart.plot.CategoryMarker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addDomainMarker(int, org.jfree.chart.plot.CategoryMarker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addDomainMarker(int, org.jfree.chart.plot.CategoryMarker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearDomainMarkers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainMarkers(org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDomainMarkers(int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearDomainMarkers(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeDomainMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addRangeMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearRangeMarkers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeMarkers(org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeMarkers(int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearRangeMarkers(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeRangeMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isRangeCrosshairVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isRangeCrosshairLockedOnData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairLockedOnData(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeCrosshairValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairValue(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairValue(double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeCrosshairStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getRangeCrosshairPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setRangeCrosshairPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addAnnotation(org.jfree.chart.annotations.CategoryAnnotation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.addAnnotation(org.jfree.chart.annotations.CategoryAnnotation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeAnnotation(org.jfree.chart.annotations.CategoryAnnotation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.removeAnnotation(org.jfree.chart.annotations.CategoryAnnotation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clearAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.calculateDomainAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.calculateRangeAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawAxes(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawAnnotations(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawDomainMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawRangeMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawRangeLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDataRange(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.datasetsMappedToDomainAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.datasetsMappedToRangeAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getWeight()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setWeight(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getFixedDomainAxisSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getFixedRangeAxisSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getCategories()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getCategoriesForAxis(org.jfree.chart.axis.CategoryAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getDrawSharedDomainAxis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setDrawSharedDomainAxis(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isDomainZoomable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.isRangeZoomable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomDomainAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.getAnchorValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setAnchorValue(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.setAnchorValue(double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.CategoryPlot.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DatasetRenderingOrder.DatasetRenderingOrder(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DatasetRenderingOrder.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DatasetRenderingOrder.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DatasetRenderingOrder.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DatasetRenderingOrder.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.DefaultDrawingSupplier()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.DefaultDrawingSupplier(java.awt.Paint[], java.awt.Paint[], java.awt.Stroke[], java.awt.Stroke[], java.awt.Shape[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.DefaultDrawingSupplier(java.awt.Paint[], java.awt.Paint[], java.awt.Paint[], java.awt.Stroke[], java.awt.Stroke[], java.awt.Shape[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextOutlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextFillPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextOutlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.getNextShape()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.createStandardSeriesShapes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.equalShapes(java.awt.Shape[], java.awt.Shape[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.intArray(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.intArray(double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.DefaultDrawingSupplier.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.Marker()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.Marker(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.Marker(java.awt.Paint, java.awt.Stroke, java.awt.Paint, java.awt.Stroke, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getOutlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setOutlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getOutlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setOutlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getAlpha()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setAlpha(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabel()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabel(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelFont()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelFont(java.awt.Font)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelAnchor()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelAnchor(org.jfree.chart.util.RectangleAnchor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelOffset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelOffset(org.jfree.chart.util.RectangleInsets)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelOffsetType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelOffsetType(org.jfree.chart.util.LengthAdjustmentType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getLabelTextAnchor()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.setLabelTextAnchor(org.jfree.chart.text.TextAnchor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.addChangeListener(org.jfree.chart.event.MarkerChangeListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.removeChangeListener(org.jfree.chart.event.MarkerChangeListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.notifyListeners(org.jfree.chart.event.MarkerChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.getListeners(java.lang.Class)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Marker.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.Plot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getDatasetGroup()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setDatasetGroup(org.jfree.data.general.DatasetGroup)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getNoDataMessage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setNoDataMessage(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getNoDataMessageFont()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setNoDataMessageFont(java.awt.Font)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getNoDataMessagePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setNoDataMessagePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getPlotType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getParent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setParent(org.jfree.chart.plot.Plot)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getRootPlot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.isSubplot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getInsets()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setInsets(org.jfree.chart.util.RectangleInsets)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setInsets(org.jfree.chart.util.RectangleInsets, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getBackgroundPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setBackgroundPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getBackgroundAlpha()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setBackgroundAlpha(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getDrawingSupplier()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setDrawingSupplier(org.jfree.chart.plot.DrawingSupplier)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getBackgroundImage()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setBackgroundImage(java.awt.Image)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getBackgroundImageAlignment()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setBackgroundImageAlignment(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getBackgroundImageAlpha()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setBackgroundImageAlpha(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.isOutlineVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setOutlineVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getOutlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setOutlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getOutlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setOutlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getForegroundAlpha()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.setForegroundAlpha(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getLegendItems()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.addChangeListener(org.jfree.chart.event.PlotChangeListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.removeChangeListener(org.jfree.chart.event.PlotChangeListener)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.notifyListeners(org.jfree.chart.event.PlotChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.fireChangeEvent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.drawBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.drawBackgroundImage(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.drawOutline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.drawNoDataMessage(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.zoom(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.axisChanged(org.jfree.chart.event.AxisChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.datasetChanged(org.jfree.data.general.DatasetChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.markerChanged(org.jfree.chart.event.MarkerChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getRectX(double, double, double, org.jfree.chart.util.RectangleEdge)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.getRectY(double, double, double, org.jfree.chart.util.RectangleEdge)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.resolveDomainAxisLocation(org.jfree.chart.axis.AxisLocation, org.jfree.chart.plot.PlotOrientation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.Plot.resolveRangeAxisLocation(org.jfree.chart.axis.AxisLocation, org.jfree.chart.plot.PlotOrientation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.PlotOrientation.PlotOrientation(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.PlotOrientation.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.PlotOrientation.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.PlotOrientation.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.PlotOrientation.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.SeriesRenderingOrder.SeriesRenderingOrder(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.SeriesRenderingOrder.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.SeriesRenderingOrder.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.SeriesRenderingOrder.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.SeriesRenderingOrder.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.ValueMarker(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.ValueMarker(double, java.awt.Paint, java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.ValueMarker(double, java.awt.Paint, java.awt.Stroke, java.awt.Paint, java.awt.Stroke, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.getValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.setValue(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.ValueMarker.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.XYPlot()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.XYPlot(org.jfree.data.xy.XYDataset, org.jfree.chart.axis.ValueAxis, org.jfree.chart.axis.ValueAxis, org.jfree.chart.renderer.xy.XYItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getPlotType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getOrientation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setOrientation(org.jfree.chart.plot.PlotOrientation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getAxisOffset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setAxisOffset(org.jfree.chart.util.RectangleInsets)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxis(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxis(int, org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxis(int, org.jfree.chart.axis.ValueAxis, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxes(org.jfree.chart.axis.ValueAxis[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisLocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxisLocation(org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisEdge()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearDomainAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.configureDomainAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisLocation(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisEdge(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxis()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxis(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisLocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxisLocation(org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxisLocation(org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisEdge()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxis(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxis(int, org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxes(org.jfree.chart.axis.ValueAxis[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearRangeAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.configureRangeAxes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisLocation(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeAxisLocation(int, org.jfree.chart.axis.AxisLocation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisEdge(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDataset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDataset(org.jfree.data.xy.XYDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDataset(int, org.jfree.data.xy.XYDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDatasetCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.indexOf(org.jfree.data.xy.XYDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.mapDatasetToDomainAxis(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.mapDatasetToRangeAxis(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRenderer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRenderer(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRenderer(org.jfree.chart.renderer.xy.XYItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRenderers(org.jfree.chart.renderer.xy.XYItemRenderer[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDatasetRenderingOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDatasetRenderingOrder(org.jfree.chart.plot.DatasetRenderingOrder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getSeriesRenderingOrder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setSeriesRenderingOrder(org.jfree.chart.plot.SeriesRenderingOrder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getIndexOf(org.jfree.chart.renderer.xy.XYItemRenderer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRendererForDataset(org.jfree.data.xy.XYDataset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getWeight()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setWeight(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isDomainGridlinesVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainGridlinesVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainGridlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainGridlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainGridlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainGridlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isRangeGridlinesVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeGridlinesVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeGridlineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeGridlineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeGridlinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeGridlinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isDomainZeroBaselineVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainZeroBaselineVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainZeroBaselineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainZeroBaselineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainZeroBaselinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainZeroBaselinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isRangeZeroBaselineVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeZeroBaselineVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeZeroBaselineStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeZeroBaselineStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeZeroBaselinePaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeZeroBaselinePaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainTickBandPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainTickBandPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeTickBandPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeTickBandPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getQuadrantOrigin()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setQuadrantOrigin(java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getQuadrantPaint(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setQuadrantPaint(int, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addDomainMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearDomainMarkers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearDomainMarkers(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeDomainMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeDomainMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addRangeMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearRangeMarkers()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearRangeMarkers(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeRangeMarker(org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.jfree.chart.plot.XYPlot.removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)"
+            ]
+        },
+        "org.jfree.chart.plot.XYPlot.addAnnotation(org.jfree.chart.annotations.XYAnnotation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.addAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeAnnotation(org.jfree.chart.annotations.XYAnnotation)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.removeAnnotation(org.jfree.chart.annotations.XYAnnotation, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clearAnnotations()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.calculateDomainAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.calculateRangeAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawDomainTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawRangeTickBands(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawAxes(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisForDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisForDataset(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.util.List)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawZeroDomainBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawZeroRangeBaseline(java.awt.Graphics2D, java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawAnnotations(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawDomainMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawRangeMarkers(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainMarkers(org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeMarkers(org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainMarkers(int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeMarkers(int, org.jfree.chart.util.Layer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawHorizontalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawVerticalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDatasetsMappedToDomainAxis(java.lang.Integer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDatasetsMappedToRangeAxis(java.lang.Integer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainAxisIndex(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeAxisIndex(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDataRange(org.jfree.chart.axis.ValueAxis)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.datasetChanged(org.jfree.data.general.DatasetChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.rendererChanged(org.jfree.chart.event.RendererChangeEvent)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isDomainCrosshairVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isDomainCrosshairLockedOnData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairLockedOnData(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainCrosshairValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairValue(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairValue(double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainCrosshairStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getDomainCrosshairPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setDomainCrosshairPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isRangeCrosshairVisible()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairVisible(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isRangeCrosshairLockedOnData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairLockedOnData(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeCrosshairValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairValue(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairValue(double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeCrosshairStroke()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairStroke(java.awt.Stroke)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getRangeCrosshairPaint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setRangeCrosshairPaint(java.awt.Paint)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getFixedDomainAxisSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setFixedDomainAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getFixedRangeAxisSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setFixedRangeAxisSpace(org.jfree.chart.axis.AxisSpace, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomDomainAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isDomainZoomable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.isRangeZoomable()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getSeriesCount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getFixedLegendItems()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.setFixedLegendItems(org.jfree.chart.LegendItemCollection)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.getLegendItems()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.plot.XYPlot.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.text.TextAnchor.TextAnchor(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.text.TextAnchor.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.text.TextAnchor.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.text.TextAnchor.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.text.TextAnchor.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.AbstractObjectList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.AbstractObjectList(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.AbstractObjectList(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.get(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.set(int, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.indexOf(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.clone()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.writeObject(java.io.ObjectOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.AbstractObjectList.readObject(java.io.ObjectInputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.Layer.Layer(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.Layer.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.Layer.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.Layer.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.Layer.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.LengthAdjustmentType.LengthAdjustmentType(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.LengthAdjustmentType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.LengthAdjustmentType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.LengthAdjustmentType.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.LengthAdjustmentType.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.ObjectList.ObjectList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.ObjectList.ObjectList(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.ObjectList.get(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.ObjectList.set(int, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.ObjectList.indexOf(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.RectangleAnchor(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.coordinates(java.awt.geom.Rectangle2D, org.jfree.chart.util.RectangleAnchor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.createRectangle(org.jfree.chart.util.Size2D, double, double, org.jfree.chart.util.RectangleAnchor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleAnchor.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.RectangleInsets()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.RectangleInsets(double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.RectangleInsets(org.jfree.chart.util.UnitType, double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.getUnitType()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.getTop()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.getBottom()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.getLeft()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.getRight()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.createAdjustedRectangle(java.awt.geom.Rectangle2D, org.jfree.chart.util.LengthAdjustmentType, org.jfree.chart.util.LengthAdjustmentType)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.createInsetRectangle(java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.createInsetRectangle(java.awt.geom.Rectangle2D, boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.createOutsetRectangle(java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.createOutsetRectangle(java.awt.geom.Rectangle2D, boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateTopInset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateTopOutset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateBottomInset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateBottomOutset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateLeftInset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateLeftOutset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateRightInset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.calculateRightOutset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.trimWidth(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.extendWidth(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.trimHeight(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.extendHeight(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.RectangleInsets.trim(java.awt.geom.Rectangle2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.SortOrder.SortOrder(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.SortOrder.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.SortOrder.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.SortOrder.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.SortOrder.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.UnitType.UnitType(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.UnitType.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.UnitType.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.UnitType.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jfree.chart.util.UnitType.readResolve()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

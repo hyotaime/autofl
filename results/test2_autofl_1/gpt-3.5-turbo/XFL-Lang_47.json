@@ -1,0 +1,842 @@
+{
+    "time": 1722793394.754789,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.lang.text.StrBuilderTest.testLang412Left()']` failed.\nThe test looks like:\n\n```java\n1759 : public void testLang412Left() {\n1760 :         StrBuilder sb = new StrBuilder();\n1761 :         sb.appendFixedWidthPadLeft(null, 10, '*'); // error occurred here\n1763 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(StrBuilder.java:1186)\n\tat org.apache.commons.lang.text.StrBuilderTest.testLang412Left(StrBuilderTest.java:1761)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.lang.text\": [\"StrMatcher\", \"StrBuilder\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test `org.apache.commons.lang.text.StrBuilderTest.testLang412Left()` is covering the classes `StrMatcher` and `StrBuilder` in the `org.apache.commons.lang.text` package. \n\nNext, I will retrieve the methods covered by failing tests for the `StrBuilder` class. Let's start by calling the `get_failing_tests_covered_methods_for_class` function for the `StrBuilder` class.",
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.lang.text.StrBuilder\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".StrBuilder()\", \".StrBuilder(int)\", \".StrBuilder(java.lang.String)\", \".getNewLineText()\", \".setNewLineText(java.lang.String)\", \".getNullText()\", \".setNullText(java.lang.String)\", \".length()\", \".setLength(int)\", \".capacity()\", \".ensureCapacity(int)\", \".minimizeCapacity()\", \".size()\", \".isEmpty()\", \".clear()\", \".charAt(int)\", \".setCharAt(int, char)\", \".deleteCharAt(int)\", \".toCharArray()\", \".toCharArray(int, int)\", \".getChars(char[])\", \".getChars(int, int, char, int)\", \".appendNewLine()\", \".appendNull()\", \".append(java.lang.Object)\", \".append(java.lang.String)\", \".append(java.lang.String, int, int)\", \".append(java.lang.StringBuffer)\", \".append(java.lang.StringBuffer, int, int)\", \".append(org.apache.commons.lang.text.StrBuilder)\", \".append(org.apache.commons.lang.text.StrBuilder, int, int)\", \".append(char[])\", \".append(char[], int, int)\", \".append(boolean)\", \".append(char)\", \".append(int)\", \".append(long)\", \".append(float)\", \".append(double)\", \".appendln(java.lang.Object)\", \".appendln(java.lang.String)\", \".appendln(java.lang.String, int, int)\", \".appendln(java.lang.StringBuffer)\", \".appendln(java.lang.StringBuffer, int, int)\", \".appendln(org.apache.commons.lang.text.StrBuilder)\", \".appendln(org.apache.commons.lang.text.StrBuilder, int, int)\", \".appendln(char[])\", \".appendln(char[], int, int)\", \".appendln(boolean)\", \".appendln(char)\", \".appendln(int)\", \".appendln(long)\", \".appendln(float)\", \".appendln(double)\", \".appendAll(java.lang.Object[])\", \".appendAll(java.util.Collection)\", \".appendAll(java.util.Iterator)\", \".appendWithSeparators(java.lang.Object[], java.lang.String)\", \".appendWithSeparators(java.util.Collection, java.lang.String)\", \".appendWithSeparators(java.util.Iterator, java.lang.String)\", \".appendSeparator(java.lang.String)\", \".appendSeparator(char)\", \".appendSeparator(java.lang.String, int)\", \".appendSeparator(char, int)\", \".appendPadding(int, char)\", \".appendFixedWidthPadLeft(java.lang.Object, int, char)\", \".appendFixedWidthPadLeft(int, int, char)\", \".appendFixedWidthPadRight(java.lang.Object, int, char)\", \".appendFixedWidthPadRight(int, int, char)\", \".insert(int, java.lang.Object)\", \".insert(int, java.lang.String)\", \".insert(int, char)\", \".insert(int, char, int, int)\", \".insert(int, boolean)\", \".insert(int, char)\", \".insert(int, int)\", \".insert(int, long)\", \".insert(int, float)\", \".insert(int, double)\", \".deleteImpl(int, int, int)\", \".delete(int, int)\", \".deleteAll(char)\", \".deleteFirst(char)\", \".deleteAll(java.lang.String)\", \".deleteFirst(java.lang.String)\", \".deleteAll(org.apache.commons.lang.text.StrMatcher)\", \".deleteFirst(org.apache.commons.lang.text.StrMatcher)\", \".replaceImpl(int, int, int, java.lang.String, int)\", \".replace(int, int, java.lang.String)\", \".replaceAll(char, char)\", \".replaceFirst(char, char)\", \".replaceAll(java.lang.String, java.lang.String)\", \".replaceFirst(java.lang.String, java.lang.String)\", \".replaceAll(org.apache.commons.lang.text.StrMatcher, java.lang.String)\", \".replaceFirst(org.apache.commons.lang.text.StrMatcher, java.lang.String)\", \".replace(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)\", \".replaceImpl(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)\", \".reverse()\", \".trim()\", \".startsWith(java.lang.String)\", \".endsWith(java.lang.String)\", \".substring(int)\", \".substring(int, int)\", \".leftString(int)\", \".rightString(int)\", \".midString(int, int)\", \".contains(char)\", \".contains(java.lang.String)\", \".contains(org.apache.commons.lang.text.StrMatcher)\", \".indexOf(char)\", \".indexOf(char, int)\", \".indexOf(java.lang.String)\", \".indexOf(java.lang.String, int)\", \".indexOf(org.apache.commons.lang.text.StrMatcher)\", \".indexOf(org.apache.commons.lang.text.StrMatcher, int)\", \".lastIndexOf(char)\", \".lastIndexOf(char, int)\", \".lastIndexOf(java.lang.String)\", \".lastIndexOf(java.lang.String, int)\", \".lastIndexOf(org.apache.commons.lang.text.StrMatcher)\", \".lastIndexOf(org.apache.commons.lang.text.StrMatcher, int)\", \".asTokenizer()\", \".asReader()\", \".asWriter()\", \".equalsIgnoreCase(org.apache.commons.lang.text.StrBuilder)\", \".equals(org.apache.commons.lang.text.StrBuilder)\", \".equals(java.lang.Object)\", \".hashCode()\", \".toString()\", \".toStringBuffer()\", \".validateRange(int, int)\", \".validateIndex(int)\", \".StrBuilderTokenizer()\", \".tokenize(char[], int, int)\", \".getContent()\", \".StrBuilderReader()\", \".close()\", \".read()\", \".read(char, int, int)\", \".skip(long)\", \".ready()\", \".markSupported()\", \".mark(int)\", \".reset()\", \".StrBuilderWriter()\", \".close()\", \".flush()\", \".write(int)\", \".write(char[])\", \".write(char[], int, int)\", \".write(java.lang.String)\", \".write(java.lang.String, int, int)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "The failing test for the `StrBuilder` class covers a lot of methods. Let's retrieve the code snippet for the method `appendFixedWidthPadLeft` in the `StrBuilder` class to understand what the method is doing. I will use the `get_code_snippet` function for this.",
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)\"}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"1182 : public StrBuilder appendFixedWidthPadLeft(Object obj, int width, char padChar) {\\n1183 :         if (width > 0) {\\n1184 :             ensureCapacity(size + width);\\n1185 :             String str = (obj == null ? getNullText() : obj.toString());\\n1186 :             int strLen = str.length();\\n1187 :             if (strLen >= width) {\\n1188 :                 str.getChars(strLen - width, strLen, buffer, size);\\n1189 :             } else {\\n1190 :                 int padLen = width - strLen;\\n1191 :                 for (int i = 0; i < padLen; i++) {\\n1192 :                     buffer[size + i] = padChar;\\n1193 :                 }\\n1194 :                 str.getChars(0, strLen, buffer, size + padLen);\\n1195 :             }\\n1196 :             size += width;\\n1197 :         }\\n1198 :         return this;\\n1199 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "The `appendFixedWidthPadLeft` method in the `StrBuilder` class is responsible for appending a fixed-width padded string to the `StrBuilder`. It ensures that the final string has a specified width and pads it to the left with a specified character if necessary.\n\nBased on the code snippet, the error occurred at line 1186 where the method tries to get the length of the input string (`str.length()`) without checking if the input string `str` is `null`. This leads to a `NullPointerException` when `obj` is `null` and `obj.toString()` is called.\n\nTo fix the issue, a null check should be added for the `obj` parameter before calling `obj.toString()`. This will prevent the `NullPointerException` when `obj` is `null`.\n\nNext, let's identify the locations to be fixed:\n\n```java\norg.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)\n```"
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "```\norg.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)\n```"
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` checks whether HTML entities such as `&quot;` are correctly escaped to their corresponding character by the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. However, the test failure indicates that this is not the case. Following the execution path, we find that `StandardToolTipTagFragmentGenerator.generateToolTipFragment` is not escaping any HTML code; instead, it is using its input `toolTipText` as is. Consequently, un-escaped strings are being returned, which leads to the error demonstrated by the test.\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.lang.text.StrBuilderTest.testLang412Left()']` failed.\nThe test looks like:\n\n```java\n1759 : public void testLang412Left() {\n1760 :         StrBuilder sb = new StrBuilder();\n1761 :         sb.appendFixedWidthPadLeft(null, 10, '*'); // error occurred here\n1763 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(StrBuilder.java:1186)\n\tat org.apache.commons.lang.text.StrBuilderTest.testLang412Left(StrBuilderTest.java:1761)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.lang.text\": [\"StrMatcher\", \"StrBuilder\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": "The failing test `org.apache.commons.lang.text.StrBuilderTest.testLang412Left()` is covering the classes `StrMatcher` and `StrBuilder` in the `org.apache.commons.lang.text` package. \n\nNext, I will retrieve the methods covered by failing tests for the `StrBuilder` class. Let's start by calling the `get_failing_tests_covered_methods_for_class` function for the `StrBuilder` class.",
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.lang.text.StrBuilder\"}"
+                }
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".StrBuilder()\", \".StrBuilder(int)\", \".StrBuilder(java.lang.String)\", \".getNewLineText()\", \".setNewLineText(java.lang.String)\", \".getNullText()\", \".setNullText(java.lang.String)\", \".length()\", \".setLength(int)\", \".capacity()\", \".ensureCapacity(int)\", \".minimizeCapacity()\", \".size()\", \".isEmpty()\", \".clear()\", \".charAt(int)\", \".setCharAt(int, char)\", \".deleteCharAt(int)\", \".toCharArray()\", \".toCharArray(int, int)\", \".getChars(char[])\", \".getChars(int, int, char, int)\", \".appendNewLine()\", \".appendNull()\", \".append(java.lang.Object)\", \".append(java.lang.String)\", \".append(java.lang.String, int, int)\", \".append(java.lang.StringBuffer)\", \".append(java.lang.StringBuffer, int, int)\", \".append(org.apache.commons.lang.text.StrBuilder)\", \".append(org.apache.commons.lang.text.StrBuilder, int, int)\", \".append(char[])\", \".append(char[], int, int)\", \".append(boolean)\", \".append(char)\", \".append(int)\", \".append(long)\", \".append(float)\", \".append(double)\", \".appendln(java.lang.Object)\", \".appendln(java.lang.String)\", \".appendln(java.lang.String, int, int)\", \".appendln(java.lang.StringBuffer)\", \".appendln(java.lang.StringBuffer, int, int)\", \".appendln(org.apache.commons.lang.text.StrBuilder)\", \".appendln(org.apache.commons.lang.text.StrBuilder, int, int)\", \".appendln(char[])\", \".appendln(char[], int, int)\", \".appendln(boolean)\", \".appendln(char)\", \".appendln(int)\", \".appendln(long)\", \".appendln(float)\", \".appendln(double)\", \".appendAll(java.lang.Object[])\", \".appendAll(java.util.Collection)\", \".appendAll(java.util.Iterator)\", \".appendWithSeparators(java.lang.Object[], java.lang.String)\", \".appendWithSeparators(java.util.Collection, java.lang.String)\", \".appendWithSeparators(java.util.Iterator, java.lang.String)\", \".appendSeparator(java.lang.String)\", \".appendSeparator(char)\", \".appendSeparator(java.lang.String, int)\", \".appendSeparator(char, int)\", \".appendPadding(int, char)\", \".appendFixedWidthPadLeft(java.lang.Object, int, char)\", \".appendFixedWidthPadLeft(int, int, char)\", \".appendFixedWidthPadRight(java.lang.Object, int, char)\", \".appendFixedWidthPadRight(int, int, char)\", \".insert(int, java.lang.Object)\", \".insert(int, java.lang.String)\", \".insert(int, char)\", \".insert(int, char, int, int)\", \".insert(int, boolean)\", \".insert(int, char)\", \".insert(int, int)\", \".insert(int, long)\", \".insert(int, float)\", \".insert(int, double)\", \".deleteImpl(int, int, int)\", \".delete(int, int)\", \".deleteAll(char)\", \".deleteFirst(char)\", \".deleteAll(java.lang.String)\", \".deleteFirst(java.lang.String)\", \".deleteAll(org.apache.commons.lang.text.StrMatcher)\", \".deleteFirst(org.apache.commons.lang.text.StrMatcher)\", \".replaceImpl(int, int, int, java.lang.String, int)\", \".replace(int, int, java.lang.String)\", \".replaceAll(char, char)\", \".replaceFirst(char, char)\", \".replaceAll(java.lang.String, java.lang.String)\", \".replaceFirst(java.lang.String, java.lang.String)\", \".replaceAll(org.apache.commons.lang.text.StrMatcher, java.lang.String)\", \".replaceFirst(org.apache.commons.lang.text.StrMatcher, java.lang.String)\", \".replace(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)\", \".replaceImpl(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)\", \".reverse()\", \".trim()\", \".startsWith(java.lang.String)\", \".endsWith(java.lang.String)\", \".substring(int)\", \".substring(int, int)\", \".leftString(int)\", \".rightString(int)\", \".midString(int, int)\", \".contains(char)\", \".contains(java.lang.String)\", \".contains(org.apache.commons.lang.text.StrMatcher)\", \".indexOf(char)\", \".indexOf(char, int)\", \".indexOf(java.lang.String)\", \".indexOf(java.lang.String, int)\", \".indexOf(org.apache.commons.lang.text.StrMatcher)\", \".indexOf(org.apache.commons.lang.text.StrMatcher, int)\", \".lastIndexOf(char)\", \".lastIndexOf(char, int)\", \".lastIndexOf(java.lang.String)\", \".lastIndexOf(java.lang.String, int)\", \".lastIndexOf(org.apache.commons.lang.text.StrMatcher)\", \".lastIndexOf(org.apache.commons.lang.text.StrMatcher, int)\", \".asTokenizer()\", \".asReader()\", \".asWriter()\", \".equalsIgnoreCase(org.apache.commons.lang.text.StrBuilder)\", \".equals(org.apache.commons.lang.text.StrBuilder)\", \".equals(java.lang.Object)\", \".hashCode()\", \".toString()\", \".toStringBuffer()\", \".validateRange(int, int)\", \".validateIndex(int)\", \".StrBuilderTokenizer()\", \".tokenize(char[], int, int)\", \".getContent()\", \".StrBuilderReader()\", \".close()\", \".read()\", \".read(char, int, int)\", \".skip(long)\", \".ready()\", \".markSupported()\", \".mark(int)\", \".reset()\", \".StrBuilderWriter()\", \".close()\", \".flush()\", \".write(int)\", \".write(char[])\", \".write(char[], int, int)\", \".write(java.lang.String)\", \".write(java.lang.String, int, int)\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": "The failing test for the `StrBuilder` class covers a lot of methods. Let's retrieve the code snippet for the method `appendFixedWidthPadLeft` in the `StrBuilder` class to understand what the method is doing. I will use the `get_code_snippet` function for this.",
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)\"}"
+                }
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"1182 : public StrBuilder appendFixedWidthPadLeft(Object obj, int width, char padChar) {\\n1183 :         if (width > 0) {\\n1184 :             ensureCapacity(size + width);\\n1185 :             String str = (obj == null ? getNullText() : obj.toString());\\n1186 :             int strLen = str.length();\\n1187 :             if (strLen >= width) {\\n1188 :                 str.getChars(strLen - width, strLen, buffer, size);\\n1189 :             } else {\\n1190 :                 int padLen = width - strLen;\\n1191 :                 for (int i = 0; i < padLen; i++) {\\n1192 :                     buffer[size + i] = padChar;\\n1193 :                 }\\n1194 :                 str.getChars(0, strLen, buffer, size + padLen);\\n1195 :             }\\n1196 :             size += width;\\n1197 :         }\\n1198 :         return this;\\n1199 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "The `appendFixedWidthPadLeft` method in the `StrBuilder` class is responsible for appending a fixed-width padded string to the `StrBuilder`. It ensures that the final string has a specified width and pads it to the left with a specified character if necessary.\n\nBased on the code snippet, the error occurred at line 1186 where the method tries to get the length of the input string (`str.length()`) without checking if the input string `str` is `null`. This leads to a `NullPointerException` when `obj` is `null` and `obj.toString()` is called.\n\nTo fix the issue, a null check should be added for the `obj` parameter before calling `obj.toString()`. This will prevent the `NullPointerException` when `obj` is `null`.\n\nNext, let's identify the locations to be fixed:\n\n```java\norg.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)\n```"
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.lang.text.StrBuilder.StrBuilder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.StrBuilder(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.StrBuilder(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.getNewLineText()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.setNewLineText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.getNullText()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.setNullText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.length()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.setLength(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.capacity()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.ensureCapacity(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.minimizeCapacity()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.charAt(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.setCharAt(int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteCharAt(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.toCharArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.toCharArray(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.getChars(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.getChars(int, int, char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendNewLine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendNull()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(java.lang.String, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(java.lang.StringBuffer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(java.lang.StringBuffer, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(org.apache.commons.lang.text.StrBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(org.apache.commons.lang.text.StrBuilder, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.append(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(java.lang.String, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(java.lang.StringBuffer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(java.lang.StringBuffer, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(org.apache.commons.lang.text.StrBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(org.apache.commons.lang.text.StrBuilder, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendln(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendAll(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendAll(java.util.Collection)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendAll(java.util.Iterator)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendWithSeparators(java.lang.Object[], java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendWithSeparators(java.util.Collection, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendWithSeparators(java.util.Iterator, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendSeparator(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendSeparator(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendSeparator(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendSeparator(char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendPadding(int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(java.lang.Object, int, char)"
+            ]
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadLeft(int, int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadRight(java.lang.Object, int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadRight(int, int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, char, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.insert(int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteImpl(int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.delete(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteAll(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteFirst(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteAll(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteFirst(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteAll(org.apache.commons.lang.text.StrMatcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.deleteFirst(org.apache.commons.lang.text.StrMatcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceImpl(int, int, int, java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replace(int, int, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceAll(char, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceFirst(char, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceAll(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceFirst(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceAll(org.apache.commons.lang.text.StrMatcher, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceFirst(org.apache.commons.lang.text.StrMatcher, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replace(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.replaceImpl(org.apache.commons.lang.text.StrMatcher, java.lang.String, int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.reverse()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.trim()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.startsWith(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.endsWith(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.substring(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.substring(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.leftString(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.rightString(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.midString(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.contains(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.contains(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.contains(org.apache.commons.lang.text.StrMatcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(org.apache.commons.lang.text.StrMatcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.indexOf(org.apache.commons.lang.text.StrMatcher, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(org.apache.commons.lang.text.StrMatcher)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.lastIndexOf(org.apache.commons.lang.text.StrMatcher, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.asTokenizer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.asReader()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.asWriter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.equalsIgnoreCase(org.apache.commons.lang.text.StrBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.equals(org.apache.commons.lang.text.StrBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.toStringBuffer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.validateRange(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.validateIndex(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.StrBuilderTokenizer()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.tokenize(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.getContent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.StrBuilderReader()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.read()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.read(char, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.skip(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.ready()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.markSupported()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.mark(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.StrBuilderWriter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.flush()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.write(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.write(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.write(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.write(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrBuilder.write(java.lang.String, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.commaMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.tabMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.spaceMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.splitMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.trimMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.singleQuoteMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.doubleQuoteMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.quoteMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.noneMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.charMatcher(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.charSetMatcher(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.charSetMatcher(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.stringMatcher(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.StrMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.isMatch(char[], int, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.isMatch(char[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.CharSetMatcher(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.CharMatcher(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.StringMatcher(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.NoMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang.text.StrMatcher.TrimMatcher()": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}
