@@ -7,7 +7,7 @@ from collections import defaultdict
 from lib import sequence_utils, name_utils
 
 BUG_INFO_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                            "data/rst/")
+                            "data/defects4j")
 
 class D4JRepositoryInterface():
     RANGE_REGEX = "\(line (?P<beginline>\d+),col (?P<begincol>\d+)\)-\(line (?P<endline>\d+),col (?P<endcol>\d+)\)"
@@ -109,11 +109,21 @@ class D4JRepositoryInterface():
     def _load_fail_info(self, bug_name):
         fail_info = dict()
         with open(os.path.join(BUG_INFO_DIR, bug_name, "failing_tests")) as f:
-            for l in f:
+            for i, l in enumerate(f):
                 if l.startswith("--- "):
                     tc_name = l.split()[-1]
                     tc_signature = tc_name.replace("::", ".") + "()"
                     fail_info[tc_signature] = {"error_message": "", "stack_trace": ""}
+                    tc_class, tc_method = tc_name.split("::")
+                    for j, ll in enumerate(f):
+                        if j <= i:
+                            continue
+                        if ll.startswith("--- "):
+                            break
+                        if ll.strip().startswith("at") and tc_method in ll:
+                            tc_sig_inherited = ll.split()[-1]
+                            tc_sig_inherited = tc_sig_inherited[:tc_sig_inherited.find("(")] + "()"
+                            fail_info[tc_sig_inherited] = {"error_message": "", "stack_trace": ""}
                 else:
                     fail_info[tc_signature][
                         "stack_trace" if l.startswith("\tat") else "error_message"] += l
