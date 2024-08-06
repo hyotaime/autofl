@@ -1,4 +1,0 @@
-hostname=selogic.seoultech.ac.kr
-port=2202
-username=sungtae
-password=sungtae01&
