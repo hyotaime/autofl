@@ -7,7 +7,7 @@ from collections import defaultdict
 from lib import sequence_utils, name_utils
 
 BUG_INFO_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                            "data/defects4j")
+                            "data/rst")
 
 class D4JRepositoryInterface():
     RANGE_REGEX = "\(line (?P<beginline>\d+),col (?P<begincol>\d+)\)-\(line (?P<endline>\d+),col (?P<endcol>\d+)\)"
@@ -130,7 +130,7 @@ class D4JRepositoryInterface():
         return fail_info
 
     def _load_method_lists(self, bug_name):
-        with open(os.path.join(BUG_INFO_DIR, bug_name, "snippet.json")) as f:
+        with open(os.path.join(BUG_INFO_DIR, bug_name, "snippet.json"), 'r', encoding='utf-8') as f:
             method_list = json.load(f)
         return method_list
 
@@ -140,7 +140,7 @@ class D4JRepositoryInterface():
         return test_list
 
     def _load_field_lists(self, bug_name):
-        with open(os.path.join(BUG_INFO_DIR, bug_name, "field_snippet.json")) as f:
+        with open(os.path.join(BUG_INFO_DIR, bug_name, "field_snippet.json"), 'r', encoding='utf-8') as f:
             field_list = json.load(f)
         return field_list
 

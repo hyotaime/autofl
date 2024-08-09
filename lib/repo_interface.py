@@ -16,6 +16,7 @@ D4J_PROJECTS = [
     'JacksonXml',
     'Jsoup',
     'JxPath',
+    'lang',
     'Lang',
     'Math',
     'Mockito',
