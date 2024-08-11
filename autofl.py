@@ -39,9 +39,9 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         with open(self._system_file) as f:
             system_message = f.read().strip()
         if self._allow_multi_predictions:
-            system_message += "\n\nAfter providing this diagnosis, you will be prompted to suggest which methods would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            system_message += "\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
         else:
-            system_message += "\n\nAfter providing this diagnosis, you will be prompted to suggest which method would be the best location to be fixed. You will provide a single answer, in the form of `ClassName.MethodName(ArgType1, ArgType2, ...)`, as your answer will be automatically processed before finally being presented to the user."
+            system_message += "\n\nAfter providing this diagnosis, you will be prompted to suggest which line would be the best location to be fixed. You will provide a single answer, in the form of `ClassName.MethodName:Linenumber`, as your answer will be automatically processed before finally being presented to the user."
         return system_message
 
     def _init_interaction_records(self):
@@ -169,7 +169,7 @@ class AutoDebugger(llm_utils.OpenAIEngine):
             return True
 
     def finish(self):
-        finishing_string = "Based on the available information, provide the signatures of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate signatures of all likely culprits (in `ClassName.MethodName(ArgType1, ArgType2, ...)` format), without commentary (one per line). "
+        finishing_string = "Based on the available information, provide the specific lines of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate line numbers of all likely culprits (in `FullClassName.MethodName(ParameterType1, ParameterType2, ...):Linenumber` format), without commentary (one per line). "
         if not self._allow_multi_predictions:
             finishing_string = finishing_string.replace('signatures', 'signature')
             finishing_string = finishing_string.replace('methods', 'method')
@@ -228,45 +228,59 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         return grade_result
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
-    parser.add_argument('-b', '--bug_name', default='Chart_1')
-    parser.add_argument('-o', '--out', default='test.json')
-    parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')
-    parser.add_argument('-t', '--max_num_tests', default=None, type=int)
-    parser.add_argument('--test_offset', default=0, type=int)
-    parser.add_argument('--max_budget', default=10, type=int)
-    parser.add_argument('--allow_multi_predictions', action="store_true")
-    parser.add_argument('--summarize_messages', action="store_true")
-    parser.add_argument('--show_line_number', action="store_true")
-    parser.add_argument('--postprocess_test_snippet', action="store_true")
-    parser.add_argument('--debug', action="store_true")
-    args = parser.parse_args()
+    for i in range(5):
+        parser = argparse.ArgumentParser()
+        parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
+        parser.add_argument('-b', '--bug_name', default='Chart_1')
+        parser.add_argument('-o', '--out', default='test.json')
+        parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')
+        parser.add_argument('-t', '--max_num_tests', default=None, type=int)
+        parser.add_argument('--test_offset', default=0, type=int)
+        parser.add_argument('--max_budget', default=10, type=int)
+        parser.add_argument('--allow_multi_predictions', action="store_true")
+        parser.add_argument('--summarize_messages', action="store_true")
+        parser.add_argument('--show_line_number', action="store_true")
+        parser.add_argument('--postprocess_test_snippet', action="store_true")
+        parser.add_argument('--debug', action="store_true")
+        # args = parser.parse_args()
+        args = parser.parse_args([
+            '-m', 'gpt-3.5-turbo',
+            '-b', 'Lang_20',
+            '-p', 'prompts/line_prompt.txt',
+            '-o', f'linetest/prompt/gpt-3.5-{i + 1}.json',
+            '--max_budget', '10',
+            '-t', '1',
+            '--show_line_number',
+            '--postprocess_test_snippet',
+            '--allow_multi_predictions',
+            '--test_offset', '0',
+        ])
 
-    ad = AutoDebugger(args.bug_name, args.model, args.prompt,
-        test_offset=args.test_offset,
-        max_num_tests=args.max_num_tests,
-        allow_multi_predictions=args.allow_multi_predictions,
-        summarize_messages=args.summarize_messages,
-        show_line_number=args.show_line_number,
-        postprocess_test_snippet=args.postprocess_test_snippet,
-        debug=args.debug
-    )
 
-    try:
-        grade = ad.run(args.max_budget)
-    except Exception as e:
-        grade = traceback.format_exc()
-        if args.debug:
-            raise e
+        ad = AutoDebugger(args.bug_name, args.model, args.prompt,
+            test_offset=args.test_offset,
+            max_num_tests=args.max_num_tests,
+            allow_multi_predictions=args.allow_multi_predictions,
+            summarize_messages=args.summarize_messages,
+            show_line_number=args.show_line_number,
+            postprocess_test_snippet=args.postprocess_test_snippet,
+            debug=args.debug
+        )
 
-    with open(args.out, "w") as f:
-        json.dump({
-            'time': time.time(),
-            'messages': ad.messages,
-            'interaction_records': {
-                "step_histories": ad._interaction_records,
-                "mid_to_message": ad._message_map
-            },
-            'buggy_methods': grade,
-        }, f, indent=4)
+        try:
+            grade = ad.run(args.max_budget)
+        except Exception as e:
+            grade = traceback.format_exc()
+            if args.debug:
+                raise e
+
+        with open(args.out, "w") as f:
+            json.dump({
+                'time': time.time(),
+                'messages': ad.messages,
+                'interaction_records': {
+                    "step_histories": ad._interaction_records,
+                    "mid_to_message": ad._message_map
+                },
+                'buggy_methods': grade,
+            }, f, indent=4)
