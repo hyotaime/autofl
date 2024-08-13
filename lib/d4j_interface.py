@@ -120,7 +120,7 @@ class D4JRepositoryInterface():
                             if j <= i:
                                 continue
                             if ll.startswith("--- "):
-                                 break
+                                break
                             if ll.strip().startswith("at") and tc_method in ll:
                                 tc_sig_inherited = ll.split()[-1]
                                 tc_sig_inherited = tc_sig_inherited[:tc_sig_inherited.find("(")] + "()"

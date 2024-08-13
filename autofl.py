@@ -278,7 +278,7 @@ if __name__ == '__main__':
         if args.debug:
             raise e
 
-with open(args.out, "w") as f:
+    with open(args.out, "w") as f:
         json.dump({
             'time': time.time(),
             'prompt_tokens': ad.prompt_tokens,
