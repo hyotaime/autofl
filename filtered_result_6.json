@@ -1,0 +1,478 @@
+{
+    "detected_bug_count": 70,
+    "undetected_bugs": [
+        "JacksonDatabind_36",
+        "JacksonDatabind_80",
+        "JacksonDatabind_13",
+        "Closure_2",
+        "Gson_9",
+        "Jsoup_66",
+        "Mockito_38"
+    ],
+    "filtered_methods": {
+        "Chart_14": {
+            "org.jfree.chart.plot.XYPlot.removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.util.Layer, boolean)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Chart_16": {
+            "org.jfree.data.category.DefaultIntervalCategoryDataset.getCategoryIndex(java.lang.Comparable)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Chart_2": {
+            "org.jfree.data.general.DatasetUtilities.iterateRangeBounds(org.jfree.data.xy.XYDataset, boolean)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Chart_4": {
+            "org.jfree.chart.ChartFactory.createScatterPlot(java.lang.String, java.lang.String, java.lang.String, org.jfree.data.xy.XYDataset, org.jfree.chart.plot.PlotOrientation, boolean, boolean, boolean)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.jfree.chart.plot.XYPlot.getDataRange(org.jfree.chart.axis.ValueAxis)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "Cli_30": {
+            "org.apache.commons.cli.BasicParser.flatten(org.apache.commons.cli.Options, java.lang.String[], boolean)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Cli_5": {
+            "org.apache.commons.cli.Util.stripLeadingHyphens(java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Closure_171": {
+            "com.google.javascript.jscomp.Scope.getVar(java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "com.google.javascript.rhino.jstype.ObjectType.getPropertyType(java.lang.String)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "Codec_13": {
+            "org.apache.commons.codec.language.DoubleMetaphone.doubleMetaphone(java.lang.String, boolean)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Codec_17": {
+            "org.apache.commons.codec.binary.StringUtils.newString(byte[], java.nio.charset.Charset)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Codec_5": {
+            "org.apache.commons.codec.binary.Base64.decode(byte[], int, int)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Csv_11": {
+            "org.apache.commons.csv.CSVParser.initializeHeader()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Csv_4": {
+            "org.apache.commons.csv.CSVParser.getHeaderMap()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Csv_9": {
+            "org.apache.commons.csv.CSVRecord.putIn(M)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Gson_6": {
+            "com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory.getTypeAdapter(com.google.gson.internal.ConstructorConstructor, com.google.gson.Gson, com.google.gson.reflect.TypeToken<?>, com.google.gson.annotations.JsonAdapter)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "JacksonCore_8": {
+            "com.fasterxml.jackson.core.util.TextBuffer.getTextBuffer()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "JacksonDatabind_107": {
+            "com.fasterxml.jackson.databind.deser.DeserializationProblemHandler.handleUnknownTypeId(com.fasterxml.jackson.databind.DeserializationContext, com.fasterxml.jackson.databind.JavaType, java.lang.String, com.fasterxml.jackson.databind.jsontype.TypeIdResolver, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "JacksonDatabind_3": {
+            "com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer.deserialize(JsonParser, com.fasterxml.jackson.databind.DeserializationContext)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer._deserializeCustom(JsonParser, com.fasterxml.jackson.databind.DeserializationContext)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "JacksonDatabind_93": {
+            "com.fasterxml.jackson.databind.jsontype.impl.SubTypeValidator.validateSubType(com.fasterxml.jackson.databind.DeserializationContext, com.fasterxml.jackson.databind.JavaType)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "JacksonDatabind_95": {
+            "com.fasterxml.jackson.databind.type.TypeFactory._fromVariable(com.fasterxml.jackson.databind.type.ClassStack, java.lang.reflect.TypeVariable<?>, com.fasterxml.jackson.databind.type.TypeBindings)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Jsoup_22": {
+            "org.jsoup.nodes.Node.Node()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Jsoup_26": {
+            "org.jsoup.safety.Cleaner.copySafeNodes(org.jsoup.nodes.Element, org.jsoup.nodes.Element)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Jsoup_8": {
+            "org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder)": {
+                "autofl_rank": 1,
+                "score": 0.3333333333333333
+            },
+            "org.jsoup.nodes.Element.outerHtmlHead(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+                "autofl_rank": 2,
+                "score": 0.3333333333333333
+            },
+            "org.jsoup.nodes.Element.outerHtmlTail(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+                "autofl_rank": 3,
+                "score": 0.3333333333333333
+            }
+        },
+        "Jsoup_89": {
+            "org.jsoup.nodes.Attribute.setValue(java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Lang_20": {
+            "org.apache.commons.lang3.StringUtils.join(java.lang.Object[], java.lang.String, int, int)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Lang_33": {
+            "org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[])": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Lang_39": {
+            "org.apache.commons.lang3.StringUtils.replaceEach(java.lang.String, java.lang.String[], java.lang.String[])": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Lang_47": {
+            "org.apache.commons.lang.text.StrBuilder.appendFixedWidthPadRight(java.lang.Object, int, char)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Lang_57": {
+            "org.apache.commons.lang.LocaleUtils.LocaleUtils()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Math_4": {
+            "org.apache.commons.math3.geometry.euclidean.threed.Line.getAbscissa(org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Math_70": {
+            "org.apache.commons.math.analysis.solvers.BisectionSolver.solve(org.apache.commons.math.analysis.UnivariateRealFunction, double, double, double)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Math_79": {
+            "org.apache.commons.math.stat.clustering.KMeansPlusPlusClusterer.getNearestCluster(java.util.Collection<org.apache.commons.math.stat.clustering.Cluster<T>>, T)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "Mockito_18": {
+            "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.answer(org.mockito.invocation.InvocationOnMock)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.mockito.internal.stubbing.defaultanswers.ReturnsEmptyValues.returnValueFor(java.lang.Class<?>)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "collections_1": {
+            "org.apache.commons.collections4.map.CompositeMap.addComposited(java.util.Map<K,V>)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.apache.commons.collections4.map.CompositeMap.removeComposited(java.util.Map<K,V>)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "collections_2": {
+            "org.apache.commons.collections4.set.CompositeSet.removeAll(java.util.Collection<?>)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "collections_3": {
+            "org.apache.commons.collections4.collection.CompositeCollection.removeAll(java.util.Collection<?>)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_1": {
+            "org.apache.commons.io.IOCase.checkRegionMatches(java.lang.String, int, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_10": {
+            "org.apache.commons.io.input.CharSequenceInputStream.CharSequenceInputStream(java.lang.CharSequence, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.apache.commons.io.input.CharSequenceInputStream.CharSequenceInputStream(java.lang.CharSequence, java.nio.charset.Charset)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "commons-io_11": {
+            "org.apache.commons.io.input.ReaderInputStream.ReaderInputStream(java.io.Reader, java.nio.charset.CharsetEncoder, int)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_12": {
+            "org.apache.commons.io.output.FileWriterWithEncoding.initWriter(java.io.File, java.lang.Object, boolean)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_13": {
+            "org.apache.commons.io.IOCase.checkEndsWith(java.lang.String, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_14": {
+            "org.apache.commons.io.IOUtils.buffer(java.io.InputStream)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_15": {
+            "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_16": {
+            "org.apache.commons.io.FileUtils.contentEqualsIgnoreEOL(java.io.File, java.io.File, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_17": {
+            "org.apache.commons.io.FileUtils.contentEquals(java.io.File, java.io.File)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_18": {
+            "org.apache.commons.io.IOUtils.toBufferedReader(java.io.Reader)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_19": {
+            "org.apache.commons.io.IOUtils.contentEquals(java.io.Reader, java.io.Reader)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_2": {
+            "org.apache.commons.io.IOCase.checkRegionMatches(java.lang.String, int, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_3": {
+            "org.apache.commons.io.filefilter.CanWriteFileFilter.accept(java.io.File)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_4": {
+            "org.apache.commons.io.file.PathUtils.getFileName(java.nio.file.Path, java.util.function.Function<java.nio.file.Path,R>)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_5": {
+            "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.io.File, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "commons-io_6": {
+            "org.apache.commons.io.build.AbstractStreamBuilder.setCharset(java.nio.charset.Charset)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_7": {
+            "org.apache.commons.io.input.ReaderInputStream.setCharsetEncoder(java.nio.charset.CharsetEncoder)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_8": {
+            "org.apache.commons.io.file.PathUtils.readIfSymbolicLink(java.nio.file.Path)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "commons-io_9": {
+            "org.apache.commons.io.output.WriterOutputStream.WriterOutputStream(java.io.Writer)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.apache.commons.io.output.WriterOutputStream.WriterOutputStream(java.io.Writer, java.nio.charset.Charset)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "lang_1": {
+            "org.apache.commons.lang3.ClassLoaderUtils.toString(java.lang.ClassLoader)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_10": {
+            "org.apache.commons.lang3.builder.ReflectionToStringBuilder.toString(java.lang.Object)": {
+                "autofl_rank": 1,
+                "score": 0.5
+            },
+            "org.apache.commons.lang3.builder.ReflectionToStringBuilder.toString(java.lang.Object, org.apache.commons.lang3.builder.ToStringStyle, boolean, boolean)": {
+                "autofl_rank": 2,
+                "score": 0.5
+            }
+        },
+        "lang_11": {
+            "org.apache.commons.lang3.text.StrBuilder.equals(org.apache.commons.lang3.text.StrBuilder)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_12": {
+            "org.apache.commons.lang3.reflect.TypeUtils.isAssignable(java.lang.reflect.Type, java.lang.reflect.Type, java.util.Map<java.lang.reflect.TypeVariable<?>,java.lang.reflect.Type>)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_13": {
+            "org.apache.commons.lang3.StringUtils.replacePattern(java.lang.String, java.lang.String, java.lang.String)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_2": {
+            "org.apache.commons.lang3.mutable.MutableObject.equals(java.lang.Object)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_3": {
+            "org.apache.commons.lang3.reflect.TypeUtils.getRawType(java.lang.reflect.Type, java.lang.reflect.Type)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_4": {
+            "org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(java.lang.Throwable)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_5": {
+            "org.apache.commons.lang3.time.DurationUtils.getNanosOfMiili(java.time.Duration)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_6": {
+            "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Boolean[])": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_7": {
+            "org.apache.commons.lang3.stream.Streams.stream()": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_8": {
+            "org.apache.commons.lang3.CharSequenceUtils.toCharArray(java.lang.CharSequence)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "lang_9": {
+            "org.apache.commons.lang3.reflect.MethodUtils.getMatchingAccessibleMethod(java.lang.Class<?>, java.lang.String, java.lang.Class<?>)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "math_1": {
+            "org.apache.commons.math.util.MathUtils.sortInPlace(double[], org.apache.commons.math.util.MathUtils.OrderDirection, double[])": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "math_2": {
+            "org.apache.commons.math.linear.AbstractRealMatrix.setSubMatrix(double[][], int, int)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        },
+        "math_3": {
+            "org.apache.commons.math.exception.util.MessageFactory.buildMessage(java.util.Locale, org.apache.commons.math.exception.util.Localizable, java.lang.Object)": {
+                "autofl_rank": 1,
+                "score": 1.0
+            }
+        }
+    }
+}
