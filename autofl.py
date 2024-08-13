@@ -23,6 +23,8 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         self._summarize_messages = summarize_messages
         self._system_file = system_file
         self._debug = debug
+        self.prompt_tokens = 0
+        self.completion_tokens = 0
 
     def _replace_last_with_memo(self, memo):
         self.messages = self.messages[:-1] # replace recent two queries with memo
@@ -133,6 +135,8 @@ class AutoDebugger(llm_utils.OpenAIEngine):
             functions=self._ri.function_descriptions,
             function_call=function_call_mode,  # auto is default, but we'll be explicit #FIXME
         )
+        self.prompt_tokens += response['usage']['prompt_tokens']
+        self.completion_tokens += response['usage']['completion_tokens']
 
         if self._summarize_messages:
             llm_summary = response['choices'][0]['message']['content']
@@ -185,6 +189,8 @@ class AutoDebugger(llm_utils.OpenAIEngine):
             model=self._model,
             messages=self.messages,
         )
+        self.prompt_tokens += response['usage']['prompt_tokens']
+        self.completion_tokens += response['usage']['completion_tokens']
         response_message = response["choices"][0]["message"]
         self._append_to_messages(response_message)
         return response_message['content'].strip()
@@ -228,59 +234,59 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         return grade_result
 
 if __name__ == '__main__':
-    for i in range(5):
-        parser = argparse.ArgumentParser()
-        parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
-        parser.add_argument('-b', '--bug_name', default='Chart_1')
-        parser.add_argument('-o', '--out', default='test.json')
-        parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')
-        parser.add_argument('-t', '--max_num_tests', default=None, type=int)
-        parser.add_argument('--test_offset', default=0, type=int)
-        parser.add_argument('--max_budget', default=10, type=int)
-        parser.add_argument('--allow_multi_predictions', action="store_true")
-        parser.add_argument('--summarize_messages', action="store_true")
-        parser.add_argument('--show_line_number', action="store_true")
-        parser.add_argument('--postprocess_test_snippet', action="store_true")
-        parser.add_argument('--debug', action="store_true")
-        # args = parser.parse_args()
-        args = parser.parse_args([
-            '-m', 'gpt-3.5-turbo',
-            '-b', 'Lang_20',
-            '-p', 'prompts/line_prompt.txt',
-            '-o', f'linetest/prompt/gpt-3.5-{i + 1}.json',
-            '--max_budget', '10',
-            '-t', '1',
-            '--show_line_number',
-            '--postprocess_test_snippet',
-            '--allow_multi_predictions',
-            '--test_offset', '0',
-        ])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
+    parser.add_argument('-b', '--bug_name', default='Chart_1')
+    parser.add_argument('-o', '--out', default='test.json')
+    parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')
+    parser.add_argument('-t', '--max_num_tests', default=None, type=int)
+    parser.add_argument('--test_offset', default=0, type=int)
+    parser.add_argument('--max_budget', default=10, type=int)
+    parser.add_argument('--allow_multi_predictions', action="store_true")
+    parser.add_argument('--summarize_messages', action="store_true")
+    parser.add_argument('--show_line_number', action="store_true")
+    parser.add_argument('--postprocess_test_snippet', action="store_true")
+    parser.add_argument('--debug', action="store_true")
+    args = parser.parse_args()
+    # args = parser.parse_args([
+    #     '-m', 'gpt-3.5-turbo',
+    #     '-b', 'Lang_20',
+    #     '-p', 'prompts/line_prompt.txt',
+    #     '-o', 'test.json',
+    #     '--max_budget', '10',
+    #     '-t', '1',
+    #     '--show_line_number',
+    #     '--postprocess_test_snippet',
+    #     '--allow_multi_predictions',
+    #     '--test_offset', '0',
+    # ])
 
+    ad = AutoDebugger(args.bug_name, args.model, args.prompt,
+        test_offset=args.test_offset,
+        max_num_tests=args.max_num_tests,
+        allow_multi_predictions=args.allow_multi_predictions,
+        summarize_messages=args.summarize_messages,
+        show_line_number=args.show_line_number,
+        postprocess_test_snippet=args.postprocess_test_snippet,
+        debug=args.debug
+    )
 
-        ad = AutoDebugger(args.bug_name, args.model, args.prompt,
-            test_offset=args.test_offset,
-            max_num_tests=args.max_num_tests,
-            allow_multi_predictions=args.allow_multi_predictions,
-            summarize_messages=args.summarize_messages,
-            show_line_number=args.show_line_number,
-            postprocess_test_snippet=args.postprocess_test_snippet,
-            debug=args.debug
-        )
+    try:
+        grade = ad.run(args.max_budget)
+    except Exception as e:
+        grade = traceback.format_exc()
+        if args.debug:
+            raise e
 
-        try:
-            grade = ad.run(args.max_budget)
-        except Exception as e:
-            grade = traceback.format_exc()
-            if args.debug:
-                raise e
-
-        with open(args.out, "w") as f:
-            json.dump({
-                'time': time.time(),
-                'messages': ad.messages,
-                'interaction_records': {
-                    "step_histories": ad._interaction_records,
-                    "mid_to_message": ad._message_map
-                },
-                'buggy_methods': grade,
-            }, f, indent=4)
+with open(args.out, "w") as f:
+        json.dump({
+            'time': time.time(),
+            'prompt_tokens': ad.prompt_tokens,
+            'completion_tokens': ad.completion_tokens,
+            'messages': ad.messages,
+            'interaction_records': {
+                "step_histories": ad._interaction_records,
+                "mid_to_message": ad._message_map
+            },
+            'buggy_methods': grade,
+        }, f, indent=4)

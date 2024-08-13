@@ -19,6 +19,8 @@ for project, bugs in benchmark_data.items():
         class_name = bug['class_name']
         line_num = bug['line']
         flag = bug['flag']
+        if flag == "fixed":
+            continue
         for snippet in snippet_data:
             if snippet['class_name'] == class_name and int(snippet['begin_line']) < int(line_num) < int(snippet['end_line']):
                 rsts.append(f"{snippet['signature']}:{line_num}")

@@ -164,3 +164,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 /benchmark.json
+/benchmark_line.json
+/line_level_is_matched.json
+/line_level_is_matched.csv
+/csv_gen.py
+/token_calculator.py
+/test.json
