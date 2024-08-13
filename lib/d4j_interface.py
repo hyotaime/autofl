@@ -115,15 +115,16 @@ class D4JRepositoryInterface():
                     tc_signature = tc_name.replace("::", ".") + "()"
                     fail_info[tc_signature] = {"error_message": "", "stack_trace": ""}
                     tc_class, tc_method = tc_name.split("::")
-                    for j, ll in enumerate(f):
-                        if j <= i:
-                            continue
-                        if ll.startswith("--- "):
-                            break
-                        if ll.strip().startswith("at") and tc_method in ll:
-                            tc_sig_inherited = ll.split()[-1]
-                            tc_sig_inherited = tc_sig_inherited[:tc_sig_inherited.find("(")] + "()"
-                            fail_info[tc_sig_inherited] = {"error_message": "", "stack_trace": ""}
+                    with open(os.path.join(BUG_INFO_DIR, bug_name, "failing_tests")) as ff:
+                        for j, ll in enumerate(ff):
+                            if j <= i:
+                                continue
+                            if ll.startswith("--- "):
+                                break
+                            if ll.strip().startswith("at") and tc_method in ll:
+                                tc_sig_inherited = ll.split()[-1]
+                                tc_sig_inherited = tc_sig_inherited[:tc_sig_inherited.find("(")] + "()"
+                                fail_info[tc_sig_inherited] = {"error_message": "", "stack_trace": ""}
                 else:
                     fail_info[tc_signature][
                         "stack_trace" if l.startswith("\tat") else "error_message"] += l
