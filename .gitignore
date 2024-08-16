@@ -165,8 +165,7 @@ cython_debug/
 .idea/
 /benchmark.json
 /benchmark_line.json
-/line_level_is_matched.json
-/line_level_is_matched.csv
-/csv_gen.py
-/token_calculator.py
 /test.json
+/test_experimental/
+/test_ten/
+/linetest/
