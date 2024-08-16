@@ -249,7 +249,7 @@ if __name__ == '__main__':
     parser.add_argument('--debug', action="store_true")
     args = parser.parse_args()
     # args = parser.parse_args([
-    #     '-m', 'gpt-3.5-turbo',
+    #     '-m', 'gpt-4o',
     #     '-b', 'Lang_20',
     #     '-p', 'prompts/line_prompt.txt',
     #     '-o', 'test.json',

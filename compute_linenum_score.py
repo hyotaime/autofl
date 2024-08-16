@@ -10,12 +10,13 @@ def get_answer(bug_id):
 
 
 if __name__ == '__main__':
+    json_name = 'test_combined_scores'
     rst_json = {}
     matched_cnt = 0
     partially_matched_cnt = 0
     not_matched_cnt = 0
     is_matched = {}
-    with open('line_score.json', 'r') as f:
+    with open(f'{json_name}.json', 'r') as f:
         data = json.load(f)
 
     for bug_id, pred_exprs in data['predictions'].items():
@@ -62,6 +63,6 @@ if __name__ == '__main__':
     rst_json['not_matched'] = not_matched_cnt
     rst_json['is_matched'] = is_matched
 
-    with open('line_level_is_matched.json', 'w') as f:
+    with open(f'{json_name}_matched.json', 'w') as f:
         json.dump(rst_json, f, indent=4)
 

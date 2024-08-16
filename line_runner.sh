@@ -7,7 +7,7 @@ REPETITION=$2
 DATASET=$3 # defects4j or bugsinpy
 
 DATA_DIR=./data/${DATASET}/
-MODEL="gpt-4-turbo"
+MODEL="gpt-4o"
 PROMPT_FILE="prompts/line_prompt.txt"
 BUDGET="10"
 NUM_TESTS="1"
