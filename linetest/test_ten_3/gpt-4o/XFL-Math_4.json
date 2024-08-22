@@ -1,0 +1,1912 @@
+{
+    "time": 1723710557.27405,
+    "prompt_tokens": 11992,
+    "completion_tokens": 707,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.math3.geometry.euclidean.twod.SubLineTest.testIntersectionParallel()']` failed.\nThe test looks like:\n\n```java\n148 : @Test\n149 :     public void testIntersectionParallel() {\n150 :         final SubLine sub1 = new SubLine(new Vector2D(0, 1), new Vector2D(0, 2));\n151 :         final SubLine sub2 = new SubLine(new Vector2D(66, 3), new Vector2D(66, 4)); // error occurred here\n153 :         Assert.assertNull(sub1.intersection(sub2, false));\n154 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(Line.java:182)\n\tat org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(SubLine.java:120)\n\tat org.apache.commons.math3.geometry.euclidean.twod.SubLineTest.testIntersectionParallel(SubLineTest.java:151)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.math3.geometry.euclidean.oned\": [\"OrientedPoint\", \"Vector1D\", \"SubOrientedPoint\", \"IntervalsSet\"], \"org.apache.commons.math3.geometry.partitioning\": [\"AbstractSubHyperplane\", \"BSPTree\", \"AbstractRegion\"], \"org.apache.commons.math3.util\": [\"FastMath\", \"Precision\", \"MathArrays\"], \"org.apache.commons.math3.geometry.euclidean.twod\": [\"SubLine\", \"Line\", \"Vector2D\"], \"org.apache.commons.math3.geometry.euclidean.threed\": [\"SubLine\", \"Line\", \"Vector3D\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.math3.geometry.euclidean.twod.SubLine\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".SubLine(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)\", \".SubLine(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\", \".SubLine(org.apache.commons.math3.geometry.euclidean.twod.Segment)\", \".getSegments()\", \".intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean)\", \".buildIntervalSet(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\", \".buildNew(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)\", \".side(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)\", \".split(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean)\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"110 : public Vector2D intersection(final SubLine subLine, final boolean includeEndPoints) {\\n111 : \\n112 :         // retrieve the underlying lines\\n113 :         Line line1 = (Line) getHyperplane();\\n114 :         Line line2 = (Line) subLine.getHyperplane();\\n115 : \\n116 :         // compute the intersection on infinite line\\n117 :         Vector2D v2D = line1.intersection(line2);\\n118 : \\n119 :         // check location of point with respect to first sub-line\\n120 :         Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));\\n121 : \\n122 :         // check location of point with respect to second sub-line\\n123 :         Location loc2 = subLine.getRemainingRegion().checkPoint(line2.toSubSpace(v2D));\\n124 : \\n125 :         if (includeEndPoints) {\\n126 :             return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;\\n127 :         } else {\\n128 :             return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;\\n129 :         }\\n130 : \\n131 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"You probably mean org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>). It looks like:\\n```java\\n180 : public Vector1D toSubSpace(final Vector<Euclidean2D> point) {\\n181 :         Vector2D p2 = (Vector2D) point;\\n182 :         return new Vector1D(cos * p2.getX() + sin * p2.getY());\\n183 :     }\\n```\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.Line.intersection(org.apache.commons.math3.geometry.euclidean.twod.Line)\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"197 : public Vector2D intersection(final Line other) {\\n198 :         final double d = sin * other.cos - other.sin * cos;\\n199 :         if (FastMath.abs(d) < 1.0e-10) {\\n200 :             return null;\\n201 :         }\\n202 :         return new Vector2D((cos * other.originOffset - other.cos * originOffset) / d,\\n203 :                             (sin * other.originOffset - other.sin * originOffset) / d);\\n204 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "### Step-by-step Explanation of the Bug\n\n1. **Test Case Setup:**\n    - The test `testIntersectionParallel` sets up two parallel `SubLine` objects:\n      ```java\n      150 : final SubLine sub1 = new SubLine(new Vector2D(0, 1), new Vector2D(0, 2));\n      151 : final SubLine sub2 = new SubLine(new Vector2D(66, 3), new Vector2D(66, 4));\n      ```\n\n2. **Failure Observation:**\n    - The test fails with a `NullPointerException` at line `151`.\n\n3. **Code Analysis:**\n    - The relevant method from `SubLine` is:\n      ```java\n      110 : public Vector2D intersection(final SubLine subLine, final boolean includeEndPoints) {\n      //...\n      117 :     Vector2D v2D = line1.intersection(line2);  // v2D is expected to be null for parallel lines\n      119 :     Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));  // NPE likely here\n      //...\n      }\n      ```\n\n4. **Detail Investigation:**\n    - The `intersection` method of `Line` returns `null` if the lines are parallel:\n      ```java\n      197 : public Vector2D intersection(final Line other) {\n      199 :     if (FastMath.abs(d) < 1.0e-10) {\n      200 :         return null; // Parallel lines\n      }\n      ```\n\n5. **Root Cause:**\n    - The line `line1.toSubSpace(v2D)` at line `120` executes regardless of whether `v2D` is `null`. If the lines are parallel, `v2D` will be `null`, causing `line1.toSubSpace(null)` to throw a `NullPointerException`.\n\n### Lines Causing the Bug:\n- `org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection:119`\n- `org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection:120`\n\nThese lines should include a check to handle the case where `v2D` is null to avoid the `NullPointerException` for parallel lines.",
+            "refusal": null
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the specific lines of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate line numbers of all likely culprits (in `FullClassName.MethodName(ParameterType1, ParameterType2, ...):Linenumber` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean):119\norg.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean):120",
+            "refusal": null
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12"
+                ],
+                "response_message": "m13"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.math3.geometry.euclidean.twod.SubLineTest.testIntersectionParallel()']` failed.\nThe test looks like:\n\n```java\n148 : @Test\n149 :     public void testIntersectionParallel() {\n150 :         final SubLine sub1 = new SubLine(new Vector2D(0, 1), new Vector2D(0, 2));\n151 :         final SubLine sub2 = new SubLine(new Vector2D(66, 3), new Vector2D(66, 4)); // error occurred here\n153 :         Assert.assertNull(sub1.intersection(sub2, false));\n154 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(Line.java:182)\n\tat org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(SubLine.java:120)\n\tat org.apache.commons.math3.geometry.euclidean.twod.SubLineTest.testIntersectionParallel(SubLineTest.java:151)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.math3.geometry.euclidean.oned\": [\"OrientedPoint\", \"Vector1D\", \"SubOrientedPoint\", \"IntervalsSet\"], \"org.apache.commons.math3.geometry.partitioning\": [\"AbstractSubHyperplane\", \"BSPTree\", \"AbstractRegion\"], \"org.apache.commons.math3.util\": [\"FastMath\", \"Precision\", \"MathArrays\"], \"org.apache.commons.math3.geometry.euclidean.twod\": [\"SubLine\", \"Line\", \"Vector2D\"], \"org.apache.commons.math3.geometry.euclidean.threed\": [\"SubLine\", \"Line\", \"Vector3D\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.math3.geometry.euclidean.twod.SubLine\"}"
+                },
+                "refusal": null
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".SubLine(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)\", \".SubLine(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\", \".SubLine(org.apache.commons.math3.geometry.euclidean.twod.Segment)\", \".getSegments()\", \".intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean)\", \".buildIntervalSet(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\", \".buildNew(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)\", \".side(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)\", \".split(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean)\"}"
+                },
+                "refusal": null
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"110 : public Vector2D intersection(final SubLine subLine, final boolean includeEndPoints) {\\n111 : \\n112 :         // retrieve the underlying lines\\n113 :         Line line1 = (Line) getHyperplane();\\n114 :         Line line2 = (Line) subLine.getHyperplane();\\n115 : \\n116 :         // compute the intersection on infinite line\\n117 :         Vector2D v2D = line1.intersection(line2);\\n118 : \\n119 :         // check location of point with respect to first sub-line\\n120 :         Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));\\n121 : \\n122 :         // check location of point with respect to second sub-line\\n123 :         Location loc2 = subLine.getRemainingRegion().checkPoint(line2.toSubSpace(v2D));\\n124 : \\n125 :         if (includeEndPoints) {\\n126 :             return ((loc1 != Location.OUTSIDE) && (loc2 != Location.OUTSIDE)) ? v2D : null;\\n127 :         } else {\\n128 :             return ((loc1 == Location.INSIDE) && (loc2 == Location.INSIDE)) ? v2D : null;\\n129 :         }\\n130 : \\n131 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(org.apache.commons.math3.geometry.euclidean.twod.Vector2D)\"}"
+                },
+                "refusal": null
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"You probably mean org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>). It looks like:\\n```java\\n180 : public Vector1D toSubSpace(final Vector<Euclidean2D> point) {\\n181 :         Vector2D p2 = (Vector2D) point;\\n182 :         return new Vector1D(cos * p2.getX() + sin * p2.getY());\\n183 :     }\\n```\""
+            },
+            "m11": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.math3.geometry.euclidean.twod.Line.intersection(org.apache.commons.math3.geometry.euclidean.twod.Line)\"}"
+                },
+                "refusal": null
+            },
+            "m12": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"197 : public Vector2D intersection(final Line other) {\\n198 :         final double d = sin * other.cos - other.sin * cos;\\n199 :         if (FastMath.abs(d) < 1.0e-10) {\\n200 :             return null;\\n201 :         }\\n202 :         return new Vector2D((cos * other.originOffset - other.cos * originOffset) / d,\\n203 :                             (sin * other.originOffset - other.sin * originOffset) / d);\\n204 :     }\""
+            },
+            "m13": {
+                "role": "assistant",
+                "content": "### Step-by-step Explanation of the Bug\n\n1. **Test Case Setup:**\n    - The test `testIntersectionParallel` sets up two parallel `SubLine` objects:\n      ```java\n      150 : final SubLine sub1 = new SubLine(new Vector2D(0, 1), new Vector2D(0, 2));\n      151 : final SubLine sub2 = new SubLine(new Vector2D(66, 3), new Vector2D(66, 4));\n      ```\n\n2. **Failure Observation:**\n    - The test fails with a `NullPointerException` at line `151`.\n\n3. **Code Analysis:**\n    - The relevant method from `SubLine` is:\n      ```java\n      110 : public Vector2D intersection(final SubLine subLine, final boolean includeEndPoints) {\n      //...\n      117 :     Vector2D v2D = line1.intersection(line2);  // v2D is expected to be null for parallel lines\n      119 :     Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));  // NPE likely here\n      //...\n      }\n      ```\n\n4. **Detail Investigation:**\n    - The `intersection` method of `Line` returns `null` if the lines are parallel:\n      ```java\n      197 : public Vector2D intersection(final Line other) {\n      199 :     if (FastMath.abs(d) < 1.0e-10) {\n      200 :         return null; // Parallel lines\n      }\n      ```\n\n5. **Root Cause:**\n    - The line `line1.toSubSpace(v2D)` at line `120` executes regardless of whether `v2D` is `null`. If the lines are parallel, `v2D` will be `null`, causing `line1.toSubSpace(null)` to throw a `NullPointerException`.\n\n### Lines Causing the Bug:\n- `org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection:119`\n- `org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection:120`\n\nThese lines should include a check to handle the case where `v2D` is null to avoid the `NullPointerException` for parallel lines.",
+                "refusal": null
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.IntervalsSet()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.IntervalsSet(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.IntervalsSet(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.IntervalsSet(java.util.Collection<org.apache.commons.math3.geometry.partitioning.SubHyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.buildTree(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.buildNew(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.computeGeometricalProperties()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.getInf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.getSup()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.asList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet.recurseList(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>, java.util.List<org.apache.commons.math3.geometry.euclidean.oned.Interval>, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.OrientedPoint(org.apache.commons.math3.geometry.euclidean.oned.Vector1D, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.copySelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.getOffset(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.wholeHyperplane()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.wholeSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.sameOrientationAs(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.getLocation()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.isDirect()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.OrientedPoint.revertSelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.SubOrientedPoint.SubOrientedPoint(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.SubOrientedPoint.getSize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.SubOrientedPoint.buildNew(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.SubOrientedPoint.side(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.SubOrientedPoint.split(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.Vector1D(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.Vector1D(double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.Vector1D(double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.Vector1D(double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.Vector1D(double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getX()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getZero()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getNorm1()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getNormSq()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.getNormInf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.add(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.add(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.subtract(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.subtract(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.normalize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.negate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.scalarMultiply(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.isNaN()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.isInfinite()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distance1(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distance(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distanceInf(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distanceSq(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.dotProduct(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distance(org.apache.commons.math3.geometry.euclidean.oned.Vector1D, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distanceInf(org.apache.commons.math3.geometry.euclidean.oned.Vector1D, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.distanceSq(org.apache.commons.math3.geometry.euclidean.oned.Vector1D, org.apache.commons.math3.geometry.euclidean.oned.Vector1D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.oned.Vector1D.toString(java.text.NumberFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.Line(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.Line(org.apache.commons.math3.geometry.euclidean.threed.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.reset(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.revert()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.getDirection()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.getOrigin()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.getAbscissa(org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.pointAt(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.toSubSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.toSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.isSimilarTo(org.apache.commons.math3.geometry.euclidean.threed.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.contains(org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.distance(org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.distance(org.apache.commons.math3.geometry.euclidean.threed.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.closestPoint(org.apache.commons.math3.geometry.euclidean.threed.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.intersection(org.apache.commons.math3.geometry.euclidean.threed.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Line.wholeLine()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.SubLine(org.apache.commons.math3.geometry.euclidean.threed.Line, org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.SubLine(org.apache.commons.math3.geometry.euclidean.threed.Segment)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.getSegments()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.threed.SubLine, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.SubLine.buildIntervalSet(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.Vector3D(double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D, double, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getX()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getY()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getZ()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.toArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getZero()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getNorm1()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getNormSq()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getNormInf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getAlpha()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.getDelta()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.add(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.add(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.subtract(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.subtract(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.normalize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.orthogonal()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.angle(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.negate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.scalarMultiply(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.isNaN()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.isInfinite()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.dotProduct(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.crossProduct(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distance1(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distance(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distanceInf(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distanceSq(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.dotProduct(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.crossProduct(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distance1(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distance(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distanceInf(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.distanceSq(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.threed.Vector3D.toString(java.text.NumberFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.Line(org.apache.commons.math3.geometry.euclidean.twod.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.copySelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.reset(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.reset(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.revertSelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getReverse()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.toSubSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.toSpace(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.intersection(org.apache.commons.math3.geometry.euclidean.twod.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.wholeHyperplane()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.wholeSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getOffset(org.apache.commons.math3.geometry.euclidean.twod.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getOffset(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.sameOrientationAs(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getPointAt(org.apache.commons.math3.geometry.euclidean.oned.Vector1D, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.contains(org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.distance(org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.isParallelTo(org.apache.commons.math3.geometry.euclidean.twod.Line)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.translateToPoint(org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getAngle()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.setAngle(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getOriginOffset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.setOriginOffset(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.getTransform(java.awt.geom.AffineTransform)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.LineTransform(java.awt.geom.AffineTransform)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.apply(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.apply(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Line.apply(org.apache.commons.math3.geometry.partitioning.SubHyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>, org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.SubLine(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.SubLine(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.SubLine(org.apache.commons.math3.geometry.euclidean.twod.Segment)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.getSegments()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean):119",
+                "org.apache.commons.math3.geometry.euclidean.twod.SubLine.intersection(org.apache.commons.math3.geometry.euclidean.twod.SubLine, boolean):120"
+            ]
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.buildIntervalSet(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.buildNew(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>, org.apache.commons.math3.geometry.partitioning.Region<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.side(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.SubLine.split(org.apache.commons.math3.geometry.partitioning.Hyperplane<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.Vector2D(double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D, double, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getX()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getY()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.toArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getSpace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getZero()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getNorm1()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getNorm()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getNormSq()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.getNormInf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.add(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.add(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.subtract(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.subtract(double, org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.normalize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.negate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.scalarMultiply(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.isNaN()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.isInfinite()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distance1(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distance(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distanceInf(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distanceSq(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.dotProduct(org.apache.commons.math3.geometry.Vector<org.apache.commons.math3.geometry.euclidean.twod.Euclidean2D>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distance(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distanceInf(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.distanceSq(org.apache.commons.math3.geometry.euclidean.twod.Vector2D, org.apache.commons.math3.geometry.euclidean.twod.Vector2D)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.euclidean.twod.Vector2D.toString(java.text.NumberFormat)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion(java.util.Collection<org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.compare(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>, org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.visitOrder(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.visitInternalNode(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.visitLeafNode(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.AbstractRegion(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.buildNew(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.insertCuts(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, java.util.Collection<org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.copySelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.isEmpty(org.apache.commons.math3.geometry.partitioning.BSPTree<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.contains(org.apache.commons.math3.geometry.partitioning.Region<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.checkPoint(org.apache.commons.math3.geometry.Vector<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.checkPoint(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.Vector<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.getTree(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.characterize(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>, org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.getBoundarySize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.getSize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.setSize(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.getBarycenter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.setBarycenter(org.apache.commons.math3.geometry.Vector<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.computeGeometricalProperties()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.side(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.recurseSides(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>, org.apache.commons.math3.geometry.partitioning.AbstractRegion.Sides)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.Sides()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.rememberPlusFound()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.plusFound()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.rememberMinusFound()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.minusFound()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.intersection(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.recurseIntersection(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.applyTransform(org.apache.commons.math3.geometry.partitioning.Transform<S,T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractRegion.recurseTransform(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.Transform<S,T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.AbstractSubHyperplane(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>, org.apache.commons.math3.geometry.partitioning.Region<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.buildNew(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>, org.apache.commons.math3.geometry.partitioning.Region<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.copySelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.getHyperplane()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.getRemainingRegion()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.getSize()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.reunite(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.applyTransform(org.apache.commons.math3.geometry.partitioning.Transform<S,T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.recurseTransform(org.apache.commons.math3.geometry.partitioning.BSPTree<T>, org.apache.commons.math3.geometry.partitioning.Hyperplane<S>, org.apache.commons.math3.geometry.partitioning.Transform<S,T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.side(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.split(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.AbstractSubHyperplane.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.BSPTree()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.BSPTree(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.BSPTree(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>, org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.BSPTree<S>, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.insertCut(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.copySelf()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getCut()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getPlus()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getMinus()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getParent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.setAttribute(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getAttribute()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.visit(org.apache.commons.math3.geometry.partitioning.BSPTreeVisitor<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.fitToCell(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.getCell(org.apache.commons.math3.geometry.Vector<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.condense()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.merge(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.BSPTree.LeafMerger<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.merge(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.BSPTree.LeafMerger<S>, org.apache.commons.math3.geometry.partitioning.BSPTree<S>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.merge(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.BSPTree<S>, org.apache.commons.math3.geometry.partitioning.BSPTree<S>, boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.split(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.insertInTree(org.apache.commons.math3.geometry.partitioning.BSPTree<S>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.chopOffMinus(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.geometry.partitioning.BSPTree.chopOffPlus(org.apache.commons.math3.geometry.partitioning.Hyperplane<S>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.FastMath()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.doubleHighPart(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.sqrt(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.cosh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.sinh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.tanh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.acosh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.asinh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.atanh(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.signum(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.signum(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.nextUp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.nextUp(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.random()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.exp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.exp(double, double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.expm1(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.expm1(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.log(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.log(double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.log1p(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.log10(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.log(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.pow(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.pow(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.polySine(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.polyCosine(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.sinQ(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.cosQ(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.tanQ(double, double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.reducePayneHanek(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.sin(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.cos(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.tan(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.atan(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.atan(double, double, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.atan2(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.asin(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.acos(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.cbrt(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.toRadians(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.toDegrees(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.abs(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.abs(long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.abs(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.abs(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.ulp(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.ulp(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.scalb(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.scalb(float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.nextAfter(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.nextAfter(float, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.floor(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.ceil(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.rint(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.round(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.round(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.min(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.min(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.min(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.min(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.max(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.max(long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.max(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.max(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.hypot(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.IEEEremainder(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.copySign(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.copySign(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.getExponent(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.getExponent(float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.main(java.lang.String[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.CodyWaite(double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.getK()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.getRemA()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.FastMath.getRemB()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.MathArrays()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.evaluate(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.evaluate(double[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.scale(double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.scaleInPlace(double, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.ebeAdd(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.ebeSubtract(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.ebeMultiply(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.ebeDivide(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distance1(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distance1(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distance(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distance(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distanceInf(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.distanceInf(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.isMonotonic(T[], org.apache.commons.math3.util.MathArrays.OrderDirection, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.isMonotonic(double[], org.apache.commons.math3.util.MathArrays.OrderDirection, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkOrder(double[], org.apache.commons.math3.util.MathArrays.OrderDirection, boolean, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkOrder(double[], org.apache.commons.math3.util.MathArrays.OrderDirection, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkOrder(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkRectangular(long[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkPositive(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkNonNegative(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.checkNonNegative(long[][])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.safeNorm(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.sortInPlace(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.sortInPlace(double[], org.apache.commons.math3.util.MathArrays.OrderDirection, double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.compare(org.apache.commons.math3.util.Pair<java.lang.Double,double[]>, org.apache.commons.math3.util.Pair<java.lang.Double,double[]>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.copyOf(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.copyOf(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.copyOf(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.copyOf(double[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.linearCombination(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.linearCombination(double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.linearCombination(double, double, double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.linearCombination(double, double, double, double, double, double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.equals(float[], float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.equalsIncludingNaN(float[], float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.equals(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.equalsIncludingNaN(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.normalizeArray(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.buildArray(org.apache.commons.math3.Field<T>, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.buildArray(org.apache.commons.math3.Field<T>, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.MathArrays.convolve(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.Precision()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.compareTo(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.compareTo(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(float, float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(float, float, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(float, float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(float, float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsWithRelativeTolerance(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(double, double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equals(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.equalsIncludingNaN(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.round(double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.round(double, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.round(float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.round(float, int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.roundUnscaled(double, double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.math3.util.Precision.representableDelta(double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

@@ -1,0 +1,1181 @@
+{
+    "time": 1723709679.7914088,
+    "prompt_tokens": 12228,
+    "completion_tokens": 416,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.io.filefilter.RegexFileFilterTest.testRegexFileNameOnly()']` failed.\nThe test looks like:\n\n```java\n164 : @SuppressWarnings(\"unchecked\")\n165 :     @Test\n166 :     public void testRegexFileNameOnly() throws IOException {\n167 :         final Path path = Paths.get(\"folder\", \"Foo.java\");\n168 :         final String patternStr = \"Foo.*\";\n169 :         assertFiltering(assertSerializable(new RegexFileFilter(patternStr)), path, true);\n170 :         assertFiltering(assertSerializable(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) Path::toString)), path,\n171 :                 false);\n172 :         assertFiltering(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) null), path, false);\n173 :         assertFiltering(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) p -> null), path, false);\n174 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.io.filefilter.RegexFileFilter.accept(RegexFileFilter.java:184)\n       org.apache.commons.io.filefilter.RegexFileFilterTest.assertFiltering(RegexFileFilterTest.java:68)\n       org.apache.commons.io.filefilter.RegexFileFilterTest.testRegexFileNameOnly(RegexFileFilterTest.java:170)\n       java.base/java.lang.reflect.Method.invoke(Method.java:568)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.io.filefilter\": [\"AbstractFileFilter\", \"RegexFileFilter\", \"IOFileFilter\"], \"org.apache.commons.io.output\": [\"ByteArrayOutputStream\", \"AbstractByteArrayOutputStream\"], \"org.apache.commons.io\": [\"IOUtils\", \"StandardLineSeparator\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.io.filefilter.RegexFileFilter\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".compile(java.lang.String, int)\", \".toFlags(org.apache.commons.io.IOCase)\", \".RegexFileFilter(java.util.regex.Pattern)\", \".RegexFileFilter(java.util.regex.Pattern, java.util.function.Function<java.nio.file.Path,java.lang.String>)\", \".RegexFileFilter(java.lang.String)\", \".RegexFileFilter(java.lang.String, int)\", \".RegexFileFilter(java.lang.String, org.apache.commons.io.IOCase)\", \".accept(java.io.File, java.lang.String)\", \".accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)\", \".toString()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": "Let's retrieve the code snippet for the `accept` method, since the exception is occurring in the `RegexFileFilter.accept` method as per the error stack.\n\nI'll call `get_code_snippet` for the method `org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)`.",
+            "refusal": null
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the specific lines of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate line numbers of all likely culprits (in `FullClassName.MethodName(ParameterType1, ParameterType2, ...):Linenumber` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes):184",
+            "refusal": null
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m8"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m10"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.io.filefilter.RegexFileFilterTest.testRegexFileNameOnly()']` failed.\nThe test looks like:\n\n```java\n164 : @SuppressWarnings(\"unchecked\")\n165 :     @Test\n166 :     public void testRegexFileNameOnly() throws IOException {\n167 :         final Path path = Paths.get(\"folder\", \"Foo.java\");\n168 :         final String patternStr = \"Foo.*\";\n169 :         assertFiltering(assertSerializable(new RegexFileFilter(patternStr)), path, true);\n170 :         assertFiltering(assertSerializable(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) Path::toString)), path,\n171 :                 false);\n172 :         assertFiltering(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) null), path, false);\n173 :         assertFiltering(new RegexFileFilter(Pattern.compile(patternStr), (Function<Path, String> & Serializable) p -> null), path, false);\n174 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n       org.apache.commons.io.filefilter.RegexFileFilter.accept(RegexFileFilter.java:184)\n       org.apache.commons.io.filefilter.RegexFileFilterTest.assertFiltering(RegexFileFilterTest.java:68)\n       org.apache.commons.io.filefilter.RegexFileFilterTest.testRegexFileNameOnly(RegexFileFilterTest.java:170)\n       java.base/java.lang.reflect.Method.invoke(Method.java:568)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.io.filefilter\": [\"AbstractFileFilter\", \"RegexFileFilter\", \"IOFileFilter\"], \"org.apache.commons.io.output\": [\"ByteArrayOutputStream\", \"AbstractByteArrayOutputStream\"], \"org.apache.commons.io\": [\"IOUtils\", \"StandardLineSeparator\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.io.filefilter.RegexFileFilter\"}"
+                },
+                "refusal": null
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".compile(java.lang.String, int)\", \".toFlags(org.apache.commons.io.IOCase)\", \".RegexFileFilter(java.util.regex.Pattern)\", \".RegexFileFilter(java.util.regex.Pattern, java.util.function.Function<java.nio.file.Path,java.lang.String>)\", \".RegexFileFilter(java.lang.String)\", \".RegexFileFilter(java.lang.String, int)\", \".RegexFileFilter(java.lang.String, org.apache.commons.io.IOCase)\", \".accept(java.io.File, java.lang.String)\", \".accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)\", \".toString()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)\"}"
+                },
+                "refusal": null
+            },
+            "m8": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path,java.nio.file.attribute.BasicFileAttributes)\"}"
+                },
+                "refusal": null
+            },
+            "m9": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.io.filefilter.RegexFileFilter.accept(java.io.File, java.lang.String)\"}"
+                },
+                "refusal": null
+            },
+            "m10": {
+                "role": "assistant",
+                "content": "Let's retrieve the code snippet for the `accept` method, since the exception is occurring in the `RegexFileFilter.accept` method as per the error stack.\n\nI'll call `get_code_snippet` for the method `org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)`.",
+                "refusal": null
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.io.IOUtils.buffer(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.InputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.OutputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.Reader, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.buffer(java.io.Writer, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.byteArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.byteArray(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.charArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.charArray(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.close(java.io.Closeable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.close(java.io.Closeable, org.apache.commons.io.function.IOConsumer<java.io.IOException>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.close(java.net.URLConnection)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQ(java.io.Closeable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.Closeable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.Closeable, java.util.function.Consumer<java.io.IOException>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.lang.Iterable<java.io.Closeable>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.nio.channels.Selector)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.net.ServerSocket)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.net.Socket)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.util.stream.Stream<java.io.Closeable>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.closeQuietly(java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.consume(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.consume(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEquals(java.io.InputStream, java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEquals(java.util.Iterator<?>, java.util.Iterator<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEquals(java.io.Reader, java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEquals(java.util.stream.Stream<?>, java.util.stream.Stream<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEqualsIgnoreEOL(java.io.BufferedReader, java.io.BufferedReader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.contentEqualsIgnoreEOL(java.io.Reader, java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.Writer, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.Writer, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.ByteArrayOutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.lang.Appendable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.lang.Appendable, java.nio.CharBuffer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.io.OutputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.io.Reader, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.net.URL, java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copy(java.net.URL, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.InputStream, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.InputStream, java.io.OutputStream, byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.InputStream, java.io.OutputStream, long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.InputStream, java.io.OutputStream, long, long, byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.Reader, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.Reader, java.io.Writer, char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.Reader, java.io.Writer, long, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.copyLarge(java.io.Reader, java.io.Writer, long, long, char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.fill0(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.fill0(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.getScratchByteArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.getScratchByteArrayWriteOnly()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.getScratchCharArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.getScratchCharArrayWriteOnly()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.length(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.length(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.length(java.lang.CharSequence)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.length(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.lineIterator(java.io.InputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.lineIterator(java.io.InputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.lineIterator(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(java.io.InputStream, byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(java.io.InputStream, byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(org.apache.commons.io.function.IOTriFunction<byte[],java.lang.Integer,java.lang.Integer,java.lang.Integer>, byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(java.nio.channels.ReadableByteChannel, java.nio.ByteBuffer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(java.io.Reader, char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.read(java.io.Reader, char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.io.InputStream, byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.io.InputStream, byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.io.InputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.nio.channels.ReadableByteChannel, java.nio.ByteBuffer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.io.Reader, char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readFully(java.io.Reader, char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readLines(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readLines(java.io.InputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readLines(java.io.InputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.readLines(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToByteArray(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToByteArray(java.lang.String, java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToString(java.lang.String, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToString(java.lang.String, java.nio.charset.Charset, java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToURL(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.resourceToURL(java.lang.String, java.lang.ClassLoader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skip(java.io.InputStream, long, java.util.function.Supplier<byte[]>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skip(java.nio.channels.ReadableByteChannel, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skip(java.io.Reader, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long, java.util.function.Supplier<byte[]>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skipFully(java.nio.channels.ReadableByteChannel, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.skipFully(java.io.Reader, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toBufferedInputStream(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toBufferedInputStream(java.io.InputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toBufferedReader(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toBufferedReader(java.io.Reader, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.InputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.InputStream, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(org.apache.commons.io.function.IOTriFunction<byte[],java.lang.Integer,java.lang.Integer,java.lang.Integer>, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.Reader, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.io.Reader, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.net.URL)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toByteArray(java.net.URLConnection)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toCharArray(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toCharArray(java.io.InputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toCharArray(java.io.InputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toCharArray(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.CharSequence)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.CharSequence, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.CharSequence, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.String, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toInputStream(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(byte[], java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.io.InputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.io.InputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(org.apache.commons.io.function.IOSupplier<java.io.InputStream>, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(org.apache.commons.io.function.IOSupplier<java.io.InputStream>, java.nio.charset.Charset, org.apache.commons.io.function.IOSupplier<java.lang.String>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.io.Reader)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URI)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URI, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URI, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URL)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URL, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.toString(java.net.URL, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(byte[], java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(byte[], java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(byte[], java.io.Writer, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(byte[], java.io.Writer, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(char[], java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(char[], java.io.OutputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(char[], java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(char[], java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.CharSequence, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.CharSequence, java.io.OutputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.CharSequence, java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.CharSequence, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.String, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.String, java.io.OutputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.String, java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.String, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.StringBuffer, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.StringBuffer, java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.write(java.lang.StringBuffer, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeChunked(byte[], java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeChunked(char[], java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeLines(java.util.Collection<?>, java.lang.String, java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeLines(java.util.Collection<?>, java.lang.String, java.io.OutputStream, java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeLines(java.util.Collection<?>, java.lang.String, java.io.OutputStream, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writeLines(java.util.Collection<?>, java.lang.String, java.io.Writer)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.writer(java.lang.Appendable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.IOUtils.IOUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.StandardLineSeparator.StandardLineSeparator(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.StandardLineSeparator.getBytes(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.StandardLineSeparator.getString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.toDefaultFileVisitResult(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.AbstractFileFilter()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.AbstractFileFilter(java.nio.file.FileVisitResult, java.nio.file.FileVisitResult)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.accept(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.accept(java.io.File, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.append(java.util.List<?>, java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.append(java.lang.Object[], java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.get(org.apache.commons.io.function.IOSupplier<java.nio.file.FileVisitResult>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.handle(java.lang.Throwable)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.postVisitDirectory(java.nio.file.Path, java.io.IOException)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.preVisitDirectory(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.toFileVisitResult(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.visitFile(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.AbstractFileFilter.visitFileFailed(java.nio.file.Path, java.io.IOException)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.accept(java.io.File)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.accept(java.io.File, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.and(org.apache.commons.io.filefilter.IOFileFilter)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.matches(java.nio.file.Path)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.negate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.IOFileFilter.or(org.apache.commons.io.filefilter.IOFileFilter)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.compile(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.toFlags(org.apache.commons.io.IOCase)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.RegexFileFilter(java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.RegexFileFilter(java.util.regex.Pattern, java.util.function.Function<java.nio.file.Path,java.lang.String>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.RegexFileFilter(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.RegexFileFilter(java.lang.String, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.RegexFileFilter(java.lang.String, org.apache.commons.io.IOCase)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.io.File, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.io.filefilter.RegexFileFilter.accept(java.nio.file.Path, java.nio.file.attribute.BasicFileAttributes):184"
+            ]
+        },
+        "org.apache.commons.io.filefilter.RegexFileFilter.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.construct(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.close()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.needNewBuffer(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.resetImpl()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toByteArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toByteArrayImpl()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toInputStream()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toInputStream(org.apache.commons.io.output.AbstractByteArrayOutputStream.InputStreamConstructor<T>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toString(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.toString(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.write(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.write(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.write(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.writeImpl(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.writeImpl(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.writeImpl(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.writeTo(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.AbstractByteArrayOutputStream.writeToImpl(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.toBufferedInputStream(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.toBufferedInputStream(java.io.InputStream, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.ByteArrayOutputStream()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.ByteArrayOutputStream(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.reset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.toByteArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.toInputStream()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.write(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.write(java.io.InputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.write(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.io.output.ByteArrayOutputStream.writeTo(java.io.OutputStream)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}
