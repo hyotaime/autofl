@@ -216,9 +216,7 @@ def add_auxiliary_scores(json_files, autofl_scores, language, default_aux_score=
 
         # 1. get num failing tests
         if language == 'java':
-            snippet_path = f"data/rst/{bug_name}/snippet.json"
-        elif language == 'python':
-            snippet_path = f"data/bugsinpy/{bug_name}/snippet.json"
+            snippet_path = f"data/npe/{bug_name}/snippet.json"
         else:
             raise ValueError(f'Unknown language {language}')
 

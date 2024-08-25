@@ -50,6 +50,6 @@ python compute_score.py {result_directories} -l java -a -v -o {json_output_file}
 
 - Defects4J and Apache dataset:
     ```shell
-    sh line_runner.sh my_d4j_autofl_ 5 rst
+    sh line_runner.sh my_d4j_autofl_ 5 npe
     python compute_score.py linelevel/my_d4j_autofl_*/gpt-4o -l java -a -v -o scores.json
     ```

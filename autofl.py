@@ -248,18 +248,6 @@ if __name__ == '__main__':
     parser.add_argument('--postprocess_test_snippet', action="store_true")
     parser.add_argument('--debug', action="store_true")
     args = parser.parse_args()
-    # args = parser.parse_args([
-    #     '-m', 'gpt-4o',
-    #     '-b', 'Lang_20',
-    #     '-p', 'prompts/line_prompt.txt',
-    #     '-o', 'test.json',
-    #     '--max_budget', '10',
-    #     '-t', '1',
-    #     '--show_line_number',
-    #     '--postprocess_test_snippet',
-    #     '--allow_multi_predictions',
-    #     '--test_offset', '0',
-    # ])
 
     ad = AutoDebugger(args.bug_name, args.model, args.prompt,
         test_offset=args.test_offset,

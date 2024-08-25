@@ -7,7 +7,7 @@ from collections import defaultdict
 from lib import sequence_utils, name_utils
 
 BUG_INFO_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                            "data/rst")
+                            "data/npe")
 
 class D4JRepositoryInterface():
     RANGE_REGEX = "\(line (?P<beginline>\d+),col (?P<begincol>\d+)\)-\(line (?P<endline>\d+),col (?P<endcol>\d+)\)"
