@@ -1,0 +1,78 @@
+bug_name,is_matched,matched,missed,wrong
+Chart_14,partially matched,3,1,12
+Chart_16,partially matched,1,1,11
+Chart_2,partially matched,1,2,14
+Chart_4,matched,1,0,12
+Cli_30,not matched,0,2,13
+Cli_5,matched,1,0,4
+Closure_171,not matched,0,2,16
+Closure_2,matched,1,0,5
+Codec_13,matched,1,0,2
+Codec_17,matched,1,0,11
+Codec_5,not matched,0,0,21
+Csv_11,matched,1,0,13
+Csv_4,matched,1,0,10
+Csv_9,matched,1,0,10
+Gson_6,matched,1,0,10
+Gson_9,not matched,0,0,17
+JacksonCore_8,matched,1,0,22
+JacksonDatabind_107,not matched,0,1,11
+JacksonDatabind_13,matched,2,0,3
+JacksonDatabind_3,partially matched,1,1,0
+JacksonDatabind_36,not matched,0,0,11
+JacksonDatabind_80,not matched,0,1,5
+JacksonDatabind_93,matched,1,0,17
+JacksonDatabind_95,not matched,0,1,14
+Jsoup_22,matched,1,0,4
+Jsoup_26,matched,1,0,9
+Jsoup_66,not matched,0,0,12
+Jsoup_8,matched,1,0,7
+Jsoup_89,matched,1,0,1
+Lang_20,matched,2,0,2
+Lang_33,matched,1,0,0
+Lang_39,matched,1,0,6
+Lang_47,matched,2,0,9
+Lang_57,matched,1,0,6
+Math_4,matched,2,0,12
+Math_70,matched,1,0,4
+Math_79,not matched,0,2,15
+Mockito_18,matched,1,0,5
+Mockito_38,matched,1,0,4
+collections_1,matched,1,0,0
+collections_2,matched,3,0,8
+collections_3,partially matched,6,1,1
+commons-io_1,matched,1,0,3
+commons-io_10,matched,1,0,4
+commons-io_11,partially matched,2,1,13
+commons-io_12,matched,1,0,4
+commons-io_13,matched,2,0,1
+commons-io_14,matched,1,0,4
+commons-io_15,matched,1,0,20
+commons-io_16,matched,1,0,0
+commons-io_17,matched,1,0,1
+commons-io_18,not matched,0,1,14
+commons-io_19,not matched,0,1,14
+commons-io_2,matched,2,0,4
+commons-io_3,matched,7,0,2
+commons-io_4,matched,1,0,1
+commons-io_5,partially matched,1,2,0
+commons-io_6,matched,1,0,0
+commons-io_7,matched,1,0,0
+commons-io_8,matched,1,0,3
+commons-io_9,matched,2,0,3
+lang_1,matched,2,0,5
+lang_10,partially matched,1,1,8
+lang_11,matched,1,0,9
+lang_12,not matched,0,1,18
+lang_13,matched,1,0,7
+lang_2,matched,1,0,0
+lang_3,matched,1,0,9
+lang_4,matched,1,0,2
+lang_5,matched,1,0,0
+lang_6,matched,1,0,0
+lang_7,matched,1,0,1
+lang_8,matched,1,0,8
+lang_9,partially matched,1,1,7
+math_1,not matched,0,1,13
+math_2,matched,3,0,4
+math_3,matched,1,0,2

@@ -1,0 +1,1119 @@
+{
+    "time": 1723710487.929291,
+    "prompt_tokens": 5230,
+    "completion_tokens": 307,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.apache.commons.lang3.ClassUtilsTest.testToClass_object()']` failed.\nThe test looks like:\n\n```java\n902 : public void testToClass_object() {\n904 : \n906 : \n909 : \n910 :         assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class }, // error occurred here\n911 :                 ClassUtils.toClass(new Object[] { \"Test\", null, 99d })));\n912 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.lang3.ClassUtils.toClass(ClassUtils.java:910)\n\tat org.apache.commons.lang3.ClassUtilsTest.testToClass_object(ClassUtilsTest.java:910)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.apache.commons.lang3\": [\"ClassUtils\", \"ArrayUtils\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.apache.commons.lang3.ClassUtils\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".addAbbreviation(java.lang.String, java.lang.String)\", \".ClassUtils()\", \".getShortClassName(java.lang.Object, java.lang.String)\", \".getShortClassName(java.lang.Class<?>)\", \".getShortClassName(java.lang.String)\", \".getPackageName(java.lang.Object, java.lang.String)\", \".getPackageName(java.lang.Class<?>)\", \".getPackageName(java.lang.String)\", \".getAllSuperclasses(java.lang.Class<?>)\", \".getAllInterfaces(java.lang.Class<?>)\", \".getAllInterfaces(java.lang.Class<?>, java.util.HashSet<java.lang.Class<?>>)\", \".convertClassNamesToClasses(java.util.List<java.lang.String>)\", \".convertClassesToClassNames(java.util.List<java.lang.Class<?>>)\", \".isAssignable(java.lang.Class<?>[], java.lang.Class<?>[])\", \".isAssignable(java.lang.Class<?>[], java.lang.Class<?>[], boolean)\", \".isAssignable(java.lang.Class<?>, java.lang.Class<?>)\", \".isAssignable(java.lang.Class<?>, java.lang.Class<?>, boolean)\", \".primitiveToWrapper(java.lang.Class<?>)\", \".primitivesToWrappers(java.lang.Class<?>[])\", \".wrapperToPrimitive(java.lang.Class<?>)\", \".wrappersToPrimitives(java.lang.Class<?>[])\", \".isInnerClass(java.lang.Class<?>)\", \".getClass(java.lang.ClassLoader, java.lang.String, boolean)\", \".getClass(java.lang.ClassLoader, java.lang.String)\", \".getClass(java.lang.String)\", \".getClass(java.lang.String, boolean)\", \".getPublicMethod(java.lang.Class<?>, java.lang.String, java.lang.Class<?>)\", \".toCanonicalName(java.lang.String)\", \".toClass(java.lang.Object[])\", \".getShortCanonicalName(java.lang.Object, java.lang.String)\", \".getShortCanonicalName(java.lang.Class<?>)\", \".getShortCanonicalName(java.lang.String)\", \".getPackageCanonicalName(java.lang.Object, java.lang.String)\", \".getPackageCanonicalName(java.lang.Class<?>)\", \".getPackageCanonicalName(java.lang.String)\", \".getCanonicalName(java.lang.String)\"]"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[])\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"902 : public static Class<?>[] toClass(Object[] array) {\\n903 :         if (array == null) {\\n904 :             return null;\\n905 :         } else if (array.length == 0) {\\n906 :             return ArrayUtils.EMPTY_CLASS_ARRAY;\\n907 :         }\\n908 :         Class<?>[] classes = new Class[array.length];\\n909 :         for (int i = 0; i < array.length; i++) {\\n910 :             classes[i] = array[i].getClass();\\n911 :         }\\n912 :         return classes;\\n913 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "Title: Diagnosis of test `testToClass_object`\nDetails: The test `testToClass_object` is designed to verify whether the `ClassUtils.toClass` method correctly transforms an array of objects into an array of their respective classes, handling null values appropriately. However, the test failure with a `NullPointerException` indicates that the method is not correctly handling null values.\n\nBy examining the `ClassUtils.toClass` function, it becomes evident that the line `classes[i] = array[i].getClass();` is the source of the problem. Specifically, this line attempts to call `getClass()` on each array element, but if an array element is `null`, this results in a `NullPointerException`.\n\nThus, the method does not account for `null` elements in the array, leading to the observed test failure.\n\n```plaintext\norg.apache.commons.lang3.ClassUtils.toClass:910\n```\n\nAfter providing this diagnosis, please suggest which lines would be the best locations to be fixed in the form of `ClassName.MethodName:Linenumber` without commentary.\n\nHere are the suggested locations:\n\norg.apache.commons.lang3.ClassUtils.toClass:910",
+            "refusal": null
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the specific lines of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate line numbers of all likely culprits (in `FullClassName.MethodName(ParameterType1, ParameterType2, ...):Linenumber` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[]):910",
+            "refusal": null
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.apache.commons.lang3.ClassUtilsTest.testToClass_object()']` failed.\nThe test looks like:\n\n```java\n902 : public void testToClass_object() {\n904 : \n906 : \n909 : \n910 :         assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class }, // error occurred here\n911 :                 ClassUtils.toClass(new Object[] { \"Test\", null, 99d })));\n912 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.apache.commons.lang3.ClassUtils.toClass(ClassUtils.java:910)\n\tat org.apache.commons.lang3.ClassUtilsTest.testToClass_object(ClassUtilsTest.java:910)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.apache.commons.lang3\": [\"ClassUtils\", \"ArrayUtils\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.apache.commons.lang3.ClassUtils\"}"
+                },
+                "refusal": null
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".addAbbreviation(java.lang.String, java.lang.String)\", \".ClassUtils()\", \".getShortClassName(java.lang.Object, java.lang.String)\", \".getShortClassName(java.lang.Class<?>)\", \".getShortClassName(java.lang.String)\", \".getPackageName(java.lang.Object, java.lang.String)\", \".getPackageName(java.lang.Class<?>)\", \".getPackageName(java.lang.String)\", \".getAllSuperclasses(java.lang.Class<?>)\", \".getAllInterfaces(java.lang.Class<?>)\", \".getAllInterfaces(java.lang.Class<?>, java.util.HashSet<java.lang.Class<?>>)\", \".convertClassNamesToClasses(java.util.List<java.lang.String>)\", \".convertClassesToClassNames(java.util.List<java.lang.Class<?>>)\", \".isAssignable(java.lang.Class<?>[], java.lang.Class<?>[])\", \".isAssignable(java.lang.Class<?>[], java.lang.Class<?>[], boolean)\", \".isAssignable(java.lang.Class<?>, java.lang.Class<?>)\", \".isAssignable(java.lang.Class<?>, java.lang.Class<?>, boolean)\", \".primitiveToWrapper(java.lang.Class<?>)\", \".primitivesToWrappers(java.lang.Class<?>[])\", \".wrapperToPrimitive(java.lang.Class<?>)\", \".wrappersToPrimitives(java.lang.Class<?>[])\", \".isInnerClass(java.lang.Class<?>)\", \".getClass(java.lang.ClassLoader, java.lang.String, boolean)\", \".getClass(java.lang.ClassLoader, java.lang.String)\", \".getClass(java.lang.String)\", \".getClass(java.lang.String, boolean)\", \".getPublicMethod(java.lang.Class<?>, java.lang.String, java.lang.Class<?>)\", \".toCanonicalName(java.lang.String)\", \".toClass(java.lang.Object[])\", \".getShortCanonicalName(java.lang.Object, java.lang.String)\", \".getShortCanonicalName(java.lang.Class<?>)\", \".getShortCanonicalName(java.lang.String)\", \".getPackageCanonicalName(java.lang.Object, java.lang.String)\", \".getPackageCanonicalName(java.lang.Class<?>)\", \".getPackageCanonicalName(java.lang.String)\", \".getCanonicalName(java.lang.String)\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[])\"}"
+                },
+                "refusal": null
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"902 : public static Class<?>[] toClass(Object[] array) {\\n903 :         if (array == null) {\\n904 :             return null;\\n905 :         } else if (array.length == 0) {\\n906 :             return ArrayUtils.EMPTY_CLASS_ARRAY;\\n907 :         }\\n908 :         Class<?>[] classes = new Class[array.length];\\n909 :         for (int i = 0; i < array.length; i++) {\\n910 :             classes[i] = array[i].getClass();\\n911 :         }\\n912 :         return classes;\\n913 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": "Title: Diagnosis of test `testToClass_object`\nDetails: The test `testToClass_object` is designed to verify whether the `ClassUtils.toClass` method correctly transforms an array of objects into an array of their respective classes, handling null values appropriately. However, the test failure with a `NullPointerException` indicates that the method is not correctly handling null values.\n\nBy examining the `ClassUtils.toClass` function, it becomes evident that the line `classes[i] = array[i].getClass();` is the source of the problem. Specifically, this line attempts to call `getClass()` on each array element, but if an array element is `null`, this results in a `NullPointerException`.\n\nThus, the method does not account for `null` elements in the array, leading to the observed test failure.\n\n```plaintext\norg.apache.commons.lang3.ClassUtils.toClass:910\n```\n\nAfter providing this diagnosis, please suggest which lines would be the best locations to be fixed in the form of `ClassName.MethodName:Linenumber` without commentary.\n\nHere are the suggested locations:\n\norg.apache.commons.lang3.ClassUtils.toClass:910",
+                "refusal": null
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.apache.commons.lang3.ArrayUtils.ArrayUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toString(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toString(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEquals(java.lang.Object, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toMap(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toArray(T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.clone(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.String[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Integer[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Character[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.nullToEmpty(java.lang.Boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(T[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(long[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(int[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(short[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(char[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(byte[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(double[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(float[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.subarray(boolean[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(java.lang.Object[], java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(long[], long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(int[], int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(short[], short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(char[], char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(byte[], byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(double[], double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(float[], float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameLength(boolean[], boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.getLength(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isSameType(java.lang.Object, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.reverse(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(java.lang.Object[], java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(java.lang.Object[], java.lang.Object, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(java.lang.Object[], java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(java.lang.Object[], java.lang.Object, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(java.lang.Object[], java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(long[], long, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(long[], long, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(int[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(int[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(short[], short, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(short[], short, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(char[], char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(char[], char, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(byte[], byte, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(byte[], byte, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(double[], double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(double[], double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(double[], double, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(double[], double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(double[], double, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(double[], double, int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(double[], double, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(float[], float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(float[], float, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.indexOf(boolean[], boolean, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.lastIndexOf(boolean[], boolean, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.contains(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Character[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Character[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Integer[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Integer[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toPrimitive(java.lang.Boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.toObject(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isEmpty(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(long[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(int[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(short[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(char[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(byte[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(double[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(float[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.isNotEmpty(boolean[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(T[], T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.addAll(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(T[], T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.copyArrayGrow1(java.lang.Object, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(T[], int, T)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(boolean[], int, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(char[], int, char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(byte[], int, byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(short[], int, short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(int[], int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(long[], int, long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(float[], int, float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(double[], int, double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.add(java.lang.Object, int, java.lang.Object, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(T[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(T[], java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(boolean[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(boolean[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(byte[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(byte[], byte)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(char[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(char[], char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(double[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(double[], double)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(float[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(float[], float)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(int[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(long[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(long[], long)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(short[], int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.removeElement(short[], short)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ArrayUtils.remove(java.lang.Object, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.addAbbreviation(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.ClassUtils()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortClassName(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortClassName(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortClassName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageName(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageName(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getAllSuperclasses(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getAllInterfaces(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getAllInterfaces(java.lang.Class<?>, java.util.HashSet<java.lang.Class<?>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.convertClassNamesToClasses(java.util.List<java.lang.String>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.convertClassesToClassNames(java.util.List<java.lang.Class<?>>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.isAssignable(java.lang.Class<?>[], java.lang.Class<?>[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.isAssignable(java.lang.Class<?>[], java.lang.Class<?>[], boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.isAssignable(java.lang.Class<?>, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.isAssignable(java.lang.Class<?>, java.lang.Class<?>, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.primitiveToWrapper(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.primitivesToWrappers(java.lang.Class<?>[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.wrapperToPrimitive(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.wrappersToPrimitives(java.lang.Class<?>[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.isInnerClass(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getClass(java.lang.ClassLoader, java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getClass(java.lang.ClassLoader, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getClass(java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPublicMethod(java.lang.Class<?>, java.lang.String, java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.toCanonicalName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[])": {
+            "is_found": true,
+            "matching_answer": [
+                "org.apache.commons.lang3.ClassUtils.toClass(java.lang.Object[]):910"
+            ]
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortCanonicalName(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortCanonicalName(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getShortCanonicalName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageCanonicalName(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageCanonicalName(java.lang.Class<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getPackageCanonicalName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.apache.commons.lang3.ClassUtils.getCanonicalName(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}

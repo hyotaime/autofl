@@ -166,5 +166,3 @@ cython_debug/
 /benchmark.json
 /benchmark_line.json
 /test.json
-/test_experimental/
-/test_ten/

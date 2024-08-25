@@ -1,0 +1,373 @@
+{
+    "total": 77,
+    "matched": 31,
+    "partially_matched": 13,
+    "not_matched": 29,
+    "is_matched": {
+        "Chart_14": {
+            "matched": 1,
+            "missed": 3,
+            "wrong": 3
+        },
+        "Chart_16": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 1
+        },
+        "Chart_2": {
+            "matched": 0,
+            "missed": 3,
+            "wrong": 2
+        },
+        "Chart_4": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Cli_30": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 2
+        },
+        "Cli_5": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Closure_171": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 2
+        },
+        "Closure_2": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 2
+        },
+        "Codec_13": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Codec_17": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "Codec_5": {
+            "matched": 0,
+            "missed": 0,
+            "wrong": 2
+        },
+        "Csv_11": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 2
+        },
+        "Csv_4": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 1
+        },
+        "Csv_9": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 1
+        },
+        "Gson_6": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Gson_9": {
+            "matched": 0,
+            "missed": 0,
+            "wrong": 2
+        },
+        "JacksonCore_8": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 2
+        },
+        "JacksonDatabind_107": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "JacksonDatabind_13": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 0
+        },
+        "JacksonDatabind_3": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 0
+        },
+        "JacksonDatabind_36": {
+            "matched": 0,
+            "missed": 0,
+            "wrong": 1
+        },
+        "JacksonDatabind_93": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "JacksonDatabind_95": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 2
+        },
+        "Jsoup_22": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Jsoup_26": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 2
+        },
+        "Jsoup_66": {
+            "matched": 0,
+            "missed": 0,
+            "wrong": 2
+        },
+        "Jsoup_8": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Jsoup_89": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Lang_20": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 0
+        },
+        "Lang_33": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Lang_39": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Lang_47": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 1
+        },
+        "Lang_57": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Math_4": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 2
+        },
+        "Math_70": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "Math_79": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 1
+        },
+        "Mockito_18": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "Mockito_38": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "collections_1": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "collections_2": {
+            "matched": 1,
+            "missed": 2,
+            "wrong": 2
+        },
+        "collections_3": {
+            "matched": 2,
+            "missed": 5,
+            "wrong": 0
+        },
+        "commons-io_1": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_10": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_11": {
+            "matched": 1,
+            "missed": 2,
+            "wrong": 0
+        },
+        "commons-io_12": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_13": {
+            "matched": 1,
+            "missed": 1,
+            "wrong": 0
+        },
+        "commons-io_14": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 1
+        },
+        "commons-io_15": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 2
+        },
+        "commons-io_16": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_17": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_18": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "commons-io_19": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "commons-io_2": {
+            "matched": 2,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_3": {
+            "matched": 1,
+            "missed": 6,
+            "wrong": 0
+        },
+        "commons-io_4": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_5": {
+            "matched": 1,
+            "missed": 2,
+            "wrong": 0
+        },
+        "commons-io_7": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "commons-io_9": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 1
+        },
+        "lang_1": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 1
+        },
+        "lang_10": {
+            "matched": 0,
+            "missed": 2,
+            "wrong": 3
+        },
+        "lang_11": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "lang_12": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 2
+        },
+        "lang_13": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "lang_2": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "lang_3": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "lang_4": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "lang_5": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "lang_6": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "lang_7": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        },
+        "lang_8": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "math_1": {
+            "matched": 0,
+            "missed": 1,
+            "wrong": 1
+        },
+        "math_2": {
+            "matched": 1,
+            "missed": 2,
+            "wrong": 1
+        },
+        "math_3": {
+            "matched": 1,
+            "missed": 0,
+            "wrong": 0
+        }
+    }
+}

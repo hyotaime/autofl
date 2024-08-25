@@ -1,0 +1,77 @@
+bug_name,is_matched,matched,missed,wrong
+Chart_14,partially matched,1,3,0
+Chart_16,not matched,0,2,1
+Chart_2,not matched,0,3,2
+Chart_4,matched,1,0,0
+Cli_30,not matched,0,2,1
+Cli_5,matched,1,0,0
+Closure_171,not matched,0,2,2
+Closure_2,matched,1,0,0
+Codec_13,matched,1,0,0
+Codec_17,matched,1,0,0
+Codec_5,not matched,0,0,2
+Csv_11,not matched,0,1,2
+Csv_4,matched,1,0,2
+Csv_9,matched,1,0,1
+Gson_6,not matched,0,1,2
+Gson_9,not matched,0,0,3
+JacksonCore_8,not matched,0,1,2
+JacksonDatabind_107,not matched,0,1,2
+JacksonDatabind_13,partially matched,1,1,0
+JacksonDatabind_3,partially matched,1,1,0
+JacksonDatabind_36,not matched,0,0,1
+JacksonDatabind_80,not matched,0,1,1
+JacksonDatabind_93,not matched,0,1,2
+JacksonDatabind_95,not matched,0,1,1
+Jsoup_22,matched,1,0,0
+Jsoup_26,matched,1,0,1
+Jsoup_66,not matched,0,0,1
+Jsoup_8,matched,1,0,1
+Jsoup_89,matched,1,0,0
+Lang_20,partially matched,1,1,0
+Lang_33,matched,1,0,0
+Lang_39,matched,1,0,0
+Lang_47,partially matched,1,1,1
+Lang_57,matched,1,0,1
+Math_4,not matched,0,2,1
+Math_70,matched,1,0,0
+Math_79,not matched,0,2,1
+Mockito_18,not matched,0,1,1
+Mockito_38,matched,1,0,0
+collections_1,matched,1,0,0
+collections_2,partially matched,1,2,0
+collections_3,partially matched,1,6,0
+commons-io_1,matched,1,0,0
+commons-io_10,matched,1,0,0
+commons-io_11,partially matched,1,2,0
+commons-io_12,matched,1,0,0
+commons-io_13,partially matched,1,1,0
+commons-io_14,matched,1,0,0
+commons-io_15,matched,1,0,0
+commons-io_16,matched,1,0,0
+commons-io_17,matched,1,0,0
+commons-io_18,not matched,0,1,1
+commons-io_19,not matched,0,1,1
+commons-io_2,matched,2,0,0
+commons-io_3,partially matched,1,6,1
+commons-io_4,not matched,0,1,1
+commons-io_5,partially matched,1,2,0
+commons-io_6,matched,1,0,0
+commons-io_7,matched,1,0,0
+commons-io_8,matched,1,0,0
+commons-io_9,partially matched,1,1,0
+lang_1,partially matched,1,1,0
+lang_10,partially matched,1,1,0
+lang_11,not matched,0,1,1
+lang_13,matched,1,0,0
+lang_2,matched,1,0,0
+lang_3,not matched,0,1,2
+lang_4,matched,1,0,0
+lang_5,matched,1,0,0
+lang_6,matched,1,0,0
+lang_7,matched,1,0,0
+lang_8,matched,1,0,0
+lang_9,partially matched,1,1,0
+math_1,not matched,0,1,2
+math_2,partially matched,1,2,0
+math_3,matched,1,0,0

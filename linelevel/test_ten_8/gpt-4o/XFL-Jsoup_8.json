@@ -1,0 +1,2017 @@
+{
+    "time": 1723792504.18451,
+    "prompt_tokens": 16596,
+    "completion_tokens": 757,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+        },
+        {
+            "role": "user",
+            "content": "The test `['org.jsoup.nodes.ElementTest.parentlessToString()']` failed.\nThe test looks like:\n\n```java\n416 : @Test public void parentlessToString() {\n417 :         Document doc = Jsoup.parse(\"<img src='foo'>\");\n418 :         Element img = doc.select(\"img\").first();\n420 : \n421 :         img.remove(); // lost its parent\n422 :         assertEquals(\"<img src=\\\"foo\\\" />\", img.toString()); // error occurred here\n423 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.jsoup.nodes.Node.outerHtml(Node.java:363)\n\tat org.jsoup.nodes.Node.outerHtml(Node.java:358)\n\tat org.jsoup.nodes.Element.toString(Element.java:1022)\n\tat org.jsoup.nodes.ElementTest.parentlessToString(ElementTest.java:422)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_classes",
+                "arguments": "{}"
+            }
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_classes",
+            "content": "{\"org.jsoup.nodes\": [\"Attributes\", \"Entities\", \"Evaluator\", \"Node\", \"Element\", \"Document\", \"Attribute\"], \"org.jsoup.parser\": [\"TokenQueue\", \"Parser\", \"Tag\"], \"org.jsoup.helper\": [\"StringUtil\", \"Validate\"], \"org.jsoup.select\": [\"Elements\", \"Selector\", \"NodeTraversor\", \"Collector\"], \"org.jsoup\": [\"Jsoup\"]}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_failing_tests_covered_methods_for_class",
+                "arguments": "{\"class_name\":\"org.jsoup.nodes.Element\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_failing_tests_covered_methods_for_class",
+            "content": "[\".Element(org.jsoup.parser.Tag, java.lang.String, org.jsoup.nodes.Attributes)\", \".Element(org.jsoup.parser.Tag, java.lang.String)\", \".nodeName()\", \".tagName()\", \".tag()\", \".isBlock()\", \".id()\", \".attr(java.lang.String, java.lang.String)\", \".dataset()\", \".parent()\", \".parents()\", \".accumulateParents(org.jsoup.nodes.Element, org.jsoup.select.Elements)\", \".child(int)\", \".children()\", \".select(java.lang.String)\", \".appendChild(org.jsoup.nodes.Node)\", \".prependChild(org.jsoup.nodes.Node)\", \".appendElement(java.lang.String)\", \".prependElement(java.lang.String)\", \".appendText(java.lang.String)\", \".prependText(java.lang.String)\", \".append(java.lang.String)\", \".prepend(java.lang.String)\", \".before(java.lang.String)\", \".after(java.lang.String)\", \".addSiblingHtml(int, java.lang.String)\", \".empty()\", \".wrap(java.lang.String)\", \".getDeepChild(org.jsoup.nodes.Element)\", \".siblingElements()\", \".nextElementSibling()\", \".previousElementSibling()\", \".firstElementSibling()\", \".elementSiblingIndex()\", \".lastElementSibling()\", \".indexInList(org.jsoup.nodes.Element, java.util.List<E>)\", \".getElementsByTag(java.lang.String)\", \".getElementById(java.lang.String)\", \".getElementsByClass(java.lang.String)\", \".getElementsByAttribute(java.lang.String)\", \".getElementsByAttributeStarting(java.lang.String)\", \".getElementsByAttributeValue(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueNot(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueStarting(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueEnding(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueContaining(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueMatching(java.lang.String, java.util.regex.Pattern)\", \".getElementsByAttributeValueMatching(java.lang.String, java.lang.String)\", \".getElementsByIndexLessThan(int)\", \".getElementsByIndexGreaterThan(int)\", \".getElementsByIndexEquals(int)\", \".getElementsContainingText(java.lang.String)\", \".getElementsContainingOwnText(java.lang.String)\", \".getElementsMatchingText(java.util.regex.Pattern)\", \".getElementsMatchingText(java.lang.String)\", \".getElementsMatchingOwnText(java.util.regex.Pattern)\", \".getElementsMatchingOwnText(java.lang.String)\", \".getAllElements()\", \".text()\", \".text(java.lang.StringBuilder)\", \".ownText()\", \".ownText(java.lang.StringBuilder)\", \".appendNormalisedText(java.lang.StringBuilder, org.jsoup.nodes.TextNode)\", \".preserveWhitespace()\", \".text(java.lang.String)\", \".hasText()\", \".data()\", \".className()\", \".classNames()\", \".classNames(java.util.Set<java.lang.String>)\", \".hasClass(java.lang.String)\", \".addClass(java.lang.String)\", \".removeClass(java.lang.String)\", \".toggleClass(java.lang.String)\", \".val()\", \".val(java.lang.String)\", \".outerHtmlHead(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)\", \".outerHtmlTail(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)\", \".html()\", \".html(java.lang.StringBuilder)\", \".html(java.lang.String)\", \".toString()\", \".equals(java.lang.Object)\", \".hashCode()\"]"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jsoup.nodes.Element.toString()\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"1021 : public String toString() {\\n1022 :         return outerHtml();\\n1023 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml(Node)\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "{\"error_message\": \"There are multiple matches to that query. Do you mean any of the following: {'get_code_snippet(org.jsoup.nodes.Node.outerHtml())', 'get_code_snippet(org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder))'}?\"}"
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml()\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"356 : public String outerHtml() {\\n357 :         StringBuilder accum = new StringBuilder(32*1024);\\n358 :         outerHtml(accum);\\n359 :         return accum.toString();\\n360 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder)\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"362 : protected void outerHtml(StringBuilder accum) {\\n363 :         new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\\n364 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": null,
+            "function_call": {
+                "name": "get_code_snippet",
+                "arguments": "{\"signature\":\"org.jsoup.nodes.Node.ownerDocument()\"}"
+            },
+            "refusal": null
+        },
+        {
+            "role": "function",
+            "name": "get_code_snippet",
+            "content": "\"214 : public Document ownerDocument() {\\n215 :         if (this instanceof Document)\\n216 :             return (Document) this;\\n217 :         else if (parentNode == null)\\n218 :             return null;\\n219 :         else\\n220 :             return parentNode.ownerDocument();\\n221 :     }\""
+        },
+        {
+            "role": "assistant",
+            "content": "### Diagnosis of the `testParentlessToString`\n\nThe test `testParentlessToString` is designed to check if an element, after being removed from its parent document, can be converted to its string representation correctly. However, the test fails with a `NullPointerException`.\n\nStep-by-step explanation of the bug occurrence:\n\n1. The test removes an `<img>` element from its parent document using `img.remove()`.\n2. The test then tries to convert the `img` element to a string using `img.toString()` (Line 422).\n3. The `toString()` method (Lines 1021-1023) is implemented as follows:\n   ```java\n   public String toString() {\n       return outerHtml();\n   }\n   ```\n4. The `outerHtml()` method (Lines 356-360) is implemented as follows:\n   ```java\n   public String outerHtml() {\n       StringBuilder accum = new StringBuilder(32 * 1024);\n       outerHtml(accum);\n       return accum.toString();\n   }\n   ```\n5. The `outerHtml(StringBuilder accum)` method (Lines 362-364) is implemented as follows:\n   ```java\n   protected void outerHtml(StringBuilder accum) {\n       new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\n   }\n   ```\n6. In the `outerHtml(StringBuilder accum)` method, the call to `ownerDocument()` is intended to access settings from the owning `Document`. \n7. The `ownerDocument()` method (Lines 214-221) is implemented as follows:\n   ```java\n   public Document ownerDocument() {\n       if (this instanceof Document)\n           return (Document) this;\n       else if (parentNode == null)\n           return null; // This line causes the NullPointerException\n       else\n           return parentNode.ownerDocument();\n   }\n   ```\n8. Since the element (`img`) has been removed from its parent (thus `parentNode` is `null`), the `ownerDocument()` method returns `null`.\n9. The returned `null` leads to a `NullPointerException` when `ownerDocument().outputSettings()` is invoked in the following part of the `outerHtml(StringBuilder accum)` method:\n   ```java\n   new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\n   ```\n\nThe specific line of code that caused the bug is `ownerDocument().outputSettings()` inside the `outerHtml(StringBuilder accum)` due to `ownerDocument()` returning `null`.\n\nTo summarize:\n- The bug occurs because the `ownerDocument()` method does not handle the case where `parentNode` is `null`, leading to a `NullPointerException` when trying to access `outputSettings()`.\n\n### Suggested Fixes\n\n```\norg.jsoup.nodes.Node.ownerDocument:217\n```",
+            "refusal": null
+        },
+        {
+            "role": "user",
+            "content": "Based on the available information, provide the specific lines of the most likely culprit methods for the bug. Your answer will be processed automatically, so make sure to only answer with the accurate line numbers of all likely culprits (in `FullClassName.MethodName(ParameterType1, ParameterType2, ...):Linenumber` format), without commentary (one per line). "
+        },
+        {
+            "role": "assistant",
+            "content": "org.jsoup.nodes.Node.ownerDocument():217\norg.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder):363",
+            "refusal": null
+        }
+    ],
+    "interaction_records": {
+        "step_histories": [
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4"
+                ],
+                "response_message": "m5"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6"
+                ],
+                "response_message": "m7"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8"
+                ],
+                "response_message": "m9"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10"
+                ],
+                "response_message": "m11"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12"
+                ],
+                "response_message": "m13"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12",
+                    "m13",
+                    "m14"
+                ],
+                "response_message": "m15"
+            },
+            {
+                "prompt_messages": [
+                    "m1",
+                    "m2",
+                    "m3",
+                    "m4",
+                    "m5",
+                    "m6",
+                    "m7",
+                    "m8",
+                    "m9",
+                    "m10",
+                    "m11",
+                    "m12",
+                    "m13",
+                    "m14",
+                    "m15",
+                    "m16"
+                ],
+                "response_message": "m17"
+            }
+        ],
+        "mid_to_message": {
+            "m1": {
+                "role": "system",
+                "content": "You are a debugging assistant. You will be presented with a failing test, and tools (functions) to access the source code of the system under test (SUT). Your task is to provide a step-by-step explanation of how the bug occurred, based on the failing test and the information you retrieved using tests about the SUT. You should focus on identifying the specific line(s) of code that caused the bug. You will be given 9 chances to interact with functions to gather relevant information. An example answer would look like follows.\n\nTitle: Diagnosis of test `testGenerateURLFragment`\nDetails: The test `testGenerateURLFragment` is designed to verify whether HTML entities such as `&quot;` are correctly escaped to their corresponding character. However, the test failure indicates that this is not happening correctly. By examining the execution flow and inspecting relevant lines of code, it becomes clear that the issue arises in a specific line within the `StandardToolTipTagFragmentGenerator.generateToolTipFragment` method. The problematic line is where the `toolTipText` is processed without applying the necessary HTML escaping function. This oversight leads to unescaped strings being returned, causing the test to fail.\n\nAfter providing this diagnosis, you will be prompted to suggest which lines would be the best locations to be fixed. The answers should be in the form of `ClassName.MethodName:Linenumber` without commentary (one per line), as your answer will be automatically processed before finally being presented to the user."
+            },
+            "m2": {
+                "role": "user",
+                "content": "The test `['org.jsoup.nodes.ElementTest.parentlessToString()']` failed.\nThe test looks like:\n\n```java\n416 : @Test public void parentlessToString() {\n417 :         Document doc = Jsoup.parse(\"<img src='foo'>\");\n418 :         Element img = doc.select(\"img\").first();\n420 : \n421 :         img.remove(); // lost its parent\n422 :         assertEquals(\"<img src=\\\"foo\\\" />\", img.toString()); // error occurred here\n423 :     }\n```\n\nIt failed with the following error message and call stack:\n\n```\njava.lang.NullPointerException\n\tat org.jsoup.nodes.Node.outerHtml(Node.java:363)\n\tat org.jsoup.nodes.Node.outerHtml(Node.java:358)\n\tat org.jsoup.nodes.Element.toString(Element.java:1022)\n\tat org.jsoup.nodes.ElementTest.parentlessToString(ElementTest.java:422)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:578)\n\tat org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)\n\tat org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)\n\tat org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)\n\tat org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)\n\tat org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)\n\tat org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)\n\tat org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)\n\tat org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)\n\tat org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:413)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat kr.ac.seoultech.selab.logicfl.coverage.JUnit4TestRunner.main(JUnit4TestRunner.java:33)\n```\n\nStart by calling the `get_failing_tests_covered_classes` function."
+            },
+            "m3": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_classes",
+                    "arguments": "{}"
+                }
+            },
+            "m4": {
+                "role": "function",
+                "name": "get_failing_tests_covered_classes",
+                "content": "{\"org.jsoup.nodes\": [\"Attributes\", \"Entities\", \"Evaluator\", \"Node\", \"Element\", \"Document\", \"Attribute\"], \"org.jsoup.parser\": [\"TokenQueue\", \"Parser\", \"Tag\"], \"org.jsoup.helper\": [\"StringUtil\", \"Validate\"], \"org.jsoup.select\": [\"Elements\", \"Selector\", \"NodeTraversor\", \"Collector\"], \"org.jsoup\": [\"Jsoup\"]}"
+            },
+            "m5": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_failing_tests_covered_methods_for_class",
+                    "arguments": "{\"class_name\":\"org.jsoup.nodes.Element\"}"
+                },
+                "refusal": null
+            },
+            "m6": {
+                "role": "function",
+                "name": "get_failing_tests_covered_methods_for_class",
+                "content": "[\".Element(org.jsoup.parser.Tag, java.lang.String, org.jsoup.nodes.Attributes)\", \".Element(org.jsoup.parser.Tag, java.lang.String)\", \".nodeName()\", \".tagName()\", \".tag()\", \".isBlock()\", \".id()\", \".attr(java.lang.String, java.lang.String)\", \".dataset()\", \".parent()\", \".parents()\", \".accumulateParents(org.jsoup.nodes.Element, org.jsoup.select.Elements)\", \".child(int)\", \".children()\", \".select(java.lang.String)\", \".appendChild(org.jsoup.nodes.Node)\", \".prependChild(org.jsoup.nodes.Node)\", \".appendElement(java.lang.String)\", \".prependElement(java.lang.String)\", \".appendText(java.lang.String)\", \".prependText(java.lang.String)\", \".append(java.lang.String)\", \".prepend(java.lang.String)\", \".before(java.lang.String)\", \".after(java.lang.String)\", \".addSiblingHtml(int, java.lang.String)\", \".empty()\", \".wrap(java.lang.String)\", \".getDeepChild(org.jsoup.nodes.Element)\", \".siblingElements()\", \".nextElementSibling()\", \".previousElementSibling()\", \".firstElementSibling()\", \".elementSiblingIndex()\", \".lastElementSibling()\", \".indexInList(org.jsoup.nodes.Element, java.util.List<E>)\", \".getElementsByTag(java.lang.String)\", \".getElementById(java.lang.String)\", \".getElementsByClass(java.lang.String)\", \".getElementsByAttribute(java.lang.String)\", \".getElementsByAttributeStarting(java.lang.String)\", \".getElementsByAttributeValue(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueNot(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueStarting(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueEnding(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueContaining(java.lang.String, java.lang.String)\", \".getElementsByAttributeValueMatching(java.lang.String, java.util.regex.Pattern)\", \".getElementsByAttributeValueMatching(java.lang.String, java.lang.String)\", \".getElementsByIndexLessThan(int)\", \".getElementsByIndexGreaterThan(int)\", \".getElementsByIndexEquals(int)\", \".getElementsContainingText(java.lang.String)\", \".getElementsContainingOwnText(java.lang.String)\", \".getElementsMatchingText(java.util.regex.Pattern)\", \".getElementsMatchingText(java.lang.String)\", \".getElementsMatchingOwnText(java.util.regex.Pattern)\", \".getElementsMatchingOwnText(java.lang.String)\", \".getAllElements()\", \".text()\", \".text(java.lang.StringBuilder)\", \".ownText()\", \".ownText(java.lang.StringBuilder)\", \".appendNormalisedText(java.lang.StringBuilder, org.jsoup.nodes.TextNode)\", \".preserveWhitespace()\", \".text(java.lang.String)\", \".hasText()\", \".data()\", \".className()\", \".classNames()\", \".classNames(java.util.Set<java.lang.String>)\", \".hasClass(java.lang.String)\", \".addClass(java.lang.String)\", \".removeClass(java.lang.String)\", \".toggleClass(java.lang.String)\", \".val()\", \".val(java.lang.String)\", \".outerHtmlHead(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)\", \".outerHtmlTail(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)\", \".html()\", \".html(java.lang.StringBuilder)\", \".html(java.lang.String)\", \".toString()\", \".equals(java.lang.Object)\", \".hashCode()\"]"
+            },
+            "m7": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jsoup.nodes.Element.toString()\"}"
+                },
+                "refusal": null
+            },
+            "m8": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"1021 : public String toString() {\\n1022 :         return outerHtml();\\n1023 :     }\""
+            },
+            "m9": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml(Node)\"}"
+                },
+                "refusal": null
+            },
+            "m10": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "{\"error_message\": \"There are multiple matches to that query. Do you mean any of the following: {'get_code_snippet(org.jsoup.nodes.Node.outerHtml())', 'get_code_snippet(org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder))'}?\"}"
+            },
+            "m11": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml()\"}"
+                },
+                "refusal": null
+            },
+            "m12": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"356 : public String outerHtml() {\\n357 :         StringBuilder accum = new StringBuilder(32*1024);\\n358 :         outerHtml(accum);\\n359 :         return accum.toString();\\n360 :     }\""
+            },
+            "m13": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder)\"}"
+                },
+                "refusal": null
+            },
+            "m14": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"362 : protected void outerHtml(StringBuilder accum) {\\n363 :         new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\\n364 :     }\""
+            },
+            "m15": {
+                "role": "assistant",
+                "content": null,
+                "function_call": {
+                    "name": "get_code_snippet",
+                    "arguments": "{\"signature\":\"org.jsoup.nodes.Node.ownerDocument()\"}"
+                },
+                "refusal": null
+            },
+            "m16": {
+                "role": "function",
+                "name": "get_code_snippet",
+                "content": "\"214 : public Document ownerDocument() {\\n215 :         if (this instanceof Document)\\n216 :             return (Document) this;\\n217 :         else if (parentNode == null)\\n218 :             return null;\\n219 :         else\\n220 :             return parentNode.ownerDocument();\\n221 :     }\""
+            },
+            "m17": {
+                "role": "assistant",
+                "content": "### Diagnosis of the `testParentlessToString`\n\nThe test `testParentlessToString` is designed to check if an element, after being removed from its parent document, can be converted to its string representation correctly. However, the test fails with a `NullPointerException`.\n\nStep-by-step explanation of the bug occurrence:\n\n1. The test removes an `<img>` element from its parent document using `img.remove()`.\n2. The test then tries to convert the `img` element to a string using `img.toString()` (Line 422).\n3. The `toString()` method (Lines 1021-1023) is implemented as follows:\n   ```java\n   public String toString() {\n       return outerHtml();\n   }\n   ```\n4. The `outerHtml()` method (Lines 356-360) is implemented as follows:\n   ```java\n   public String outerHtml() {\n       StringBuilder accum = new StringBuilder(32 * 1024);\n       outerHtml(accum);\n       return accum.toString();\n   }\n   ```\n5. The `outerHtml(StringBuilder accum)` method (Lines 362-364) is implemented as follows:\n   ```java\n   protected void outerHtml(StringBuilder accum) {\n       new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\n   }\n   ```\n6. In the `outerHtml(StringBuilder accum)` method, the call to `ownerDocument()` is intended to access settings from the owning `Document`. \n7. The `ownerDocument()` method (Lines 214-221) is implemented as follows:\n   ```java\n   public Document ownerDocument() {\n       if (this instanceof Document)\n           return (Document) this;\n       else if (parentNode == null)\n           return null; // This line causes the NullPointerException\n       else\n           return parentNode.ownerDocument();\n   }\n   ```\n8. Since the element (`img`) has been removed from its parent (thus `parentNode` is `null`), the `ownerDocument()` method returns `null`.\n9. The returned `null` leads to a `NullPointerException` when `ownerDocument().outputSettings()` is invoked in the following part of the `outerHtml(StringBuilder accum)` method:\n   ```java\n   new NodeTraversor(new OuterHtmlVisitor(accum, ownerDocument().outputSettings())).traverse(this);\n   ```\n\nThe specific line of code that caused the bug is `ownerDocument().outputSettings()` inside the `outerHtml(StringBuilder accum)` due to `ownerDocument()` returning `null`.\n\nTo summarize:\n- The bug occurs because the `ownerDocument()` method does not handle the case where `parentNode` is `null`, leading to a `NullPointerException` when trying to access `outputSettings()`.\n\n### Suggested Fixes\n\n```\norg.jsoup.nodes.Node.ownerDocument:217\n```",
+                "refusal": null
+            }
+        }
+    },
+    "buggy_methods": {
+        "org.jsoup.Jsoup.Jsoup()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.connect(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.io.File, java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.io.File, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.io.InputStream, java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parseBodyFragment(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parseBodyFragment(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.parse(java.net.URL, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.clean(java.lang.String, java.lang.String, org.jsoup.safety.Whitelist)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.clean(java.lang.String, org.jsoup.safety.Whitelist)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.Jsoup.isValid(java.lang.String, org.jsoup.safety.Whitelist)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.join(java.util.Collection<java.lang.String>, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.join(java.util.Iterator<java.lang.String>, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.padding(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.isBlank(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.isNumeric(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.StringUtil.normaliseWhitespace(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.Validate()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.notNull(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.notNull(java.lang.Object, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.isTrue(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.isTrue(boolean, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.noNullElements(java.lang.Object[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.noNullElements(java.lang.Object[], java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.notEmpty(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.helper.Validate.notEmpty(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.Attribute(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.getKey()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.setKey(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.getValue()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.setValue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.html()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.html(java.lang.StringBuilder, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.createFromEncoded(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.isDataAttribute()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attribute.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.get(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.put(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.put(org.jsoup.nodes.Attribute)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.remove(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.hasKey(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.addAll(org.jsoup.nodes.Attributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.asList()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.dataset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.html()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.html(java.lang.StringBuilder, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.entrySet()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.hasNext()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.next()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Attributes.dataKey(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.Document(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.createShell(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.head()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.body()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.title()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.title(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.createElement(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.normalise()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.normaliseTextNodes(org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.normaliseStructure(java.lang.String, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.findFirstElementByTagName(java.lang.String, org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.outerHtml()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.text(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.nodeName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.OutputSettings()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.escapeMode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.escapeMode(org.jsoup.nodes.Entities.EscapeMode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.charset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.charset(java.nio.charset.Charset)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.charset(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.encoder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.prettyPrint()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.prettyPrint(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.indentAmount()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.indentAmount(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Document.outputSettings()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.Element(org.jsoup.parser.Tag, java.lang.String, org.jsoup.nodes.Attributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.Element(org.jsoup.parser.Tag, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.nodeName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.tagName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.tag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.isBlock()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.id()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.attr(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.dataset()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.parent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.parents()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.accumulateParents(org.jsoup.nodes.Element, org.jsoup.select.Elements)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.child(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.children()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.select(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.appendChild(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.prependChild(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.appendElement(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.prependElement(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.appendText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.prependText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.append(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.prepend(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.before(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.after(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.addSiblingHtml(int, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.empty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.wrap(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getDeepChild(org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.siblingElements()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.nextElementSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.previousElementSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.firstElementSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.elementSiblingIndex()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.lastElementSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.indexInList(org.jsoup.nodes.Element, java.util.List<E>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByTag(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementById(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttribute(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeStarting(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValue(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueNot(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueStarting(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueEnding(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueContaining(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueMatching(java.lang.String, java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByAttributeValueMatching(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByIndexLessThan(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByIndexGreaterThan(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsByIndexEquals(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsContainingText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsContainingOwnText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsMatchingText(java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsMatchingText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsMatchingOwnText(java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getElementsMatchingOwnText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.getAllElements()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.text()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.text(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.ownText()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.ownText(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.appendNormalisedText(java.lang.StringBuilder, org.jsoup.nodes.TextNode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.preserveWhitespace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.text(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.hasText()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.data()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.className()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.classNames()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.classNames(java.util.Set<java.lang.String>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.hasClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.addClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.removeClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.toggleClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.val()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.val(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.outerHtmlHead(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.outerHtmlTail(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.html()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.html(java.lang.StringBuilder)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.html(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Element.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Entities.EscapeMode(java.util.Map<java.lang.Character,java.lang.String>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Entities.getMap()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Entities.escape(java.lang.String, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Entities.escape(java.lang.String, java.nio.charset.CharsetEncoder, org.jsoup.nodes.Entities.EscapeMode)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Entities.unescape(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Evaluator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.matches(org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Tag(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Id(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Class(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Attribute(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeStarting(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValue(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValueNot(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValueStarting(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValueEnding(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValueContaining(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeWithValueMatching(java.lang.String, java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.AttributeKeyPair(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.IndexLessThan(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.IndexGreaterThan(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.IndexEquals(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.IndexEvaluator(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.ContainsText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.ContainsOwnText(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.Matches(java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Evaluator.MatchesOwn(java.util.regex.Pattern)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.Node(java.lang.String, org.jsoup.nodes.Attributes)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.Node(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.Node()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.nodeName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.attr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.attributes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.attr(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.hasAttr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.removeAttr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.baseUri()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.setBaseUri(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.absUrl(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.childNode(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.childNodes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.childNodesAsArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.parent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.ownerDocument()": {
+            "is_found": true,
+            "matching_answer": [
+                "org.jsoup.nodes.Node.ownerDocument():217"
+            ]
+        },
+        "org.jsoup.nodes.Node.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.replaceWith(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.setParentNode(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.replaceChild(org.jsoup.nodes.Node, org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.removeChild(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.addChildren(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.addChildren(int, org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.reparentChild(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.reindexChildren()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.siblingNodes()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.nextSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.previousSibling()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.siblingIndex()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.setSiblingIndex(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.outerHtml()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder)": {
+            "is_found": true,
+            "matching_answer": [
+                "org.jsoup.nodes.Node.outerHtml(java.lang.StringBuilder):363"
+            ]
+        },
+        "org.jsoup.nodes.Node.outerHtmlHead(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.outerHtmlTail(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.indent(java.lang.StringBuilder, int, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.OuterHtmlVisitor(java.lang.StringBuilder, org.jsoup.nodes.Document.OutputSettings)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.head(org.jsoup.nodes.Node, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.nodes.Node.tail(org.jsoup.nodes.Node, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.Parser(java.lang.String, java.lang.String, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parse(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseBodyFragment(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseBodyFragmentRelaxed(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parse()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseComment()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseXmlDecl()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseEndTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseStartTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseAttribute()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseTextNode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.parseCdata()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.addChildToParent(org.jsoup.nodes.Element, boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.stackHasValidParent(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.popStackToSuitableContainer(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.popStackToClose(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Parser.last()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.Tag(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.getName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.valueOf(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.canContain(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isBlock()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.canContainBlock()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isInline()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isData()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isSelfClosing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isKnownTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.preserveWhitespace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.getImplicitParent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.requiresSpecificParent()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isValidParent(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isValidAncestor(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.isIgnorableEndTag(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.createBlock(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.createInline(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.register(org.jsoup.parser.Tag)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setCanContainBlock()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setContainInlineOnly()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setContainDataOnly()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setOptionalClosing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setPreserveWhitespace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setAncestor(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setExcludes(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setIgnoreEnd(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setParent(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setLimitChildren()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setSelfClosing()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.Tag.setKnownTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.TokenQueue(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.remainingLength()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.peek()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.addFirst(java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.addFirst(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matches(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesCS(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesAny(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesAny(char)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesStartTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchChomp(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesWhitespace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.matchesWord()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.advance()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consume()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consume(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeTo(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeToIgnoreCase(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeToAny(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.chompTo(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.chompToIgnoreCase(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.chompBalanced(java.lang.Character, java.lang.Character)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.unescape(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeWhitespace()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeWord()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeTagName()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeElementSelector()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeCssIdentifier()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.consumeAttributeKey()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.remainder()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.parser.TokenQueue.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Collector.Collector()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Collector.collect(org.jsoup.nodes.Evaluator, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Collector.Accumulator(org.jsoup.select.Elements, org.jsoup.nodes.Evaluator)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Collector.head(org.jsoup.nodes.Node, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Collector.tail(org.jsoup.nodes.Node, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.Elements()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.Elements(java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.Elements(java.util.List<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.Elements(org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.attr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.hasAttr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.attr(java.lang.String, java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.removeAttr(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.addClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.removeClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.toggleClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.hasClass(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.val()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.val(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.text()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.hasText()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.html()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.outerHtml()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.toString()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.html(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.prepend(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.append(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.before(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.after(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.wrap(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.empty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.remove()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.select(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.eq(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.is(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.parents()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.first()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.last()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.size()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.isEmpty()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.contains(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.iterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.toArray()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.toArray(T[])": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.add(org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.remove(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.containsAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.addAll(java.util.Collection<? extends org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.addAll(int, java.util.Collection<? extends org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.removeAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.retainAll(java.util.Collection<?>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.clear()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.equals(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.hashCode()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.get(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.set(int, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.add(int, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.remove(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.indexOf(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.lastIndexOf(java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.listIterator()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.listIterator(int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Elements.subList(int, int)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.NodeTraversor.NodeTraversor(org.jsoup.select.NodeVisitor)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.NodeTraversor.traverse(org.jsoup.nodes.Node)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.Selector(java.lang.String, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.select(java.lang.String, org.jsoup.nodes.Element)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.select(java.lang.String, java.lang.Iterable<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.select()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.combinator(java.lang.String)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.findElements()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.addElements(java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.intersectElements(java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.byId()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.byClass()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.byTag()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.byAttribute()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.allElements()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.indexLessThan()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.indexGreaterThan()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.indexEquals()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.consumeIndex()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.has()": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.contains(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.matches(boolean)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForChildren(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForDescendants(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForParentsOfDescendants(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForAdjacentSiblings(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForGeneralSiblings(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.filterForSelf(java.util.Collection<org.jsoup.nodes.Element>, java.util.Collection<org.jsoup.nodes.Element>)": {
+            "is_found": false,
+            "matching_answer": []
+        },
+        "org.jsoup.select.Selector.SelectorParseException(java.lang.String, java.lang.Object)": {
+            "is_found": false,
+            "matching_answer": []
+        }
+    }
+}
