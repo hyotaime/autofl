@@ -3,12 +3,12 @@ import os
 
 prompt_tokens, completion_tokens = 0, 0
 
-dirs = os.listdir('linetest')
+dirs = os.listdir('linelevel')
 for d in dirs:
-    if 'test_1' in d:
-        files = os.listdir(f'linetest/{d}/gpt-4o')
+    if os.path.isdir(f'linelevel/{d}/gpt-4o'):
+        files = os.listdir(f'linelevel/{d}/gpt-4o')
         for f in files:
-            with open(f'linetest/{d}/gpt-4o/{f}', 'r') as file:
+            with open(f'linelevel/{d}/gpt-4o/{f}', 'r') as file:
                 data = json.load(file)
                 if 'prompt_tokens' in data and 'completion_tokens' in data:
                     prompt_tokens += data['prompt_tokens']
@@ -20,19 +20,3 @@ print(f'Completion tokens: {completion_tokens}')
 # $0.005 per 1k prompt tokens
 # $0.015 per 1k completion tokens
 print(f'Total cost: ${((prompt_tokens / 1000) * 0.005) + ((completion_tokens / 1000) * 0.015)}')
-
-# used_tokens = 0
-#
-# dirs = os.listdir('linetest')
-# for d in dirs:
-#     if 'prompt_test_2' in d:
-#         files = os.listdir(f'linetest/{d}/gpt-4-turbo')
-#         for f in files:
-#             with open(f'linetest/{d}/gpt-4-turbo/{f}', 'r') as file:
-#                 data = json.load(file)
-#                 if 'used_tokens' in data:
-#                     used_tokens += data['used_tokens']
-#
-# print(f'Used tokens: {used_tokens}')
-# # $0.01 per 1k prompt tokens
-# print(f'Total cost: ${((used_tokens / 1000) * 0.01)}')
