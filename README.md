@@ -1,10 +1,8 @@
-# AutoFL
+# AutoFL in Line Level
 
-<div align="center">
-<img src="./assets/AutoFL_logo_DALLE.png" width="300px"/>
-</div>
+> This repository contains modifications to the original AutoFL to line level.
 
-> This artifact accompanies the paper **_A Quantitative and Qualitative Evaluation of LLM-based Explainable Fault Localization_** accepted to FSE'24.
+The original AutoFL implementation can be found at [coinse/autofl](https://github.com/coinse/autofl).
 
 # Environmental Setup
 ## Python Dependencies
@@ -26,60 +24,32 @@ OPENAI_ORG_KEY={YOUR_ORG_KEY} # Optional
 ```
 Replace `{YOUR_API_KEY}` with your OpenAI API key and `{YOUR_ORG_KEY}` with your organization's API key.
 
-# Guide to Reproduction
-
-## 0. Raw Data Files
-- `./results/{label}/{model}/XFL-{bugname}.json`: the `AutoFL` results
-- `./results/{label}/{model}/downstream_*`: the interaction data with LLM for the downstream tasks (APR and Test Generation)
-  - The summary of the evaluation results can be found at `notebooks/resources/[APR|TestGen]_results.csv`.
-- `./combined_fl_results`: minimized version of AutoFL + ablation results
-
-## 1. Generate Detailed AutoFL Results Files
-
-To obtain comprehensive AutoFL results files, please execute the following command:
-```shell
-sh compute_scores.sh
-```
-Running this command will generate complete score data files (`*_full.json`) within the `combined_fl_results` directory, utilizing the raw data sourced from the `results` directory.
-
-## 2. Reproduce Results in the Paper
-
-- After generating the comprehensive FL results files, the figures in the paper can be reproduced via the Jupyter notebook files within the directory [`./notebooks`](./notebooks/).
-  - Any necessary files for the analysis are included in the directory [`./notebooks/resources`](./notebooks/resources/)
-  - If you execute the notebooks, the figures will be saved to [`./notebooks/figures`](./notebooks/figures/).
-
-
 # General Usage
 
 ## Run AutoFL
 
 To run AutoFL, use the following command:
 ```shell
-sh runner.sh {expr_label} {num_repetitions} {dataset}
+sh line_runner.sh {expr_label} {num_repetitions} {dataset}
 ```
 
-Replace `{expr_label}` with a label for your experiment, `{num_repetitions}` with the number of repetitions (`R` in the paper), and `{dataset}` with the dataset you want to use (`defects4j` or `bugsinpy`).
+Replace `{expr_label}` with a label for your experiment, `{num_repetitions}` with the number of repetitions, and `{dataset}` with the dataset you want to use (e.g. `rst`).
 
 ## Compute Scores
 ```shell
-python compute_score.py {result_directories} -l {java|python} -a -v -o {json_output_file}
+python compute_score.py {result_directories} -l java -a -v -o {json_output_file}
 ```
 
 `{result_directories}` should be the directories containing your AutoFL result files.
-- `-l` specifies the language (either `java` or `python`).
+- `-l` specifies the language (`java`).
 - `-a` enables the use of auxiliary scores to break ties.
 - `-v` enables verbose mode.
 - `-o` specifies the path to the JSON output file.
 
 ## Examples
 
-- Defects4J
+- Defects4J and Apache dataset:
     ```shell
-    sh runner.sh my_d4j_autofl_ 5 defects4j
-    python compute_score.py results/my_d4j_autofl_*/gpt-3.5-turbo-0613 -l java -a -v -o d4j_scores.json
-    ```
-- BugsInPy
-    ```shell
-    sh runner.sh my_bip_autofl_ 5 bugsinpy
-    python compute_score.py results/my_bip_autofl_*/gpt-3.5-turbo-0613 -l python -a -v -o bip_scores.json
+    sh line_runner.sh my_d4j_autofl_ 5 rst
+    python compute_score.py linelevel/my_d4j_autofl_*/gpt-4o -l java -a -v -o scores.json
     ```
