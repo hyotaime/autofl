@@ -16,7 +16,7 @@ trap 'echo interrupted; exit 1' INT
 
 for rep in $(seq 1 "$REPETITION"); do
     label="${LABEL_PREFIX}${rep}"
-    save_dir="linetest/${label}/${MODEL}"
+    save_dir="linelevel/${label}/${MODEL}"
     mkdir -p "${save_dir}"
     for bugname in $(ls -d ${DATA_DIR}/*/ | xargs -n1 basename); do
         save_file="${save_dir}/XFL-${bugname}.json"

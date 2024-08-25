@@ -313,7 +313,6 @@ def calculate_confidence(method_scores):
     return confidence
 
 if __name__ == '__main__':
-    # dir_name = "test_1"
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('result_dirs', nargs="+", type=str)
     parser.add_argument('--output', '-o', type=str, default="scores.json")
@@ -323,13 +322,6 @@ if __name__ == '__main__':
     parser.add_argument('--minimize', '-m', action="store_true")
     parser.add_argument('--aux', '-a', action="store_true")
     args = parser.parse_args()
-    # args = parser.parse_args([
-    #     f"linetest/{dir_name}/gpt-4o",
-    #     "-l", "java",
-    #     "-v",
-    #     "-a",
-    #     "-o", f"{dir_name}_score.json"
-    # ])
     assert args.language in ["java", "python"]
 
     json_files, autofl_scores = compute_autofl_scores(args.result_dirs, args.project, args.verbose)

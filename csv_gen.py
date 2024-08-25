@@ -1,8 +1,8 @@
 import pandas as pd
 import json
 
-file_name = "test_combined_scores_matched"
-with open(f'{file_name}.json', 'r') as f:
+file_name = "test_ten_scores_matched"
+with open(f'linelevel/{file_name}.json', 'r') as f:
     data = json.load(f)
 
 data = data['is_matched']
@@ -17,4 +17,4 @@ for i, bug in enumerate(data):
         is_matched = 'not matched'
     df.loc[i] = [bug, is_matched, data[bug]['matched'], data[bug]['missed'], data[bug]['wrong']]
 
-df.to_csv(f'{file_name}.csv', index=False)
+df.to_csv(f'linelevel/{file_name}.csv', index=False)
