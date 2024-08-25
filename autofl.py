@@ -7,7 +7,7 @@ from copy import deepcopy
 from lib import name_utils, llm_utils
 from lib.repo_interface import get_repo_interface
 
-RESULT_DIR = './results/'
+RESULT_DIR = './linelevel/'
 
 class AutoDebugger(llm_utils.OpenAIEngine):
     def __init__(self, bug_name, model_type, system_file, test_offset=None,
