@@ -4,7 +4,7 @@ if [ -z  "$1" ]; then
     exit 0
 fi
 REPETITION=$2
-DATASET=$3 # defects4j or bugsinpy
+DATASET=$3
 
 DATA_DIR=./data/${DATASET}/
 MODEL="gpt-4o"
