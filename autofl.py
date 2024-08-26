@@ -235,10 +235,10 @@ class AutoDebugger(llm_utils.OpenAIEngine):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model', default='gpt-3.5-turbo')
-    parser.add_argument('-b', '--bug_name', default='Chart_1')
+    parser.add_argument('-m', '--model', default='gpt-4o')
+    parser.add_argument('-b', '--bug_name', default='Chart_2')
     parser.add_argument('-o', '--out', default='test.json')
-    parser.add_argument('-p', '--prompt', default='prompts/system_msg_expbug.txt')
+    parser.add_argument('-p', '--prompt', default='prompts/line_prompt.txt')
     parser.add_argument('-t', '--max_num_tests', default=None, type=int)
     parser.add_argument('--test_offset', default=0, type=int)
     parser.add_argument('--max_budget', default=10, type=int)
