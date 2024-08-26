@@ -53,3 +53,7 @@ python compute_score.py {result_directories} -l java -a -v -o {json_output_file}
     sh line_runner.sh my_d4j_autofl_ 5 npe
     python compute_score.py linelevel/my_d4j_autofl_*/gpt-4o -l java -a -v -o scores.json
     ```
+
+## For Windows Users
+This project has been targeted and tested on Linux and MacOS.  
+If you are using Windows, you may need to modify the paths in the scripts and codes to use the correct path separator (`\` instead of `/`).
