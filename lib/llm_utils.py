@@ -4,6 +4,7 @@ import openai
 from dotenv import load_dotenv
 from abc import ABC
 
+
 class OpenAIEngine(ABC):
     def __init__(self):
         load_dotenv()

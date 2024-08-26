@@ -11,6 +11,7 @@ import ast
 import javalang
 from lib.name_utils import get_method_name
 
+
 def file2bug(json_file):
     if not json_file.endswith(".json"):
         return None
@@ -19,8 +20,9 @@ def file2bug(json_file):
     except:
         return None
 
+
 def get_prediction_status(raw_prediction):
-    if isinstance(raw_prediction, str): # buggy_methods = error message
+    if isinstance(raw_prediction, str):  # buggy_methods = error message
         error_message = raw_prediction
         if "openai.error.InvalidRequestError" not in error_message:
             return "OtherError"
@@ -29,14 +31,17 @@ def get_prediction_status(raw_prediction):
     else:
         return "OK"
 
+
 def parse_response(response):
     return [
         expr.removeprefix('`').removesuffix('`')
         for expr in response.strip().splitlines()
     ]
 
+
 def print_divider():
-    print("-"*50)
+    print("-" * 50)
+
 
 def compute_autofl_scores(result_dirs, project=None, verbose=False):
     json_status = {}
@@ -50,14 +55,15 @@ def compute_autofl_scores(result_dirs, project=None, verbose=False):
         for fname in file_iterator:
             bug_name = file2bug(fname)
             if bug_name is None:
-                continue            
+                continue
             if project and not bug_name.startswith(project):
                 continue
 
-            json_status[bug_name] = json_status.get(bug_name, {"OK": [], "OtherError": [], "InvalidRequestError": []}) # status -> list
-            score_results[bug_name] = score_results.get(bug_name, {})   # method -> score info
+            json_status[bug_name] = json_status.get(bug_name, {"OK": [], "OtherError": [],
+                                                               "InvalidRequestError": []})  # status -> list
+            score_results[bug_name] = score_results.get(bug_name, {})  # method -> score info
             status_result, score_result = json_status[bug_name], score_results[bug_name]
-    
+
             fpath = os.path.join(result_dir, fname)
             with open(fpath, 'r') as f:
                 autofl_data = json.load(f)
@@ -110,7 +116,7 @@ def compute_autofl_scores(result_dirs, project=None, verbose=False):
                         "score": 0, "count": 0, "exprs": {},
                     }
                 score_result[method]["count"] += 1
-                score_result[method]["score"] += 1/len(predicted_methods)
+                score_result[method]["score"] += 1 / len(predicted_methods)
                 score_result[method]["exprs"][fpath] = predicted_methods[method]
 
     for bug_name in score_results:
@@ -120,9 +126,9 @@ def compute_autofl_scores(result_dirs, project=None, verbose=False):
         all_methods = ri.method_signatures
         score_result = score_results[bug_name]
         num_all_runs = sum([len(json_status[bug_name][s]) for s in json_status[bug_name]])
-        #num_OK_runs = len(json_status[bug_name]["OK"])
+        # num_OK_runs = len(json_status[bug_name]["OK"])
 
-        for method in sorted(all_methods): # lexical sort
+        for method in sorted(all_methods):  # lexical sort
             if method not in score_result:
                 score_result[method] = {
                     "score": 0, "count": 0, "exprs": {},
@@ -136,12 +142,13 @@ def compute_autofl_scores(result_dirs, project=None, verbose=False):
 
     return json_status, score_results
 
+
 def get_seen_methods_from_msgs(ri, messages, language):
     seen_method_sigs = list(map(
         lambda msg: json.loads(msg['function_call']['arguments'])['signature'],
         filter(
             lambda msg: 'function_call' in msg \
-                and msg['function_call']['name'] in ('get_code_snippet', 'get_comments'), 
+                        and msg['function_call']['name'] in ('get_code_snippet', 'get_comments'),
             messages
         )
     ))
@@ -156,7 +163,7 @@ def get_seen_methods_from_msgs(ri, messages, language):
             content_data = json.loads(msg['content'])
         else:
             continue
-    
+
         if type(content_data) != str:
             continue
 
@@ -187,7 +194,7 @@ def get_seen_methods_from_msgs(ri, messages, language):
     candidates = {}
     for seen_method in all_seen_method_names:
         # search for covered methods that match name
-        seen_exact_match, seen_match_candidates = ri.get_matching_method_or_candidates(seen_method+'()')
+        seen_exact_match, seen_match_candidates = ri.get_matching_method_or_candidates(seen_method + '()')
         if seen_match_candidates is not None:
             candidates[seen_method] = candidates.get(
                 seen_method,
@@ -198,8 +205,9 @@ def get_seen_methods_from_msgs(ri, messages, language):
                 seen_method, seen_exact_match["signature"]
             )
         seen_method_sigs += [
-            sig for sig in candidates[seen_method] if get_method_name(sig)==seen_method]
+            sig for sig in candidates[seen_method] if get_method_name(sig) == seen_method]
     return seen_method_sigs
+
 
 def add_auxiliary_scores(json_files, autofl_scores, language, default_aux_score=None,
                          verbose=False):
@@ -241,7 +249,7 @@ def add_auxiliary_scores(json_files, autofl_scores, language, default_aux_score=
         for method in autofl_scores_aug[bug_name]:
             if default_aux_score is None:
                 if autofl_scores_aug[bug_name][method]["count"] > 0:
-                    aux_score = (num_failing_tests[method], 0) #seen_method_counter[method])
+                    aux_score = (num_failing_tests[method], 0)  # seen_method_counter[method])
                 else:
                     aux_score = (
                         num_failing_tests[method],
@@ -250,14 +258,17 @@ def add_auxiliary_scores(json_files, autofl_scores, language, default_aux_score=
                 autofl_scores_aug[bug_name][method]["aux_score"] = aux_score
             else:
                 aux_score = default_aux_score
-            assert isinstance(aux_score, tuple) or isinstance(aux_score, list) or isinstance(aux_score, float) or isinstance(aux_score, int)
+            assert isinstance(aux_score, tuple) or isinstance(aux_score, list) or isinstance(aux_score,
+                                                                                             float) or isinstance(
+                aux_score, int)
             autofl_scores_aug[bug_name][method]["aux_score"] = aux_score
     return autofl_scores_aug
+
 
 def assign_rank(autofl_scores):
     autofl_scores_rank = deepcopy(autofl_scores)
     for bug_name in autofl_scores_rank:
-        sort_keys = [] # (-score, -aux, index) 
+        sort_keys = []  # (-score, -aux, index)
         for i, method in enumerate(autofl_scores_rank[bug_name]):
             score = autofl_scores_rank[bug_name][method]["score"]
             sort_key = [-score]
@@ -275,6 +286,7 @@ def assign_rank(autofl_scores):
             autofl_scores_rank[bug_name][method]["rank"] = r + 1
     return autofl_scores_rank
 
+
 def get_buggy_method_ranks(method_scores, key="autofl_rank"):
     buggy_method_ranks = {}
     for bug_name in method_scores:
@@ -284,6 +296,7 @@ def get_buggy_method_ranks(method_scores, key="autofl_rank"):
             rank = method_scores[bug_name][method]["rank"] if method in method_scores[bug_name] else None
             buggy_method_ranks[bug_name][method] = {key: rank}
     return buggy_method_ranks
+
 
 def calculate_acc(buggy_method_ranks, key="autofl_rank", n=1):
     acc = 0
@@ -297,6 +310,7 @@ def calculate_acc(buggy_method_ranks, key="autofl_rank", n=1):
             acc += 1
     return acc
 
+
 def calculate_confidence(method_scores):
     confidence = {}
     for bug_name in method_scores:
@@ -309,6 +323,7 @@ def calculate_confidence(method_scores):
         else:
             confidence[bug_name] = None
     return confidence
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="")
@@ -342,7 +357,6 @@ if __name__ == '__main__':
     for n in range(1, 11):
         summary[f"acc@{n}"] = calculate_acc(buggy_method_ranks, key="autofl_rank", n=n)
     print(json.dumps(summary, indent=4))
-
 
     data = {
         "summary": summary,

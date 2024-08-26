@@ -9,10 +9,11 @@ from lib.repo_interface import get_repo_interface
 
 RESULT_DIR = './linelevel/'
 
+
 class AutoDebugger(llm_utils.OpenAIEngine):
     def __init__(self, bug_name, model_type, system_file, test_offset=None,
-            max_num_tests=None, allow_multi_predictions=False,
-            summarize_messages=False, debug=False, **ri_kwargs):
+                 max_num_tests=None, allow_multi_predictions=False,
+                 summarize_messages=False, debug=False, **ri_kwargs):
         super().__init__()
         self._bug_name = bug_name
         self._model = model_type
@@ -27,7 +28,7 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         self.completion_tokens = 0
 
     def _replace_last_with_memo(self, memo):
-        self.messages = self.messages[:-1] # replace recent two queries with memo
+        self.messages = self.messages[:-1]  # replace recent two queries with memo
         self.messages.append({'role': 'assistant', 'content': 'Summary: ' + memo})
 
     def _append_to_messages(self, message):
@@ -47,9 +48,9 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         return system_message
 
     def _init_interaction_records(self):
-        self._mid_map = {} # md5_hash -> mid (message id)
-        self._message_map = {} # mid -> message
-        self._interaction_records = [] # list of dict
+        self._mid_map = {}  # md5_hash -> mid (message id)
+        self._message_map = {}  # mid -> message
+        self._interaction_records = []  # list of dict
 
     def _append_to_interaction_records(self, prompt_messages, response_message):
         def _save_message_and_get_mid(message):
@@ -91,7 +92,8 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         test_snippets = "\n\n".join(self._ri.get_test_snippet(signature).rstrip() for signature in fail_test_signatures)
         user_message += f"The test looks like:\n\n```{self._ri.language}\n{test_snippets}\n```\n\n"
 
-        failing_traces = "\n\n".join(self._ri.get_fail_info(signature, minimize=True).rstrip() for signature in fail_test_signatures)
+        failing_traces = "\n\n".join(
+            self._ri.get_fail_info(signature, minimize=True).rstrip() for signature in fail_test_signatures)
         user_message += f"It failed with the following error message and call stack:\n\n```\n{failing_traces}\n```\n\n"
 
         user_message += f'Start by calling the `{self._ri.initial_coverage_getter}` function.'
@@ -125,7 +127,8 @@ class AutoDebugger(llm_utils.OpenAIEngine):
 
     def step(self, function_call_mode="auto"):
         if self._summarize_messages:
-            prompt_messages = self.messages + [{'role': 'system', 'content': 'Summarize the important content of the immediate prior message. If you are unsure of the solution, call a function afterwards. Be concise, but fully qualify all names.'}]
+            prompt_messages = self.messages + [{'role': 'system',
+                                                'content': 'Summarize the important content of the immediate prior message. If you are unsure of the solution, call a function afterwards. Be concise, but fully qualify all names.'}]
         else:
             prompt_messages = self.messages
 
@@ -151,15 +154,15 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         if response_message.get("function_call"):
             # call the function
 
-            try: # Note: the JSON response may not always be valid; be sure to handle errors
+            try:  # Note: the JSON response may not always be valid; be sure to handle errors
                 function_name, function_response = self.call_function(response_message)
             except Exception as e:
                 if self._debug or isinstance(e, KeyboardInterrupt):
                     raise e
                 else:
-                    return False # drop erroneous response and retry if step budget left
+                    return False  # drop erroneous response and retry if step budget left
 
-            self._append_to_messages(response_message) # extend conversation with assistant's reply
+            self._append_to_messages(response_message)  # extend conversation with assistant's reply
             # send the info on the function call and function response to GPT
             function_message = {
                 "role": "function",
@@ -167,7 +170,7 @@ class AutoDebugger(llm_utils.OpenAIEngine):
                 "content": json.dumps(function_response),
             }
             self._append_to_messages(function_message)
-            return False # not done
+            return False  # not done
         else:
             self._append_to_messages(response_message)  # extend conversation with assistant's reply
             return True
@@ -233,6 +236,7 @@ class AutoDebugger(llm_utils.OpenAIEngine):
         grade_result = self.grade(final_response)
         return grade_result
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--model', default='gpt-4o')
@@ -250,14 +254,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     ad = AutoDebugger(args.bug_name, args.model, args.prompt,
-        test_offset=args.test_offset,
-        max_num_tests=args.max_num_tests,
-        allow_multi_predictions=args.allow_multi_predictions,
-        summarize_messages=args.summarize_messages,
-        show_line_number=args.show_line_number,
-        postprocess_test_snippet=args.postprocess_test_snippet,
-        debug=args.debug
-    )
+                      test_offset=args.test_offset,
+                      max_num_tests=args.max_num_tests,
+                      allow_multi_predictions=args.allow_multi_predictions,
+                      summarize_messages=args.summarize_messages,
+                      show_line_number=args.show_line_number,
+                      postprocess_test_snippet=args.postprocess_test_snippet,
+                      debug=args.debug
+                      )
 
     try:
         grade = ad.run(args.max_budget)
