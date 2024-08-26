@@ -12,7 +12,7 @@ The original AutoFL implementation can be found at [coinse/autofl](https://githu
 Install the required dependencies using the following command:
 
 ```shell
-python -m pip install pandas python-dotenv tqdm markdown2 tiktoken "openai>=0.27.8,<=0.28.1" javalang-ext scipy numpy matplotlib jupyter seaborn nbformat
+python -m pip install python-dotenv "openai>=0.27.8,<=0.28.1" javalang-ext
 ```
 
 ## OpenAI API Setup
